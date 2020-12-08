@@ -83,7 +83,7 @@ public class AIParent : MonoBehaviour
     {
         Debug.Log("IdleAction");
 
-        gameObject.transform.position += new Vector3(0, 0, 0.5f);
+        gameObject.transform.position += new Vector3(0, 0, 0.01f);
     }
 
     protected virtual void AttackAction(int deadtime)

@@ -16,9 +16,4 @@ public class test : MonoBehaviour
         db.Save();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
