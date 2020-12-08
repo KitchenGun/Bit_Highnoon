@@ -45,7 +45,7 @@ public class CharacterCameraConstraint : MonoBehaviour
 	/// If > 0, the capsule will stretch or shrink so that the top of it is at the camera's y location.
 	/// Note that if you want the capsule to go a bit higher than the camera you'll need to add your own padding logic.
 	/// </summary>
-    public float PreferredHeight = 1.0f;
+	public float PreferredHeight = 1.0f;
 
 	/// <summary>
 	/// This value is used to control how far from the character capsule the HMD must be before the fade to black is complete. 
@@ -57,18 +57,21 @@ public class CharacterCameraConstraint : MonoBehaviour
 	private readonly Action _cameraUpdateAction;
 	private readonly Action _preCharacterMovementAction;
 
-	private CapsuleCollider _character;
-    private SimpleCapsuleWithStickMovement _simplePlayerController;
+	//private CapsuleCollider _character;
+	//private SimpleCapsuleWithStickMovement _simplePlayerController;
+	private CharacterController _character;
+	private OVRPlayerController _OVRPlayerController;
 
 	CharacterCameraConstraint()
 	{
 		_cameraUpdateAction = CameraUpdate;
 	}
 
-	void Awake ()
+	void Awake()
 	{
-		_character = GetComponent<CapsuleCollider>();
-		_simplePlayerController = GetComponent<SimpleCapsuleWithStickMovement>();
+		//_character = GetComponent<CapsuleCollider>();
+		_character = GetComponent<CharacterController>();
+		_OVRPlayerController = GetComponent<OVRPlayerController>();
 	}
 
 	private void Start()
@@ -77,30 +80,32 @@ public class CharacterCameraConstraint : MonoBehaviour
 
 	void OnEnable()
 	{
-        _simplePlayerController.CameraUpdated += _cameraUpdateAction;
+		//_simplePlayerController.CameraUpdated += _cameraUpdateAction;
+		_OVRPlayerController.CameraUpdated += _cameraUpdateAction;
 	}
 
 	void OnDisable()
 	{
-        _simplePlayerController.CameraUpdated -= _cameraUpdateAction;
+		//_simplePlayerController.CameraUpdated -= _cameraUpdateAction;
+		_OVRPlayerController.CameraUpdated -= _cameraUpdateAction;
 	}
 
-    /// <summary>
-    /// This method is the handler for the PlayerController.CameraUpdated event, which is used
-    /// to update the character height based on camera position.
-    /// </summary>
-    private void CameraUpdate()
+	/// <summary>
+	/// This method is the handler for the PlayerController.CameraUpdated event, which is used
+	/// to update the character height based on camera position.
+	/// </summary>
+	private void CameraUpdate()
 	{
 		// If dynamic height is enabled, try to adjust the controller height to the height of the camera.
 		if (PreferredHeight > 0.0f)
 		{
-            float camHeight = Mathf.Min(CameraRig.centerEyeAnchor.transform.localPosition.y, PreferredHeight);
+			float camHeight = Mathf.Min(CameraRig.centerEyeAnchor.transform.localPosition.y, PreferredHeight);
 			float newHeight = camHeight;
-			
+
 			// If the new height is less than before, or we don't need to check for collision, just accept the new height.
 			if (camHeight <= _character.height || !EnableCollision)
 			{
-                // we're good, do nothing.
+				// we're good, do nothing.
 			}
 			else
 			{
@@ -132,8 +137,10 @@ public class CharacterCameraConstraint : MonoBehaviour
 			_character.height = newHeight;
 			Vector3 newCamPos = CameraRig.transform.localPosition;
 			newCamPos.y = -_character.height * 0.5f;
-			CameraRig.transform.localPosition = newCamPos;
+			//CameraRig.transform.localPosition = newCamPos;
+			_character.center = new Vector3(0, newCamPos.y, 0);
 		}
+
 	}
 
 }

@@ -71,7 +71,7 @@ public class OVRControllerHelper : MonoBehaviour
 
 	void Start()
 	{
-		OVRPlugin.SystemHeadset headset = OVRPlugin.GetSystemHeadsetType();
+		OVRPlugin.SystemHeadset headset = OVRPlugin.SystemHeadset.Oculus_Quest_2;
 		switch (headset)
 		{
 			case OVRPlugin.SystemHeadset.Rift_CV1:
