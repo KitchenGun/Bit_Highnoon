@@ -39,6 +39,11 @@ public class GameManager : MonoBehaviour
 
     public void NextToScene(int idx)
     {
-            SceneManager.LoadScene(idx);
+        SceneManager.LoadScene(idx);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }

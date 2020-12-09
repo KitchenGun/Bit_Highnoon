@@ -13,5 +13,10 @@ public class NextScene : MonoBehaviour
             int idx = SceneManager.GetActiveScene().buildIndex + 1;
             GameManager.Instance.NextToScene(idx);
         }
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            GameManager.Instance.ExitGame();
+        }
     }
 }
