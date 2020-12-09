@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AIParent : MonoBehaviour
 {
-    public enum AIState { idle, attack, dead, playerdead }   
+    public enum AIState { IDLE, WALK, ATTACK, DEAD, PLAYERDEAD }   
 
     protected AIState aistate;      //현재 적의 상태
 
@@ -12,44 +12,55 @@ public class AIParent : MonoBehaviour
 
     protected bool isplayerdead;    //player의 사망여부
 
-    protected int idletime;          //대기시간
+    protected float idletime;          //대기시간
 
-    protected int deadtime;         //player 사망시간
+    protected float deadtime;         //player 사망시간
+
+    protected Animator animator;    //Animator
 
     GameObject player;              //플레이어
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        aistate = AIState.idle;          //처음에 대기 상태
+        animator = GetComponent<Animator>();
+
+        aistate = AIState.WALK;          //처음에 걷기
 
         isdead = false;
 
         isplayerdead = false;
 
         Debug.Log("idle");
-
-        StartCoroutine(CheckState());               //상태를 체크
-        StartCoroutine(CheckStateForAction());      //상태의 따른 행동
     }
 
-    IEnumerator CheckState()
+    protected IEnumerator CheckState()
     {
-        while(!isdead)
+        
+        while (!isdead)
         {
-            if (Time.time < idletime)                      //시작후 일정 시간동안 대기
+            //yield return new WaitForSeconds(2 * Time.deltaTime);
+
+            idletime -= Time.deltaTime;
+
+            if (idletime > -6 && idletime < 1)           
             {
-                aistate = AIState.idle;
+                aistate = AIState.IDLE;
                 Debug.Log("idle");
+            }
+            else if (idletime > 1)     
+            {
+                aistate = AIState.WALK;
+                Debug.Log("walk");
             }
             else if (isplayerdead == true)          //player가 죽음
             {
-                aistate = AIState.playerdead;
+                aistate = AIState.PLAYERDEAD;
                 Debug.Log("playerdead");
             }
-            else    //시작한 후 일정시간이 지나면 AI 공격
+            else if (idletime < -6)      //시작한 후 일정시간이 지나면 AI 공격
             {
-                aistate = AIState.attack;
+                aistate = AIState.ATTACK;
                 Debug.Log("attack");
             }
 
@@ -57,19 +68,22 @@ public class AIParent : MonoBehaviour
         }
     }
 
-    IEnumerator CheckStateForAction()
+    protected IEnumerator CheckStateForAction()
     {
         while(!isdead)
         {
             switch(aistate)
             {
-                case AIState.idle:
+                case AIState.IDLE:
                     IdleAction();
                     break;
-                case AIState.attack:
-                    AttackAction(deadtime);
+                case AIState.WALK:
+                    WalkAction();
                     break;
-                case AIState.playerdead:
+                case AIState.ATTACK:
+                    AttackAction();
+                    break;
+                case AIState.PLAYERDEAD:
                     PlayerDeadAction();
                     break;
             }
@@ -83,16 +97,23 @@ public class AIParent : MonoBehaviour
     {
         Debug.Log("IdleAction");
 
-        gameObject.transform.position += new Vector3(0, 0, 0.01f);
+        TurnAI();
     }
 
-    protected virtual void AttackAction(int deadtime)
+    protected virtual void WalkAction()
+    {
+        Debug.Log("WalkAction");
+
+        gameObject.transform.position += new Vector3(0, 0, 0.5f * Time.deltaTime);
+    }
+
+    protected virtual void AttackAction()
     {
         Debug.Log("AttackAction");
 
-        TurnAI();
+        deadtime -= Time.deltaTime;
 
-        if (Time.time > deadtime)       //시작후 일정 시간이 지나면 플레이어 사망
+        if (deadtime < 0)       //시작후 일정 시간이 지나면 플레이어 사망
             isplayerdead = true;
     }
 
@@ -112,5 +133,6 @@ public class AIParent : MonoBehaviour
         Quaternion Right = Quaternion.identity;
         Right.eulerAngles = new Vector3(0, 180, 0);
         gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, Right, Time.deltaTime * 2);
+        //gameObject.transform.rotation = Right;
     }
 }

@@ -11,5 +11,8 @@ public class AINormal : AIParent
         idletime = 3;   //대기 시간
 
         deadtime = 15;  //플레이어가 죽는 시간
+
+        StartCoroutine(CheckState());               //상태를 체크
+        StartCoroutine(CheckStateForAction());      //상태의 따른 행동
     }
 }
