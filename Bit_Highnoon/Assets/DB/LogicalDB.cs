@@ -152,4 +152,34 @@ public class LogicalDB
 
     #endregion
 
+    #region 전적
+
+    //승리수
+    public void WinCount(int usernum)
+    {
+        try
+        {
+            DataRow dr = UserInfo.Rows.Find(usernum);
+            dr["Win"] = int.Parse(dr["Win"].ToString()) + 1;
+        }
+        catch (Exception)
+        {
+        }
+    }
+
+    //패배수
+    public void LoseCount(int usernum)
+    {
+        try
+        {
+            DataRow dr = UserInfo.Rows.Find(usernum);
+            dr["Lose"] = int.Parse(dr["Lose"].ToString()) + 1;
+        }
+        catch (Exception)
+        {
+        }
+    }
+
+    #endregion
+
 }

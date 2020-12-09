@@ -9,10 +9,12 @@ public class test : MonoBehaviour
     void Start()
     {
         db.CreateTable();
+
+        db.Load();
         db.InsertUser("aaa", "red");
         db.InsertUser("bbb", "blue");
         db.NormalUser(1);
-        db.DeleteUser(2);
+        db.WinCount(1);
         db.Save();
     }
 
