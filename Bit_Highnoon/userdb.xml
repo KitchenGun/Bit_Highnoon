@@ -5,6 +5,38 @@
     <UserName>aaa</UserName>
     <UserColor>red</UserColor>
     <Mode>normal</Mode>
+    <Win>3</Win>
+    <Lose>0</Lose>
+  </UserInfo>
+  <UserInfo>
+    <UserNumber>2</UserNumber>
+    <UserName>aaa</UserName>
+    <UserColor>red</UserColor>
+    <Mode>easy</Mode>
+    <Win>0</Win>
+    <Lose>0</Lose>
+  </UserInfo>
+  <UserInfo>
+    <UserNumber>3</UserNumber>
+    <UserName>bbb</UserName>
+    <UserColor>blue</UserColor>
+    <Mode>easy</Mode>
+    <Win>0</Win>
+    <Lose>0</Lose>
+  </UserInfo>
+  <UserInfo>
+    <UserNumber>4</UserNumber>
+    <UserName>aaa</UserName>
+    <UserColor>red</UserColor>
+    <Mode>easy</Mode>
+    <Win>0</Win>
+    <Lose>0</Lose>
+  </UserInfo>
+  <UserInfo>
+    <UserNumber>5</UserNumber>
+    <UserName>bbb</UserName>
+    <UserColor>blue</UserColor>
+    <Mode>easy</Mode>
     <Win>0</Win>
     <Lose>0</Lose>
   </UserInfo>
