@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class AIParent : MonoBehaviour
 {
-    public enum AIState { IDLE, WALK, ATTACK, DEAD, PLAYERDEAD }   
+    public enum AIState { IDLE, WALK, ATTACK, HIT, DEAD, PLAYERDEAD }   
 
     protected AIState aistate;      //현재 적의 상태
 
     protected bool isdead;          //AI의 사망여부
 
-    protected bool isplayerdead;    //player의 사망여부
+    protected bool ishit;           //AI가 공격을 맞았는지 여부
+
+    protected bool isplayerdead;       //player의 사망여부
+
+    protected float wakltime;           //걷는 시간
 
     protected float idletime;          //대기시간
 
@@ -18,47 +22,52 @@ public class AIParent : MonoBehaviour
 
     protected Animator animator;    //Animator
 
-    GameObject player;              //플레이어
+    protected GameObject player;              //플레이어
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();    
 
         aistate = AIState.WALK;          //처음에 걷기
 
-        isdead = false;
+        isdead = isplayerdead = ishit = false;  //초기 설정
 
-        isplayerdead = false;
+        player = GameObject.Find("Cube");
 
         Debug.Log("idle");
     }
 
     protected IEnumerator CheckState()
     {
-        
         while (!isdead)
         {
             //yield return new WaitForSeconds(2 * Time.deltaTime);
 
-            idletime -= Time.deltaTime;
+            wakltime -= Time.deltaTime;
 
-            if (idletime > -6 && idletime < 1)           
+            if (ishit == true)
             {
-                aistate = AIState.IDLE;
-                Debug.Log("idle");
-            }
-            else if (idletime > 1)     
-            {
-                aistate = AIState.WALK;
-                Debug.Log("walk");
+                aistate = AIState.HIT;
+                Debug.Log("hit");
             }
             else if (isplayerdead == true)          //player가 죽음
             {
                 aistate = AIState.PLAYERDEAD;
                 Debug.Log("playerdead");
             }
-            else if (idletime < -6)      //시작한 후 일정시간이 지나면 AI 공격
+            else if (wakltime > 0)
+            {
+                aistate = AIState.WALK;
+                Debug.Log("walk");
+            }
+            else if(wakltime < 0 && idletime >0)           
+            {
+                aistate = AIState.IDLE;
+                Debug.Log("idle");
+                idletime -= Time.deltaTime;
+            }
+            else if (idletime < 0)      //시작한 후 일정시간이 지나면 AI 공격
             {
                 aistate = AIState.ATTACK;
                 Debug.Log("attack");
@@ -82,6 +91,9 @@ public class AIParent : MonoBehaviour
                     break;
                 case AIState.ATTACK:
                     AttackAction();
+                    break;
+                case AIState.HIT:
+                    HitAction();
                     break;
                 case AIState.PLAYERDEAD:
                     PlayerDeadAction();
@@ -117,11 +129,16 @@ public class AIParent : MonoBehaviour
             isplayerdead = true;
     }
 
+    protected virtual void HitAction()
+    {
+        Debug.Log("HitAction");
+    }
+
     protected virtual void PlayerDeadAction()
     {
         Debug.Log("PlayerDeadAction");
 
-        //player.SendMessage("Dead");   //플레이어에게 죽어다고 알리기
+        player.SendMessage("Dead");   //플레이어에게 죽어다고 알리기
 
         gameObject.SetActive(false);
     }
