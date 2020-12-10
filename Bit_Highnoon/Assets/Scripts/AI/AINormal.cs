@@ -8,6 +8,8 @@ public class AINormal : AIParent
     {
         base.Start();
 
+        wakltime = 2;   //걷는 시간
+
         idletime = 3;   //대기 시간
 
         deadtime = 15;  //플레이어가 죽는 시간
