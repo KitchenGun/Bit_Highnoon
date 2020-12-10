@@ -52,7 +52,7 @@ public class LogicalDB
         dc_lose.AllowDBNull = false;
         UserInfo.Columns.Add(dc_lose);
 
-        //primary key등록
+        //key등록
         DataColumn[] pkeys = new DataColumn[1];
         pkeys[0] = dc_userid;
         UserInfo.PrimaryKey = pkeys;
@@ -152,7 +152,7 @@ public class LogicalDB
 
     #endregion
 
-    #region 전적
+    #region 전적 카운트
 
     //승리수
     public void WinCount(int usernum)
