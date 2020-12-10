@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Left
   - Right
+  - DropObj
   layers:
   - Default
   - TransparentFX

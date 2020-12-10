@@ -26,10 +26,16 @@ namespace OVRTouchSample
         #endregion
 
         private string side; //컨트롤러 방향
+        private bool isHandOnColider;//손이 이벤트 오브젝트와 충돌하는가?
+
+        public GameObject GunSample; //무장하고 있는 총 샘플
+        [SerializeField]
+        private GameObject Belt; //밸트
 
         private void Start()
         {
             side=this.gameObject.tag;//현재 컨트롤러 오른쪽 왼쪽 확인용
+            isHandOnColider = false;
             this.gameObject.transform.Find("gun_hand").gameObject.SetActive(false);//현재 컨트롤러 총든손 총 내리도록 만들기
         }
 
@@ -48,6 +54,11 @@ namespace OVRTouchSample
             OVRManager.InputFocusAcquired += OnInputFocusAcquired;
             OVRManager.InputFocusLost += OnInputFocusLost;
             #endregion
+
+            #region 총 들고있는지 확인
+            DropCheck();
+            #endregion
+
         }
 
         #region 컨트롤러 연결 확인
@@ -71,38 +82,221 @@ namespace OVRTouchSample
         #endregion
 
         #region 충돌처리
-        private void OnCollisionStay(Collision collision)
+        private void OnCollisionStay(Collision collision)//벨트에서 총을 뽑을때
         {
-            Debug.Log(collision.transform.gameObject.name);
-            if(collision.transform.gameObject.name == "BeltGun")
+            if (collision.transform.gameObject.name == "BeltGun")
             {
-                //총을 들고있지 않을 경우
-                if (this.gameObject.transform.Find("OculusTouchForQuest2").GetComponentInChildren<SkinnedMeshRenderer>().enabled == true)
-                {  
-                    if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch) > 0 || OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch) > 0)
-                    { //그랩 할 경우
-                        //벨트에서 총 제거
-                        GameObject.Find("Belt").GetComponent<Belt>().GrabGun(collision.transform.gameObject.tag);
-                        //컨트롤러 총으로 교체
-                        this.gameObject.transform.Find("OculusTouchForQuest2").GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
-                        this.gameObject.transform.Find("gun_hand").gameObject.SetActive(true);
+                if (Belt.GetComponent<Belt>().isSet(collision.gameObject.tag))
+                {
+                    //총을 들고있지 않을 경우
+                    if (this.gameObject.transform.Find("OculusTouchForQuest2").GetComponentInChildren<SkinnedMeshRenderer>().enabled == true)
+                    {
+                        if (side == "Left")
+                        {
+                            if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch) > 0.1)
+                            {//그랩 할 경우
+                             //벨트에서 총 제거
+                                if (Belt.GetComponent<Belt>().isSet(collision.gameObject.tag))
+                                {
+                                    Belt.GetComponent<Belt>().GrabGun(collision.transform.gameObject.tag);
+                                    //컨트롤러->총으로 교체
+                                    this.gameObject.transform.Find("OculusTouchForQuest2").GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+                                    this.gameObject.transform.Find("gun_hand").gameObject.SetActive(true);
+                                }
+                            }
+                        }
+                        else if (side == "Right")
+                        {
+                            if (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch) > 0.1)
+                            {//그랩 할 경우
+                             //벨트에서 총 제거
+                                if (Belt.GetComponent<Belt>().isSet(collision.gameObject.tag))
+                                {
+                                    Belt.GetComponent<Belt>().GrabGun(collision.transform.gameObject.tag);
+                                    //컨트롤러->총으로 교체
+                                    this.gameObject.transform.Find("OculusTouchForQuest2").GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+                                    this.gameObject.transform.Find("gun_hand").gameObject.SetActive(true);
+                                }
+                            }
+                        }
                     }
+
                 }
-                //총을 들고있을 경우  
-                else if (this.gameObject.transform.Find("OculusTouchForQuest2").GetComponentInChildren<SkinnedMeshRenderer>().enabled == false)
-                {  
-                    if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch) <= 0 || OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch) <= 0)
-                    {//드랍 할 경우
-                        //벨트에서 총 제거
-                        GameObject.Find("Belt").GetComponent<Belt>().GrabGun(collision.transform.gameObject.tag);
-                        //총 컨트롤러로 교체
-                        this.gameObject.transform.Find("OculusTouchForQuest2").GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
-                        this.gameObject.transform.Find("gun_hand").gameObject.SetActive(false);
+               else if (!GameObject.Find("Belt").GetComponent<Belt>().isSet(collision.gameObject.tag))
+               {
+                   //총을 들고있을 경우
+                   if (this.gameObject.transform.Find("OculusTouchForQuest2").GetComponentInChildren<SkinnedMeshRenderer>().enabled == false)
+                   {
+                        if (side == "Left")
+                        {
+                            if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch) <= 0.1)
+                            {//드랍 할 경우
+                                Belt.GetComponent<Belt>().DropGun(collision.gameObject.tag);
+                                //컨트롤러로 교체
+                                this.gameObject.transform.Find("OculusTouchForQuest2").GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
+                                this.gameObject.transform.Find("gun_hand").gameObject.SetActive(false);
+                            }
+                        }
+                        else if (side == "Right")
+                        {
+                            if (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch) <= 0.1)
+                            {//드랍 할 경우
+                                Belt.GetComponent<Belt>().DropGun(collision.gameObject.tag);
+                                //총 컨트롤러로 교체
+                                this.gameObject.transform.Find("OculusTouchForQuest2").GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
+                                this.gameObject.transform.Find("gun_hand").gameObject.SetActive(false);
+                            }
+                        }
+                   }
+               }
+            }
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+            switch (other.gameObject.name)
+            {
+                case "BeltGunPos":
+                    if (!Belt.GetComponent<Belt>().isSet(other.gameObject.tag))
+                    {
+                        if (this.gameObject.transform.Find("OculusTouchForQuest2").GetComponentInChildren<SkinnedMeshRenderer>().enabled == false)
+                        {//총을 들고있는 상태
+                            if (side == "Left")
+                            {
+                                if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch) <= 0.1)
+                                {//밸트 위에서 드랍 할 경우 밸트에 총 생성
+                                    Belt.GetComponent<Belt>().DropGun(other.gameObject.tag);
+                                    //컨트롤러로 교체
+                                    this.gameObject.transform.Find("OculusTouchForQuest2").GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
+                                    this.gameObject.transform.Find("gun_hand").gameObject.SetActive(false);
+                                }
+                            }
+                            else if (side == "Right")
+                            {
+                                if (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch) <= 0.1)
+                                {//드랍 할 경우 밸트에 총 생성
+                                    Belt.GetComponent<Belt>().DropGun(other.gameObject.tag);
+                                    //컨트롤러로 교체
+                                    this.gameObject.transform.Find("OculusTouchForQuest2").GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
+                                    this.gameObject.transform.Find("gun_hand").gameObject.SetActive(false);
+                                }
+                            }
+                        }
+                    }
+                    break;
+                case "Gun":
+                    if (!isHandOnColider)
+                    {
+                        if (other.gameObject.tag == "DropObj")
+                        {
+                            if (this.gameObject.transform.Find("OculusTouchForQuest2").GetComponentInChildren<SkinnedMeshRenderer>().enabled == true)
+                            {//컨트롤러 상태인경우
+                                if (side == "Left")
+                                {
+                                    if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch) > 0)
+                                    {
+                                        //컨트롤러->총으로 교체
+                                        this.gameObject.transform.Find("OculusTouchForQuest2").GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+                                        this.gameObject.transform.Find("gun_hand").gameObject.SetActive(true);
+                                        Destroy(other.gameObject);
+                                    }
+                                }
+                                else if (side == "Right")
+                                {
+                                    if (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch) > 0)
+                                    {   //컨트롤러->총으로 교체
+                                        this.gameObject.transform.Find("OculusTouchForQuest2").GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+                                        this.gameObject.transform.Find("gun_hand").gameObject.SetActive(true);
+                                        Destroy(other.gameObject);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    break;
+                case "Gun(Clone)":
+                    if (!isHandOnColider)
+                    {
+                        if (other.gameObject.tag == "DropObj")
+                        {
+                            if (this.gameObject.transform.Find("OculusTouchForQuest2").GetComponentInChildren<SkinnedMeshRenderer>().enabled == true)
+                            {//컨트롤러 상태인경우
+                                if (side == "Left")
+                                {
+                                    if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch) > 0)
+                                    {
+                                        //컨트롤러->총으로 교체
+                                        this.gameObject.transform.Find("OculusTouchForQuest2").GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+                                        this.gameObject.transform.Find("gun_hand").gameObject.SetActive(true);
+                                        Destroy(other.gameObject);
+                                    }
+                                }
+                                else if (side == "Right")
+                                {
+                                    if (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch) > 0)
+                                    {   //컨트롤러->총으로 교체
+                                        this.gameObject.transform.Find("OculusTouchForQuest2").GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+                                        this.gameObject.transform.Find("gun_hand").gameObject.SetActive(true);
+                                        Destroy(other.gameObject);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    break;
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if(other.gameObject.name == "BeltGunPos")
+            {
+                //밸트에 총 넣는 공간에서 손이 떠날 경우
+                isHandOnColider = true;
+            }
+        }
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.gameObject.name == "BeltGunPos")
+            {//밸트에 총 넣는 공간에서 손이 떠날 경우
+                isHandOnColider = false;
+            }
+        }
+        #endregion
+
+        #region 총 들고있는지 확인
+        private void DropCheck()
+        {
+            if(!isHandOnColider)
+            {// 손이 이벤트 오브젝트와 충돌 안했을 경우
+                if (this.gameObject.transform.Find("OculusTouchForQuest2").GetComponentInChildren<SkinnedMeshRenderer>().enabled == false)
+                {//총을 들고있을 경우
+                    if (side == "Left")
+                    {
+                        if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch) <= 0.1)
+                        {//드랍 할 경우 손 위치에 총 모양 생성
+                            GameObject Gun = Instantiate<GameObject>(GunSample, this.transform.position, Quaternion.identity) as GameObject;
+                            Gun.name = "Gun";
+                            Gun.tag = "DropObj";
+                            //총 컨트롤러로 교체
+                            this.gameObject.transform.Find("OculusTouchForQuest2").GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
+                            this.gameObject.transform.Find("gun_hand").gameObject.SetActive(false);
+                        }
+                    }
+                    else if (side == "Right")
+                    {
+                        if (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch) <= 0.1)
+                        {//드랍 할 경우 손 위치에 총 모양 생성
+                            GameObject Gun = Instantiate<GameObject>(GunSample, this.transform.position, Quaternion.identity) as GameObject;
+                            Gun.tag = "DropObj";
+                            //총 컨트롤러로 교체
+                            this.gameObject.transform.Find("OculusTouchForQuest2").GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
+                            this.gameObject.transform.Find("gun_hand").gameObject.SetActive(false);
+                        }
                     }
                 }
             }
         }
         #endregion
-
     }
 }
