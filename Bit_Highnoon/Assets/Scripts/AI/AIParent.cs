@@ -38,13 +38,19 @@ public class AIParent : MonoBehaviour
         Debug.Log("idle");
     }
 
+    private void GameStart()
+    {
+        animator.SetBool("start", true);
+        
+        StartCoroutine(CheckState());               //상태를 체크
+        StartCoroutine(CheckStateForAction());      //상태의 따른        
+    } 
+
     protected IEnumerator CheckState()
     {
         while (!isdead)
         {
             //yield return new WaitForSeconds(2 * Time.deltaTime);
-
-            walktime -= Time.deltaTime;
 
             if (ishit == true)
             {
@@ -61,7 +67,7 @@ public class AIParent : MonoBehaviour
                 aistate = AIState.WALK;
                 Debug.Log("walk");
             }
-            else if(walktime < 0 && idletime >0)           
+            else if (walktime < 0 && idletime > 0)
             {
                 aistate = AIState.IDLE;
                 Debug.Log("idle");
@@ -73,7 +79,7 @@ public class AIParent : MonoBehaviour
                 Debug.Log("attack");
             }
 
-            yield return null;
+            yield return null;            
         }
     }
 
@@ -81,7 +87,8 @@ public class AIParent : MonoBehaviour
     {
         while(!isdead)
         {
-            switch(aistate)
+            
+            switch (aistate)
             {
                 case AIState.IDLE:
                     IdleAction();
@@ -109,14 +116,23 @@ public class AIParent : MonoBehaviour
     {
         Debug.Log("IdleAction");
 
+        animator.SetBool("start", false);
+
+        animator.SetTrigger("idle");
+
         TurnAI();
     }
 
     protected virtual void WalkAction()
     {
-        Debug.Log("WalkAction");
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        {
+            Debug.Log("WalkAction");
 
-        gameObject.transform.position += new Vector3(0, 0, 0.5f * Time.deltaTime);
+            walktime -= Time.deltaTime;
+
+            gameObject.transform.position += new Vector3(0, 0, 0.5f * Time.deltaTime);
+        }
     }
 
     protected virtual void AttackAction()
@@ -132,6 +148,10 @@ public class AIParent : MonoBehaviour
     protected virtual void HitAction()
     {
         Debug.Log("HitAction");
+
+        animator.SetTrigger("hit");
+
+        ishit = false;
     }
 
     protected virtual void PlayerDeadAction()
@@ -141,6 +161,23 @@ public class AIParent : MonoBehaviour
         player.SendMessage("Dead");   //플레이어에게 죽어다고 알리기
 
         gameObject.SetActive(false);
+    }
+    #endregion
+    
+    #region 플레이어가 호출
+    //맞았을때
+    private void Hit()
+    {
+        ishit = true;
+    }
+
+    //죽었을때
+    protected virtual void Dead()
+    {
+        animator.SetTrigger("dead");
+        isdead = true;
+
+        player.SendMessage("Win");
     }
     #endregion
 
