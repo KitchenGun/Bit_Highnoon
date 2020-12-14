@@ -25,12 +25,18 @@ namespace OVRTouchSample
         private bool m_restoreOnInputAcquired = false;
         #endregion
 
+        #region Grab&Drop
         private string side; //컨트롤러 방향
         private bool isHandOnColider;//손이 이벤트 오브젝트와 충돌하는가?
 
         public GameObject GunSample; //무장하고 있는 총 샘플
         [SerializeField]
         private GameObject Belt; //밸트
+        #endregion
+
+        #region Fire 가능 확인 변수
+        private bool FireState;
+        #endregion
 
         #region AudioSource
         private AudioSource HandAudio;
