@@ -6,40 +6,34 @@ public class AIEasy : AIParent
 {
     GameObject shoot;
 
-    bool chagecheck;    //Shoot상태에서 원래대로 돌아왔는지 판단
-
     protected override void Start()
     {
         base.Start();
 
-        wakltime = 5;    //걷는 시간
+        walktime = 5;    //걷는 시간
 
-        idletime = 10;   //대기시간
+        idletime = 10;   //걷기 후 대기시간
             
         deadtime = 20;  //플레이어가 죽는 시간
 
-        chagecheck = false;
-
-        shoot = GameObject.Find("EasyShoot").transform.FindChildRecursive("Shoot").gameObject;
-
-        StartCoroutine(CheckState());               //상태를 체크
-        StartCoroutine(CheckStateForAction());      //상태의 따른 행동
-        
+        shoot = GameObject.Find("EasyShoot").transform.FindChildRecursive("Shoot").gameObject;        
     }
 
-    protected override void IdleAction()
-    {
-        base.IdleAction();
-
-        animator.SetTrigger("idle");
-    }
-        
     protected override void AttackAction()
     {
         base.AttackAction();
 
+        animator.SetBool("idle", false);
+        animator.SetTrigger("start");
+
         if (shoot.activeSelf == false)
-            ChageShoot();
+        {
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") ||
+                animator.GetCurrentAnimatorStateInfo(0).IsName("Hit") &&
+                animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+                ChageShoot();
+        }
+
     }
 
     protected override void HitAction()
@@ -48,19 +42,6 @@ public class AIEasy : AIParent
 
         if (shoot.activeSelf == true)
             ReChange();
-
-        animator.SetTrigger("hit");
-
-        if (chagecheck == false)
-            HitFinsh();
-        else
-            Invoke("HitFinsh", 40 * Time.deltaTime);
-    }
-
-    private void HitFinsh()
-    {
-        ishit = false;
-
     }
 
     protected override void PlayerDeadAction()
@@ -93,28 +74,17 @@ public class AIEasy : AIParent
         {
             gameObject.transform.GetChild(i).gameObject.SetActive(true);
         }
-
-        chagecheck = true;
     }
     #endregion
 
-    #region 플레이어가 호출?
-    //맞았을때
-    private void Hit()
-    {
-        ishit = true;
-    }
-
+    #region 플레이어가 호출
     //죽었을때
-    private void Dead()
+    protected override void Dead()
     {
         if (shoot.activeSelf == true)
             ReChange();
 
-        animator.SetTrigger("dead");
-        isdead = true;
-
-        player.SendMessage("Win");
+        base.Dead();
     }
     #endregion
 }
