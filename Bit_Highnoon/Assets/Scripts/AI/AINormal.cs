@@ -8,7 +8,7 @@ public class AINormal : AIParent
     {
         base.Start();
 
-        wakltime = 2;   //걷는 시간
+        walktime = 2;   //걷는 시간
 
         idletime = 3;   //대기 시간
 

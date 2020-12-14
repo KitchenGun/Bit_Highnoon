@@ -14,7 +14,7 @@ public class AIParent : MonoBehaviour
 
     protected bool isplayerdead;       //player의 사망여부
 
-    protected float wakltime;           //걷는 시간
+    protected float walktime;           //걷는 시간
 
     protected float idletime;          //대기시간
 
@@ -44,7 +44,7 @@ public class AIParent : MonoBehaviour
         {
             //yield return new WaitForSeconds(2 * Time.deltaTime);
 
-            wakltime -= Time.deltaTime;
+            walktime -= Time.deltaTime;
 
             if (ishit == true)
             {
@@ -56,12 +56,12 @@ public class AIParent : MonoBehaviour
                 aistate = AIState.PLAYERDEAD;
                 Debug.Log("playerdead");
             }
-            else if (wakltime > 0)
+            else if (walktime > 0)
             {
                 aistate = AIState.WALK;
                 Debug.Log("walk");
             }
-            else if(wakltime < 0 && idletime >0)           
+            else if(walktime < 0 && idletime >0)           
             {
                 aistate = AIState.IDLE;
                 Debug.Log("idle");

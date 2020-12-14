@@ -6,19 +6,21 @@ public class AIEasy : AIParent
 {
     GameObject shoot;
 
-    bool chagecheck;    //Shoot상태에서 원래대로 돌아왔는지 판단
+    bool hitaction;    //hitaction을 한번만 호출하기 위한 변수
+
+    bool chagecheck;    //변환 되었는지 확인
 
     protected override void Start()
     {
         base.Start();
 
-        wakltime = 5;    //걷는 시간
+        walktime =  5;    //걷는 시간
 
-        idletime = 10;   //대기시간
+        idletime =  10;   //대기시간
             
         deadtime = 20;  //플레이어가 죽는 시간
 
-        chagecheck = false;
+        hitaction = chagecheck = false;
 
         shoot = GameObject.Find("EasyShoot").transform.FindChildRecursive("Shoot").gameObject;
 
@@ -33,13 +35,24 @@ public class AIEasy : AIParent
 
         animator.SetTrigger("idle");
     }
-        
+
+    protected override void WalkAction()
+    {
+        base.WalkAction();
+
+        animator.SetTrigger("walk");
+    }
+
     protected override void AttackAction()
     {
         base.AttackAction();
 
         if (shoot.activeSelf == false)
-            ChageShoot();
+        {
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
+                ChageShoot();
+        }
+
     }
 
     protected override void HitAction()
@@ -47,20 +60,28 @@ public class AIEasy : AIParent
         base.HitAction();
 
         if (shoot.activeSelf == true)
+        {
             ReChange();
+            chagecheck = true;
+        }
 
-        animator.SetTrigger("hit");
+        if (hitaction == false)
+            animator.SetTrigger("hit");
 
-        if (chagecheck == false)
+        hitaction = true;
+
+        //if (chagecheck == false)
+        //if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Hit")) 
+            //&& animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
             HitFinsh();
-        else
-            Invoke("HitFinsh", 40 * Time.deltaTime);
+        //else
+            //Invoke("HitFinsh", 500 * Time.deltaTime);
     }
 
     private void HitFinsh()
     {
         ishit = false;
-
+        hitaction = false;
     }
 
     protected override void PlayerDeadAction()
@@ -93,8 +114,6 @@ public class AIEasy : AIParent
         {
             gameObject.transform.GetChild(i).gameObject.SetActive(true);
         }
-
-        chagecheck = true;
     }
     #endregion
 
