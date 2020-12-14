@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3366610077256144149, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
+      propertyPath: Pistol_Garb
+      value: 
+      objectReference: {fileID: 8300000, guid: 8c8e25f8025ef804b8949f423258fbd8, type: 3}
     - target: {fileID: 3366610077945000640, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -178,6 +182,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCtrl
       objectReference: {fileID: 0}
+    - target: {fileID: 3366610077969422286, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
+      propertyPath: Pistol_Garb
+      value: 
+      objectReference: {fileID: 8300000, guid: 8c8e25f8025ef804b8949f423258fbd8, type: 3}
     - target: {fileID: 6983693388997093783, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
       propertyPath: GunFire_SFX
       value: 
