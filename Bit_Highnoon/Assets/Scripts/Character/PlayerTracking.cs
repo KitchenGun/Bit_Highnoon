@@ -17,7 +17,7 @@ public class PlayerTracking : MonoBehaviour
     void Update()
     {
         #region 회전과 위치 값 전달
-        Body.transform.position = Head.transform.position - new Vector3(0, 1f, 0);//머리보다 조금 뒤에 몸통 배치
+        Body.transform.position = Head.transform.position - new Vector3(0, 1f, 0);//머리보다 조금 아래에 몸통 배치
         Body.transform.eulerAngles = new Vector3(0, Head.transform.rotation.eulerAngles.y, 0); // 회전값 y축 만 전달
         #endregion
     }

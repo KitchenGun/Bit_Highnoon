@@ -28,4 +28,11 @@ public class Revolver : MonoBehaviour
     {
         FireState = state;
     }
+
+    private void Awake()
+    {
+       //초기화
+        setbullet(Max_bullet);
+        setFireState(true);
+    }
 }
