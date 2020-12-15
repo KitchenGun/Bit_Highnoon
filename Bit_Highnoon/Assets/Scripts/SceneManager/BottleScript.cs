@@ -8,7 +8,7 @@ public class BottleScript : MonoBehaviour
     [SerializeField] float m_force = 0f;
     [SerializeField] Vector3 m_offset = Vector3.zero;
 
-    public void Explosion()
+    public void Hit()
     {
         GameObject t_clone = Instantiate(m_goPrefab, transform.position, Quaternion.identity);
         Rigidbody[] t_rigids = t_clone.GetComponentsInChildren<Rigidbody>();
