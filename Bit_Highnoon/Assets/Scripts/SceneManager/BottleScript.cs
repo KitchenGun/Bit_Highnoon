@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class BottleScript : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class BottleScript : MonoBehaviour
     [SerializeField] float m_force = 0f;
     [SerializeField] Vector3 m_offset = Vector3.zero;
 
+    //병 깨짐 효과
     public void Hit()
     {
         GameObject t_clone = Instantiate(m_goPrefab, transform.position, Quaternion.identity);
@@ -16,6 +19,12 @@ public class BottleScript : MonoBehaviour
         {
             t_rigids[i].AddExplosionForce(m_force, transform.position + m_offset, 10f);
             gameObject.SetActive(false);
+            Invoke("ChangeScene", 1);
         }
+    }
+
+    public void ChangeScene()
+    {
+        GameManager.Instance.MoveScene(this.gameObject);
     }
 }
