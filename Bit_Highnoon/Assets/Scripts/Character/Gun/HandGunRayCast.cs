@@ -14,13 +14,17 @@ public class HandGunRayCast : MonoBehaviour
     private bool FireState;
     private int Bullet;
     private bool ReloadState;
-    private float ReloadStick;
+    private float ReloadStick; 
     #endregion
 
     #region audio
     private AudioSource HandGunAudio;
     [SerializeField]
     private AudioClip GunFire_SFX;
+    [SerializeField]
+    private AudioClip GunBulletEmpty_SFX;
+    [SerializeField]
+    private AudioClip GunReload_SFX;
 
     #endregion
 
@@ -55,7 +59,7 @@ public class HandGunRayCast : MonoBehaviour
                 case "Right": //오른쪽
                     if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger, OVRInput.Controller.Touch))
                     {
-                        Gun_Fire_FX();
+                        Fire();
                         Debug.DrawRay(FirePos.transform.position, FirePos.transform.forward * 2000, Color.red, 0.3f);//개발 확인용 레이 
                         if (Physics.Raycast(FirePos.transform.position, FirePos.transform.forward, out HitObj, 2000))
                         {
@@ -95,14 +99,16 @@ public class HandGunRayCast : MonoBehaviour
             {
                 case "Left"://왼쪽
                    ReloadStick = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).y;//스틱컨트롤러y축 버튼
-                    if (ReloadStick<-0.9)
+                    Debug.Log("L "+ReloadStick);
+                    if (ReloadStick < -0.9)
                     {
                         Reload();
                     }
                     break;
                 case "Right": //오른쪽
-                   ReloadStick = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick).y;//스틱컨트롤러y축 버튼
-                    if (ReloadStick<-0.9)
+                    ReloadStick = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick).y;//스틱컨트롤러y축 버튼
+                    Debug.Log("R " + ReloadStick);
+                    if (ReloadStick < -0.9)
                     {
                         Reload();
                     }
@@ -113,26 +119,44 @@ public class HandGunRayCast : MonoBehaviour
     }
 
     #region 격발음 & 격발 이펙트
-    private void Gun_Fire_FX()
+    private void Gun_Fire_SFX()
     {
         HandGunAudio.clip = this.GunFire_SFX;
         HandGunAudio.Play();
     }
+    private void Gun_BulletEmpty_SFX()
+    {
+        HandGunAudio.clip = this.GunBulletEmpty_SFX;
+        HandGunAudio.Play();
+    }
+    private void Gun_Reload_SFX()
+    {
+        HandGunAudio.clip = this.GunReload_SFX;
+        HandGunAudio.Play();
+    }
     #endregion
 
-    #region 총 관련 함수 & 정보 전달 및 전송 
+    #region 총 재장전 사격 관련 함수 & 정보 전달 및 전송 
     private void Fire()
     {
-        //총알 감소 격발 상태 
-        --Bullet;
-        FireState = false;
-        //격발 효과
-        Gun_Fire_FX();
+        if (Bullet > 0)
+        {
+            //총알 감소 격발 상태 
+            --Bullet;
+            FireState = false;
+            //격발 효과
+            Gun_Fire_SFX();
+        }
+        else//빈 약실 격발 사운드
+        {
+            Gun_BulletEmpty_SFX();
+        }
     }
-    private void Reload()
+    private void Reload()//재장전
     {
         FireState = true;
         ReloadState = false;
+        Gun_Reload_SFX();
     }
 
     public void setGunInfo(bool firestate, int bullet)

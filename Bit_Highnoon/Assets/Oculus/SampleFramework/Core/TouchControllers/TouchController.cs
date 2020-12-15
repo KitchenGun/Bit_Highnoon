@@ -113,7 +113,7 @@ namespace OVRTouchSample
                                 if (Belt.GetComponent<Belt>().isSet(collision.gameObject.tag))
                                 {
                                     Belt.GetComponent<Belt>().GrabGun(collision.transform.gameObject.tag);
-                                    getGunInfo(collision.gameObject);
+                                    getGunInfo(collision.transform.gameObject);
                                     //컨트롤러->총으로 모델링 교체
                                     HandtoGun();
                                     //사운드 효과
@@ -130,7 +130,7 @@ namespace OVRTouchSample
                                 if (Belt.GetComponent<Belt>().isSet(collision.gameObject.tag))
                                 {
                                     Belt.GetComponent<Belt>().GrabGun(collision.transform.gameObject.tag);
-                                    getGunInfo(collision.gameObject);
+                                    getGunInfo(collision.transform.gameObject);
                                     //컨트롤러->총으로 모델링 교체
                                     HandtoGun();
                                     //사운드 효과
@@ -152,9 +152,9 @@ namespace OVRTouchSample
                             if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch) <= 0.1)
                             {//드랍 할 경우
                                 Belt.GetComponent<Belt>().DropGun(collision.gameObject.tag);
+                                setGunInfo(collision.transform.gameObject);
                                 //컨트롤러로 교체
-                                this.gameObject.transform.Find("OculusTouchForQuest2").GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
-                                this.gameObject.transform.Find("gun_hand").gameObject.SetActive(false);
+                                GuntoHand();
                             }
                         }
                         else if (side == "Right")
@@ -162,9 +162,9 @@ namespace OVRTouchSample
                             if (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch) <= 0.1)
                             {//드랍 할 경우
                                 Belt.GetComponent<Belt>().DropGun(collision.gameObject.tag);
+                                setGunInfo(collision.transform.gameObject);
                                 //총 컨트롤러로 교체
-                                this.gameObject.transform.Find("OculusTouchForQuest2").GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
-                                this.gameObject.transform.Find("gun_hand").gameObject.SetActive(false);
+                                GuntoHand();
                             }
                         }
                    }
@@ -187,7 +187,7 @@ namespace OVRTouchSample
                                 {
                                     //밸트 위에서 드랍 할 경우 밸트에 총 생성
                                     Belt.GetComponent<Belt>().DropGun(other.gameObject.tag);
-                                    setGunInfo(other.gameObject);
+                                    setGunInfo(other.gameObject.transform.Find("BeltGun").gameObject);
                                     //컨트롤러로 교체
                                     GuntoHand();
                                 }
@@ -198,7 +198,7 @@ namespace OVRTouchSample
                                 {
                                     //드랍 할 경우 밸트에 총 생성
                                     Belt.GetComponent<Belt>().DropGun(other.gameObject.tag);
-                                    setGunInfo(other.gameObject);
+                                    setGunInfo(other.gameObject.transform.Find("BeltGun").gameObject);
                                     //컨트롤러로 교체
                                     GuntoHand();
                                 }
@@ -350,7 +350,7 @@ namespace OVRTouchSample
             //총에 정보에 접근 
             this.FireState = gun.GetComponent<Revolver>().FireState;//발사 가능 상태 체크
             this.Bullet = gun.GetComponent<Revolver>().cur_bullet;//사격가능한 총알 수 체크
-            this.gameObject.transform.GetComponentInChildren<HandGunRayCast>().setGunInfo(this.FireState, this.Bullet);
+            this.gameObject.transform.Find("gun_hand").gameObject.GetComponentInChildren<HandGunRayCast>().setGunInfo(this.FireState, this.Bullet);
         }
         private void setGunInfo(GameObject gun)
         {

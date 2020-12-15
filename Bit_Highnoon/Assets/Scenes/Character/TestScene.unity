@@ -182,6 +182,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCtrl
       objectReference: {fileID: 0}
+    - target: {fileID: 6983693388997093783, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
+      propertyPath: GunReload_SFX
+      value: 
+      objectReference: {fileID: 8300000, guid: e23c81c05ab44f947a543274b83505d3, type: 3}
+    - target: {fileID: 6983693388997093783, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
+      propertyPath: GunBulletEmpty_SFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 0f81f231e403f794eb88a9a472835c8f, type: 3}
+    - target: {fileID: 7882518585461515088, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
+      propertyPath: GunReload_SFX
+      value: 
+      objectReference: {fileID: 8300000, guid: e23c81c05ab44f947a543274b83505d3, type: 3}
+    - target: {fileID: 7882518585461515088, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
+      propertyPath: GunBulletEmpty_SFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 0f81f231e403f794eb88a9a472835c8f, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
 --- !u!1001 &323656275
