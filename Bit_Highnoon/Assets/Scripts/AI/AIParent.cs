@@ -29,7 +29,7 @@ public class AIParent : MonoBehaviour
     {
         animator = GetComponent<Animator>();    
 
-        aistate = AIState.WALK;          //처음에 걷기
+        aistate = AIState.IDLE;          //처음에 걷기
 
         isdead = isplayerdead = ishit = false;  //초기 설정
 
@@ -40,10 +40,9 @@ public class AIParent : MonoBehaviour
 
     private void GameStart()
     {
-        animator.SetBool("start", true);
-        
-        StartCoroutine(CheckState());               //상태를 체크
-        StartCoroutine(CheckStateForAction());      //상태의 따른        
+        animator.SetTrigger("walk");
+
+        idletime = -1;        
     } 
 
     protected IEnumerator CheckState()
@@ -62,18 +61,17 @@ public class AIParent : MonoBehaviour
                 aistate = AIState.PLAYERDEAD;
                 Debug.Log("playerdead");
             }
-            else if (walktime > 0)
-            {
-                aistate = AIState.WALK;
-                Debug.Log("walk");
-            }
-            else if (walktime < 0 && idletime > 0)
+            else if (idletime > 0)
             {
                 aistate = AIState.IDLE;
                 Debug.Log("idle");
-                idletime -= Time.deltaTime;
             }
-            else if (idletime < 0)      //시작한 후 일정시간이 지나면 AI 공격
+            else if (walktime > 0 && idletime < 0)
+            {
+                aistate = AIState.WALK;
+                Debug.Log("walk");
+            }            
+            else if (walktime < 0)      //시작한 후 일정시간이 지나면 AI 공격
             {
                 aistate = AIState.ATTACK;
                 Debug.Log("attack");
@@ -116,19 +114,21 @@ public class AIParent : MonoBehaviour
     {
         Debug.Log("IdleAction");
 
-        animator.SetBool("start", false);
+        idletime -= Time.deltaTime;
 
-        animator.SetTrigger("idle");
+        //animator.SetBool("start", false);
 
-        TurnAI();
+        //animator.SetTrigger("idle");
     }
 
     protected virtual void WalkAction()
     {
-        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-        {
-            Debug.Log("WalkAction");
+        Debug.Log("WalkAction");
 
+        animator.SetTrigger("walk");
+
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        {  
             walktime -= Time.deltaTime;
 
             gameObject.transform.position += new Vector3(0, 0, 0.5f * Time.deltaTime);
@@ -138,6 +138,8 @@ public class AIParent : MonoBehaviour
     protected virtual void AttackAction()
     {
         Debug.Log("AttackAction");
+
+        TurnAI();
 
         deadtime -= Time.deltaTime;
 
@@ -159,11 +161,13 @@ public class AIParent : MonoBehaviour
         Debug.Log("PlayerDeadAction");
 
         player.SendMessage("Dead");   //플레이어에게 죽어다고 알리기
+             
+        animator.SetTrigger("playerdead");
 
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
     #endregion
-    
+
     #region 플레이어가 호출
     //맞았을때
     private void Hit()

@@ -8,23 +8,33 @@ public class AINormal : AIParent
     {
         base.Start();
 
-        walktime = 2;   //걷는 시간
+        idletime = 5;   //대기 시간
 
-        idletime = 5;   //걷기 후 대기 시간
+        walktime = 3;   //걷는 시간
 
         deadtime = 15;  //플레이어가 죽는 시간
+
+        StartCoroutine(CheckState());               //상태를 체크
+        StartCoroutine(CheckStateForAction());      //상태의 따른
     }
 
     protected override void AttackAction()
     {
         base.AttackAction();
 
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Shoot"))
-            Turn();
-        else
-            ReTurn();
+        //if (animator.GetCurrentAnimatorStateInfo(0).IsName("Shoot"))
+        //    Turn();
+        //else
+        //    ReTurn();
 
         animator.SetTrigger("attack");
+    }
+
+    protected override void PlayerDeadAction()
+    {
+        base.PlayerDeadAction();
+
+        //ReTurn();
     }
 
     #region 방향 맞추기..
