@@ -19,7 +19,6 @@ public class HandGunRayCast : MonoBehaviour
         FirePos = this.gameObject.transform.parent.Find("GunFirePos").gameObject;
         this.HandGunAudio = this.gameObject.transform.parent.GetComponent<AudioSource>();
         this.HandGunAudio.loop = false;
-        Debug.Log(FirePos.tag);
     }
 
     void Update()
@@ -32,10 +31,13 @@ public class HandGunRayCast : MonoBehaviour
                 {
                     HandGunAudio.clip = this.GunFire_SFX;
                     HandGunAudio.Play();
-                    Debug.DrawRay(FirePos.transform.position, FirePos.transform.forward * 1000, Color.red, 0.3f);
+                    Debug.DrawRay(FirePos.transform.position, FirePos.transform.forward * 1000, Color.red, 0.3f);//개발 확인용 레이 
                     if (Physics.Raycast(FirePos.transform.position, FirePos.transform.forward, out HitObj, 1000))
                     {
-                        Debug.Log(HitObj.transform.gameObject.name);
+                        if(HitObj.transform.gameObject.tag == "Bottle")
+                        {
+                            BottleHit(HitObj.transform.gameObject);
+                        }
                     }
                 }
                 break;
@@ -44,14 +46,25 @@ public class HandGunRayCast : MonoBehaviour
                 {
                     HandGunAudio.clip = this.GunFire_SFX;
                     HandGunAudio.Play();
-                    Debug.DrawRay(FirePos.transform.position, FirePos.transform.forward * 1000, Color.red, 0.3f);
+                    Debug.DrawRay(FirePos.transform.position, FirePos.transform.forward * 1000, Color.red, 0.3f);//개발 확인용 레이 
                     if (Physics.Raycast(FirePos.transform.position, FirePos.transform.forward, out HitObj, 1000))
                     {
-                        Debug.Log(HitObj.transform.gameObject.name);
+                        if (HitObj.transform.gameObject.tag == "Bottle")
+                        {
+                            BottleHit(HitObj.transform.gameObject);
+                        }
                     }
                 }
                 break;
         }
         #endregion
     }
+    #region 병 식별 시 실행
+    private void BottleHit(GameObject bottle)
+    {
+        bottle.GetComponent<BottleScript>().SendMessage("Hit");
+    }
+    #endregion
+
+
 }

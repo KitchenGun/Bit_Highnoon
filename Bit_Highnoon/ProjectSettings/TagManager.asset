@@ -7,7 +7,6 @@ TagManager:
   - Left
   - Right
   - DropObj
-  - Bullet
   - Bottle
   layers:
   - Default
