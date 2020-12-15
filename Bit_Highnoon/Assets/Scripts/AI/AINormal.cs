@@ -8,11 +8,11 @@ public class AINormal : AIParent
     {
         base.Start();
 
-        idletime = 5;   //대기 시간
+        idleTime = 5;   //대기 시간
 
-        walktime = 3;   //걷는 시간
+        walkTime = 3;   //걷는 시간
 
-        deadtime = 15;  //플레이어가 죽는 시간
+        deadTime = 15;  //플레이어가 죽는 시간
 
         StartCoroutine(CheckState());               //상태를 체크
         StartCoroutine(CheckStateForAction());      //상태의 따른
@@ -22,34 +22,30 @@ public class AINormal : AIParent
     {
         base.AttackAction();
 
-        //if (animator.GetCurrentAnimatorStateInfo(0).IsName("Shoot"))
-        //    Turn();
-        //else
-        //    ReTurn();
-
-        animator.SetTrigger("attack");
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Shoot"))
+            Turn();
+        else if(isTurn == true)
+            ReTurn();
     }
+
 
     protected override void PlayerDeadAction()
     {
         base.PlayerDeadAction();
 
-        //ReTurn();
+        ReTurn();
     }
 
     #region 방향 맞추기..
     private void Turn()
     {
-        Quaternion Right = Quaternion.identity;
-        Right.eulerAngles = new Vector3(0, 90, 0);
-        gameObject.transform.rotation = Right;
+        gameObject.transform.rotation = Quaternion.Euler(0, 90, 0);
+        isTurn = true;
     }
 
     private void ReTurn()
     {
-        Quaternion Right = Quaternion.identity;
-        Right.eulerAngles = new Vector3(0, 180, 0);
-        gameObject.transform.rotation = Right;
+        gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
     }
     #endregion
 }

@@ -6,17 +6,17 @@ public class AIEasy : AIParent
 {
     GameObject shoot;
 
-    bool isfirst = true;    //처음 공격인지 확인한다.
+    bool isFirst = true;    //처음 공격인지 확인한다.
 
     protected override void Start()
     {
         base.Start();
 
-        idletime = 10;   //대기시간
+        idleTime = 10;   //대기시간
 
-        walktime = 5;    //걷는 시간        
+        walkTime = 5;    //걷는 시간        
             
-        deadtime = 20;  //플레이어가 죽는 시간
+        deadTime = 20;  //플레이어가 죽는 시간
 
         shoot = GameObject.Find("EasyShoot").transform.FindChildRecursive("Shoot").gameObject;
 
@@ -33,15 +33,14 @@ public class AIEasy : AIParent
 
         if (shoot.activeSelf == false)
         {
-            if ((isfirst == true && gameObject.transform.rotation == Right) ||
+            if ((isFirst == true && gameObject.transform.rotation == Right) ||
                 animator.GetCurrentAnimatorStateInfo(0).IsName("Hit") &&
                 animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
             {
                 ChageShoot();
-                isfirst = false;
+                isFirst = false;
             }
         }
-
     }
 
     protected override void HitAction()

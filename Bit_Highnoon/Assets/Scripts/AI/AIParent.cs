@@ -6,74 +6,78 @@ public class AIParent : MonoBehaviour
 {
     public enum AIState { IDLE, WALK, ATTACK, HIT, DEAD, PLAYERDEAD }   
 
-    protected AIState aistate;      //현재 적의 상태
+    protected AIState aiState;          //현재 적의 상태
 
-    protected bool isdead;          //AI의 사망여부
+    protected bool isDead;              //AI의 사망여부
 
-    protected bool ishit;           //AI가 공격을 맞았는지 여부
+    protected bool isHit;               //AI가 공격을 맞았는지 여부
 
-    protected bool isplayerdead;       //player의 사망여부
+    protected bool isPlayerDead;        //player의 사망여부
 
-    protected float walktime;           //걷는 시간
+    protected bool isTurn;              //뒤로 돌았는지 여부 판단
 
-    protected float idletime;          //대기시간
+    protected float idleTime;           //대기시간
 
-    protected float deadtime;         //player 사망시간
+    protected float walkTime;           //걷는 시간
+      
+    protected float deadTime;           //player 사망시간
 
-    protected Animator animator;    //Animator
+    protected Animator animator;        //Animator
 
-    protected GameObject player;              //플레이어
+    protected GameObject player;        //플레이어
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
         animator = GetComponent<Animator>();    
 
-        aistate = AIState.IDLE;          //처음에 걷기
+        aiState = AIState.IDLE;          
 
-        isdead = isplayerdead = ishit = false;  //초기 설정
+        isDead = isPlayerDead = isHit = isTurn = false;  //초기 설정
 
-        player = GameObject.Find("Cube");
+        player = GameObject.Find("Cube");       //플레이어 찾기
 
         Debug.Log("idle");
     }
 
+    //대기 시간 무시하고 강제로 시작
     private void GameStart()
     {
         animator.SetTrigger("walk");
 
-        idletime = -1;        
+        idleTime = -1;        
     } 
 
+    //상태를 체크하고 바꿔준다
     protected IEnumerator CheckState()
     {
-        while (!isdead)
+        while (!isDead)
         {
             //yield return new WaitForSeconds(2 * Time.deltaTime);
 
-            if (ishit == true)
+            if (isHit == true)                      //player의 공격을 맞았을때
             {
-                aistate = AIState.HIT;
+                aiState = AIState.HIT;
                 Debug.Log("hit");
             }
-            else if (isplayerdead == true)          //player가 죽음
+            else if (isPlayerDead == true)          //player가 죽음
             {
-                aistate = AIState.PLAYERDEAD;
+                aiState = AIState.PLAYERDEAD;
                 Debug.Log("playerdead");
             }
-            else if (idletime > 0)
+            else if (idleTime > 0)                  //대기 상태
             {
-                aistate = AIState.IDLE;
+                aiState = AIState.IDLE;
                 Debug.Log("idle");
             }
-            else if (walktime > 0 && idletime < 0)
+            else if (walkTime > 0 && idleTime < 0)  //걷는 상태
             {
-                aistate = AIState.WALK;
+                aiState = AIState.WALK;
                 Debug.Log("walk");
             }            
-            else if (walktime < 0)      //시작한 후 일정시간이 지나면 AI 공격
+            else if (walkTime < 0)                  //걷기후 공격 상태
             {
-                aistate = AIState.ATTACK;
+                aiState = AIState.ATTACK;
                 Debug.Log("attack");
             }
 
@@ -81,12 +85,12 @@ public class AIParent : MonoBehaviour
         }
     }
 
+    //상태의 따른 행동
     protected IEnumerator CheckStateForAction()
     {
-        while(!isdead)
+        while(!isDead)
         {
-            
-            switch (aistate)
+            switch (aiState)
             {
                 case AIState.IDLE:
                     IdleAction();
@@ -114,11 +118,7 @@ public class AIParent : MonoBehaviour
     {
         Debug.Log("IdleAction");
 
-        idletime -= Time.deltaTime;
-
-        //animator.SetBool("start", false);
-
-        //animator.SetTrigger("idle");
+        idleTime -= Time.deltaTime;
     }
 
     protected virtual void WalkAction()
@@ -129,22 +129,26 @@ public class AIParent : MonoBehaviour
 
         if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {  
-            walktime -= Time.deltaTime;
+            walkTime -= Time.deltaTime;
 
             gameObject.transform.position += new Vector3(0, 0, 0.5f * Time.deltaTime);
         }
     }
-
+    
     protected virtual void AttackAction()
     {
         Debug.Log("AttackAction");
 
-        TurnAI();
+        animator.SetBool("walk", false);
+        animator.SetTrigger("attack");
 
-        deadtime -= Time.deltaTime;
+        if (isTurn == false)
+            TurnAI();
 
-        if (deadtime < 0)       //시작후 일정 시간이 지나면 플레이어 사망
-            isplayerdead = true;
+        deadTime -= Time.deltaTime;
+
+        if (deadTime < 0)       //시작후 일정 시간이 지나면 플레이어 사망
+            isPlayerDead = true;
     }
 
     protected virtual void HitAction()
@@ -153,7 +157,7 @@ public class AIParent : MonoBehaviour
 
         animator.SetTrigger("hit");
 
-        ishit = false;
+        isHit = false;
     }
 
     protected virtual void PlayerDeadAction()
@@ -164,7 +168,7 @@ public class AIParent : MonoBehaviour
              
         animator.SetTrigger("playerdead");
 
-        //gameObject.SetActive(false);
+        isDead = true;
     }
     #endregion
 
@@ -172,14 +176,14 @@ public class AIParent : MonoBehaviour
     //맞았을때
     private void Hit()
     {
-        ishit = true;
+        isHit = true;
     }
 
     //죽었을때
     protected virtual void Dead()
     {
         animator.SetTrigger("dead");
-        isdead = true;
+        isDead = true;
 
         player.SendMessage("Win");
     }
