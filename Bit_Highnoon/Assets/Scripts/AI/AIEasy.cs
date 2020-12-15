@@ -6,34 +6,41 @@ public class AIEasy : AIParent
 {
     GameObject shoot;
 
+    bool isFirst = true;    //처음 공격인지 확인한다.
+
     protected override void Start()
     {
         base.Start();
 
-        walktime = 5;    //걷는 시간
+        idleTime = 10;   //대기시간
 
-        idletime = 10;   //걷기 후 대기시간
+        walkTime = 5;    //걷는 시간        
             
-        deadtime = 20;  //플레이어가 죽는 시간
+        deadTime = 20;  //플레이어가 죽는 시간
 
-        shoot = GameObject.Find("EasyShoot").transform.FindChildRecursive("Shoot").gameObject;        
+        shoot = GameObject.Find("EasyShoot").transform.FindChildRecursive("Shoot").gameObject;
+
+        StartCoroutine(CheckState());               //상태를 체크
+        StartCoroutine(CheckStateForAction());      //상태의 따른
     }
-
+    
     protected override void AttackAction()
     {
         base.AttackAction();
 
-        animator.SetBool("idle", false);
-        animator.SetTrigger("start");
+        Quaternion Right = Quaternion.identity;
+        Right.eulerAngles = new Vector3(0, -175, 0);
 
         if (shoot.activeSelf == false)
         {
-            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") ||
+            if ((isFirst == true && gameObject.transform.rotation == Right) ||
                 animator.GetCurrentAnimatorStateInfo(0).IsName("Hit") &&
                 animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+            {
                 ChageShoot();
+                isFirst = false;
+            }
         }
-
     }
 
     protected override void HitAction()
@@ -48,7 +55,7 @@ public class AIEasy : AIParent
     {
         base.PlayerDeadAction();
 
-        shoot.SetActive(false);
+        ReChange();
     }
 
     #region 오브젝트 변경
