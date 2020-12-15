@@ -14,7 +14,7 @@ public class Controller : MonoBehaviour
             RaycastHit t_hit;
             if(Physics.Raycast(t_ray, out t_hit, 100f))
             {
-                t_hit.transform.GetComponent<BottleScript>().Explosion();
+                t_hit.transform.GetComponent<BottleScript>().Hit();
             }
         }
     }

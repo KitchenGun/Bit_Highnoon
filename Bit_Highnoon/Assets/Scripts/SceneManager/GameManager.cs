@@ -60,6 +60,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void MoveScene(GameObject bottle)
+    {
+        if(bottle.name == "Single")
+        {
+            NextToScene(2);
+            
+        }
+    }
+
     //게임 종료
     public void ExitGame()
     {
@@ -77,7 +86,7 @@ public class GameManager : MonoBehaviour
             {
                 //싱글 메뉴 이동
                 int idx = SceneManager.GetActiveScene().buildIndex + 1;
-                GameManager.Instance.NextToScene(idx);
+                NextToScene(idx);
             }
 
             if (Input.GetKeyDown(KeyCode.F2))    //유리병 깨지는 이벤트 발생시로 변경
@@ -179,6 +188,7 @@ public class GameManager : MonoBehaviour
             }
         }
         #endregion
+
     }
     #endregion
 }
