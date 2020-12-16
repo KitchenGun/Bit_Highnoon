@@ -19,7 +19,7 @@ public class StartIntro : MonoBehaviour
         int idx = SceneManager.GetActiveScene().buildIndex + 1;
 
         //씬 넘기는 싱글톤 함수로 인덱스값 전달
-        GameManager.Instance.NextToScene(idx);
+        GameManager.Instance.ChangeToScene(idx);
     }
     #endregion
 }

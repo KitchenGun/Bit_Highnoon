@@ -99,7 +99,6 @@ public class HandGunRayCast : MonoBehaviour
             {
                 case "Left"://왼쪽
                    ReloadStick = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).y;//스틱컨트롤러y축 버튼
-                    Debug.Log("L "+ReloadStick);
                     if (ReloadStick < -0.9)
                     {
                         Reload();
@@ -107,7 +106,6 @@ public class HandGunRayCast : MonoBehaviour
                     break;
                 case "Right": //오른쪽
                     ReloadStick = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick).y;//스틱컨트롤러y축 버튼
-                    Debug.Log("R " + ReloadStick);
                     if (ReloadStick < -0.9)
                     {
                         Reload();
@@ -164,7 +162,7 @@ public class HandGunRayCast : MonoBehaviour
         this.FireState=firestate;
         this.Bullet = bullet;
     }
-    public void getGunInfo(out bool firestate,out int bullet)
+    public void getGunInfo(ref bool firestate,ref int bullet)
     {
         firestate = this.FireState;
         bullet = this.Bullet;
