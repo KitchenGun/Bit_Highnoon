@@ -51,6 +51,14 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public int GetSceneIndex()
+    {
+        int idx;
+        idx = SceneManager.GetActiveScene().buildIndex;
+
+        return idx;
+    }
     #endregion
 
     #region 씬 이동
