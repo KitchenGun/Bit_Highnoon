@@ -28,7 +28,6 @@ public class AINormal : AIParent
             ReTurn();
     }
 
-
     protected override void PlayerDeadAction()
     {
         base.PlayerDeadAction();

@@ -24,7 +24,7 @@ public class AIParent : MonoBehaviour
 
     protected Animator animator;        //Animator
 
-    protected GameObject player;        //플레이어
+    //protected GameObject player;        //플레이어
 
     #region audio
     protected AudioSource AIAudio;
@@ -45,7 +45,7 @@ public class AIParent : MonoBehaviour
 
         isDead = isPlayerDead = isHit = isTurn = false;  //초기 설정
 
-        player = GameObject.Find("Cube");       //플레이어 찾기
+        //player = GameObject.Find("Cube");       //플레이어 찾기
 
         AIAudio = gameObject.transform.GetComponent<AudioSource>();
         AIAudio.loop = false;
@@ -179,7 +179,7 @@ public class AIParent : MonoBehaviour
     {
         Debug.Log("PlayerDeadAction");
 
-        player.SendMessage("Dead");   //플레이어에게 죽어다고 알리기
+        //player.SendMessage("Dead");   //플레이어에게 죽어다고 알리기
              
         animator.SetTrigger("playerdead");
 
@@ -202,7 +202,7 @@ public class AIParent : MonoBehaviour
         animator.SetTrigger("dead");
         isDead = true;
 
-        player.SendMessage("Win");
+        //player.SendMessage("Win");
 
         DeadAudio();
     }
