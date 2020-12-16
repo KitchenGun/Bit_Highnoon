@@ -45,10 +45,18 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(idx);
     }
-   
 
+    //게임 종료
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+    #endregion
+
+    #region 씬 이동
     public void MoveScene(GameObject bottle)
     {
+        //메인 메뉴
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             switch (bottle.name)
@@ -63,28 +71,24 @@ public class GameManager : MonoBehaviour
                     ExitGame(); break;
             }
         }
+        //레벨 선택 메뉴
         else if (SceneManager.GetActiveScene().buildIndex == 2)
         {
             switch (bottle.name)
             {
-                case "":
-                    ChangeToScene(2); break;
-                case "Multi":
-                    ChangeToScene(7); break;
-                case "Option":
-                    ChangeToScene(10); break;
-                case "Exit":
-                    ExitGame(); break;
+                case "Easy":
+                    ChangeToScene(3); break;
+                case "Normal":
+                    ChangeToScene(4); break;
+                case "Hard":
+                    ChangeToScene(5); break;
+                case "Back":
+                    ChangeToScene(1); break;
             }
         }
     }
-
-    //게임 종료
-    public void ExitGame()
-    {
-        Application.Quit();
-    }
     #endregion
+
 
     /*
     #region Update함수

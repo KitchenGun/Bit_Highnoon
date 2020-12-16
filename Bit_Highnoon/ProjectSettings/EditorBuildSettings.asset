@@ -15,9 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/SceneManager/Main_Menu.unity
     guid: 22b0215b6bd36a04394c1048107e925b
   - enabled: 1
-    path: Assets/Scenes/SceneManager/Single_Menu.unity
-    guid: 55931a133bd5fb348b3dbccfc30ab1d5
-  - enabled: 1
     path: Assets/Scenes/SceneManager/Level_Menu.unity
     guid: 425678126bdddbd41b0091370d0b13c3
   - enabled: 1
