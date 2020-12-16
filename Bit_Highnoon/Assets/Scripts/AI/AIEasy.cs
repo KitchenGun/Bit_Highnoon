@@ -6,7 +6,7 @@ public class AIEasy : AIParent
 {
     GameObject shoot;
 
-    bool isFirst = true;    //처음 공격인지 확인한다.
+    private bool isFirst = true;    //처음 공격인지 확인한다.
 
     protected override void Start()
     {
@@ -47,15 +47,14 @@ public class AIEasy : AIParent
     {
         base.HitAction();
 
-        if (shoot.activeSelf == true)
-            ReChange();
+        ReChange();
     }
 
     protected override void PlayerDeadAction()
     {
-        base.PlayerDeadAction();
-
         ReChange();
+
+        base.PlayerDeadAction();
     }
 
     #region 오브젝트 변경
@@ -75,11 +74,14 @@ public class AIEasy : AIParent
     //다시 원래대로 
     private void ReChange()
     {
-        shoot.SetActive(false);
-
-        for (int i = 0; i < 4; i++)
+        if (shoot.activeSelf == true)
         {
-            gameObject.transform.GetChild(i).gameObject.SetActive(true);
+            shoot.SetActive(false);
+
+            for (int i = 0; i < 4; i++)
+            {
+                gameObject.transform.GetChild(i).gameObject.SetActive(true);
+            }
         }
     }
     #endregion
@@ -94,4 +96,6 @@ public class AIEasy : AIParent
         base.Dead();
     }
     #endregion
+
+
 }
