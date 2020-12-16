@@ -63,6 +63,20 @@ public class GameManager : MonoBehaviour
                     ExitGame(); break;
             }
         }
+        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            switch (bottle.name)
+            {
+                case "":
+                    ChangeToScene(2); break;
+                case "Multi":
+                    ChangeToScene(7); break;
+                case "Option":
+                    ChangeToScene(10); break;
+                case "Exit":
+                    ExitGame(); break;
+            }
+        }
     }
 
     //게임 종료
