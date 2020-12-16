@@ -39,51 +39,48 @@ public class HandGunRayCast : MonoBehaviour
     void Update()
     {
         #region Ray 발사
-        if (FireState == true)//발사 가능 상태 일 경우
+        switch (FirePos.tag)//발사 위치 오브젝트의 태그를 통해서 판별
         {
-            switch (FirePos.tag)//발사 위치 오브젝트의 태그를 통해서 판별
-            {
-                case "Left"://왼쪽
-                    if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.Touch))
+            case "Left"://왼쪽
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.Touch))
+                {
+                    if (Fire())//총알 발사
                     {
-                        if (Fire())//총알 발사
+                        Debug.DrawRay(FirePos.transform.position, FirePos.transform.forward * 2000, Color.red, 0.3f);//개발 확인용 레이 
+                        if (Physics.Raycast(FirePos.transform.position, FirePos.transform.forward, out HitObj, 2000))
                         {
-                            Debug.DrawRay(FirePos.transform.position, FirePos.transform.forward * 2000, Color.red, 0.3f);//개발 확인용 레이 
-                            if (Physics.Raycast(FirePos.transform.position, FirePos.transform.forward, out HitObj, 2000))
+                            if (HitObj.transform.gameObject.tag == "Bottle")
                             {
-                                if (HitObj.transform.gameObject.tag == "Bottle")
-                                {
-                                    BottleHit(HitObj.transform.gameObject);
-                                }
-                                else if (HitObj.transform.gameObject.tag == "Enemy")
-                                {
-                                    EnemyHit(HitObj.transform.gameObject);
-                                }
+                                BottleHit(HitObj.transform.gameObject);
+                            }
+                            else if (HitObj.transform.gameObject.tag == "Enemy")
+                            {
+                                EnemyHit(HitObj.transform.gameObject);
                             }
                         }
                     }
-                    break;
-                case "Right": //오른쪽
-                    if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger, OVRInput.Controller.Touch))
+                }
+                break;
+            case "Right": //오른쪽
+                if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger, OVRInput.Controller.Touch))
+                {
+                    if (Fire())//총알 발사
                     {
-                        if (Fire())//총알 발사
+                        Debug.DrawRay(FirePos.transform.position, FirePos.transform.forward * 2000, Color.red, 0.3f);//개발 확인용 레이 
+                        if (Physics.Raycast(FirePos.transform.position, FirePos.transform.forward, out HitObj, 2000))
                         {
-                            Debug.DrawRay(FirePos.transform.position, FirePos.transform.forward * 2000, Color.red, 0.3f);//개발 확인용 레이 
-                            if (Physics.Raycast(FirePos.transform.position, FirePos.transform.forward, out HitObj, 2000))
+                            if (HitObj.transform.gameObject.tag == "Bottle")
                             {
-                                if (HitObj.transform.gameObject.tag == "Bottle")
-                                {
-                                    BottleHit(HitObj.transform.gameObject);
-                                }
-                                else if (HitObj.transform.gameObject.tag == "Enemy")
-                                {
-                                    EnemyHit(HitObj.transform.gameObject);
-                                }
+                                BottleHit(HitObj.transform.gameObject);
+                            }
+                            else if (HitObj.transform.gameObject.tag == "Enemy")
+                            {
+                                EnemyHit(HitObj.transform.gameObject);
                             }
                         }
                     }
-                    break;
-            }
+                }
+                break;
         }
         #endregion
 
@@ -151,7 +148,7 @@ public class HandGunRayCast : MonoBehaviour
     private bool Fire()
     {
 
-        if (Bullet > 0)
+        if (Bullet > 0&&FireState)//총알이 있고 발사가능상태
         {
             //총알 감소 격발 상태 
             Bullet--;
@@ -166,14 +163,10 @@ public class HandGunRayCast : MonoBehaviour
             Gun_BulletEmpty_SFX();
             return false;
         }
-        else if(ReloadState==false)//빈 약실 격발 사운드
+        else
         {
             FireState = false;
             Gun_BulletEmpty_SFX();
-            return false;
-        }
-        else
-        {
             return false;
         }
     }
