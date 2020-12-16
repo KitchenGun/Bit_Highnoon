@@ -38,7 +38,7 @@ public class AIEasy : AIParent
                 animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
             {
                 ChageShoot();
-                isFirst = false;
+                isFirst = false;                
             }
         }
     }
@@ -64,6 +64,8 @@ public class AIEasy : AIParent
         shoot.SetActive(true);
         shoot.transform.position = gameObject.transform.position;
         shoot.transform.rotation = gameObject.transform.rotation;
+
+        shoot.transform.LookAt(player.transform);
 
         for (int i = 0; i < 4; i++)
         {
