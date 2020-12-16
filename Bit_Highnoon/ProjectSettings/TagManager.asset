@@ -8,6 +8,8 @@ TagManager:
   - Right
   - DropObj
   - Bottle
+  - Enemy
+  - Bullet
   layers:
   - Default
   - TransparentFX

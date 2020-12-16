@@ -68,6 +68,10 @@ public class HandGunRayCast : MonoBehaviour
                             {
                                 BottleHit(HitObj.transform.gameObject);
                             }
+                            else if(HitObj.transform.gameObject.tag=="Enemy")
+                            {
+                                EnemyHit(HitObj.transform.gameObject);
+                            }
                         }
                     }
                     break;
@@ -180,6 +184,13 @@ public class HandGunRayCast : MonoBehaviour
     private void BottleHit(GameObject bottle)
     {
         bottle.GetComponent<BottleScript>().SendMessage("Hit");
+    }
+    #endregion
+
+    #region 적 식별 시 실행
+    private void EnemyHit(GameObject enemy)
+    {
+        enemy.GetComponent<AIParent>().SendMessage("Hit");
     }
     #endregion
 
