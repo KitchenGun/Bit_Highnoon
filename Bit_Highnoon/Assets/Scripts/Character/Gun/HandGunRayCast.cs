@@ -46,13 +46,19 @@ public class HandGunRayCast : MonoBehaviour
                 case "Left"://왼쪽
                     if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.Touch))
                     {
-                        Fire();
-                        Debug.DrawRay(FirePos.transform.position, FirePos.transform.forward * 2000, Color.red, 0.3f);//개발 확인용 레이 
-                        if (Physics.Raycast(FirePos.transform.position, FirePos.transform.forward, out HitObj, 2000))
+                        if (Fire())//총알 발사
                         {
-                            if (HitObj.transform.gameObject.tag == "Bottle")
+                            Debug.DrawRay(FirePos.transform.position, FirePos.transform.forward * 2000, Color.red, 0.3f);//개발 확인용 레이 
+                            if (Physics.Raycast(FirePos.transform.position, FirePos.transform.forward, out HitObj, 2000))
                             {
-                                BottleHit(HitObj.transform.gameObject);
+                                if (HitObj.transform.gameObject.tag == "Bottle")
+                                {
+                                    BottleHit(HitObj.transform.gameObject);
+                                }
+                                else if (HitObj.transform.gameObject.tag == "Enemy")
+                                {
+                                    EnemyHit(HitObj.transform.gameObject);
+                                }
                             }
                         }
                     }
@@ -60,17 +66,19 @@ public class HandGunRayCast : MonoBehaviour
                 case "Right": //오른쪽
                     if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger, OVRInput.Controller.Touch))
                     {
-                        Fire();
-                        Debug.DrawRay(FirePos.transform.position, FirePos.transform.forward * 2000, Color.red, 0.3f);//개발 확인용 레이 
-                        if (Physics.Raycast(FirePos.transform.position, FirePos.transform.forward, out HitObj, 2000))
+                        if (Fire())//총알 발사
                         {
-                            if (HitObj.transform.gameObject.tag == "Bottle")
+                            Debug.DrawRay(FirePos.transform.position, FirePos.transform.forward * 2000, Color.red, 0.3f);//개발 확인용 레이 
+                            if (Physics.Raycast(FirePos.transform.position, FirePos.transform.forward, out HitObj, 2000))
                             {
-                                BottleHit(HitObj.transform.gameObject);
-                            }
-                            else if(HitObj.transform.gameObject.tag=="Enemy")
-                            {
-                                EnemyHit(HitObj.transform.gameObject);
+                                if (HitObj.transform.gameObject.tag == "Bottle")
+                                {
+                                    BottleHit(HitObj.transform.gameObject);
+                                }
+                                else if (HitObj.transform.gameObject.tag == "Enemy")
+                                {
+                                    EnemyHit(HitObj.transform.gameObject);
+                                }
                             }
                         }
                     }
@@ -140,8 +148,9 @@ public class HandGunRayCast : MonoBehaviour
     #endregion
 
     #region 총 재장전 사격 관련 함수 & 정보 전달 및 전송 
-    private void Fire()
+    private bool Fire()
     {
+
         if (Bullet > 0)
         {
             //총알 감소 격발 상태 
@@ -149,16 +158,23 @@ public class HandGunRayCast : MonoBehaviour
             FireState = false;
             //격발 효과
             Gun_Fire_SFX();
+            return true;
         }
-        else if(FireState==false)
+        else if(!FireState)
         {
             FireState = false;
             Gun_BulletEmpty_SFX();
+            return false;
         }
-        else//빈 약실 격발 사운드
+        else if(ReloadState==false)//빈 약실 격발 사운드
         {
             FireState = false;
             Gun_BulletEmpty_SFX();
+            return false;
+        }
+        else
+        {
+            return false;
         }
     }
     private void Reload()//재장전
