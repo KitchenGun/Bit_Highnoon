@@ -24,7 +24,7 @@ public class AIParent : MonoBehaviour
 
     protected Animator animator;        //Animator
 
-    //protected GameObject player;        //플레이어
+    protected GameObject player;        //플레이어
 
     #region audio
     protected AudioSource AIAudio;
@@ -32,6 +32,8 @@ public class AIParent : MonoBehaviour
     private AudioClip dead_SFX;
     [SerializeField]
     private AudioClip hit_SFX;
+    [SerializeField]
+    private AudioClip attack_SFX;
     [SerializeField]
     private AudioClip player_Dead_SFX;
     #endregion
@@ -45,10 +47,9 @@ public class AIParent : MonoBehaviour
 
         isDead = isPlayerDead = isHit = isTurn = false;  //초기 설정
 
-        //player = GameObject.Find("Cube");       //플레이어 찾기
+        player = GameObject.Find("PlayerCtrl");       //플레이어 찾기
 
         AIAudio = gameObject.transform.GetComponent<AudioSource>();
-        AIAudio.loop = false;
 
         Debug.Log("idle");
     }
@@ -147,10 +148,17 @@ public class AIParent : MonoBehaviour
             gameObject.transform.position += new Vector3(0, 0, 0.5f * Time.deltaTime);
         }
     }
-    
+
+    bool isattackAudio = false;
     protected virtual void AttackAction()
     {
         Debug.Log("AttackAction");
+
+        if (isattackAudio == false)
+        {
+            Invoke("AttackAudio", 3);
+            isattackAudio = true;
+        }
 
         animator.SetBool("walk", false);
         animator.SetTrigger("attack");
@@ -212,18 +220,28 @@ public class AIParent : MonoBehaviour
     private void DeadAudio()
     {
         AIAudio.clip = dead_SFX;
+        AIAudio.loop = false;
         AIAudio.Play();
     }
 
     private void HitAudio()
     {
         AIAudio.clip = hit_SFX;
+        AIAudio.loop = false;
+        AIAudio.Play();
+    }
+
+    private void AttackAudio()
+    {
+        AIAudio.clip = attack_SFX;
+        AIAudio.loop = true;
         AIAudio.Play();
     }
 
     private void PlayerDeadAudio()
     {
         AIAudio.clip = player_Dead_SFX;
+        AIAudio.loop = false;
         AIAudio.Play();
     }
     #endregion

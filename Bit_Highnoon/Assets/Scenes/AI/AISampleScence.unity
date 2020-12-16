@@ -623,6 +623,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dead_SFX: {fileID: 8300000, guid: 98889ac90893c0749b08c7dd7f45aba4, type: 3}
   hit_SFX: {fileID: 8300000, guid: d4eadb986ef84584a84556b3cee86504, type: 3}
+  attack_SFX: {fileID: 8300000, guid: 6f5eaaafc85f7fe4189bbecc15ec1e73, type: 3}
   player_Dead_SFX: {fileID: 8300000, guid: 1678368fc767d2243a84b62f908bd4be, type: 3}
 --- !u!82 &246779509
 AudioSource:
@@ -1326,6 +1327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dead_SFX: {fileID: 8300000, guid: 2cdaf2a3dea710148bf7107fbe80632c, type: 3}
   hit_SFX: {fileID: 8300000, guid: 38d2f1fd46407194b87ec81f07966bad, type: 3}
+  attack_SFX: {fileID: 8300000, guid: 6f5eaaafc85f7fe4189bbecc15ec1e73, type: 3}
   player_Dead_SFX: {fileID: 8300000, guid: 70a4cdf085726994aac7afa484924846, type: 3}
 --- !u!82 &1207194495
 AudioSource:
@@ -1788,6 +1790,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dead_SFX: {fileID: 8300000, guid: e4f090341b204a84a99b8a4378e367e9, type: 3}
   hit_SFX: {fileID: 8300000, guid: b89208917ba6be24e9d380ebe522621b, type: 3}
+  attack_SFX: {fileID: 8300000, guid: 6f5eaaafc85f7fe4189bbecc15ec1e73, type: 3}
   player_Dead_SFX: {fileID: 8300000, guid: 970e223ad674a0a49847319b08f6fc27, type: 3}
 --- !u!82 &1925555530
 AudioSource:
