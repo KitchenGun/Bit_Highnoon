@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using OVRTouchSample;
 
+
 public class HandGunRayCast : MonoBehaviour
 {
     #region 사격 위치와 맞은 오브젝트 변수
@@ -140,13 +141,19 @@ public class HandGunRayCast : MonoBehaviour
         if (Bullet > 0)
         {
             //총알 감소 격발 상태 
-            --Bullet;
+            Bullet--;
             FireState = false;
             //격발 효과
             Gun_Fire_SFX();
         }
+        else if(FireState==false)
+        {
+            FireState = false;
+            Gun_BulletEmpty_SFX();
+        }
         else//빈 약실 격발 사운드
         {
+            FireState = false;
             Gun_BulletEmpty_SFX();
         }
     }
@@ -157,7 +164,7 @@ public class HandGunRayCast : MonoBehaviour
         Gun_Reload_SFX();
     }
 
-    public void setGunInfo(bool firestate, int bullet)
+    public void setGunInfo(ref bool firestate, ref int bullet)
     {
         this.FireState=firestate;
         this.Bullet = bullet;
