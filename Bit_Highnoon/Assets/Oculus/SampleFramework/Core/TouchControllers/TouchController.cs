@@ -319,7 +319,6 @@ namespace OVRTouchSample
                         {
                             //드랍 할 경우 손 위치에 총 모양 생성
                             GameObject Gun = Instantiate<GameObject>(GunSample, this.transform.position, Quaternion.identity) as GameObject;
-                            Gun.name = "Gun";
                             Gun.tag = "DropObj";
                             setGunInfo(Gun);//총기 설정 저장
                             //컨트롤러로 교체
@@ -332,7 +331,6 @@ namespace OVRTouchSample
                         {
                             //드랍 할 경우 손 위치에 총 모양 생성
                             GameObject Gun = Instantiate<GameObject>(GunSample, this.transform.position, Quaternion.identity) as GameObject;
-                            Gun.name = "Gun";
                             Gun.tag = "DropObj";
                             setGunInfo(Gun);//총기 설정 저장
                             //컨트롤러로 교체
@@ -350,13 +348,13 @@ namespace OVRTouchSample
             //총에 정보에 접근 
             this.FireState = gun.GetComponent<Revolver>().FireState;//발사 가능 상태 체크
             this.Bullet = gun.GetComponent<Revolver>().cur_bullet;//사격가능한 총알 수 체크
-            this.gameObject.transform.Find("gun_hand").gameObject.GetComponentInChildren<HandGunRayCast>().setGunInfo(this.FireState, this.Bullet);
+            this.gameObject.transform.Find("gun_hand").gameObject.GetComponentInChildren<HandGunRayCast>().setGunInfo(ref this.FireState, ref this.Bullet);
         }
         private void setGunInfo(GameObject gun)
         {
-            this.gameObject.transform.GetComponent<HandGunRayCast>().getGunInfo(ref FireState, ref Bullet);
+            this.gameObject.transform.Find("gun_hand").gameObject.GetComponentInChildren<HandGunRayCast>().getGunInfo(ref FireState, ref Bullet);
             gun.GetComponent<Revolver>().setFireState(this.FireState);
-            gun.GetComponent<Revolver>().setbullet(this.Bullet);
+            gun.GetComponent<Revolver>().setbullet(this.Bullet,false);
         }
         #endregion
     }
