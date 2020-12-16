@@ -40,32 +40,28 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region 함수
-    //다음 씬 이동
-    public void NextToScene(int idx)
+    //씬 이동
+    public void ChangeToScene(int idx)
     {
         SceneManager.LoadScene(idx);
     }
-
-    //뒤로가기 씬 이동
-    public void BackToScene(int idx)
-    {
-        //싱글 메뉴 -> 메인 메뉴
-        if(idx == 2 || idx == 7 || idx == 10)
-        {
-            SceneManager.LoadScene(1);
-        }
-        else if(idx == 3)
-        {
-            SceneManager.LoadScene(2);
-        }
-    }
+   
 
     public void MoveScene(GameObject bottle)
     {
-        if(bottle.name == "Single")
+        if (SceneManager.GetActiveScene().buildIndex == 1)
         {
-            NextToScene(2);
-            
+            switch (bottle.name)
+            {
+                case "Single":
+                    ChangeToScene(2); break;
+                case "Multi":
+                    ChangeToScene(7); break;
+                case "Option":
+                    ChangeToScene(10); break;
+                case "Exit":
+                    ExitGame(); break;
+            }
         }
     }
 
@@ -76,6 +72,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    /*
     #region Update함수
     void Update()
     {
@@ -191,4 +188,5 @@ public class GameManager : MonoBehaviour
 
     }
     #endregion
+    */
 }
