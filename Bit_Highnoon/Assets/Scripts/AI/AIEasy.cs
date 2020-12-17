@@ -14,7 +14,7 @@ public class AIEasy : AIParent
 
         idleTime = 10;   //대기시간
 
-        walkTime = 5;    //걷는 시간        
+        //walkTime = 5;    //걷는 시간        
             
         deadTime = 20;  //플레이어가 죽는 시간
 
@@ -28,16 +28,15 @@ public class AIEasy : AIParent
     {
         base.AttackAction();
 
-        Quaternion Right = Quaternion.identity;
-        Right.eulerAngles = new Vector3(0, -175, 0);
 
         if (shoot.activeSelf == false)
         {
-            if ((isFirst == true && gameObject.transform.rotation == Right) ||
+            if ((isFirst == true) ||
                 animator.GetCurrentAnimatorStateInfo(0).IsName("Hit") &&
                 animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
             {
                 ChageShoot();
+                AttackAudio();
                 isFirst = false;                
             }
         }
@@ -89,6 +88,13 @@ public class AIEasy : AIParent
     #endregion
 
     #region 플레이어가 호출
+    protected override void Hit()
+    {
+        base.Hit();
+
+        Dead();
+    }
+
     //죽었을때
     protected override void Dead()
     {
@@ -98,6 +104,4 @@ public class AIEasy : AIParent
         base.Dead();
     }
     #endregion
-
-
 }
