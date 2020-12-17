@@ -15,7 +15,10 @@ public class HandGunRayCast : MonoBehaviour
     private bool FireState;
     private int Bullet;
     private bool ReloadState;
-    private float ReloadStick; 
+    private float ReloadStick;
+    
+    private GameManager GM;
+    private int SceneIdx;
     #endregion
 
     #region audio
@@ -31,6 +34,8 @@ public class HandGunRayCast : MonoBehaviour
 
     void Start()
     {
+        GM = GameManager.Instance;
+        SceneIdx = GM.GetSceneIndex();
         FirePos = this.gameObject.transform.parent.Find("GunFirePos").gameObject;
         this.HandGunAudio = this.gameObject.transform.parent.GetComponent<AudioSource>();
         this.HandGunAudio.loop = false;
@@ -151,6 +156,7 @@ public class HandGunRayCast : MonoBehaviour
         if (Bullet > 0&&FireState)//총알이 있고 발사가능상태
         {
             //총알 감소 격발 상태 
+            if(SceneIdx!=1||SceneIdx!=2)
             Bullet--;
             FireState = false;
             //격발 효과
