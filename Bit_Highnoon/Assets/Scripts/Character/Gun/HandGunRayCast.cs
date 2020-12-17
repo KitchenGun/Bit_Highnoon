@@ -6,21 +6,19 @@ using OVRTouchSample;
 
 public class HandGunRayCast : MonoBehaviour
 {
-    #region 사격 위치와 맞은 오브젝트 변수
+    #region Ray
     private GameObject FirePos; // Ray가  시작할 위치 정보를 가진 오브젝트
     private RaycastHit HitObj;
     #endregion
-
-    #region 격발 관련 변수
+    #region 사격관련 변수
     private bool FireState;
-    private int Bullet;
+    private int Bullet; 
     private bool ReloadState;
     private float ReloadStick;
     //총알 무한을 위한 씬넘버 획득용
     private GameObject GM;
     private int SceneIdx;
     #endregion
-
     #region audio
     private AudioSource HandGunAudio;
     [SerializeField]
@@ -29,21 +27,40 @@ public class HandGunRayCast : MonoBehaviour
     private AudioClip GunBulletEmpty_SFX;
     [SerializeField]
     private AudioClip GunReload_SFX;
-
+    #endregion
+    #region Animation
+    private Animator GunAni;
     #endregion
 
     void Start()
-    {
+    {//초기화
+        #region Animation
+        GunAni = this.gameObject.GetComponent<Animator>();
+        #endregion
+        #region Scene
         GM = GameObject.Find("GameManager");
-        SceneIdx = GM.GetComponent<GameManager>().GetSceneIndex();
+        if (GM == null)
+        {
+            SceneIdx = 0;
+        }//gamemanager가 존재 안할경우
+        else
+        {
+            SceneIdx = GM.GetComponent<GameManager>().GetSceneIndex();
+        }
+        #endregion
+        #region Ray
         FirePos = this.gameObject.transform.parent.Find("GunFirePos").gameObject;
+        #endregion
+        #region Audio
         this.HandGunAudio = this.gameObject.transform.parent.GetComponent<AudioSource>();
         this.HandGunAudio.loop = false;
+        #endregion
     }
 
-    void Update()
+    private void Update()
     {
-        #region Ray 발사
+        #region 사격
+        GunAni.SetBool("FireState", FireState);
         switch (FirePos.tag)//발사 위치 오브젝트의 태그를 통해서 판별
         {
             case "Left"://왼쪽
@@ -89,13 +106,13 @@ public class HandGunRayCast : MonoBehaviour
         }
         #endregion
 
-        #region 재장전
+        #region 재장전 가능상황 파악
         if (FireState == false)//발사 불가능 상태 일 경우
         {
             switch (FirePos.tag)//발사 위치 오브젝트의 태그를 통해서 판별
             {
                 case "Left"://왼쪽
-                    if (OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, OVRInput.Controller.Touch) == new Vector2(0, 0)) 
+                    if (OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, OVRInput.Controller.Touch) == new Vector2(0, 0))
                     {
                         ReloadState = true;
                     }
@@ -108,12 +125,15 @@ public class HandGunRayCast : MonoBehaviour
                     break;
             }
         }
-        if(ReloadState == true)
+        #endregion
+
+        #region 재장전
+        if (ReloadState == true)
         {
             switch (FirePos.tag)//발사 위치 오브젝트의 태그를 통해서 판별
             {
                 case "Left"://왼쪽
-                   ReloadStick = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).y;//스틱컨트롤러y축 버튼
+                    ReloadStick = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).y;//스틱컨트롤러y축 버튼
                     if (ReloadStick < -0.9)
                     {
                         Reload();
@@ -131,7 +151,7 @@ public class HandGunRayCast : MonoBehaviour
         #endregion
     }
 
-    #region 격발음 & 격발 이펙트
+    #region SFX
     private void Gun_Fire_SFX()
     {
         HandGunAudio.clip = this.GunFire_SFX;
@@ -149,10 +169,9 @@ public class HandGunRayCast : MonoBehaviour
     }
     #endregion
 
-    #region 총 재장전 사격 관련 함수 & 정보 전달 및 전송 
+    #region Gun
     private bool Fire()
     {
-
         if (Bullet > 0&&FireState)//총알이 있고 발사가능상태
         {
             //총알 감소 격발 상태 
@@ -166,19 +185,22 @@ public class HandGunRayCast : MonoBehaviour
             }
             FireState = false;
             //격발 효과
-            Gun_Fire_SFX();
+            GunAni.SetTrigger("Fire");
+            GunAni.SetBool("FireState", FireState);
             return true;
         }
         else if(!FireState)
         {
+            GunAni.SetTrigger("FireF");
             FireState = false;
-            Gun_BulletEmpty_SFX();
+            GunAni.SetBool("FireState", FireState);
             return false;
         }
         else
         {
+            GunAni.SetTrigger("FireF");
             FireState = false;
-            Gun_BulletEmpty_SFX();
+            GunAni.SetBool("FireState", FireState);
             return false;
         }
     }
@@ -186,9 +208,11 @@ public class HandGunRayCast : MonoBehaviour
     {
         FireState = true;
         ReloadState = false;
-        Gun_Reload_SFX();
+        GunAni.SetTrigger("Reload");
     }
-
+    #endregion
+    
+    #region Gun 정보 전달
     public void setGunInfo(ref bool firestate, ref int bullet)
     {
         this.FireState=firestate;
@@ -201,19 +225,17 @@ public class HandGunRayCast : MonoBehaviour
     }
     #endregion
 
-    #region 병 식별 시 실행
+    #region 병 식별
     private void BottleHit(GameObject bottle)
     {
         bottle.GetComponent<BottleScript>().SendMessage("Hit");
     }
     #endregion
 
-    #region 적 식별 시 실행
+    #region 적 식별
     private void EnemyHit(GameObject enemy)
     {
         enemy.GetComponent<AIParent>().SendMessage("Hit");
     }
     #endregion
-
-
 }
