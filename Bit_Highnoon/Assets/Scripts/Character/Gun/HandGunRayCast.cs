@@ -16,8 +16,8 @@ public class HandGunRayCast : MonoBehaviour
     private int Bullet;
     private bool ReloadState;
     private float ReloadStick;
-    
-    private GameManager GM;
+    //총알 무한을 위한 씬넘버 획득용
+    private GameObject GM;
     private int SceneIdx;
     #endregion
 
@@ -34,8 +34,8 @@ public class HandGunRayCast : MonoBehaviour
 
     void Start()
     {
-        GM = GameManager.Instance;
-        SceneIdx = GM.GetSceneIndex();
+        GM = GameObject.Find("GameManager");
+        SceneIdx = GM.GetComponent<GameManager>().GetSceneIndex();
         FirePos = this.gameObject.transform.parent.Find("GunFirePos").gameObject;
         this.HandGunAudio = this.gameObject.transform.parent.GetComponent<AudioSource>();
         this.HandGunAudio.loop = false;
@@ -156,8 +156,14 @@ public class HandGunRayCast : MonoBehaviour
         if (Bullet > 0&&FireState)//총알이 있고 발사가능상태
         {
             //총알 감소 격발 상태 
-            if(SceneIdx!=1||SceneIdx!=2)
-            Bullet--;
+            if (SceneIdx == 1 || SceneIdx == 2)//메뉴 씬이 아닐 경우
+            {
+                Debug.Log(SceneIdx);
+            }
+            else
+            {
+                Bullet--;
+            }
             FireState = false;
             //격발 효과
             Gun_Fire_SFX();
