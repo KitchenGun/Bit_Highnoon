@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class test : MonoBehaviour
 {
-    LogicalDB db = new LogicalDB();
+    SoundDB db;
     // Start is called before the first frame update
     void Start()
     {
-        SoundDB db = new SoundDB();
+        db = this.gameObject.GetComponent<SoundDB>();
 
         for (int i = 0; i < 5; i++)
         {

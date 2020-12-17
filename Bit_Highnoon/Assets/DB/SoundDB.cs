@@ -6,7 +6,7 @@ using System.Xml;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class SoundDB
+public class SoundDB:MonoBehaviour
 {
     //주소값 변동있을수 있음
     readonly string xmlname = "SoundData";
@@ -49,12 +49,12 @@ public class SoundDB
 
         string gunsound = sound[randomfire];
 
-        GunFireFile(gunsound);
+        StartCoroutine(GunFireFile(gunsound));
     }
 
     public IEnumerator GunFireFile(string sound)
     {
-        AudioSource audio = new AudioSource();
+        AudioSource audio = this.gameObject.GetComponent<AudioSource>();
 
         using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(@"../../Bit_Highnoon/Bit_Highnoon/Assets/DB/Sound/Gun/GunFire/" + sound + ".wav", AudioType.WAV))
         {
