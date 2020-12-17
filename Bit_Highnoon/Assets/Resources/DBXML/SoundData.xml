@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DocumentElement>
+  <Bgm>
+    <BattleStart>BattleStart</BattleStart>
+    <BattleEnd>BattleEnd</BattleEnd>
+    <GameStart>GameStart</GameStart>
+    <WindSound>WindSound</WindSound>
+  </Bgm>
+  <Bot>
+    <Easy>Start,Win,Lose</Easy>
+    <Normal>Start,Win,Lose</Normal>
+    <Hard>Start,Win,Lose</Hard>
+  </Bot>
+  <Effect>
+    <Can>can1,can2</Can>
+    <Glass>glass1,glass2,glass3,glass4</Glass>
+    <Etc>etc1,etc2,etc3,etc4</Etc>
+  </Effect>
+  <Gun>
+    <DropGun>drop1,drop2,drop3</DropGun>
+    <GripGun>grip1,grip2,grip3</GripGun>
+    <GunFire>fire1,fire2,fire3</GunFire>
+    <Holster>DrawIn,DrawOut</Holster>
+    <Reload>reload</Reload>
+  </Gun>
+  <User>
+    <Walk>walk1,walk2,walk3</Walk>
+  </User>
+</DocumentElement>
