@@ -8,14 +8,11 @@ public class test : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        db.CreateTable();
+        SoundDB db = new SoundDB();
 
-        db.Load();
-        db.InsertUser("aaa", "red");
-        db.InsertUser("bbb", "blue");
-        db.NormalUser(1);
-        db.WinCount(1);
-        db.Save();
+        for (int i = 0; i < 5; i++)
+        {
+            db.GunFireSound();
+        }
     }
-
 }
