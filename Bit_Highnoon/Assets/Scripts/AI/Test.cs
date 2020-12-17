@@ -16,17 +16,10 @@ public class Test : MonoBehaviour
         hardlai = GameObject.Find("HardAI");
     }
 
-    public void GameStart()
-    {
-        easyai.SendMessage("GameStart");
-        normalai.SendMessage("GameStart");
-        hardlai.SendMessage("GameStart");
-    }
-
     public void AIHit()
     {
-        easyai.SendMessage("Hit");
-        normalai.SendMessage("Hit");
+        //easyai.SendMessage("Hit");
+        //normalai.SendMessage("Hit");
         hardlai.SendMessage("Hit");
     }
 
@@ -36,6 +29,7 @@ public class Test : MonoBehaviour
         normalai.SendMessage("Dead");
         hardlai.SendMessage("Dead");
     }
+
     private void Dead()
     {
         //gameObject.SetActive(false);

@@ -12,9 +12,9 @@ public class AIEasy : AIParent
     {
         base.Start();
 
-        idleTime = 10;   //대기시간
+        lifeCount = 1;
 
-        //walkTime = 5;    //걷는 시간        
+        idleTime = 5;   //대기시간    
             
         deadTime = 20;  //플레이어가 죽는 시간
 
@@ -28,7 +28,6 @@ public class AIEasy : AIParent
     {
         base.AttackAction();
 
-
         if (shoot.activeSelf == false)
         {
             if ((isFirst == true) ||
@@ -36,7 +35,6 @@ public class AIEasy : AIParent
                 animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
             {
                 ChageShoot();
-                AttackAudio();
                 isFirst = false;                
             }
         }
@@ -52,6 +50,10 @@ public class AIEasy : AIParent
     protected override void PlayerDeadAction()
     {
         ReChange();
+
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Spread") 
+            && isPlayerDeadAudio == false)
+            PlayerDeadAudio();
 
         base.PlayerDeadAction();
     }
@@ -88,18 +90,10 @@ public class AIEasy : AIParent
     #endregion
 
     #region 플레이어가 호출
-    protected override void Hit()
-    {
-        base.Hit();
-
-        Dead();
-    }
-
     //죽었을때
     protected override void Dead()
     {
-        if (shoot.activeSelf == true)
-            ReChange();
+        ReChange();
 
         base.Dead();
     }

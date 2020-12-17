@@ -8,9 +8,9 @@ public class AIHard : AIParent
     {
         base.Start();
 
-        idleTime = 3;   //대기 시간
+        lifeCount = 2;
 
-        //walkTime = 1;   //걷는 시간
+        idleTime = 2;   //대기 시간
 
         deadTime = 5;  //플레이어가 죽는 시간
 
@@ -25,11 +25,6 @@ public class AIHard : AIParent
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Shoot"))
         {
             Turn();
-            if (isAttackAudio == false)
-            {
-                Invoke("AttackAudio", 2);
-                isAttackAudio = true;
-            }
         }
         else
             ReTurn();
@@ -39,7 +34,19 @@ public class AIHard : AIParent
     {
         base.PlayerDeadAction();
 
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Laugh")
+            && isPlayerDeadAudio == false)
+        {
+            ReTurn();
+            PlayerDeadAudio();
+        }
+    }
+
+    protected override void Dead()
+    {
         ReTurn();
+
+        base.Dead();
     }
 
     #region 방향 맞추기..
@@ -54,10 +61,4 @@ public class AIHard : AIParent
     }
     #endregion
 
-    protected override void AttackAudio()
-    {
-        base.AttackAudio();
-
-        AIAudio.loop = false;
-    }
 }
