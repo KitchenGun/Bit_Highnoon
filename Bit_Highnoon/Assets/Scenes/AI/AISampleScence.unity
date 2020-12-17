@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 142633188}
   - component: {fileID: 142633192}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: PlayerCtrl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -623,7 +623,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dead_SFX: {fileID: 8300000, guid: 98889ac90893c0749b08c7dd7f45aba4, type: 3}
   hit_SFX: {fileID: 8300000, guid: d4eadb986ef84584a84556b3cee86504, type: 3}
-  attack_SFX: {fileID: 8300000, guid: 6f5eaaafc85f7fe4189bbecc15ec1e73, type: 3}
+  attack_SFX: {fileID: 8300000, guid: 759f0b0f80aae604e887a403418184be, type: 3}
   player_Dead_SFX: {fileID: 8300000, guid: 1678368fc767d2243a84b62f908bd4be, type: 3}
 --- !u!82 &246779509
 AudioSource:
@@ -1327,7 +1327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dead_SFX: {fileID: 8300000, guid: 2cdaf2a3dea710148bf7107fbe80632c, type: 3}
   hit_SFX: {fileID: 8300000, guid: 38d2f1fd46407194b87ec81f07966bad, type: 3}
-  attack_SFX: {fileID: 8300000, guid: 6f5eaaafc85f7fe4189bbecc15ec1e73, type: 3}
+  attack_SFX: {fileID: 8300000, guid: 759f0b0f80aae604e887a403418184be, type: 3}
   player_Dead_SFX: {fileID: 8300000, guid: 70a4cdf085726994aac7afa484924846, type: 3}
 --- !u!82 &1207194495
 AudioSource:
@@ -1435,6 +1435,10 @@ PrefabInstance:
     - target: {fileID: 100136, guid: 5f3b0e72dbafa494893b20b7d82dfb1f, type: 3}
       propertyPath: m_Name
       value: HardAI
+      objectReference: {fileID: 0}
+    - target: {fileID: 100136, guid: 5f3b0e72dbafa494893b20b7d82dfb1f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400136, guid: 5f3b0e72dbafa494893b20b7d82dfb1f, type: 3}
       propertyPath: m_RootOrder

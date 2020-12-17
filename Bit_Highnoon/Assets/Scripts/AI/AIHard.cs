@@ -10,7 +10,7 @@ public class AIHard : AIParent
 
         idleTime = 3;   //대기 시간
 
-        walkTime = 1;   //걷는 시간
+        //walkTime = 1;   //걷는 시간
 
         deadTime = 5;  //플레이어가 죽는 시간
 
@@ -23,8 +23,15 @@ public class AIHard : AIParent
         base.AttackAction();
 
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Shoot"))
+        {
             Turn();
-        else if (isTurn == true)
+            if (isAttackAudio == false)
+            {
+                Invoke("AttackAudio", 2);
+                isAttackAudio = true;
+            }
+        }
+        else
             ReTurn();
     }
 
@@ -39,7 +46,6 @@ public class AIHard : AIParent
     private void Turn()
     {
         gameObject.transform.rotation = Quaternion.Euler(0, -90, 0);
-        isTurn = true;
     }
 
     private void ReTurn()
@@ -47,4 +53,11 @@ public class AIHard : AIParent
         gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
     }
     #endregion
+
+    protected override void AttackAudio()
+    {
+        base.AttackAudio();
+
+        AIAudio.loop = false;
+    }
 }

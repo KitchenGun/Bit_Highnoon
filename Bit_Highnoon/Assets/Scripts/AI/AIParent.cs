@@ -14,7 +14,7 @@ public class AIParent : MonoBehaviour
 
     protected bool isPlayerDead;        //player의 사망여부
 
-    protected bool isTurn;              //뒤로 돌았는지 여부 판단
+    protected bool isAttackAudio;       //Attack오디오가 실행됬는지 판단
 
     protected float idleTime;           //대기시간
 
@@ -33,7 +33,7 @@ public class AIParent : MonoBehaviour
     [SerializeField]
     private AudioClip hit_SFX;
     [SerializeField]
-    private AudioClip attack_SFX;
+    protected AudioClip attack_SFX;
     [SerializeField]
     private AudioClip player_Dead_SFX;
     #endregion
@@ -43,15 +43,17 @@ public class AIParent : MonoBehaviour
     {
         animator = GetComponent<Animator>();    
 
-        aiState = AIState.IDLE;          
+        aiState = AIState.WALK;
 
-        isDead = isPlayerDead = isHit = isTurn = false;  //초기 설정
+        walkTime = 3;
+
+        isDead = isPlayerDead = isHit = isAttackAudio = false;  //초기 설정
 
         player = GameObject.Find("PlayerCtrl");       //플레이어 찾기
 
         AIAudio = gameObject.transform.GetComponent<AudioSource>();
 
-        Debug.Log("idle");
+        //Debug.Log("idle");
     }
 
     //대기 시간 무시하고 강제로 시작
@@ -72,27 +74,27 @@ public class AIParent : MonoBehaviour
             if (isHit == true)                      //player의 공격을 맞았을때
             {
                 aiState = AIState.HIT;
-                Debug.Log("hit");
+                //Debug.Log("hit");
             }
             else if (isPlayerDead == true)          //player가 죽음
             {
                 aiState = AIState.PLAYERDEAD;
-                Debug.Log("playerdead");
+                //Debug.Log("playerdead");
             }
-            else if (idleTime > 0)                  //대기 상태
+            else if (idleTime > 0 && walkTime < 0)   //대기 상태
             {
                 aiState = AIState.IDLE;
-                Debug.Log("idle");
+                //Debug.Log("idle");
             }
-            else if (walkTime > 0 && idleTime < 0)  //걷는 상태
+            else if (walkTime > 0)                  //걷는 상태
             {
                 aiState = AIState.WALK;
-                Debug.Log("walk");
+                //Debug.Log("walk");
             }            
-            else if (walkTime < 0)                  //걷기후 공격 상태
+            else if (idleTime < 0)                  //걷기후 공격 상태
             {
                 aiState = AIState.ATTACK;
-                Debug.Log("attack");
+                //Debug.Log("attack");
             }
 
             yield return null;            
@@ -130,41 +132,30 @@ public class AIParent : MonoBehaviour
     #region 자식에서 필요의 의해 재정의(상태의 따른 행동)
     protected virtual void IdleAction()
     {
-        Debug.Log("IdleAction");
+        //Debug.Log("IdleAction");
+
+        TurnAI();
 
         idleTime -= Time.deltaTime;
+
+        animator.SetTrigger("idle");
     }
 
     protected virtual void WalkAction()
     {
-        Debug.Log("WalkAction");
+        //Debug.Log("WalkAction");
+        walkTime -= Time.deltaTime;
 
-        animator.SetTrigger("walk");
-
-        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-        {  
-            walkTime -= Time.deltaTime;
-
-            gameObject.transform.position += new Vector3(0, 0, 0.5f * Time.deltaTime);
-        }
+        gameObject.transform.position += new Vector3(0, 0, 0.5f * Time.deltaTime);
     }
 
-    bool isattackAudio = false;
+    
     protected virtual void AttackAction()
     {
-        Debug.Log("AttackAction");
-
-        if (isattackAudio == false)
-        {
-            Invoke("AttackAudio", 3);
-            isattackAudio = true;
-        }
+        //Debug.Log("AttackAction");
 
         animator.SetBool("walk", false);
         animator.SetTrigger("attack");
-
-        if (isTurn == false)
-            TurnAI();
 
         deadTime -= Time.deltaTime;
 
@@ -174,7 +165,7 @@ public class AIParent : MonoBehaviour
 
     protected virtual void HitAction()
     {
-        Debug.Log("HitAction");
+        //Debug.Log("HitAction");
 
         HitAudio();
 
@@ -185,7 +176,7 @@ public class AIParent : MonoBehaviour
 
     protected virtual void PlayerDeadAction()
     {
-        Debug.Log("PlayerDeadAction");
+        //Debug.Log("PlayerDeadAction");
 
         //player.SendMessage("Dead");   //플레이어에게 죽어다고 알리기
              
@@ -199,9 +190,10 @@ public class AIParent : MonoBehaviour
 
     #region 플레이어가 호출
     //맞았을때
-    private void Hit()
+    protected virtual void Hit()
     {
         isHit = true;
+        isAttackAudio = false;
     }
 
     //죽었을때
@@ -219,6 +211,7 @@ public class AIParent : MonoBehaviour
     #region audio함수
     private void DeadAudio()
     {
+        AIAudio.Pause();
         AIAudio.clip = dead_SFX;
         AIAudio.loop = false;
         AIAudio.Play();
@@ -226,13 +219,15 @@ public class AIParent : MonoBehaviour
 
     private void HitAudio()
     {
+        AIAudio.Pause();
         AIAudio.clip = hit_SFX;
         AIAudio.loop = false;
         AIAudio.Play();
     }
 
-    private void AttackAudio()
+    protected virtual void AttackAudio()
     {
+        AIAudio.Pause();
         AIAudio.clip = attack_SFX;
         AIAudio.loop = true;
         AIAudio.Play();
@@ -240,6 +235,7 @@ public class AIParent : MonoBehaviour
 
     private void PlayerDeadAudio()
     {
+        AIAudio.Pause();
         AIAudio.clip = player_Dead_SFX;
         AIAudio.loop = false;
         AIAudio.Play();

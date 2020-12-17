@@ -966,7 +966,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400134, guid: dda7d6a2867eaf9449be2cab99f90a9e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 400134, guid: dda7d6a2867eaf9449be2cab99f90a9e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1086,7 +1086,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dead_SFX: {fileID: 8300000, guid: 98889ac90893c0749b08c7dd7f45aba4, type: 3}
   hit_SFX: {fileID: 8300000, guid: d4eadb986ef84584a84556b3cee86504, type: 3}
-  attack_SFX: {fileID: 8300000, guid: 6f5eaaafc85f7fe4189bbecc15ec1e73, type: 3}
+  attack_SFX: {fileID: 8300000, guid: 759f0b0f80aae604e887a403418184be, type: 3}
   player_Dead_SFX: {fileID: 8300000, guid: 1678368fc767d2243a84b62f908bd4be, type: 3}
 --- !u!82 &2049534412
 AudioSource:

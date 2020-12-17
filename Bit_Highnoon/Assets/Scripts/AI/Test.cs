@@ -36,7 +36,6 @@ public class Test : MonoBehaviour
         normalai.SendMessage("Dead");
         hardlai.SendMessage("Dead");
     }
-
     private void Dead()
     {
         //gameObject.SetActive(false);

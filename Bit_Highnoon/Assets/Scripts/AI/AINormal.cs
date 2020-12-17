@@ -10,7 +10,7 @@ public class AINormal : AIParent
 
         idleTime = 5;   //대기 시간
 
-        walkTime = 3;   //걷는 시간
+        //walkTime = 3;   //걷는 시간
 
         deadTime = 15;  //플레이어가 죽는 시간
 
@@ -22,9 +22,17 @@ public class AINormal : AIParent
     {
         base.AttackAction();
 
+        if (isAttackAudio == false)
+        {
+            Invoke("AttackAudio", 1);
+            isAttackAudio = true;
+        }
+
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Shoot"))
+        {
             Turn();
-        else if(isTurn == true)
+        }
+        else
             ReTurn();
     }
 
@@ -39,7 +47,6 @@ public class AINormal : AIParent
     private void Turn()
     {
         gameObject.transform.rotation = Quaternion.Euler(0, 90, 0);
-        isTurn = true;
     }
 
     private void ReTurn()
