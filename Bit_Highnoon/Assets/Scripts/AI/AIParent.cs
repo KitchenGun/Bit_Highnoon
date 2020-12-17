@@ -8,19 +8,25 @@ public class AIParent : MonoBehaviour
 
     protected AIState aiState;          //현재 적의 상태
 
+    #region 상태 여부 관련 변수
     protected bool isDead;              //AI의 사망여부
 
     protected bool isHit;               //AI가 공격을 맞았는지 여부
 
     protected bool isPlayerDead;        //player의 사망여부
 
-    protected bool isAttackAudio;       //Attack오디오가 실행됬는지 판단
+    protected bool isPlayerDeadAudio;   //PlayerDead오디오가 실행됬는지 판단
+    #endregion
+
+    #region 게임타임 관련 변수
+    protected int lifeCount;             //0이 되면 사망
 
     protected float idleTime;           //대기시간
 
     protected float walkTime;           //걷는 시간
       
     protected float deadTime;           //player 사망시간
+    #endregion
 
     protected Animator animator;        //Animator
 
@@ -41,28 +47,22 @@ public class AIParent : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        animator = GetComponent<Animator>();    
+        animator = GetComponent<Animator>();        
 
         aiState = AIState.WALK;
 
         walkTime = 3;
 
-        isDead = isPlayerDead = isHit = isAttackAudio = false;  //초기 설정
+        //초기 설정
+        isDead = isPlayerDead = isHit = isPlayerDeadAudio = false;  
 
         player = GameObject.Find("PlayerCtrl");       //플레이어 찾기
 
         AIAudio = gameObject.transform.GetComponent<AudioSource>();
+        AIAudio.loop = false;
 
         //Debug.Log("idle");
     }
-
-    //대기 시간 무시하고 강제로 시작
-    private void GameStart()
-    {
-        animator.SetTrigger("walk");
-
-        idleTime = -1;        
-    } 
 
     //상태를 체크하고 바꿔준다
     protected IEnumerator CheckState()
@@ -154,7 +154,7 @@ public class AIParent : MonoBehaviour
     {
         //Debug.Log("AttackAction");
 
-        animator.SetBool("walk", false);
+        //animator.SetBool("walk", false);
         animator.SetTrigger("attack");
 
         deadTime -= Time.deltaTime;
@@ -165,13 +165,13 @@ public class AIParent : MonoBehaviour
 
     protected virtual void HitAction()
     {
-        //Debug.Log("HitAction");
+        Debug.Log("HitAction");
 
         HitAudio();
 
         animator.SetTrigger("hit");
 
-        isHit = false;
+        isHit = false;    
     }
 
     protected virtual void PlayerDeadAction()
@@ -182,18 +182,19 @@ public class AIParent : MonoBehaviour
              
         animator.SetTrigger("playerdead");
 
-        PlayerDeadAudio();
-
-        isDead = true;
     }
     #endregion
 
     #region 플레이어가 호출
     //맞았을때
-    protected virtual void Hit()
+    private void Hit()
     {
         isHit = true;
-        isAttackAudio = false;
+
+        lifeCount--;
+
+        if (lifeCount == 0)
+            Dead();
     }
 
     //죽었을때
@@ -211,34 +212,28 @@ public class AIParent : MonoBehaviour
     #region audio함수
     private void DeadAudio()
     {
-        AIAudio.Pause();
         AIAudio.clip = dead_SFX;
-        AIAudio.loop = false;
         AIAudio.Play();
     }
 
     private void HitAudio()
     {
-        AIAudio.Pause();
         AIAudio.clip = hit_SFX;
-        AIAudio.loop = false;
         AIAudio.Play();
     }
 
-    protected virtual void AttackAudio()
+    private void AttackAudio()
     {
-        AIAudio.Pause();
         AIAudio.clip = attack_SFX;
-        AIAudio.loop = true;
         AIAudio.Play();
     }
 
-    private void PlayerDeadAudio()
+    protected void PlayerDeadAudio()
     {
-        AIAudio.Pause();
         AIAudio.clip = player_Dead_SFX;
-        AIAudio.loop = false;
         AIAudio.Play();
+
+        isPlayerDeadAudio = true;
     }
     #endregion
 
