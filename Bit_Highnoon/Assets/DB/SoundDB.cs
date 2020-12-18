@@ -4,31 +4,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using UnityEngine;
+using System.Diagnostics;
 using UnityEngine.Networking;
 
-public class SoundDB:MonoBehaviour
+public class SoundDB : MonoBehaviour
 {
     //주소값 변동있을수 있음
     readonly string xmlname = "SoundData";
-    readonly string soundad = "";
-
-    public void SoundLoad()
-    {
-        try
-        {
-            XmlDocument xmldoc = new XmlDocument();
-            xmldoc.Load(xmlname);
-            XmlElement root = xmldoc.DocumentElement;
-
-            // 노드 요소들
-
-            XmlNodeList nodes = root.ChildNodes;
-        }
-        catch (Exception)
-        {
-
-        }
-    }
 
     public void GunFireSound()
     {
@@ -36,40 +18,38 @@ public class SoundDB:MonoBehaviour
         XmlDocument xmlDoc = new XmlDocument();
         xmlDoc.LoadXml(txtAsset.text);
 
-        string gunfire="";
+        string gunfire = "";
 
         XmlNodeList nodes = xmlDoc.SelectNodes("DocumentElement/Gun");
         foreach (XmlNode node in nodes)
         {
             gunfire = node.SelectSingleNode("GunFire").InnerText;
-        }       
+        }
 
         string[] sound = gunfire.Split(new char[] { ',' });
         int randomfire = UnityEngine.Random.Range(0, sound.Length);
 
         string gunsound = sound[randomfire];
 
-        StartCoroutine(GunFireFile(gunsound));
+        GunFireFile(gunsound);            
     }
 
-    public IEnumerator GunFireFile(string sound)
-    {
-        AudioSource audio = this.gameObject.GetComponent<AudioSource>();
+    public AudioClip GunFireFile(string sound)
+    {      
+        string path = Application.dataPath + "/DB/Sound/Gun/GunFire/"+ sound+".wav";
 
-        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(@"../../Bit_Highnoon/Bit_Highnoon/Assets/DB/Sound/Gun/GunFire/" + sound + ".wav", AudioType.WAV))
+        if (File.Exists(path)==true)
         {
-            yield return www.Send();
-
-            if (www.isNetworkError)
-            {
-                Debug.Log("Error");
-            }
-            else
-            {
-                AudioClip myClip = DownloadHandlerAudioClip.GetContent(www);
-                audio.clip = myClip;
-                audio.Play();
-            }
+            //www클래스 함수를 이용한 방법
+            WWW readmusic = new WWW("file://"+path);
+            //yield return readmusic;
+                     
+            //wbpaser를 이용한 방법
+            //byte[] wavFile = File.ReadAllBytes(path);
+            //audio.clip = OpenWavParser.ByteArrayToAudioClip(wavFile);
         }
+        return null;
+
+        //Process.Start(path + sound+".wav");
     }
 }
