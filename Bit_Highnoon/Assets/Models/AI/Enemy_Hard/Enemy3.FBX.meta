@@ -585,8 +585,15 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.32094586
+      - time: 0.34770173
         functionName: AttackAudio
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.6120401
+        functionName: PlayerDead
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

@@ -24,8 +24,6 @@ public class AIParent : MonoBehaviour
     protected float idleTime;           //대기시간
 
     protected float walkTime;           //걷는 시간
-      
-    protected float deadTime;           //player 사망시간
     #endregion
 
     protected Animator animator;        //Animator
@@ -134,7 +132,7 @@ public class AIParent : MonoBehaviour
     {
         //Debug.Log("IdleAction");
 
-        TurnAI();
+        //TurnAI();
 
         idleTime -= Time.deltaTime;
 
@@ -154,18 +152,12 @@ public class AIParent : MonoBehaviour
     {
         //Debug.Log("AttackAction");
 
-        //animator.SetBool("walk", false);
         animator.SetTrigger("attack");
-
-        deadTime -= Time.deltaTime;
-
-        if (deadTime < 0)       //시작후 일정 시간이 지나면 플레이어 사망
-            isPlayerDead = true;
     }
 
     protected virtual void HitAction()
     {
-        Debug.Log("HitAction");
+        //Debug.Log("HitAction");
 
         HitAudio();
 
@@ -236,6 +228,11 @@ public class AIParent : MonoBehaviour
         isPlayerDeadAudio = true;
     }
     #endregion
+
+    protected virtual void PlayerDead()
+    {
+        isPlayerDead = true;
+    }
 
     //뒤로 도는 함수
     private void TurnAI()

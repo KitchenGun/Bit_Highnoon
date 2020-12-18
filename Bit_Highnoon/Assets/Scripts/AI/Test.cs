@@ -18,8 +18,8 @@ public class Test : MonoBehaviour
 
     public void AIHit()
     {
-        //easyai.SendMessage("Hit");
-        //normalai.SendMessage("Hit");
+        easyai.SendMessage("Hit");
+        normalai.SendMessage("Hit");
         hardlai.SendMessage("Hit");
     }
 

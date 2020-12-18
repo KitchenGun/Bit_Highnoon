@@ -14,9 +14,7 @@ public class AIEasy : AIParent
 
         lifeCount = 1;
 
-        idleTime = 5;   //대기시간    
-            
-        deadTime = 20;  //플레이어가 죽는 시간
+        idleTime = 3;   //대기시간                
 
         shoot = GameObject.Find("EasyShoot").transform.FindChildRecursive("Shoot").gameObject;
 
@@ -66,7 +64,7 @@ public class AIEasy : AIParent
         shoot.transform.position = gameObject.transform.position;
         shoot.transform.rotation = gameObject.transform.rotation;
 
-        shoot.transform.LookAt(player.transform);
+        //shoot.transform.LookAt(player.transform);
 
         for (int i = 0; i < 4; i++)
         {
@@ -98,4 +96,11 @@ public class AIEasy : AIParent
         base.Dead();
     }
     #endregion
+
+    protected override void PlayerDead()
+    {
+        base.PlayerDead();
+
+        Debug.Log("easy");
+    }
 }

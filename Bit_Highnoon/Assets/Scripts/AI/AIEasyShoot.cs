@@ -15,4 +15,9 @@ public class AIEasyShoot : MonoBehaviour
     {
         easyAI.SendMessage("AttackAudio");
     }
+
+    private void PlayerDead()
+    {
+        easyAI.SendMessage("PlayerDead");
+    }
 }
