@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class test : MonoBehaviour
 {
-    SoundDB db;
+    SoundDB db = new SoundDB();
     // Start is called before the first frame update
     void Start()
     {
-        db = this.gameObject.GetComponent<SoundDB>();
-
-        for (int i = 0; i < 5; i++)
-        {
-            db.GunFireSound();
-        }
+        AudioSource audio = this.gameObject.transform.GetComponent<AudioSource>();
+        audio.clip = db.GunFireFile("fire2");
+        audio.Play();
     }
 }
