@@ -20,7 +20,9 @@ public class HandGunRayCast : MonoBehaviour
     private int SceneIdx;
     #endregion
     #region audio
-    private AudioSource HandGunAudio;
+    private AudioSource HandGunFireClickAudio;
+    private AudioSource HandGunReloadAudio;
+    private AudioSource HandGunFireAudio;
     [SerializeField]
     private AudioClip GunFire_SFX;
     [SerializeField]
@@ -52,8 +54,12 @@ public class HandGunRayCast : MonoBehaviour
         FirePos = this.gameObject.transform.parent.Find("GunFirePos").gameObject;
         #endregion
         #region Audio
-        this.HandGunAudio = this.gameObject.transform.parent.GetComponent<AudioSource>();
-        this.HandGunAudio.loop = false;
+        this.HandGunFireClickAudio = this.gameObject.transform.parent.GetComponent<AudioSource>(); //격발음 SFX
+        this.HandGunFireClickAudio.loop = false;
+        this.HandGunReloadAudio = this.gameObject.GetComponent<AudioSource>();//노리쇠 후퇴 SFX
+        this.HandGunReloadAudio.loop = false;
+        this.HandGunFireAudio = FirePos.GetComponent<AudioSource>();
+        this.HandGunFireAudio = FirePos.GetComponent<AudioSource>();
         #endregion
     }
 
@@ -154,18 +160,18 @@ public class HandGunRayCast : MonoBehaviour
     #region SFX
     private void Gun_Fire_SFX()
     {
-        HandGunAudio.clip = this.GunFire_SFX;
-        HandGunAudio.Play();
+        HandGunFireAudio.clip = this.GunFire_SFX;
+        HandGunFireAudio.Play();
     }
     private void Gun_BulletEmpty_SFX()
     {
-        HandGunAudio.clip = this.GunBulletEmpty_SFX;
-        HandGunAudio.Play();
+        HandGunFireClickAudio.clip = this.GunBulletEmpty_SFX;
+        HandGunFireClickAudio.Play();
     }
     private void Gun_Reload_SFX()
     {
-        HandGunAudio.clip = this.GunReload_SFX;
-        HandGunAudio.Play();
+        HandGunReloadAudio.clip = this.GunReload_SFX;
+        HandGunReloadAudio.Play();
     }
     #endregion
 
