@@ -36,6 +36,7 @@ public class HandGunRayCast : MonoBehaviour
 
     void Start()
     {//초기화
+        
         #region Animation
         GunAni = this.gameObject.GetComponent<Animator>();
         GunAni.SetBool("FireState", FireState);
@@ -183,6 +184,7 @@ public class HandGunRayCast : MonoBehaviour
         {
             //격발 효과
             GunAni.SetTrigger("Fire");
+            Gun_Fire_SFX();
             //총알 감소 격발 상태 
             if (SceneIdx == 1 || SceneIdx == 2)//메뉴 씬이 아닐 경우
             {
@@ -198,12 +200,14 @@ public class HandGunRayCast : MonoBehaviour
         else if(!FireState)
         {
             GunAni.SetTrigger("FireF");
+            Gun_BulletEmpty_SFX();
             FireState = false;
             return false;
         }
         else
         {
             GunAni.SetTrigger("FireF");
+            Gun_BulletEmpty_SFX();
             FireState = false;
             return false;
         }
@@ -211,6 +215,7 @@ public class HandGunRayCast : MonoBehaviour
     private void Reload()//재장전
     {
         GunAni.SetTrigger("Reload");
+        Gun_Reload_SFX();
         FireState = true;
         ReloadState = false;
     }
