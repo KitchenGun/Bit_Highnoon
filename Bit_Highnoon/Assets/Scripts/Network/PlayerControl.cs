@@ -2,11 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class PlayerControl : MonoBehaviour
 {
-    [SerializeField] GameObject CameraHolder;
-    bool grounded;
+    public Transform head;
+    public Transform leftHand;
+    public Transform rightHand;
     PhotonView PV;
     void Awake()
     {
@@ -14,19 +16,25 @@ public class PlayerControl : MonoBehaviour
     }
     void Start()
     {
-        if (!PV.IsMine)
-        {
-            Destroy(GetComponentInChildren<OVRCameraRig>().gameObject);
-        }
     }
     void Update()
     {
         if (!PV.IsMine)
-            return;
-    }
+        {
+            rightHand.gameObject.SetActive(false);
+            leftHand.gameObject.SetActive(false);
+            head.gameObject.SetActive(false);
 
-    public void SetGroundedState(bool _grounded)
+            Destroy(GetComponentInChildren<OVRCameraRig>().gameObject);
+        }
+    }
+    void MapPosition(Transform target,XRNode node)
     {
-        grounded = _grounded;
+        InputDevices.GetDeviceAtXRNode(node).TryGetFeatureValue(CommonUsages.devicePosition, out Vector3 position);
+        InputDevices.GetDeviceAtXRNode(node).TryGetFeatureValue(CommonUsages.deviceRotation, out Quaternion rotation);
+
+        target.position = position;
+        target.rotation = rotation;
+
     }
 }
