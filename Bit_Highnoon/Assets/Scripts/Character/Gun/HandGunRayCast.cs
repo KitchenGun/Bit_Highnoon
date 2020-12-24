@@ -36,7 +36,6 @@ public class HandGunRayCast : MonoBehaviour
 
     void Start()
     {//초기화
-        
         #region Animation
         GunAni = this.gameObject.GetComponent<Animator>();
         GunAni.SetBool("FireState", FireState);
