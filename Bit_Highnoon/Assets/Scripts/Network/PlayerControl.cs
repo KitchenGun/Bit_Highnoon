@@ -6,6 +6,8 @@ using UnityEngine.XR;
 
 public class PlayerControl : MonoBehaviour
 {
+    public Transform lefteye;
+    public Transform righteye;
     public Transform head;
     public Transform leftHand;
     public Transform rightHand;
@@ -21,11 +23,14 @@ public class PlayerControl : MonoBehaviour
     {
         if (!PV.IsMine)
         {
+            head.transform.gameObject.tag = "Untagged";
+            lefteye.gameObject.SetActive(false);
+            righteye.gameObject.SetActive(false);
             rightHand.gameObject.SetActive(false);
             leftHand.gameObject.SetActive(false);
             head.gameObject.SetActive(false);
 
-            Destroy(GetComponentInChildren<OVRCameraRig>().gameObject);
+            //Destroy(GetComponentInChildren<OVRCameraRig>().gameObject);
         }
     }
     void MapPosition(Transform target,XRNode node)
