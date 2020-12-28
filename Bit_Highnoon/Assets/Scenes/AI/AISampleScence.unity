@@ -1099,7 +1099,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100134, guid: dda7d6a2867eaf9449be2cab99f90a9e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100134, guid: dda7d6a2867eaf9449be2cab99f90a9e, type: 3}
       propertyPath: m_TagString
@@ -1278,7 +1278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100134, guid: 65f394939811a8f44bb2aed6f9e44c24, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100134, guid: 65f394939811a8f44bb2aed6f9e44c24, type: 3}
       propertyPath: m_TagString

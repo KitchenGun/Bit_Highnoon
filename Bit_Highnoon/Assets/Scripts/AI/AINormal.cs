@@ -81,7 +81,11 @@ public class AINormal : AIParent
         if (player_Dead_Count == 0)
         {
             isPlayerDead = true;
-            Debug.Log("normal");
+
+            //player.transform.Find("Body").SendMessage("Dead");    //플레이어에게 죽어다고 알리기
+            player.SendMessage("Dead");                             
+
+            Debug.Log("normal");            
         }
     }
 }

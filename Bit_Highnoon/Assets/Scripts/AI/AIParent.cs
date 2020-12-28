@@ -181,11 +181,6 @@ public class AIParent : MonoBehaviour
     protected virtual void PlayerDeadAction()
     {
         //Debug.Log("PlayerDeadAction");
-
-        if (isPlayerDeadAudio == false)
-        {
-            //player.transform.Find("Body").SendMessage("Dead");   //플레이어에게 죽어다고 알리기
-        }
              
         animator.SetTrigger("playerdead");
     }
@@ -246,6 +241,9 @@ public class AIParent : MonoBehaviour
     protected virtual void PlayerDead()
     {
         isPlayerDead = true;
+
+        //player.transform.Find("Body").SendMessage("Dead");      //플레이어에게 죽어다고 알리기
+        player.SendMessage("Dead");      //플레이어에게 죽어다고 알리기
     }
 
     //뒤로 도는 함수
