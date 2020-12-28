@@ -41,7 +41,7 @@ public class SoundDB : MonoBehaviour
         if (File.Exists(path)==true)
         {
             //www클래스 함수를 이용한 방법
-            WWW readmusic = new WWW("file://"+path);
+            //WWW readmusic = new WWW("file://"+path);
             //yield return readmusic;
                      
             //wbpaser를 이용한 방법
