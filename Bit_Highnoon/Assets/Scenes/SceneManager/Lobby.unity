@@ -741,11 +741,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c418bb01586a2784882da7dcff695f02, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -244.21037
+      value: -243.55
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c418bb01586a2784882da7dcff695f02, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 67.62044
+      value: 67.62
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c418bb01586a2784882da7dcff695f02, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1020,15 +1020,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 86dafa9071da7df47b71ee78a2d910c6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.00000008146034
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 86dafa9071da7df47b71ee78a2d910c6, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 86dafa9071da7df47b71ee78a2d910c6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 86dafa9071da7df47b71ee78a2d910c6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1100,6 +1100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ad8c18bdfa7b8d4e8ccec7dc70f0b16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameStartAudio: {fileID: 0}
 --- !u!4 &545202843
 Transform:
   m_ObjectHideFlags: 0

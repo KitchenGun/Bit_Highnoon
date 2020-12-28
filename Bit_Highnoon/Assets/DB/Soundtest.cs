@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class soundtest : MonoBehaviour
+public class Soundtest : MonoBehaviour
 {
     SoundDB db = new SoundDB();
     List<AudioClip> list = new List<AudioClip>();
