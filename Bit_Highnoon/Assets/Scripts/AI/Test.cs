@@ -30,6 +30,11 @@ public class Test : MonoBehaviour
         hardlai.SendMessage("Dead");
     }
 
+    private void GameStart()
+    {
+        Debug.Log("GameStart");
+    }
+
     private void Dead()
     {
         //gameObject.SetActive(false);

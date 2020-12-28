@@ -16,6 +16,8 @@ public class AIParent : MonoBehaviour
     protected bool isPlayerDead;        //player의 사망여부
 
     protected bool isPlayerDeadAudio;   //PlayerDead오디오가 실행됬는지 판단
+
+    private bool isGameStartAudio;
     #endregion
 
     #region 게임타임 관련 변수
@@ -29,6 +31,8 @@ public class AIParent : MonoBehaviour
     protected Animator animator;        //Animator
 
     protected GameObject player;        //플레이어
+
+    private GameObject gameManager;
 
     #region audio
     protected AudioSource AIAudio;
@@ -52,11 +56,13 @@ public class AIParent : MonoBehaviour
         walkTime = 3;
 
         //초기 설정
-        isDead = isPlayerDead = isHit = isPlayerDeadAudio = false;  
+        isDead = isPlayerDead = isHit = isPlayerDeadAudio = isGameStartAudio = false;  
 
         player = GameObject.Find("PlayerCtrl");       //플레이어 찾기
 
-        AIAudio = gameObject.transform.GetComponent<AudioSource>();
+        gameManager = GameObject.Find("GameManager");
+
+        AIAudio = GetComponent<AudioSource>();
         AIAudio.loop = false;
 
         //Debug.Log("idle");
@@ -137,6 +143,12 @@ public class AIParent : MonoBehaviour
         idleTime -= Time.deltaTime;
 
         animator.SetTrigger("idle");
+
+        if (isGameStartAudio == false)
+        {
+            gameManager.SendMessage("AudioPlay");
+            isGameStartAudio = true;
+        }
     }
 
     protected virtual void WalkAction()
@@ -170,10 +182,12 @@ public class AIParent : MonoBehaviour
     {
         //Debug.Log("PlayerDeadAction");
 
-        //player.SendMessage("Dead");   //플레이어에게 죽어다고 알리기
+        if (isPlayerDeadAudio == false)
+        {
+            //player.transform.Find("Body").SendMessage("Dead");   //플레이어에게 죽어다고 알리기
+        }
              
         animator.SetTrigger("playerdead");
-
     }
     #endregion
 
@@ -215,7 +229,7 @@ public class AIParent : MonoBehaviour
     }
 
     private void AttackAudio()
-    {
+    {        
         AIAudio.clip = attack_SFX;
         AIAudio.Play();
     }
@@ -235,11 +249,11 @@ public class AIParent : MonoBehaviour
     }
 
     //뒤로 도는 함수
-    private void TurnAI()
-    {
-        Quaternion Right = Quaternion.identity;
-        Right.eulerAngles = new Vector3(0, 180, 0);
-        gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, Right, Time.deltaTime * 2);
-        //gameObject.transform.rotation = Right;
-    }
+    //private void TurnAI()
+    //{
+    //    Quaternion Right = Quaternion.identity;
+    //    Right.eulerAngles = new Vector3(0, 180, 0);
+    //    gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, Right, Time.deltaTime * 2);
+    //    //gameObject.transform.rotation = Right;
+    //}
 }

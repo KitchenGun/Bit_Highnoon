@@ -49,11 +49,11 @@ public class AIEasy : AIParent
     {
         ReChange();
 
+        base.PlayerDeadAction();
+
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Spread") 
             && isPlayerDeadAudio == false)
             PlayerDeadAudio();
-
-        base.PlayerDeadAction();
     }
 
     #region 오브젝트 변경

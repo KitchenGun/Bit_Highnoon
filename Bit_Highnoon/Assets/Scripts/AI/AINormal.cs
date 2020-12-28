@@ -24,13 +24,13 @@ public class AINormal : AIParent
     {
         base.AttackAction();
 
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Turn"))
+        //if (animator.GetCurrentAnimatorStateInfo(0).IsName("Turn"))
+        //{
+        //    Turn();
+        //}
+        if(animator.GetCurrentAnimatorStateInfo(0).IsName("Shoot"))
         {
             Turn();
-        }
-        else if(animator.GetCurrentAnimatorStateInfo(0).IsName("Shoot"))
-        {
-            Turn1();
         }
         else
             ReTurn();
@@ -56,14 +56,14 @@ public class AINormal : AIParent
     }
 
     #region 방향 맞추기..
-    private void Turn()
-    {
-        Quaternion Right = Quaternion.identity;
-        Right.eulerAngles = new Vector3(0, -90, 0);
-        gameObject.transform.rotation = Quaternion.Slerp(gameObject.transform.rotation, Right, Time.deltaTime * 2);
-    }
+    //private void Turn()
+    //{
+    //    Quaternion Right = Quaternion.identity;
+    //    Right.eulerAngles = new Vector3(0, -90, 0);
+    //    gameObject.transform.rotation = Quaternion.Slerp(gameObject.transform.rotation, Right, Time.deltaTime * 2);
+    //}
 
-    private void Turn1()
+    private void Turn()
     {
         gameObject.transform.rotation = Quaternion.Euler(0, -90, 0);
     }
@@ -74,7 +74,6 @@ public class AINormal : AIParent
     }
     #endregion
 
-    
     protected override void PlayerDead()
     {
         player_Dead_Count--;
