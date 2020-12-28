@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Xml;
 using UnityEngine;
 
 public class LogicalDB
@@ -18,24 +19,10 @@ public class LogicalDB
     {
         UserInfo = new DataTable("UserInfo");
 
-        //유저 번호
-        DataColumn dc_userid = new DataColumn();
-        dc_userid.ColumnName = "UserNumber";
-        dc_userid.DataType = typeof(int);
-        dc_userid.AutoIncrement = true;
-        dc_userid.AutoIncrementSeed = 1;
-        dc_userid.AutoIncrementStep = 1;
-        UserInfo.Columns.Add(dc_userid);
-
         //유저 이름
         DataColumn dc_name = new DataColumn("UserName", typeof(string));
         dc_name.AllowDBNull = false;
         UserInfo.Columns.Add(dc_name);
-
-        //유저 색상
-        DataColumn dc_color = new DataColumn("UserColor", typeof(string));
-        dc_color.AllowDBNull = false;
-        UserInfo.Columns.Add(dc_color);
 
         //클리어 진도
         DataColumn dc_mode = new DataColumn("Mode", typeof(string));
@@ -43,19 +30,34 @@ public class LogicalDB
         UserInfo.Columns.Add(dc_mode);
 
         //승리수
-        DataColumn dc_win = new DataColumn("Win", typeof(int));
-        dc_win.AllowDBNull = false;
-        UserInfo.Columns.Add(dc_win);
+        DataColumn dc_easywin = new DataColumn("EasyWin", typeof(int));
+        dc_easywin.AllowDBNull = false;
+        UserInfo.Columns.Add(dc_easywin);
 
         //패배수
-        DataColumn dc_lose = new DataColumn("Lose", typeof(int));
-        dc_lose.AllowDBNull = false;
-        UserInfo.Columns.Add(dc_lose);
+        DataColumn dc_easylose = new DataColumn("EasyLose", typeof(int));
+        dc_easylose.AllowDBNull = false;
+        UserInfo.Columns.Add(dc_easylose);
 
-        //key등록
-        DataColumn[] pkeys = new DataColumn[1];
-        pkeys[0] = dc_userid;
-        UserInfo.PrimaryKey = pkeys;
+        //승리수
+        DataColumn dc_normalwin = new DataColumn("NormalWin", typeof(int));
+        dc_normalwin.AllowDBNull = false;
+        UserInfo.Columns.Add(dc_normalwin);
+
+        //패배수
+        DataColumn dc_normallose = new DataColumn("NormalLose", typeof(int));
+        dc_normallose.AllowDBNull = false;
+        UserInfo.Columns.Add(dc_normallose);
+
+        //승리수
+        DataColumn dc_hardwin = new DataColumn("HardWin", typeof(int));
+        dc_hardwin.AllowDBNull = false;
+        UserInfo.Columns.Add(dc_hardwin);
+
+        //패배수
+        DataColumn dc_hardlose = new DataColumn("HardLose", typeof(int));
+        dc_hardlose.AllowDBNull = false;
+        UserInfo.Columns.Add(dc_hardlose);
     }
 
     //xml 파일생성
@@ -86,50 +88,14 @@ public class LogicalDB
 
     #endregion
 
-    #region 유저 추가 및 삭제
-
-    //유저 추가
-    public void InsertUser(string name, string color)
-    {
-        try
-        {
-            DataRow dr = UserInfo.NewRow();
-            dr["UserName"] = name;
-            dr["UserColor"] = color;
-            dr["Mode"] = "easy";
-            dr["Win"] = 0;
-            dr["Lose"] = 0;
-
-            UserInfo.Rows.Add(dr);
-        }
-        catch (Exception)
-        {
-        }
-    }
-
-    //유저 삭제
-    public void DeleteUser(int usernum)
-    {
-        try
-        {
-            DataRow dr = UserInfo.Rows.Find(usernum);
-            UserInfo.Rows.Remove(dr);
-        }
-        catch (Exception)
-        {
-        }
-    }
-
-    #endregion
-
     #region 유저 난이도 설정 변경
     
     //노멀 난이도
-    public void NormalUser(int usernum)
+    public void NormalUser(string name)
     {
         try
         {
-            DataRow dr = UserInfo.Rows.Find(usernum);
+            DataRow dr = UserInfo.Rows.Find(name);
             dr["Mode"] = "normal";
         }
         catch (Exception)
@@ -138,11 +104,11 @@ public class LogicalDB
     }
 
     //하드 난이도
-    public void HardUser(int usernum)
+    public void HardUser(string name)
     {
         try
         {
-            DataRow dr = UserInfo.Rows.Find(usernum);
+            DataRow dr = UserInfo.Rows.Find(name);
             dr["Mode"] = "hard";
         }
         catch (Exception)
@@ -155,12 +121,12 @@ public class LogicalDB
     #region 전적 카운트
 
     //승리수
-    public void WinCount(int usernum)
+    public void EasyWinCount(string name)
     {
         try
         {
-            DataRow dr = UserInfo.Rows.Find(usernum);
-            dr["Win"] = int.Parse(dr["Win"].ToString()) + 1;
+            DataRow dr = UserInfo.Rows.Find(name);
+            dr["EasyWin"] = int.Parse(dr["EasyWin"].ToString()) + 1;
         }
         catch (Exception)
         {
@@ -168,12 +134,33 @@ public class LogicalDB
     }
 
     //패배수
-    public void LoseCount(int usernum)
+    public void EasyLoseCount(string name)
     {
         try
         {
-            DataRow dr = UserInfo.Rows.Find(usernum);
-            dr["Lose"] = int.Parse(dr["Lose"].ToString()) + 1;
+            DataRow dr = UserInfo.Rows.Find(name);
+            dr["EasyLose"] = int.Parse(dr["EasyLose"].ToString()) + 1;
+        }
+        catch (Exception)
+        {
+        }
+    }
+
+    #endregion
+
+    #region 파싱
+
+    public void Select(string name)
+    {
+        try
+        {
+            DataRow dr = UserInfo.Rows.Find(name);
+            string mode = dr["Mode"].ToString();
+            int win = int.Parse(dr["EasyWin"].ToString());
+            int lose = int.Parse(dr["EasyLose"].ToString());
+            Debug.Log(mode);
+            Debug.Log(win);
+            Debug.Log(lose);
         }
         catch (Exception)
         {
