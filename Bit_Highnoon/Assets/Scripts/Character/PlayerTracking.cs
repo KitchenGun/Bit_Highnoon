@@ -34,7 +34,7 @@ public class PlayerTracking : MonoBehaviour
         #region  벨트 위치 회전값 변경
         Belt.transform.position = new Vector3(
             Body.transform.position.x,
-            (float)(Head.transform.position.y)/2,
+            (float)(Head.transform.position.y)/3*2,
             Body.transform.position.z);
         Belt.transform.eulerAngles = new Vector3(0, Head.transform.rotation.eulerAngles.y, 0); // 회전값 y축 만 전달
         #endregion
