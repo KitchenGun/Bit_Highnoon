@@ -11,6 +11,8 @@ public class PlayerTeleport : MonoBehaviour
     [SerializeField] Transform head, cameraRig;
     [SerializeField] int collisionLayer;//사용자가 이동가능한 레이어
 
+    private bool TeleportEnable = false;
+
     private Vector3 targetPos; //위치
 
     bool targetAcquired = false; //목표를 획득했는가
@@ -59,14 +61,14 @@ public class PlayerTeleport : MonoBehaviour
 
                 if (hit.transform.gameObject.layer == collisionLayer) //레이어가 맞는 이동가능한 곳일 경우
                 {
-                    laser.startColor = laser.endColor = Color.green; //녹레이저
+                    LaserColorSet(Color.green); //녹레이저
                     targetPos = hit.point;
                     targetAcquired = true;
                     return;
                 }
                 else
                 {
-                    laser.startColor = laser.endColor = Color.red;
+                    LaserColorSet(Color.red);
                     return;
                 }
             }
@@ -76,8 +78,7 @@ public class PlayerTeleport : MonoBehaviour
                 origin += offset;
             }
         }
-
-        laser.startColor = laser.endColor = Color.red;
+        LaserColorSet(Color.red);
     }
     #endregion
 
@@ -101,5 +102,22 @@ public class PlayerTeleport : MonoBehaviour
             laser.SetPosition(i, Vector3.zero);
         }
     }
+
+
+    #endregion
+
+    #region 레이저 색상 변경
+
+    public void LaserColorSet(Color color)
+    {
+        laser.material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply"));
+        Gradient gradient = new Gradient();//그라데이션 색을 인자값으로 전달
+        gradient.SetKeys(
+            new GradientColorKey[] { new GradientColorKey(color, 0.0f), new GradientColorKey(color, 1.0f) },
+            new GradientAlphaKey[] { new GradientAlphaKey(1f, 0.0f), new GradientAlphaKey(1f, 1.0f) }
+        );
+        laser.colorGradient = gradient;
+    }
+
     #endregion
 }
