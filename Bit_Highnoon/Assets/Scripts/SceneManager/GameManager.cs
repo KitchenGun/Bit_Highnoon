@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
                 case "Single":
                     ChangeToScene(2); break;
                 case "Multi":
-                    ChangeToScene(7); break;
+                    ChangeToScene(6); break;
                 case "Option":
                     ChangeToScene(10); break;
                 case "Exit":
