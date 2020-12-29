@@ -9,7 +9,7 @@ using UnityEngine.Networking;
 
 public class SoundDB : MonoBehaviour
 {
-    List<AudioClip> list = new List<AudioClip>();
+    public List<AudioClip> list = new List<AudioClip>();
     //주소값 변동있을수 있음
     readonly string xmlname = "SoundData";
     XmlDocument xmlDoc = new XmlDocument();
@@ -23,8 +23,10 @@ public class SoundDB : MonoBehaviour
 
     #region 총소리
 
-    //떨어지는소리
-    public AudioClip GunDropSound()
+    //순서 맞춰야됨
+
+    // 1번 떨어지는소리  0~2
+    public void GunDropSound()
     {
         //xml 불러오기
         XmlLoad();
@@ -44,12 +46,7 @@ public class SoundDB : MonoBehaviour
         for (int i = 0; i < sound.Length; i++)
         {
             GunDropList(sound[i]);
-        }
-
-        //랜덤값 => 추후 값 수정 필요
-        int randomdrop = UnityEngine.Random.Range(0, sound.Length);
-
-        return list[randomdrop];
+        }     
     }
     public void GunDropList(string fileName)
     {
@@ -60,10 +57,16 @@ public class SoundDB : MonoBehaviour
             list.Add(OpenWavParser.ByteArrayToAudioClip(wavFile));
         }
     }
+    public AudioClip GunDrop()
+    {
+        int randomdrop = UnityEngine.Random.Range(0, 3);
+
+        return list[randomdrop];
+    }
 
 
-    //잡는소리
-    public AudioClip GunGripSound()
+    // 2번 잡는소리  3~4
+    public void GunGripSound()
     {
         //xml 불러오기
         XmlLoad();
@@ -83,12 +86,7 @@ public class SoundDB : MonoBehaviour
         for (int i = 0; i < sound.Length; i++)
         {
             GunGripList(sound[i]);
-        }
-
-        //랜덤값 => 추후 값 수정 필요
-        int randomgrip = UnityEngine.Random.Range(0, sound.Length);
-
-        return list[randomgrip];
+        }    
     }
     public void GunGripList(string fileName)
     {
@@ -99,10 +97,16 @@ public class SoundDB : MonoBehaviour
             list.Add(OpenWavParser.ByteArrayToAudioClip(wavFile));
         }
     }
+    public AudioClip GunGrip()
+    {
+        int randomgrip = UnityEngine.Random.Range(3, 5);
+
+        return list[randomgrip];
+    }
 
 
-    //발사소리
-    public AudioClip GunFireSound()
+    // 3번 발사소리 5~7
+    public void GunFireSound()
     {
         //xml 불러오기
         XmlLoad();
@@ -123,11 +127,6 @@ public class SoundDB : MonoBehaviour
         {
             GunFireList(sound[i]);
         }
-
-        //랜덤값 => 추후 값 수정 필요
-        int randomfire = UnityEngine.Random.Range(0, sound.Length);
-
-        return list[randomfire];
     }
     public void GunFireList(string fileName)
     {
@@ -138,10 +137,94 @@ public class SoundDB : MonoBehaviour
             list.Add(OpenWavParser.ByteArrayToAudioClip(wavFile));
         }
     }
+    public AudioClip GunFire()
+    {
+        int randomfire = UnityEngine.Random.Range(5, 8);
+
+        return list[randomfire];
+    }
+
+    // 4번 적 발사소리 8~11
+    public void GunFire3dSound()
+    {
+        //xml 불러오기
+        XmlLoad();
+
+        //파싱
+        string gunfire = "";
+        XmlNodeList nodes = xmlDoc.SelectNodes("DocumentElement/Gun");
+        foreach (XmlNode node in nodes)
+        {
+            gunfire = node.SelectSingleNode("EnemyFire").InnerText;
+        }
+
+        //파싱값 배열에 입력
+        string[] sound = gunfire.Split(new char[] { ',' });
+
+        //사운드클립 리스트에 입력
+        for (int i = 0; i < sound.Length; i++)
+        {
+            GunFire3dList(sound[i]);
+        }
+    }
+    public void GunFire3dList(string fileName)
+    {
+        string filePath = Application.dataPath + "/DB/Sound/Gun/EnemyFire/" + fileName + ".wav";
+        if (File.Exists(filePath) == true)
+        {
+            byte[] wavFile = File.ReadAllBytes(filePath);
+            list.Add(OpenWavParser.ByteArrayToAudioClip(wavFile));
+        }
+    }
+    public AudioClip GunFire3d()
+    {
+        int randomfire = UnityEngine.Random.Range(8, 12);
+
+        return list[randomfire];
+    }
+
+    // 5번 적 발사소리(빗나갔을경우) 12~17
+    public void GunFireWhizSound()
+    {
+        //xml 불러오기
+        XmlLoad();
+
+        //파싱
+        string gunfire = "";
+        XmlNodeList nodes = xmlDoc.SelectNodes("DocumentElement/Gun");
+        foreach (XmlNode node in nodes)
+        {
+            gunfire = node.SelectSingleNode("EnemyFireNearby").InnerText;
+        }
+
+        //파싱값 배열에 입력
+        string[] sound = gunfire.Split(new char[] { ',' });
+
+        //사운드클립 리스트에 입력
+        for (int i = 0; i < sound.Length; i++)
+        {
+            GunFireWhizList(sound[i]);
+        }
+    }
+    public void GunFireWhizList(string fileName)
+    {
+        string filePath = Application.dataPath + "/DB/Sound/Gun/EnemyFireNearby/" + fileName + ".wav";
+        if (File.Exists(filePath) == true)
+        {
+            byte[] wavFile = File.ReadAllBytes(filePath);
+            list.Add(OpenWavParser.ByteArrayToAudioClip(wavFile));
+        }
+    }
+    public AudioClip GunFireWhiz()
+    {
+        int randomfire = UnityEngine.Random.Range(12, 18);
+
+        return list[randomfire];
+    }
 
 
-    //장전소리
-    public AudioClip GunReloadSound()
+    // 6번 장전소리 18, 19 (스틱다운 스틱업 구분)
+    public void GunReloadSound()
     {
         //xml 불러오기
         XmlLoad();
@@ -154,10 +237,14 @@ public class SoundDB : MonoBehaviour
             gunfire = node.SelectSingleNode("Reload").InnerText;
         }
 
-        //사운드클립 리스트에 입력
-        GunReloadList(gunfire);
+        //파싱값 배열에 입력
+        string[] sound = gunfire.Split(new char[] { ',' });
 
-        return list[0];
+        //사운드클립 리스트에 입력
+        for (int i = 0; i < sound.Length; i++)
+        {
+            GunReloadList(sound[i]);
+        }
     }
     public void GunReloadList(string fileName)
     {
@@ -167,6 +254,14 @@ public class SoundDB : MonoBehaviour
             byte[] wavFile = File.ReadAllBytes(filePath);
             list.Add(OpenWavParser.ByteArrayToAudioClip(wavFile));
         }
+    }
+    public AudioClip Reload1()
+    {
+        return list[18];
+    }
+    public AudioClip Reload2()
+    {
+        return list[19];
     }
 
     #endregion
