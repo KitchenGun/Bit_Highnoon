@@ -349,7 +349,7 @@ GameObject:
   - component: {fileID: 830023438}
   - component: {fileID: 830023437}
   - component: {fileID: 830023436}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,8 +367,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.867923, z: 1}
+  m_Center: {x: 0, y: -0.06603849, z: 0}
 --- !u!23 &830023437
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -768,14 +768,6 @@ PrefabInstance:
     - target: {fileID: 3366610077945360110, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
       propertyPath: m_Name
       value: PlayerCtrl
-      objectReference: {fileID: 0}
-    - target: {fileID: 3366610077950843666, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
-      propertyPath: useFixedUpdateForTracking
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4276758157003292358, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}

@@ -10,13 +10,38 @@ public class PlayerTeleport : MonoBehaviour
     [SerializeField] float laserSegmentDistance = 1f, dropPerSegment = .1f; //레이저를 휘어지게 만드는 변수
     [SerializeField] Transform head, cameraRig;
     [SerializeField] int collisionLayer;//사용자가 이동가능한 레이어
-
+    #region 텔레포트 조건 변수
+    private bool TeleportEnable = false;
+    private int SceneIdx;
+    private GameObject GM;
+    #endregion
     private Vector3 targetPos; //위치
 
     bool targetAcquired = false; //목표를 획득했는가
 
     private void Awake()
     {
+        #region Scene 확인
+        GM = GameObject.Find("GameManager");
+        if (GM == null)
+        {
+            SceneIdx = 0;
+        }//gamemanager가 존재 안할경우
+        else
+        {
+            SceneIdx = GM.GetComponent<GameManager>().GetSceneIndex();
+        }
+        #endregion
+        #region 씬 넘버를 통해서 텔레포드 조건 확인
+        if(SceneIdx==0||SceneIdx==6)
+        {
+            TeleportEnable = true;
+        }
+        else
+        {
+            TeleportEnable = false;
+        }
+        #endregion
         laser = this.gameObject.GetComponent<LineRenderer>();
         laser.startWidth = laser.endWidth = 0.5f;
         laser.positionCount = laserSteps;//레이저가 보여질 거리
@@ -24,17 +49,23 @@ public class PlayerTeleport : MonoBehaviour
 
     private void Update()
     {
-        if (OVRInput.Get(stick).y > .8f)
+        //텔레포트 가능 상태일 경우
+        if (TeleportEnable)
         {
-            TryToGetTeleportTarget();
-        }
-        else if (targetAcquired == true && OVRInput.Get(stick).y < .2f)
-        {
-            Teleport();
-        }
-        else if (targetAcquired == false && OVRInput.Get(stick).y < .2f)
-        {
-            ResetLaser();
+            #region 텔레포트
+            if (OVRInput.Get(stick).y > .8f)
+            {
+                TryToGetTeleportTarget();
+            }
+            else if (targetAcquired == true && OVRInput.Get(stick).y < .2f)
+            {
+                Teleport();
+            }
+            else if (targetAcquired == false && OVRInput.Get(stick).y < .2f)
+            {
+                ResetLaser();
+            }
+            #endregion
         }
     }
 
@@ -59,14 +90,14 @@ public class PlayerTeleport : MonoBehaviour
 
                 if (hit.transform.gameObject.layer == collisionLayer) //레이어가 맞는 이동가능한 곳일 경우
                 {
-                    laser.startColor = laser.endColor = Color.green; //녹레이저
+                    LaserColorSet(Color.green); //녹레이저
                     targetPos = hit.point;
                     targetAcquired = true;
                     return;
                 }
                 else
                 {
-                    laser.startColor = laser.endColor = Color.red;
+                    LaserColorSet(Color.red);
                     return;
                 }
             }
@@ -76,8 +107,7 @@ public class PlayerTeleport : MonoBehaviour
                 origin += offset;
             }
         }
-
-        laser.startColor = laser.endColor = Color.red;
+        LaserColorSet(Color.red);
     }
     #endregion
 
@@ -101,5 +131,22 @@ public class PlayerTeleport : MonoBehaviour
             laser.SetPosition(i, Vector3.zero);
         }
     }
+
+
+    #endregion
+
+    #region 레이저 색상 변경
+
+    public void LaserColorSet(Color color)
+    {
+        laser.material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply"));
+        Gradient gradient = new Gradient();//그라데이션 색을 인자값으로 전달
+        gradient.SetKeys(
+            new GradientColorKey[] { new GradientColorKey(color, 0.0f), new GradientColorKey(color, 1.0f) },
+            new GradientAlphaKey[] { new GradientAlphaKey(1f, 0.0f), new GradientAlphaKey(1f, 1.0f) }
+        );
+        laser.colorGradient = gradient;
+    }
+
     #endregion
 }
