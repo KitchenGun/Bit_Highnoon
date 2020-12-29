@@ -4,8 +4,10 @@ using UnityEngine;
 using Photon.Pun;
 using System.IO;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : MonoBehaviourPunCallbacks
 {
+    private GameObject spawnedPlayerPrefab;
+    
     //[SerializeField] string player_prefab;
     public Transform[] Spawn_Points;
     PhotonView PV;
@@ -20,7 +22,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (PV.IsMine)
         {
-            CreateController();
+            spawnedPlayerPrefab = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerController"), transform.position, transform.rotation);
         }
     }
     void CreateController()
