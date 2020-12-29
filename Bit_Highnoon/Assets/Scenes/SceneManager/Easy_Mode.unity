@@ -15663,7 +15663,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3366610077945000640, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -17.85
+      value: -2.76
       objectReference: {fileID: 0}
     - target: {fileID: 3366610077945000640, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -25157,6 +25157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4318c633484ae145b2f2943764181df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idle_SFX: {fileID: 8300000, guid: 6bf1d9db3c2b04941b3b9384a71f4e75, type: 3}
   dead_SFX: {fileID: 8300000, guid: 2cdaf2a3dea710148bf7107fbe80632c, type: 3}
   hit_SFX: {fileID: 8300000, guid: 38d2f1fd46407194b87ec81f07966bad, type: 3}
   attack_SFX: {fileID: 8300000, guid: 6f5eaaafc85f7fe4189bbecc15ec1e73, type: 3}
@@ -26834,6 +26835,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameStartAudio: {fileID: 8300000, guid: a56af903b312c954495c54cb887d5910, type: 3}
+  gameEndAudio: {fileID: 8300000, guid: 4eae780d78f45534eb73679df9af24a6, type: 3}
 --- !u!4 &1590799560
 Transform:
   m_ObjectHideFlags: 0
@@ -26842,7 +26844,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1590799558}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.59868, y: -34.40645, z: 118.30005}
+  m_LocalPosition: {x: 6.5, y: 12.9, z: -8.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -26871,7 +26873,7 @@ AudioSource:
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -26879,23 +26881,23 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.002
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -500.20065
+      outSlope: -500.20065
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
+      value: 0.002
+      inSlope: Infinity
+      outSlope: Infinity
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -26904,7 +26906,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

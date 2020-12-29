@@ -14,7 +14,7 @@ public class AIEasy : AIParent
 
         lifeCount = 1;
 
-        idleTime = 3;   //대기시간                
+        idleTime = 4;   //대기시간                
 
         shoot = GameObject.Find("EasyShoot").transform.FindChildRecursive("Shoot").gameObject;
 
@@ -36,13 +36,6 @@ public class AIEasy : AIParent
                 isFirst = false;                
             }
         }
-    }
-
-    protected override void HitAction()
-    {
-        base.HitAction();
-
-        ReChange();
     }
 
     protected override void PlayerDeadAction()

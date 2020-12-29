@@ -12,9 +12,9 @@ public class AINormal : AIParent
 
         lifeCount = 2;
 
-        idleTime = 2;   //대기 시간
+        idleTime = 3;   //대기 시간
 
-        player_Dead_Count = 5;
+        player_Dead_Count = 4;
 
         StartCoroutine(CheckState());               //상태를 체크
         StartCoroutine(CheckStateForAction());      //상태의 따른
@@ -24,11 +24,11 @@ public class AINormal : AIParent
     {
         base.AttackAction();
 
-        //if (animator.GetCurrentAnimatorStateInfo(0).IsName("Turn"))
-        //{
-        //    Turn();
-        //}
-        if(animator.GetCurrentAnimatorStateInfo(0).IsName("Shoot"))
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Turn"))
+        {
+            TurnS();
+        }
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Shoot"))
         {
             Turn();
         }
@@ -56,36 +56,41 @@ public class AINormal : AIParent
     }
 
     #region 방향 맞추기..
-    //private void Turn()
-    //{
-    //    Quaternion Right = Quaternion.identity;
-    //    Right.eulerAngles = new Vector3(0, -90, 0);
-    //    gameObject.transform.rotation = Quaternion.Slerp(gameObject.transform.rotation, Right, Time.deltaTime * 2);
-    //}
+    private void TurnS()
+    {
+        Quaternion Right = Quaternion.identity;
+        Right.eulerAngles = new Vector3(0, -90, 0);
+        gameObject.transform.rotation = Quaternion.Slerp(gameObject.transform.rotation, Right, Time.deltaTime * 2);
+    }
 
     private void Turn()
     {
-        gameObject.transform.rotation = Quaternion.Euler(0, -90, 0);
+        gameObject.transform.rotation = Quaternion.Euler(0, 90, 0);
     }
 
     private void ReTurn()
     {
-        gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+        gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
     }
     #endregion
 
     protected override void PlayerDead()
     {
+        if (player_Dead_Count == 0)
+        {
+            base.PlayerDead();
+
+            Debug.Log("normal");            
+        }
+    }
+
+    protected override void GameEnd()
+    {
         player_Dead_Count--;
 
         if (player_Dead_Count == 0)
         {
-            isPlayerDead = true;
-
-            //player.transform.Find("Body").SendMessage("Dead");    //플레이어에게 죽어다고 알리기
-            player.SendMessage("Dead");                             
-
-            Debug.Log("normal");            
+            base.GameEnd();
         }
     }
 }

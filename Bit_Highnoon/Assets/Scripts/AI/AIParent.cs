@@ -17,7 +17,9 @@ public class AIParent : MonoBehaviour
 
     protected bool isPlayerDeadAudio;   //PlayerDead오디오가 실행됬는지 판단
 
-    private bool isGameStartAudio;
+    private bool isGameStartAudio;      //게임 시작 음악이 재생되었는지 판단
+
+    private bool isIdleAudio;           //대기상태의 대사를 했는지 판단
     #endregion
 
     #region 게임타임 관련 변수
@@ -37,6 +39,8 @@ public class AIParent : MonoBehaviour
     #region audio
     protected AudioSource AIAudio;
     [SerializeField]
+    private AudioClip idle_SFX;
+    [SerializeField]
     private AudioClip dead_SFX;
     [SerializeField]
     private AudioClip hit_SFX;
@@ -44,6 +48,7 @@ public class AIParent : MonoBehaviour
     protected AudioClip attack_SFX;
     [SerializeField]
     private AudioClip player_Dead_SFX;
+    
     #endregion
 
     // Start is called before the first frame update
@@ -56,7 +61,7 @@ public class AIParent : MonoBehaviour
         walkTime = 3;
 
         //초기 설정
-        isDead = isPlayerDead = isHit = isPlayerDeadAudio = isGameStartAudio = false;  
+        isDead = isPlayerDead = isHit = isPlayerDeadAudio = isGameStartAudio = isIdleAudio = false;  
 
         player = GameObject.Find("PlayerCtrl");       //플레이어 찾기
 
@@ -144,9 +149,16 @@ public class AIParent : MonoBehaviour
 
         animator.SetTrigger("idle");
 
-        if (isGameStartAudio == false)
+        if (isIdleAudio == false)
         {
-            gameManager.SendMessage("AudioPlay");
+            IdleAudio();
+            isIdleAudio = true;
+        }
+
+        if (isGameStartAudio == false && AIAudio.isPlaying == false && isIdleAudio == true)
+        {
+            gameManager.SendMessage("GameStart");
+            idleTime = -1;
             isGameStartAudio = true;
         }
     }
@@ -156,7 +168,7 @@ public class AIParent : MonoBehaviour
         //Debug.Log("WalkAction");
         walkTime -= Time.deltaTime;
 
-        gameObject.transform.position += new Vector3(0, 0, 0.5f * Time.deltaTime);
+        gameObject.transform.position += new Vector3(0, 0, -0.5f * Time.deltaTime);
     }
 
     
@@ -204,13 +216,20 @@ public class AIParent : MonoBehaviour
         animator.SetTrigger("dead");
         isDead = true;
 
-        //player.SendMessage("Win");
+        //player.SendMessage("Win");            //플레이어에게 적이 죽었다고 알리기
 
         DeadAudio();
+        GameEnd();
     }
     #endregion
 
     #region audio함수
+    private void IdleAudio()
+    {
+        AIAudio.clip = idle_SFX;
+        AIAudio.Play();
+    }
+
     private void DeadAudio()
     {
         AIAudio.clip = dead_SFX;
@@ -241,17 +260,12 @@ public class AIParent : MonoBehaviour
     protected virtual void PlayerDead()
     {
         isPlayerDead = true;
-
         //player.transform.Find("Body").SendMessage("Dead");      //플레이어에게 죽어다고 알리기
-        player.SendMessage("Dead");      //플레이어에게 죽어다고 알리기
+        //player.SendMessage("Dead");      //플레이어에게 죽어다고 알리기
     }
 
-    //뒤로 도는 함수
-    //private void TurnAI()
-    //{
-    //    Quaternion Right = Quaternion.identity;
-    //    Right.eulerAngles = new Vector3(0, 180, 0);
-    //    gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, Right, Time.deltaTime * 2);
-    //    //gameObject.transform.rotation = Right;
-    //}
+    protected virtual void GameEnd()
+    {
+        gameManager.SendMessage("GameEnd");   //게임 종료 음악
+    }
 }

@@ -97,21 +97,23 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    #region 게임 시작 음악
+    #region 게임 Start & End 음악
     [SerializeField]
     private AudioClip gameStartAudio;
 
-    private IEnumerator AudioPlay()
+    [SerializeField]
+    private AudioClip gameEndAudio;
+
+    private IEnumerator GameStart()
     {
         AudioSource Audio = GetComponent<AudioSource>();
 
         Audio.clip = gameStartAudio;
         Audio.loop = false;
+        
+        Audio.Play();
 
-        if (Audio.isPlaying == false)
-            Audio.Play();
-
-        yield return new WaitForSeconds(2.5f);  //노래 시작후 플레이어가 공격할 수 있는 시간
+        yield return new WaitForSeconds(1.5f);  //노래 시작후 플레이어가 공격할 수 있는 시간
 
         PlayerStart();
     }
@@ -122,6 +124,16 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("gamestart");
         //player.SendMessage("GameStart");
+    }    
+
+    private void GameEnd()
+    {
+        AudioSource Audio = GetComponent<AudioSource>();
+
+        Audio.clip = gameEndAudio;
+        Audio.loop = false;
+
+        Audio.Play();
     }
     #endregion
 
