@@ -18,10 +18,11 @@
   </Effect>
   <Gun>
     <DropGun>drop1,drop2,drop3</DropGun>
-    <GripGun>grip1,grip2,grip3</GripGun>
+    <GripGun>grip1,grip2</GripGun>
     <GunFire>fire1,fire2,fire3</GunFire>
-    <Holster>DrawIn,DrawOut</Holster>
-    <Reload>reload</Reload>
+    <EnemyFire>enemyfire1,enemyfire2,enemyfire3,enemyfire4</EnemyFire>
+    <EnemyFireNearby>whiz1,whiz2,whiz3,whiz4,whiz5,whiz6</EnemyFireNearby>
+    <Reload>reload1,reload2</Reload>
   </Gun>
   <User>
     <Walk>walk1,walk2,walk3</Walk>
