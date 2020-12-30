@@ -8,14 +8,14 @@ public class Soundtest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AudioSource audio = this.gameObject.transform.GetComponent<AudioSource>();
+        //AudioSource audio = this.gameObject.transform.GetComponent<AudioSource>();
 
-        db.GunSoundList();
+        //db.GunSoundList();
         
-        audio.clip = db.GunFireWhiz();
-        audio.Play();
+        //audio.clip = db.GunFireWhiz();
+        //audio.Play();
 
-        audio.clip = db.GunDrop();
-        audio.Play();
+        //audio.clip = db.GunDrop();
+        //audio.Play();
     }
 }

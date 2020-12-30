@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <DocumentElement>
+  <AI>
+    <Easy>Dialogue1,Dialogue2,DrinkingSound,EasyDead,EasyPlayerDead,EasyStart</Easy>
+    <GameStartEnd>GameEnd,GameStart</GameStartEnd>
+    <Hard>HardDead,HardHit,HardPlayerDead,HardStart</Hard>
+    <Normal>NormalDead,NormalHit,NormalPlayerDead,NormalStart</Normal>
+  </AI>
   <Bgm>
     <BattleStart>BattleStart</BattleStart>
     <BattleEnd>BattleEnd</BattleEnd>
     <GameStart>GameStart</GameStart>
     <WindSound>WindSound</WindSound>
   </Bgm>
-  <Bot>
-    <Easy>Start,Win,Lose</Easy>
-    <Normal>Start,Win,Lose</Normal>
-    <Hard>Start,Win,Lose</Hard>
-  </Bot>
   <Effect>
     <Can>can1,can2</Can>
-    <Glass>glass1,glass2,glass3,glass4</Glass>
     <Etc>etc1,etc2,etc3,etc4</Etc>
+    <Glass>glass1,glass2,glass3,glass4</Glass>    
   </Effect>
   <Gun>
     <DropGun>drop1,drop2,drop3</DropGun>
-    <GripGun>grip1,grip2</GripGun>
-    <GunFire>fire1,fire2,fire3</GunFire>
     <EnemyFire>enemyfire1,enemyfire2,enemyfire3,enemyfire4</EnemyFire>
     <EnemyFireNearby>whiz1,whiz2,whiz3,whiz4,whiz5,whiz6</EnemyFireNearby>
-    <Reload>reload1,reload2</Reload>
+    <GripGun>gripdown,gripup</GripGun>
+    <GunFire>fire1,fire2,fire3</GunFire>
+    <Reload>empty,reload</Reload>
   </Gun>
   <User>
     <Walk>walk1,walk2,walk3</Walk>

@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         db = this.gameObject.AddComponent<SoundDB>();
+
         if(instance == null)
         {
             instance = this;
@@ -38,25 +39,19 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        db.SoundUpdate(GetSceneIndex());
+
         DontDestroyOnLoad(gameObject);
     }
     #endregion
-
-    #region 사운드DB
-
-    private void SoundList()
-    {
-        db.GunSoundList();
-    }
-
-    #endregion
-
 
     #region 함수
     //씬 이동
     public void ChangeToScene(int idx)
     {
         SceneManager.LoadScene(idx);
+
+        db.SoundUpdate(GetSceneIndex());
     }
 
     //게임 종료
@@ -111,22 +106,16 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region 게임 Start & End 음악
-    [SerializeField]
-    private AudioClip gameStartAudio;
-
-    [SerializeField]
-    private AudioClip gameEndAudio;
-
-    private IEnumerator GameStart()
+    private void GameStart()
     {
         AudioSource Audio = GetComponent<AudioSource>();
 
-        Audio.clip = gameStartAudio;
+        Audio.clip = db.list[1];
         Audio.loop = false;
         
         Audio.Play();
 
-        yield return new WaitForSeconds(1.5f);  //노래 시작후 플레이어가 공격할 수 있는 시간
+        //yield return new WaitForSeconds(1.5f);  //노래 시작후 플레이어가 공격할 수 있는 시간
 
         PlayerStart();
     }
@@ -136,17 +125,21 @@ public class GameManager : MonoBehaviour
         GameObject player = GameObject.Find("PlayerCtrl");
 
         Debug.Log("gamestart");
-        //player.SendMessage("GameStart");
+        player.transform.Find("Body").SendMessage("OpenFire");
     }    
 
-    private void GameEnd()
+    private IEnumerator GameEnd()
     {
         AudioSource Audio = GetComponent<AudioSource>();
 
-        Audio.clip = gameEndAudio;
+        Audio.clip = db.list[0];
         Audio.loop = false;
 
         Audio.Play();
+
+        yield return new WaitForSeconds(5f);
+
+        ChangeToScene(2);
     }
     #endregion
 

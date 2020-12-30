@@ -208,7 +208,7 @@ MonoBehaviour:
   idle_SFX: {fileID: 8300000, guid: 8c101c91be4660e4891e654bf0863651, type: 3}
   dead_SFX: {fileID: 8300000, guid: e4f090341b204a84a99b8a4378e367e9, type: 3}
   hit_SFX: {fileID: 8300000, guid: b89208917ba6be24e9d380ebe522621b, type: 3}
-  attack_SFX: {fileID: 8300000, guid: 6f5eaaafc85f7fe4189bbecc15ec1e73, type: 3}
+  attack_SFX: {fileID: 8300000, guid: 98508e37c09da0d44a71f37b9e9aeb04, type: 3}
   player_Dead_SFX: {fileID: 8300000, guid: 970e223ad674a0a49847319b08f6fc27, type: 3}
 --- !u!82 &190780558
 AudioSource:
@@ -545,8 +545,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ad8c18bdfa7b8d4e8ccec7dc70f0b16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameStartAudio: {fileID: 8300000, guid: a56af903b312c954495c54cb887d5910, type: 3}
-  gameEndAudio: {fileID: 8300000, guid: 4eae780d78f45534eb73679df9af24a6, type: 3}
 --- !u!4 &423607805
 Transform:
   m_ObjectHideFlags: 0

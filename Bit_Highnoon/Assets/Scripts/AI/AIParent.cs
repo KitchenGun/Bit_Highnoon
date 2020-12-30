@@ -216,8 +216,6 @@ public class AIParent : MonoBehaviour
         animator.SetTrigger("dead");
         isDead = true;
 
-        //player.SendMessage("Win");            //플레이어에게 적이 죽었다고 알리기
-
         DeadAudio();
         GameEnd();
     }
@@ -244,8 +242,8 @@ public class AIParent : MonoBehaviour
 
     private void AttackAudio()
     {
-        
         AIAudio.clip = attack_SFX;
+        //AIAudio.clip = attack_SFX;
         AIAudio.Play();
     }
 
@@ -262,7 +260,7 @@ public class AIParent : MonoBehaviour
     {
         isPlayerDead = true;
 
-        //player.transform.Find("Body").SendMessage("Dead");      //플레이어에게 죽어다고 알리기
+        player.transform.Find("Body").SendMessage("Die");      //플레이어에게 죽어다고 알리기
         //player.SendMessage("Dead");      //플레이어에게 죽어다고 알리기
     }
 

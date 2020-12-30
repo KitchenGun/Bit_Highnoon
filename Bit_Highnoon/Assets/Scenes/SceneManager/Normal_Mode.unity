@@ -1143,11 +1143,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10c84605203932647b16ed7a5c644fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idle_SFX: {fileID: 8300000, guid: 1b689644a30424d429c1e0dc9d1131c9, type: 3}
-  dead_SFX: {fileID: 8300000, guid: 98889ac90893c0749b08c7dd7f45aba4, type: 3}
-  hit_SFX: {fileID: 8300000, guid: d4eadb986ef84584a84556b3cee86504, type: 3}
-  attack_SFX: {fileID: 8300000, guid: 759f0b0f80aae604e887a403418184be, type: 3}
-  player_Dead_SFX: {fileID: 8300000, guid: 1678368fc767d2243a84b62f908bd4be, type: 3}
+  idle_SFX: {fileID: 8300000, guid: 1174d2ab17f4a144bb1acd7faab5d537, type: 3}
+  dead_SFX: {fileID: 8300000, guid: b9753acd654a99e4bab9492f3bba7c00, type: 3}
+  hit_SFX: {fileID: 8300000, guid: 2a3cabe391067194eb55de57be1a2c1b, type: 3}
+  attack_SFX: {fileID: 8300000, guid: 4199a585171c62645a74a448efd33fd0, type: 3}
+  player_Dead_SFX: {fileID: 8300000, guid: ff8fc035dfa2c5240af756755d19cdac, type: 3}
 --- !u!82 &2049534412
 AudioSource:
   m_ObjectHideFlags: 0

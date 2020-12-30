@@ -25160,7 +25160,7 @@ MonoBehaviour:
   idle_SFX: {fileID: 8300000, guid: 6bf1d9db3c2b04941b3b9384a71f4e75, type: 3}
   dead_SFX: {fileID: 8300000, guid: 2cdaf2a3dea710148bf7107fbe80632c, type: 3}
   hit_SFX: {fileID: 8300000, guid: 38d2f1fd46407194b87ec81f07966bad, type: 3}
-  attack_SFX: {fileID: 8300000, guid: 6f5eaaafc85f7fe4189bbecc15ec1e73, type: 3}
+  attack_SFX: {fileID: 8300000, guid: 4199a585171c62645a74a448efd33fd0, type: 3}
   player_Dead_SFX: {fileID: 8300000, guid: 70a4cdf085726994aac7afa484924846, type: 3}
 --- !u!82 &1451157635
 AudioSource:
