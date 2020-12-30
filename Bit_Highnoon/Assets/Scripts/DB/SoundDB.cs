@@ -10,9 +10,14 @@ using UnityEngine.Networking;
 public class SoundDB : MonoBehaviour
 {
     public List<AudioClip> list = new List<AudioClip>();
+    private int random;
+
     //주소값 변동있을수 있음
     readonly string xmlname = "SoundData";
     XmlDocument xmlDoc = new XmlDocument();
+
+    //사운드 주소값
+    string gunfolder = "/SFX/Gun/";     //총소리
 
     public void XmlLoad()
     {
@@ -50,7 +55,7 @@ public class SoundDB : MonoBehaviour
     }
     public void GunDropList(string fileName)
     {
-        string filePath = Application.dataPath + "/DB/Sound/Gun/DropGun/" + fileName + ".wav";
+        string filePath = Application.dataPath + gunfolder + "DropGun/" + fileName + ".wav";
         if (File.Exists(filePath) == true)
         {
             byte[] wavFile = File.ReadAllBytes(filePath);
@@ -59,9 +64,9 @@ public class SoundDB : MonoBehaviour
     }
     public AudioClip GunDrop()
     {
-        int randomdrop = UnityEngine.Random.Range(0, 3);
+        random = UnityEngine.Random.Range(0, 3);
 
-        return list[randomdrop];
+        return list[random];
     }
 
 
@@ -90,7 +95,7 @@ public class SoundDB : MonoBehaviour
     }
     public void GunGripList(string fileName)
     {
-        string filePath = Application.dataPath + "/DB/Sound/Gun/GripGun/" + fileName + ".wav";
+        string filePath = Application.dataPath + gunfolder + "GripGun/" + fileName + ".wav";
         if (File.Exists(filePath) == true)
         {
             byte[] wavFile = File.ReadAllBytes(filePath);
@@ -99,9 +104,9 @@ public class SoundDB : MonoBehaviour
     }
     public AudioClip GunGrip()
     {
-        int randomgrip = UnityEngine.Random.Range(3, 5);
+        random = UnityEngine.Random.Range(3, 5);
 
-        return list[randomgrip];
+        return list[random];
     }
 
 
@@ -130,7 +135,7 @@ public class SoundDB : MonoBehaviour
     }
     public void GunFireList(string fileName)
     {
-        string filePath = Application.dataPath + "/DB/Sound/Gun/GunFire/" + fileName + ".wav";
+        string filePath = Application.dataPath + gunfolder + "GunFire/" + fileName + ".wav";
         if (File.Exists(filePath) == true)
         {
             byte[] wavFile = File.ReadAllBytes(filePath);
@@ -139,9 +144,9 @@ public class SoundDB : MonoBehaviour
     }
     public AudioClip GunFire()
     {
-        int randomfire = UnityEngine.Random.Range(5, 8);
+        random = UnityEngine.Random.Range(5, 8);
 
-        return list[randomfire];
+        return list[random];
     }
 
     // 4번 적 발사소리 8~11
@@ -169,7 +174,7 @@ public class SoundDB : MonoBehaviour
     }
     public void GunFire3dList(string fileName)
     {
-        string filePath = Application.dataPath + "/DB/Sound/Gun/EnemyFire/" + fileName + ".wav";
+        string filePath = Application.dataPath + gunfolder + "EnemyFire/" + fileName + ".wav";
         if (File.Exists(filePath) == true)
         {
             byte[] wavFile = File.ReadAllBytes(filePath);
@@ -178,9 +183,9 @@ public class SoundDB : MonoBehaviour
     }
     public AudioClip GunFire3d()
     {
-        int randomfire = UnityEngine.Random.Range(8, 12);
+        random = UnityEngine.Random.Range(8, 12);
 
-        return list[randomfire];
+        return list[random];
     }
 
     // 5번 적 발사소리(빗나갔을경우) 12~17
@@ -208,7 +213,7 @@ public class SoundDB : MonoBehaviour
     }
     public void GunFireWhizList(string fileName)
     {
-        string filePath = Application.dataPath + "/DB/Sound/Gun/EnemyFireNearby/" + fileName + ".wav";
+        string filePath = Application.dataPath + gunfolder + "EnemyFireNearby/" + fileName + ".wav";
         if (File.Exists(filePath) == true)
         {
             byte[] wavFile = File.ReadAllBytes(filePath);
@@ -217,9 +222,9 @@ public class SoundDB : MonoBehaviour
     }
     public AudioClip GunFireWhiz()
     {
-        int randomfire = UnityEngine.Random.Range(12, 18);
+        random = UnityEngine.Random.Range(12, 18);
 
-        return list[randomfire];
+        return list[random];
     }
 
 
@@ -248,7 +253,7 @@ public class SoundDB : MonoBehaviour
     }
     public void GunReloadList(string fileName)
     {
-        string filePath = Application.dataPath + "/DB/Sound/Gun/Reload/" + fileName + ".wav";
+        string filePath = Application.dataPath + gunfolder + "Reload/" + fileName + ".wav";
         if (File.Exists(filePath) == true)
         {
             byte[] wavFile = File.ReadAllBytes(filePath);
@@ -262,6 +267,23 @@ public class SoundDB : MonoBehaviour
     public AudioClip Reload2()
     {
         return list[19];
+    }
+
+    //리스트에 추가
+    public void GunSoundList()
+    {
+        //1
+        GunDropSound();
+        //2
+        GunGripSound();
+        //3
+        GunFireSound();
+        //4
+        GunFire3dSound();
+        //5
+        GunFireWhizSound();
+        //6
+        GunReloadSound();
     }
 
     #endregion

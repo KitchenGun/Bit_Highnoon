@@ -10,21 +10,12 @@ public class Soundtest : MonoBehaviour
     {
         AudioSource audio = this.gameObject.transform.GetComponent<AudioSource>();
 
-        //순서 맞출것
-        //1
-        db.GunDropSound();
-        //2
-        db.GunGripSound();
-        //3
-        db.GunFireSound();
-        //4
-        db.GunFire3dSound();
-        //5
-        db.GunFireWhizSound();
-        //6
-        db.GunReloadSound();
+        db.GunSoundList();
 
-        audio.clip = db.Reload1();
+        audio.clip = db.GunFireWhiz();
+        audio.Play();
+
+        audio.clip = db.GunDrop();
         audio.Play();
     }
 }
