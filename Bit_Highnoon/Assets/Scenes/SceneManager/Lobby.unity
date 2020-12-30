@@ -13593,8 +13593,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ad8c18bdfa7b8d4e8ccec7dc70f0b16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameStartAudio: {fileID: 0}
-  gameEndAudio: {fileID: 0}
 --- !u!4 &545202843
 Transform:
   m_ObjectHideFlags: 0
@@ -41768,6 +41766,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 163078605, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
+      propertyPath: laserSteps
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3366610077945000640, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -41814,7 +41816,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3366610077945360110, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
       propertyPath: m_Name
-      value: PlayerCtrl (1)
+      value: PlayerCtrl
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
