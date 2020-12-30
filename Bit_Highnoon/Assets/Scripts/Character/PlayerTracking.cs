@@ -39,4 +39,11 @@ public class PlayerTracking : MonoBehaviour
         Belt.transform.eulerAngles = new Vector3(0, Head.transform.rotation.eulerAngles.y, 0); // 회전값 y축 만 전달
         #endregion
     }
+
+    #region 벨트 오브젝트 반환
+    public GameObject GetBeltObj()//HoldFire에서 사용되는 함수
+    {
+        return Belt;
+    }
+    #endregion
 }
