@@ -137,8 +137,9 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    /*
+
     #region Update함수
+    /*
     void Update()
     {
         #region 메인 메뉴 씬 기능
@@ -251,7 +252,7 @@ public class GameManager : MonoBehaviour
         }
         #endregion
 
-    }
+    }*/
     #endregion
-    */
+
 }
