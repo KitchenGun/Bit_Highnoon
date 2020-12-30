@@ -4,12 +4,9 @@ using UnityEngine;
 using Photon.Pun;
 using System.IO;
 
-public class PlayerManager : MonoBehaviourPunCallbacks
-{
-    private GameObject spawnedPlayerPrefab;
-    
+public class PlayerManager : MonoBehaviour
+{   
     //[SerializeField] string player_prefab;
-    public Transform[] Spawn_Points;
     PhotonView PV;
     // Start is called before the first frame update
     void Awake()
@@ -22,13 +19,12 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     {
         if (PV.IsMine)
         {
-            spawnedPlayerPrefab = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerController"), transform.position, transform.rotation);
+            CreateController();
         }
     }
     void CreateController()
     {
-        Transform t_spawn = Spawn_Points[Random.Range(0, Spawn_Points.Length)];
-        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerController"), t_spawn.position, t_spawn.rotation);
-        //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerController"), Vector3.zero, Quaternion.identity);
+        Transform spawnpoint = SpawnManager.instance.GetSpawnpoint();
+        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerController"), spawnpoint.position, spawnpoint.rotation,0,new object[] { PV.ViewID });
     }
 }
