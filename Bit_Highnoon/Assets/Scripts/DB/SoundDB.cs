@@ -25,6 +25,48 @@ public class SoundDB : MonoBehaviour
         xmlDoc.LoadXml(txtAsset.text);
     }
 
+    #region 오디오 소스 간결화
+    public void SoundLoad(string select_nodes, string single_node)
+    {
+        //xml 불러오기
+        XmlLoad();
+
+        //파싱
+        string gundrop = "";
+        XmlNodeList nodes = xmlDoc.SelectNodes("DocumentElement/" + select_nodes);
+        foreach (XmlNode node in nodes)
+        {
+            gundrop = node.SelectSingleNode(single_node).InnerText;
+        }
+
+        //파싱값 배열에 입력
+        //string[] sound = gundrop.Split(new char[] { ',' });
+        string[] sound = gundrop.Split(',');
+
+        //사운드클립 리스트에 입력
+        for (int i = 0; i < sound.Length; i++)
+        {
+            AddList(sound[i], select_nodes, single_node);
+        }
+    }
+    public void AddList(string fileName, string select_nodes, string single_node)
+    {
+        string filePath = Application.dataPath + "/SFX/" + 
+            select_nodes + "/" + single_node + "/" + fileName + ".wav";
+        if (File.Exists(filePath) == true)
+        {
+            byte[] wavFile = File.ReadAllBytes(filePath);
+            list.Add(OpenWavParser.ByteArrayToAudioClip(wavFile));
+        }
+    }
+    public AudioClip LoadAudioClip()
+    {
+        random = UnityEngine.Random.Range(0, 3);
+
+        return list[random];
+    }
+    #endregion
+
     #region 총소리
 
     //순서 맞춰야됨
@@ -50,7 +92,7 @@ public class SoundDB : MonoBehaviour
         for (int i = 0; i < sound.Length; i++)
         {
             GunDropList(sound[i]);
-        }     
+        }
     }
     public void GunDropList(string fileName)
     {

@@ -243,7 +243,8 @@ public class AIParent : MonoBehaviour
     }
 
     private void AttackAudio()
-    {        
+    {
+        
         AIAudio.clip = attack_SFX;
         AIAudio.Play();
     }
@@ -260,6 +261,7 @@ public class AIParent : MonoBehaviour
     protected virtual void PlayerDead()
     {
         isPlayerDead = true;
+
         //player.transform.Find("Body").SendMessage("Dead");      //플레이어에게 죽어다고 알리기
         //player.SendMessage("Dead");      //플레이어에게 죽어다고 알리기
     }
