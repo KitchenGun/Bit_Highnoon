@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/NetworkScene/Network.unity
-    guid: 8e213cf86ae2e4046b2741cd9564d640
-  - enabled: 1
     path: Assets/Scenes/SceneManager/Intro.unity
     guid: a769f40a5ef79fa48b1e352af2744937
   - enabled: 1
@@ -41,6 +38,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SceneManager/Option.unity
     guid: dfd5b7ef53f7a6d4ab0aa7e08fe29db4
+  - enabled: 0
+    path: Assets/Scenes/NetworkScene/Network.unity
+    guid: 8e213cf86ae2e4046b2741cd9564d640
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: f79963405ce4d3940ad39f629603eb3a, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 30c362f20d93d8f4d950c7b93a305567, type: 2}

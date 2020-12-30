@@ -2435,6 +2435,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Panel: {fileID: 1059642955}
+  Controllers:
+  - {fileID: 3367984745410137784}
+  - {fileID: 3367396442650887258}
 --- !u!114 &1131848730
 MonoBehaviour:
   m_ObjectHideFlags: 0

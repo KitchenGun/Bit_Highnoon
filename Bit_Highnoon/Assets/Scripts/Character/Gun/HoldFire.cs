@@ -8,18 +8,19 @@ public class HoldFire : MonoBehaviour
     private int SceneNum;
     private List<GameObject> Holster;
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         #region 씬확인
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         SceneNum = GM.GetSceneIndex();
-        SceneCheck();
         #endregion
         #region 홀스터
         Holster = new List<GameObject>();
         Holster.Add(this.gameObject.GetComponent<PlayerTracking>().GetBeltObj().transform.GetChild(1).gameObject);
         Holster.Add(this.gameObject.GetComponent<PlayerTracking>().GetBeltObj().transform.GetChild(2).gameObject);
         #endregion
+        //확인한 씬을 통해서 총기 사용가능을 확인
+        SceneCheck();
     }
 
     #region 씬에 따른 충돌체 상태 초기화

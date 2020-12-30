@@ -7,19 +7,15 @@ public class PlayerHit : MonoBehaviour
 {
     [SerializeField]
     private  Image Panel;
+    [SerializeField]
     private List<GameObject> Controllers;
 
 
 
     void Start()
     {
-        Controllers = new List<GameObject>();
+        //Controllers = new List<GameObject>();
         Panel.color = new Vector4(0,0,0,0);
-
-        #region 자신의 컨트롤러를 얻어오기위한 방법
-        Controllers.Add(this.gameObject.transform.parent.Find("LeftControllerAnchor").gameObject);
-        Controllers.Add(this.gameObject.transform.parent.Find("RightControllerAnchor").gameObject);
-        #endregion
 
     }
 

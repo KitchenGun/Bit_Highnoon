@@ -108,38 +108,40 @@ public class GameManager : MonoBehaviour
     #region 게임 Start & End 음악
     private void GameStart()
     {
-        AudioSource Audio = GetComponent<AudioSource>();
-
-        Audio.clip = db.list[1];
-        Audio.loop = false;
+       //AudioSource Audio = GetComponent<AudioSource>();
+       //
+       //Audio.clip = db.list[1];
+       //Audio.loop = false;
+       //
+       //Audio.Play();
         
-        Audio.Play();
-
         //yield return new WaitForSeconds(1.5f);  //노래 시작후 플레이어가 공격할 수 있는 시간
 
         PlayerStart();
+
     }
+
 
     private void PlayerStart()
     {
         GameObject player = GameObject.Find("PlayerCtrl");
 
         Debug.Log("gamestart");
-        player.transform.Find("Body").SendMessage("OpenFire");
+        player.transform.Find("Body").GetComponent<HoldFire>().SendMessage("OpenFire");
     }    
 
     private IEnumerator GameEnd()
     {
-        AudioSource Audio = GetComponent<AudioSource>();
-
-        Audio.clip = db.list[0];
-        Audio.loop = false;
-
-        Audio.Play();
+        //AudioSource Audio = GetComponent<AudioSource>();
+        //
+        //Audio.clip = db.list[0];
+        //Audio.loop = false;
+        //
+        //Audio.Play();
 
         yield return new WaitForSeconds(5f);
 
-        ChangeToScene(2);
+        ChangeToScene(1);
     }
     #endregion
 
