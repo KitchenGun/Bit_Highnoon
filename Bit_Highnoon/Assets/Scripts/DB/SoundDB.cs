@@ -25,7 +25,6 @@ public class SoundDB : MonoBehaviour
         xmlDoc.LoadXml(txtAsset.text);
     }
 
-
     #region 총소리
 
     //순서 맞춰야됨

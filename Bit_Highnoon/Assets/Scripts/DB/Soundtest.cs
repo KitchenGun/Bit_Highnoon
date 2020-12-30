@@ -11,7 +11,7 @@ public class Soundtest : MonoBehaviour
         AudioSource audio = this.gameObject.transform.GetComponent<AudioSource>();
 
         db.GunSoundList();
-
+        
         audio.clip = db.GunFireWhiz();
         audio.Play();
 

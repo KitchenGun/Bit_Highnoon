@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    private SoundDB db;
+
     #region Singleton 싱글톤
     private static GameManager instance;
 
@@ -25,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        db = this.gameObject.AddComponent<SoundDB>();
         if(instance == null)
         {
             instance = this;
@@ -38,6 +41,16 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
     #endregion
+
+    #region 사운드DB
+
+    private void SoundList()
+    {
+        db.GunSoundList();
+    }
+
+    #endregion
+
 
     #region 함수
     //씬 이동
