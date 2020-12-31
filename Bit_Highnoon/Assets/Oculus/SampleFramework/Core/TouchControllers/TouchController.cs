@@ -346,8 +346,9 @@ namespace OVRTouchSample
         private void Drop()
         {
             if (this.gameObject.transform.Find("OculusTouchForQuest2").GetComponentInChildren<SkinnedMeshRenderer>().enabled == false)
-            {//총을 들고있을 경우
-
+            {
+                //총을 들고있을 경우
+                this.gameObject.GetComponent<SphereCollider>().enabled = false;
                 //드랍 할 경우 손 위치에 총 모양 생성
                 GameObject Gun = Instantiate<GameObject>(GunSample, this.transform.position, Quaternion.identity) as GameObject;
                 Gun.tag = "DropObj";

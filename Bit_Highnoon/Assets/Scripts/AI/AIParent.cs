@@ -224,32 +224,37 @@ public class AIParent : MonoBehaviour
     #region audio함수
     private void IdleAudio()
     {
-        AIAudio.clip = idle_SFX;
+        AIAudio.clip = gameManager.GetComponent<SoundDB>().list["Start"];
         AIAudio.Play();
     }
 
     private void DeadAudio()
     {
-        AIAudio.clip = dead_SFX;
+        AIAudio.clip = gameManager.GetComponent<SoundDB>().list["Dead"];
         AIAudio.Play();
     }
 
     private void HitAudio()
     {
-        AIAudio.clip = hit_SFX;
+        AIAudio.clip = gameManager.GetComponent<SoundDB>().list["Hit"];
         AIAudio.Play();
     }
 
     private void AttackAudio()
     {
-        AIAudio.clip = attack_SFX;
+        string audioname = "enemyfire";
+        int rand = UnityEngine.Random.Range(1, 5);
+
+        audioname += rand;
+
+        AIAudio.clip = gameManager.GetComponent<SoundDB>().list[audioname];
         //AIAudio.clip = attack_SFX;
         AIAudio.Play();
     }
 
     protected void PlayerDeadAudio()
     {
-        AIAudio.clip = player_Dead_SFX;
+        AIAudio.clip = gameManager.GetComponent<SoundDB>().list["PlayerDead"];
         AIAudio.Play();
 
         isPlayerDeadAudio = true;

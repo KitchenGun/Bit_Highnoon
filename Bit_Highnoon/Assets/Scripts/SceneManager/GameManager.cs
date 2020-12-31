@@ -108,13 +108,13 @@ public class GameManager : MonoBehaviour
     #region 게임 Start & End 음악
     private void GameStart()
     {
-       //AudioSource Audio = GetComponent<AudioSource>();
-       //
-       //Audio.clip = db.list[1];
-       //Audio.loop = false;
-       //
-       //Audio.Play();
-        
+        AudioSource Audio = GetComponent<AudioSource>();
+
+        Audio.clip = db.list["GameStart"];
+        Audio.loop = false;
+
+        Audio.Play();
+
         //yield return new WaitForSeconds(1.5f);  //노래 시작후 플레이어가 공격할 수 있는 시간
 
         PlayerStart();
@@ -132,12 +132,12 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator GameEnd()
     {
-        //AudioSource Audio = GetComponent<AudioSource>();
-        //
-        //Audio.clip = db.list[0];
-        //Audio.loop = false;
-        //
-        //Audio.Play();
+        AudioSource Audio = GetComponent<AudioSource>();
+
+        Audio.clip = db.list["GameEnd"];
+        Audio.loop = false;
+
+        Audio.Play();
 
         yield return new WaitForSeconds(5f);
 
