@@ -48,9 +48,9 @@ Canvas:
   m_GameObject: {fileID: 571480056}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 3366610077945538646}
-  m_PlaneDistance: 100
+  m_PlaneDistance: 1
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -813,9 +813,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6a2d299359b5e44a29890543b50df4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GunFire_SFX: {fileID: 8300000, guid: 6f5eaaafc85f7fe4189bbecc15ec1e73, type: 3}
-  GunBulletEmpty_SFX: {fileID: 8300000, guid: 0f81f231e403f794eb88a9a472835c8f, type: 3}
-  GunReload_SFX: {fileID: 8300000, guid: e23c81c05ab44f947a543274b83505d3, type: 3}
 --- !u!120 &163078606
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1551,7 +1548,6 @@ MonoBehaviour:
   m_animator: {fileID: 3366610077380980055}
   GunSample: {fileID: 6427453903766255031, guid: a3ce6bd5f07f106478125463bfcd52a0, type: 3}
   Belt: {fileID: 2484284772289482528}
-  Pistol_Garb: {fileID: 8300000, guid: 8c8e25f8025ef804b8949f423258fbd8, type: 3}
 --- !u!135 &2521929687196590092
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1730,7 +1726,6 @@ MonoBehaviour:
   m_animator: {fileID: 3366610076373781100}
   GunSample: {fileID: 6427453903766255031, guid: a3ce6bd5f07f106478125463bfcd52a0, type: 3}
   Belt: {fileID: 2484284772289482528}
-  Pistol_Garb: {fileID: 8300000, guid: 8c8e25f8025ef804b8949f423258fbd8, type: 3}
 --- !u!135 &2875594989744872365
 SphereCollider:
   m_ObjectHideFlags: 0

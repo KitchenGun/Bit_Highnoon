@@ -23,11 +23,8 @@ public class HandGunRayCast : MonoBehaviour
     private AudioSource HandGunFireClickAudio;
     private AudioSource HandGunReloadAudio;
     private AudioSource HandGunFireAudio;
-    [SerializeField]
     private AudioClip GunFire_SFX;
-    [SerializeField]
     private AudioClip GunBulletEmpty_SFX;
-    [SerializeField]
     private AudioClip GunReload_SFX;
     #endregion
     #region Animation
@@ -161,17 +158,18 @@ public class HandGunRayCast : MonoBehaviour
     #region SFX
     private void Gun_Fire_SFX()
     {
-        HandGunFireAudio.clip = this.GunFire_SFX;
+        //사운드 효과
+        HandGunFireAudio.clip = GM.GetComponent<GameManager>().RandomSound("fire",3);
         HandGunFireAudio.Play();
     }
     private void Gun_BulletEmpty_SFX()
     {
-        HandGunFireClickAudio.clip = this.GunBulletEmpty_SFX;
+        HandGunFireClickAudio.clip = GM.GetComponent<GameManager>().LoadAudioClip("empty");
         HandGunFireClickAudio.Play();
     }
     private void Gun_Reload_SFX()
     {
-        HandGunReloadAudio.clip = this.GunReload_SFX;
+        HandGunReloadAudio.clip = GM.GetComponent<GameManager>().LoadAudioClip("reload");
         HandGunReloadAudio.Play();
     }
     #endregion
