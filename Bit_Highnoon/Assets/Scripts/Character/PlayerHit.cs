@@ -14,12 +14,11 @@ public class PlayerHit : MonoBehaviour
 
     void Start()
     {
-        //Controllers = new List<GameObject>();
         Panel.color = new Vector4(0,0,0,0);
 
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         #region 색상확인
         if (Panel.color != (Color)new Vector4(0, 0, 0, 0))
@@ -32,7 +31,7 @@ public class PlayerHit : MonoBehaviour
     #region 패널 색상 변경
     private void PanelSetRed()
     {
-        Panel.color = new Vector4(1, 0, 0, 0.5f);
+        Panel.color = new Vector4(1, 0, 0, 0.8f);
     }
     #endregion
 
