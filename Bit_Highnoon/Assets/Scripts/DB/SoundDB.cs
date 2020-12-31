@@ -68,6 +68,11 @@ public class SoundDB : MonoBehaviour
         string[] Folder1 = null;
         string[] Folder2 = null;
 
+        #region 모든 씬에 들어가는 소리
+        Folder1 = ("Gun,Gun,Gun,Gun,User").Split(',');
+        Folder2 = ("DropGun,GripGun,GunFire,Reload,Walk").Split(',');
+        #endregion
+
         switch (idx)
         {
             case 0: break;

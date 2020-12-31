@@ -45,6 +45,23 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    #region 사운드 랜덤 호출 함수
+    public AudioClip LoadAudioClip(string filename)
+    {
+        return db.list[filename];
+    }
+
+    public AudioClip RandomSound(string filename, int count)
+    {
+        int rand = UnityEngine.Random.Range(1, count + 1);
+
+        filename += rand;
+
+        return db.list[filename];
+    }
+
+    #endregion
+
     #region 함수
     //씬 이동
     public void ChangeToScene(int idx)

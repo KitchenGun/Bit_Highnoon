@@ -36,20 +36,7 @@ public class AIParent : MonoBehaviour
 
     private GameObject gameManager;
 
-    #region audio
     protected AudioSource AIAudio;
-    [SerializeField]
-    private AudioClip idle_SFX;
-    [SerializeField]
-    private AudioClip dead_SFX;
-    [SerializeField]
-    private AudioClip hit_SFX;
-    [SerializeField]
-    protected AudioClip attack_SFX;
-    [SerializeField]
-    private AudioClip player_Dead_SFX;
-    
-    #endregion
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -224,37 +211,32 @@ public class AIParent : MonoBehaviour
     #region audio함수
     private void IdleAudio()
     {
-        AIAudio.clip = gameManager.GetComponent<SoundDB>().list["Start"];
+        AIAudio.clip = gameManager.GetComponent<GameManager>().LoadAudioClip("Start");
         AIAudio.Play();
     }
 
     private void DeadAudio()
     {
-        AIAudio.clip = gameManager.GetComponent<SoundDB>().list["Dead"];
+        AIAudio.clip = gameManager.GetComponent<GameManager>().LoadAudioClip("Dead");
         AIAudio.Play();
     }
 
     private void HitAudio()
     {
-        AIAudio.clip = gameManager.GetComponent<SoundDB>().list["Hit"];
+        AIAudio.clip = gameManager.GetComponent<GameManager>().LoadAudioClip("Hit");
         AIAudio.Play();
     }
 
     private void AttackAudio()
     {
-        string audioname = "enemyfire";
-        int rand = UnityEngine.Random.Range(1, 5);
-
-        audioname += rand;
-
-        AIAudio.clip = gameManager.GetComponent<SoundDB>().list[audioname];
+        AIAudio.clip = gameManager.GetComponent<GameManager>().RandomSound("enemyfire", 4);
         //AIAudio.clip = attack_SFX;
         AIAudio.Play();
     }
 
     protected void PlayerDeadAudio()
     {
-        AIAudio.clip = gameManager.GetComponent<SoundDB>().list["PlayerDead"];
+        AIAudio.clip = gameManager.GetComponent<GameManager>().LoadAudioClip("PlayerDead");
         AIAudio.Play();
 
         isPlayerDeadAudio = true;
