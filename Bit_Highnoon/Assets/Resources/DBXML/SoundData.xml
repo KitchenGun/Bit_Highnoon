@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <DocumentElement>
   <AI>
-    <Easy>Dialogue1,Dialogue2,DrinkingSound,EasyDead,EasyPlayerDead,EasyStart</Easy>
+    <Easy>Dead,Dialogue1,Dialogue2,DrinkingSound,PlayerDead,Start</Easy>
     <GameStartEnd>GameEnd,GameStart</GameStartEnd>
-    <Hard>HardDead,HardHit,HardPlayerDead,HardStart</Hard>
-    <Normal>NormalDead,NormalHit,NormalPlayerDead,NormalStart</Normal>
+    <Hard>Dead,Hit,PlayerDead,Start</Hard>
+    <Normal>Dead,Hit,PlayerDead,Start</Normal>
   </AI>
   <Bgm>
     <BattleStart>BattleStart</BattleStart>
