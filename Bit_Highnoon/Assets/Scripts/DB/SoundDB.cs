@@ -9,7 +9,7 @@ using UnityEngine.Networking;
 
 public class SoundDB : MonoBehaviour
 {
-    public List<AudioClip> list = new List<AudioClip>();
+    public Dictionary<string, AudioClip> list = new Dictionary<string, AudioClip>();
     private int random;
 
     //주소값 변동있을수 있음
@@ -57,7 +57,7 @@ public class SoundDB : MonoBehaviour
         if (File.Exists(filePath) == true)
         {
             byte[] wavFile = File.ReadAllBytes(filePath);
-            list.Add(OpenWavParser.ByteArrayToAudioClip(wavFile));
+            list.Add(fileName, OpenWavParser.ByteArrayToAudioClip(wavFile));
         }
     }
 
@@ -65,27 +65,33 @@ public class SoundDB : MonoBehaviour
     {
         list.Clear();
 
-        switch(idx)
+        string[] Folder1 = null;
+        string[] Folder2 = null;
+
+        switch (idx)
         {
             case 0: break;
             case 1: break;
             case 2: break;
             case 3:
-                SoundLoad("AI", "GameStartEnd");
-                SoundLoad("AI", "Easy");
-                SoundLoad("Gun", "EnemyFire");
+                Folder1 = ("AI,AI,Gun").Split(',');
+                Folder2 = ("GameStartEnd,Easy,EnemyFire").Split(',');
                 break;
             case 4:
-                SoundLoad("AI", "GameStartEnd");  //0 ~ 1
-                SoundLoad("AI", "Normal");          //2 ~ 5
-                SoundLoad("Gun", "EnemyFire");      //6 ~ 9
+                Folder1 = ("AI,AI,Gun").Split(',');
+                Folder2 = ("GameStartEnd,Normal,EnemyFire").Split(',');
                 break;
             case 5:
-                SoundLoad("AI", "GameStartEnd");
-                SoundLoad("AI", "Hard");
-                SoundLoad("Gun", "EnemyFire");
+                Folder1 = ("AI,AI,Gun").Split(',');
+                Folder2 = ("GameStartEnd,Hard,EnemyFire").Split(',');
                 break;
             case 7: break;
+        }
+
+        if(Folder1 != null)
+        {
+            for (int i = 0; i < Folder1.Length; i++)
+                SoundLoad(Folder1[i], Folder2[i]);
         }
     }
     #endregion
