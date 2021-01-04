@@ -23,9 +23,6 @@ public class HandGunRayCast : MonoBehaviour
     private AudioSource HandGunFireClickAudio;
     private AudioSource HandGunReloadAudio;
     private AudioSource HandGunFireAudio;
-    private AudioClip GunFire_SFX;
-    private AudioClip GunBulletEmpty_SFX;
-    private AudioClip GunReload_SFX;
     #endregion
     #region Animation
     private Animator GunAni;
@@ -159,7 +156,7 @@ public class HandGunRayCast : MonoBehaviour
     private void Gun_Fire_SFX()
     {
         //사운드 효과
-        HandGunFireAudio.clip = GM.GetComponent<GameManager>().RandomSound("fire",3);
+        HandGunFireAudio.clip = GM.GetComponent<GameManager>().RandomSound("fire");
         HandGunFireAudio.Play();
     }
     private void Gun_BulletEmpty_SFX()
@@ -183,7 +180,7 @@ public class HandGunRayCast : MonoBehaviour
             GunAni.SetTrigger("Fire");
             Gun_Fire_SFX();
             //총알 감소 격발 상태 
-            if (SceneIdx == 1 || SceneIdx == 2)//메뉴 씬이 아닐 경우
+            if (SceneIdx == 1 || SceneIdx == 2|| SceneIdx ==6 )//메뉴 씬이 아닐 경우
             {
                 Debug.Log(SceneIdx);
             }
