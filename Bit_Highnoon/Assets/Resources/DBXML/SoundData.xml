@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <DocumentElement>
   <AI>
-    <Easy>Dead,Dialogue1,Dialogue2,DrinkingSound,PlayerDead,Start</Easy>
-    <GameStartEnd>GameEnd,GameStart</GameStartEnd>
+    <Easy>Dead,Dialogue1,Dialogue2,DrinkingSound,PlayerDead,Start</Easy>    
     <Hard>Dead,Hit,PlayerDead,Start</Hard>
     <Normal>Dead,Hit,PlayerDead,Start</Normal>
   </AI>
   <Bgm>
-    <BattleStart>BattleStart</BattleStart>
-    <BattleEnd>BattleEnd</BattleEnd>
-    <GameStart>GameStart</GameStart>
+    <Battle>BattleEnd,BattleStart</Battle>
     <WindSound>WindSound</WindSound>
   </Bgm>
   <Effect>

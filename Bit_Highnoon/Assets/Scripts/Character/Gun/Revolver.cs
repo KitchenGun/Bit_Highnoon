@@ -4,17 +4,25 @@ using UnityEngine;
 
 public class Revolver : MonoBehaviour
 {
+    private GameManager GM;
     private bool NewGun = true;
     int Max_bullet=6;
     public int cur_bullet { get; private set; }
     public bool FireState { get; private set; }
+
+    #region Audio
+    private AudioSource HitOtherObjAudio;
+    #endregion
+
     private void Start()
     {
+        GM = GameObject.Find("GameManager").GetComponent<GameManager>(); 
         if (this.gameObject.name != "Gun(Clone)")
         {
             setbullet(Max_bullet, NewGun);
             setFireState(true);
         }
+        HitOtherObjAudio = this.gameObject.GetComponent<AudioSource>();
     }
     public void setbullet(int bullet,bool isNewGun)
     {
@@ -44,4 +52,14 @@ public class Revolver : MonoBehaviour
         FireState = state;
     }
 
+    #region 바닥충돌 감지
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == 8)
+        {
+            HitOtherObjAudio.clip = GM.GetComponent<GameManager>().RandomSound("drop");
+            HitOtherObjAudio.Play();
+        }
+    }
+    #endregion
 }

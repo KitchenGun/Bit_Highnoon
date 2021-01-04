@@ -15649,14 +15649,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 571480060, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
-      propertyPath: m_RenderMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 571480060, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
-      propertyPath: m_PlaneDistance
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3366610077945000640, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -25165,11 +25157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4318c633484ae145b2f2943764181df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idle_SFX: {fileID: 8300000, guid: 6bf1d9db3c2b04941b3b9384a71f4e75, type: 3}
-  dead_SFX: {fileID: 8300000, guid: 2cdaf2a3dea710148bf7107fbe80632c, type: 3}
-  hit_SFX: {fileID: 8300000, guid: 38d2f1fd46407194b87ec81f07966bad, type: 3}
-  attack_SFX: {fileID: 8300000, guid: 4199a585171c62645a74a448efd33fd0, type: 3}
-  player_Dead_SFX: {fileID: 8300000, guid: 70a4cdf085726994aac7afa484924846, type: 3}
 --- !u!82 &1451157635
 AudioSource:
   m_ObjectHideFlags: 0

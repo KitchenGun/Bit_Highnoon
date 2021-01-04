@@ -16,8 +16,11 @@ public class PlayerTeleport : MonoBehaviour
     private GameObject GM;
     #endregion
     private Vector3 targetPos; //위치
-
     bool targetAcquired = false; //목표를 획득했는가
+
+    #region 
+    private AudioSource WalkAudio;
+    #endregion
 
     private void Awake()
     {
@@ -45,7 +48,17 @@ public class PlayerTeleport : MonoBehaviour
         laser = this.gameObject.GetComponent<LineRenderer>();
         laser.startWidth = laser.endWidth = 0.5f;
         laser.positionCount = laserSteps;//레이저가 보여질 거리
+        #region Audio
+        WalkAudio = this.gameObject.GetComponent<AudioSource>();
+        #endregion
     }
+
+    #region 텔포 가능 불가능 함수 전달
+    private void SetTeleportEnable(bool value)
+    {
+        TeleportEnable = value; 
+    }
+    #endregion
 
     private void Update()
     {
@@ -120,6 +133,8 @@ public class PlayerTeleport : MonoBehaviour
         Vector3 offset = new Vector3(targetPos.x - head.transform.position.x, targetPos.y - cameraRig.position.y, targetPos.z - head.transform.position.z);
 
         cameraRig.position += offset;
+        WalkAudio.clip = GM.GetComponent<GameManager>().RandomSound("walk");
+        WalkAudio.Play();
     }
     #endregion
 
