@@ -45,19 +45,28 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    #region 사운드 랜덤 호출 함수
+    #region 사운드 호출 함수
     public AudioClip LoadAudioClip(string filename)
     {
-        return db.list[filename];
+        return db.AudioList[filename];
     }
 
-    public AudioClip RandomSound(string filename, int count)
+    public AudioClip RandomSound(string filename)
     {
-        int rand = UnityEngine.Random.Range(1, count + 1);
+        int i = 1;
+        string temp = filename + i;
+
+        while (db.AudioList.ContainsKey(temp))
+        {
+            i++;
+            temp = filename + i;
+        }
+                
+        int rand = UnityEngine.Random.Range(1, i);
 
         filename += rand;
 
-        return db.list[filename];
+        return db.AudioList[filename];
     }
 
     #endregion
@@ -127,7 +136,7 @@ public class GameManager : MonoBehaviour
     {
         AudioSource Audio = GetComponent<AudioSource>();
 
-        Audio.clip = db.list["GameStart"];
+        Audio.clip = db.AudioList["GameStart"];
         Audio.loop = false;
 
         Audio.Play();
@@ -151,7 +160,7 @@ public class GameManager : MonoBehaviour
     {
         AudioSource Audio = GetComponent<AudioSource>();
 
-        Audio.clip = db.list["GameEnd"];
+        Audio.clip = db.AudioList["GameEnd"];
         Audio.loop = false;
 
         Audio.Play();
