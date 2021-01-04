@@ -55,10 +55,13 @@ public class Revolver : MonoBehaviour
     #region 바닥충돌 감지
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == 8)
+        if (this.gameObject.name != "BeltGun")
         {
-            HitOtherObjAudio.clip = GM.GetComponent<GameManager>().RandomSound("drop");
-            HitOtherObjAudio.Play();
+            if (collision.gameObject.layer == 8)
+            {
+                HitOtherObjAudio.clip = GM.GetComponent<GameManager>().RandomSound("drop");
+                HitOtherObjAudio.Play();
+            }
         }
     }
     #endregion
