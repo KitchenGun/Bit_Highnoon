@@ -82,16 +82,16 @@ public class SoundDB : MonoBehaviour
             case 1: break;
             case 2: break;
             case 3:
-                folder1.AddRange(("AI,AI,Gun").Split(','));
-                folder2.AddRange(("GameStartEnd,Easy,EnemyFire").Split(','));
+                folder1.AddRange(("AI,Gun,Bgm").Split(','));
+                folder2.AddRange(("Easy,EnemyFire,Battle").Split(','));
                 break;
             case 4:
-                folder1.AddRange(("AI,AI,Gun").Split(','));
-                folder2.AddRange(("GameStartEnd,Normal,EnemyFire").Split(','));
+                folder1.AddRange(("AI,Gun,Bgm").Split(','));
+                folder2.AddRange(("Normal,EnemyFire,Battle").Split(','));
                 break;
             case 5:
-                folder1.AddRange(("AI,AI,Gun").Split(','));
-                folder2.AddRange(("GameStartEnd,Hard,EnemyFire").Split(','));
+                folder1.AddRange(("AI,Gun,Bgm").Split(','));
+                folder2.AddRange(("Hard,EnemyFire,Battle").Split(','));
                 break;
             case 7: break;
         }

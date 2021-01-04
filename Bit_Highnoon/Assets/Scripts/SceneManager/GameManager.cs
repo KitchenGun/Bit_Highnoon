@@ -136,7 +136,7 @@ public class GameManager : MonoBehaviour
     {
         AudioSource Audio = GetComponent<AudioSource>();
 
-        Audio.clip = db.AudioList["GameStart"];
+        Audio.clip = db.AudioList["BattleStart"];
         Audio.loop = false;
 
         Audio.Play();
@@ -160,7 +160,7 @@ public class GameManager : MonoBehaviour
     {
         AudioSource Audio = GetComponent<AudioSource>();
 
-        Audio.clip = db.AudioList["GameEnd"];
+        Audio.clip = db.AudioList["BattleEnd"];
         Audio.loop = false;
 
         Audio.Play();

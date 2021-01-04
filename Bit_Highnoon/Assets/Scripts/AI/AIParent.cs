@@ -229,8 +229,7 @@ public class AIParent : MonoBehaviour
 
     private void AttackAudio()
     {
-        AIAudio.clip = gameManager.GetComponent<GameManager>().RandomSound("enemyfire");
-        //AIAudio.clip = attack_SFX;
+        AIAudio.clip = gameManager.GetComponent<GameManager>().RandomSound("enemyfire");        
         AIAudio.Play();
     }
 
