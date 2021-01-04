@@ -75,9 +75,9 @@ public class GameManager : MonoBehaviour
     //씬 이동
     public void ChangeToScene(int idx)
     {
-        SceneManager.LoadScene(idx);
+        db.SoundUpdate(idx);
 
-        db.SoundUpdate(GetSceneIndex());
+        SceneManager.LoadScene(idx);
     }
 
     //게임 종료
