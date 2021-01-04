@@ -190,7 +190,7 @@ public class HandGunRayCast : MonoBehaviour
             //총알 감소 격발 상태 
             if (SceneIdx == 1 || SceneIdx == 2|| SceneIdx ==6 )//메뉴 씬이 아닐 경우
             {
-                Debug.Log(SceneIdx);
+
             }
             else
             {
