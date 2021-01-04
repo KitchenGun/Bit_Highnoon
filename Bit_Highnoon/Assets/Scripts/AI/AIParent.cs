@@ -145,7 +145,7 @@ public class AIParent : MonoBehaviour
         if (isGameStartAudio == false && AIAudio.isPlaying == false && isIdleAudio == true)
         {
             gameManager.SendMessage("GameStart");
-            idleTime = -1;
+            //idleTime = 10 * Time.deltaTime;
             isGameStartAudio = true;
         }
     }
