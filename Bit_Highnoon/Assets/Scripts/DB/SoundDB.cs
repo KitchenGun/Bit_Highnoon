@@ -9,15 +9,16 @@ using UnityEngine.Networking;
 
 public class SoundDB : MonoBehaviour
 {
-    public Dictionary<string, AudioClip> list = new Dictionary<string, AudioClip>();
-    private int random;
+    private Dictionary<string, AudioClip> audioList = new Dictionary<string, AudioClip>();
+
+    public Dictionary<string, AudioClip> AudioList 
+    { 
+        get { return audioList; } 
+    }
 
     //주소값 변동있을수 있음
     readonly string xmlname = "SoundData";
     XmlDocument xmlDoc = new XmlDocument();
-
-    //사운드 주소값
-    //string gunfolder = "/SFX/Gun/";     //총소리
 
     public void XmlLoad()
     {
@@ -57,20 +58,22 @@ public class SoundDB : MonoBehaviour
         if (File.Exists(filePath) == true)
         {
             byte[] wavFile = File.ReadAllBytes(filePath);
-            list.Add(fileName, OpenWavParser.ByteArrayToAudioClip(wavFile));
+            audioList.Add(fileName, OpenWavParser.ByteArrayToAudioClip(wavFile));
         }
     }
 
     public void SoundUpdate(int idx)
     {
-        list.Clear();
+        audioList.Clear();
 
-        string[] Folder1 = null;
-        string[] Folder2 = null;
+        //Dictionary<string, string> folder = new Dictionary<string, string>();
+
+        List<string> folder1 = new List<string>();
+        List<string> folder2 = new List<string>();
 
         #region 모든 씬에 들어가는 소리
-        Folder1 = ("Gun,Gun,Gun,Gun,User").Split(',');
-        Folder2 = ("DropGun,GripGun,GunFire,Reload,Walk").Split(',');
+        folder1.AddRange(("Gun,Gun,Gun,Gun,User").Split(','));
+        folder2.AddRange(("DropGun,GripGun,GunFire,Reload,Walk").Split(','));
         #endregion
 
         switch (idx)
@@ -79,24 +82,24 @@ public class SoundDB : MonoBehaviour
             case 1: break;
             case 2: break;
             case 3:
-                Folder1 = ("AI,AI,Gun").Split(',');
-                Folder2 = ("GameStartEnd,Easy,EnemyFire").Split(',');
+                folder1.AddRange(("AI,Gun,Bgm").Split(','));
+                folder2.AddRange(("Easy,EnemyFire,Battle").Split(','));
                 break;
             case 4:
-                Folder1 = ("AI,AI,Gun").Split(',');
-                Folder2 = ("GameStartEnd,Normal,EnemyFire").Split(',');
+                folder1.AddRange(("AI,Gun,Bgm").Split(','));
+                folder2.AddRange(("Normal,EnemyFire,Battle").Split(','));
                 break;
             case 5:
-                Folder1 = ("AI,AI,Gun").Split(',');
-                Folder2 = ("GameStartEnd,Hard,EnemyFire").Split(',');
+                folder1.AddRange(("AI,Gun,Bgm").Split(','));
+                folder2.AddRange(("Hard,EnemyFire,Battle").Split(','));
                 break;
             case 7: break;
         }
 
-        if(Folder1 != null)
+        if(folder1 != null && folder1.Count == folder2.Count)
         {
-            for (int i = 0; i < Folder1.Length; i++)
-                SoundLoad(Folder1[i], Folder2[i]);
+            for (int i = 0; i < folder1.Count; i++)
+                SoundLoad(folder1[i], folder2[i]);
         }
     }
     #endregion
