@@ -80,6 +80,10 @@ public class HandGunRayCast : MonoBehaviour
                             {
                                 EnemyHit(HitObj.transform.gameObject);
                             }
+                            else if (HitObj.transform.gameObject.tag == "Button")
+                            {
+                                ButtonHit(HitObj.transform.gameObject);
+                            }
                         }
                     }
                 }
@@ -99,6 +103,10 @@ public class HandGunRayCast : MonoBehaviour
                             else if (HitObj.transform.gameObject.tag == "Enemy")
                             {
                                 EnemyHit(HitObj.transform.gameObject);
+                            }
+                            else if (HitObj.transform.gameObject.tag == "Button")
+                            {
+                                ButtonHit(HitObj.transform.gameObject);
                             }
                         }
                     }
@@ -239,6 +247,13 @@ public class HandGunRayCast : MonoBehaviour
     private void EnemyHit(GameObject enemy)
     {
         enemy.GetComponent<AIParent>().SendMessage("Hit");
+    }
+    #endregion
+
+    #region 버튼 식별
+    private void ButtonHit(GameObject button)
+    {
+        button.GetComponent<ButtonClick>().SendMessage("Hit", button);
     }
     #endregion
 }

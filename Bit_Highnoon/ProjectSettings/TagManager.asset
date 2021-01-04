@@ -10,6 +10,7 @@ TagManager:
   - Bottle
   - Enemy
   - Bullet
+  - Button
   layers:
   - Default
   - TransparentFX
