@@ -2052,6 +2052,8 @@ MonoBehaviour:
   - {fileID: 2163893938247476071}
   - {fileID: 8578149764831917447}
   - {fileID: 7114907137375704707}
+  - {fileID: 4863312878534797245}
+  - {fileID: 7395073571677830171}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -2069,7 +2071,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
-  m_SynchronizeScale: 1
+  m_SynchronizeScale: 0
   m_UseLocal: 1
 --- !u!114 &-724386888590527339
 MonoBehaviour:
@@ -2685,7 +2687,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
-  m_SynchronizeScale: 1
+  m_SynchronizeScale: 0
   m_UseLocal: 1
 --- !u!1001 &2918994351607474126
 PrefabInstance:
