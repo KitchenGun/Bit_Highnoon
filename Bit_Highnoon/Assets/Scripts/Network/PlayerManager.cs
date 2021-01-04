@@ -8,6 +8,8 @@ public class PlayerManager : MonoBehaviour
 {   
     //[SerializeField] string player_prefab;
     PhotonView PV;
+
+    GameObject controller;
     // Start is called before the first frame update
     void Awake()
     {
@@ -25,6 +27,6 @@ public class PlayerManager : MonoBehaviour
     void CreateController()
     {
         Transform spawnpoint = SpawnManager.instance.GetSpawnpoint();
-        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerController"), spawnpoint.position, spawnpoint.rotation,0,new object[] { PV.ViewID });
+        controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerController"), spawnpoint.position, spawnpoint.rotation,0,new object[] { PV.ViewID });
     }
 }

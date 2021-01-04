@@ -29,7 +29,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SceneManager/Multi_Mode.unity
     guid: a94e13bb48a616e41afb00418788d71f
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Scenes/NetworkScene/Network.unity
+    guid: 8e213cf86ae2e4046b2741cd9564d640
+  - enabled: 1
     path: Assets/Scenes/NetworkScene/Multi_Mode2.unity
     guid: 3cd990110c965e64080fa18e9b82e0f5
   - enabled: 0
@@ -39,9 +42,6 @@ EditorBuildSettings:
     path: Assets/Scenes/SceneManager/Option.unity
     guid: dfd5b7ef53f7a6d4ab0aa7e08fe29db4
   - enabled: 0
-    path: Assets/Scenes/NetworkScene/Network.unity
-    guid: 8e213cf86ae2e4046b2741cd9564d640
-  - enabled: 1
     path: Assets/Scenes/SceneManager/Test_Menu.unity
     guid: 34e7523a8cb8f4f4690a9f0b5c57bdf2
   m_configObjects:

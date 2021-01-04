@@ -2052,6 +2052,8 @@ MonoBehaviour:
   - {fileID: 2163893938247476071}
   - {fileID: 8578149764831917447}
   - {fileID: 7114907137375704707}
+  - {fileID: 4863312878534797245}
+  - {fileID: 7395073571677830171}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -2078,7 +2080,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4308368070096012332}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 314399e99d749454b9a40c089d158ce4, type: 3}
   m_Name: 
