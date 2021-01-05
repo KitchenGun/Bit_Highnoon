@@ -133,7 +133,7 @@ public class GameManager : MonoBehaviour
     {
         AudioSource Audio = GetComponent<AudioSource>();
 
-        Audio.clip = db.AudioList["BattleStart"];
+        Audio.clip = LoadAudioClip("BattleStart");
         Audio.loop = false;
 
         Audio.Play();
@@ -141,7 +141,6 @@ public class GameManager : MonoBehaviour
         //yield return new WaitForSeconds(1.5f);  //노래 시작후 플레이어가 공격할 수 있는 시간
 
         PlayerStart();
-
     }
 
 
@@ -157,7 +156,7 @@ public class GameManager : MonoBehaviour
     {
         AudioSource Audio = GetComponent<AudioSource>();
 
-        Audio.clip = db.AudioList["BattleEnd"];
+        Audio.clip = LoadAudioClip("BattleEnd");
         Audio.loop = false;
 
         Audio.Play();

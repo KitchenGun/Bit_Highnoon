@@ -79,8 +79,14 @@ public class SoundDB : MonoBehaviour
         switch (idx)
         {
             case 0: break;
-            case 1: break;
-            case 2: break;
+            case 1:
+                folder1.AddRange(("Effect").Split(','));
+                folder2.AddRange(("glass").Split(','));
+                break;
+            case 2:
+                folder1.AddRange(("Effect").Split(','));
+                folder2.AddRange(("glass").Split(','));
+                break;
             case 3:
                 folder1.AddRange(("AI,Gun,Bgm").Split(','));
                 folder2.AddRange(("Easy,EnemyFire,Battle").Split(','));
@@ -93,7 +99,7 @@ public class SoundDB : MonoBehaviour
                 folder1.AddRange(("AI,Gun,Bgm").Split(','));
                 folder2.AddRange(("Hard,EnemyFire,Battle").Split(','));
                 break;
-            case 7: break;
+            case 6: break;
         }
 
         if(folder1 != null && folder1.Count == folder2.Count)

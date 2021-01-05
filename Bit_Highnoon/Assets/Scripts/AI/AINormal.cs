@@ -12,7 +12,7 @@ public class AINormal : AIParent
 
         lifeCount = 2;
 
-        idleTime = 3;   //대기 시간
+        idleTime = 2;   //대기 시간
 
         player_Dead_Count = 4;
 
