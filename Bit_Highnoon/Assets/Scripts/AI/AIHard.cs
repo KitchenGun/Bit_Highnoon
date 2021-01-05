@@ -10,7 +10,7 @@ public class AIHard : AIParent
 
         lifeCount = 2;
 
-        idleTime = 4;   //대기 시간
+        idleTime = 3;   //대기 시간
 
         StartCoroutine(CheckState());               //상태를 체크
         StartCoroutine(CheckStateForAction());      //상태의 따른

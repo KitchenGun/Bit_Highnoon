@@ -10,9 +10,9 @@
     <WindSound>WindSound</WindSound>
   </Bgm>
   <Effect>
-    <Can>can1,can2</Can>
-    <Etc>etc1,etc2,etc3,etc4</Etc>
-    <Glass>glass1,glass2,glass3,glass4</Glass>    
+    <can>can1,can2</can>
+    <etc>etc1,etc2,etc3,etc4</etc>
+    <glass>glass1,glass2,glass3,glass4</glass>    
   </Effect>
   <Gun>
     <DropGun>drop1,drop2,drop3</DropGun>
