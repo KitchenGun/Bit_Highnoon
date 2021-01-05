@@ -233,21 +233,24 @@ public class AIParent : MonoBehaviour
     }
     #endregion
 
-    protected virtual void PlayerDead()
-    {
-        isPlayerDead = true;
-
-        player.transform.Find("Body").GetComponent<PlayerHit>().SendMessage("Die");      //플레이어에게 죽어다고 알리기
-        //player.SendMessage("Dead");      //플레이어에게 죽어다고 알리기
-    }
-
     private void GameStart()
     {
         GameManager.Instance.GameStart();
+    }
+
+    protected void SendMessageDead()
+    {
+        player.transform.Find("Body").GetComponent<PlayerHit>().SendMessage("Die");      //플레이어에게 죽어다고 알리기
     }
 
     protected virtual void GameEnd()
     {
         StartCoroutine(GameManager.Instance.GameEnd());
     }
+
+    protected virtual void PlayerDead()
+    {
+        isPlayerDead = true;
+    }    
+
 }

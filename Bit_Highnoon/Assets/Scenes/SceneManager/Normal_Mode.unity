@@ -10246,8 +10246,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ad8c18bdfa7b8d4e8ccec7dc70f0b16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameStartAudio: {fileID: 8300000, guid: a56af903b312c954495c54cb887d5910, type: 3}
-  gameEndAudio: {fileID: 8300000, guid: 4eae780d78f45534eb73679df9af24a6, type: 3}
 --- !u!4 &610782313
 Transform:
   m_ObjectHideFlags: 0
@@ -27615,7 +27613,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400134, guid: dda7d6a2867eaf9449be2cab99f90a9e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5
+      value: -5.2
       objectReference: {fileID: 0}
     - target: {fileID: 400134, guid: dda7d6a2867eaf9449be2cab99f90a9e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -27623,7 +27621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400134, guid: dda7d6a2867eaf9449be2cab99f90a9e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.5
+      value: 9.9
       objectReference: {fileID: 0}
     - target: {fileID: 400134, guid: dda7d6a2867eaf9449be2cab99f90a9e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -34736,11 +34734,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10c84605203932647b16ed7a5c644fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idle_SFX: {fileID: 8300000, guid: 1b689644a30424d429c1e0dc9d1131c9, type: 3}
-  dead_SFX: {fileID: 8300000, guid: 98889ac90893c0749b08c7dd7f45aba4, type: 3}
-  hit_SFX: {fileID: 8300000, guid: d4eadb986ef84584a84556b3cee86504, type: 3}
-  attack_SFX: {fileID: 8300000, guid: 759f0b0f80aae604e887a403418184be, type: 3}
-  player_Dead_SFX: {fileID: 8300000, guid: 1678368fc767d2243a84b62f908bd4be, type: 3}
 --- !u!82 &2049534412
 AudioSource:
   m_ObjectHideFlags: 0
