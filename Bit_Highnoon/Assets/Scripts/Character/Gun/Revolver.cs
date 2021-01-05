@@ -59,7 +59,7 @@ public class Revolver : MonoBehaviour
         {
             if (collision.gameObject.layer == 8)
             {
-                HitOtherObjAudio.clip = GM.GetComponent<GameManager>().RandomSound("drop");
+                HitOtherObjAudio.clip = GM.GetComponent<GameManager>().LoadAudioClip("drop");
                 HitOtherObjAudio.Play();
             }
         }

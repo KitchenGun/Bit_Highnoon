@@ -164,7 +164,7 @@ public class HandGunRayCast : MonoBehaviour
     private void Gun_Fire_SFX()
     {
         //사운드 효과
-        HandGunFireAudio.clip = GM.GetComponent<GameManager>().RandomSound("fire");
+        HandGunFireAudio.clip = GM.GetComponent<GameManager>().LoadAudioClip("fire");
         HandGunFireAudio.Play();
     }
     private void Gun_BulletEmpty_SFX()

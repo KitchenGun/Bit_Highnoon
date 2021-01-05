@@ -34,7 +34,7 @@ public class AIParent : MonoBehaviour
 
     protected GameObject player;        //플레이어
 
-    private GameObject gameManager;
+    //private GameObject gameManager;
 
     protected AudioSource AIAudio;
 
@@ -52,7 +52,7 @@ public class AIParent : MonoBehaviour
 
         player = GameObject.Find("PlayerCtrl");       //플레이어 찾기
 
-        gameManager = GameObject.Find("GameManager");
+        //gameManager = GameObject.Find("GameManager");
 
         AIAudio = GetComponent<AudioSource>();
         AIAudio.loop = false;
@@ -144,7 +144,8 @@ public class AIParent : MonoBehaviour
 
         if (isGameStartAudio == false && AIAudio.isPlaying == false && isIdleAudio == true)
         {
-            gameManager.SendMessage("GameStart");
+            //gameManager.SendMessage("GameStart");
+            GameManager.Instance.GameStart();
             //idleTime = 10 * Time.deltaTime;
             isGameStartAudio = true;
         }
@@ -211,31 +212,36 @@ public class AIParent : MonoBehaviour
     #region audio함수
     private void IdleAudio()
     {
-        AIAudio.clip = gameManager.GetComponent<GameManager>().LoadAudioClip("Start");
+        //AIAudio.clip = gameManager.GetComponent<GameManager>().LoadAudioClip("Start");
+        AIAudio.clip = GameManager.Instance.LoadAudioClip("Start");
         AIAudio.Play();
     }
 
     private void DeadAudio()
     {
-        AIAudio.clip = gameManager.GetComponent<GameManager>().LoadAudioClip("Dead");
+        //AIAudio.clip = gameManager.GetComponent<GameManager>().LoadAudioClip("Dead");
+        AIAudio.clip = GameManager.Instance.LoadAudioClip("Dead");
         AIAudio.Play();
     }
 
     private void HitAudio()
     {
-        AIAudio.clip = gameManager.GetComponent<GameManager>().LoadAudioClip("Hit");
+        //AIAudio.clip = gameManager.GetComponent<GameManager>().LoadAudioClip("Hit");
+        AIAudio.clip = GameManager.Instance.LoadAudioClip("Hit");
         AIAudio.Play();
     }
 
     private void AttackAudio()
     {
-        AIAudio.clip = gameManager.GetComponent<GameManager>().RandomSound("enemyfire");        
+        //AIAudio.clip = gameManager.GetComponent<GameManager>().RandomSound("enemyfire");
+        AIAudio.clip = GameManager.Instance.LoadAudioClip("enemyfire");
         AIAudio.Play();
     }
 
     protected void PlayerDeadAudio()
     {
-        AIAudio.clip = gameManager.GetComponent<GameManager>().LoadAudioClip("PlayerDead");
+        //AIAudio.clip = gameManager.GetComponent<GameManager>().LoadAudioClip("PlayerDead");
+        AIAudio.clip = GameManager.Instance.LoadAudioClip("PlayerDead");
         AIAudio.Play();
 
         isPlayerDeadAudio = true;
@@ -252,6 +258,7 @@ public class AIParent : MonoBehaviour
 
     protected virtual void GameEnd()
     {
-        gameManager.SendMessage("GameEnd");   //게임 종료 음악
+        //gameManager.SendMessage("GameEnd");   //게임 종료 음악
+        StartCoroutine(GameManager.Instance.GameEnd());
     }
 }

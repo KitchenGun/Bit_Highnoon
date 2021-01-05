@@ -48,11 +48,9 @@ public class GameManager : MonoBehaviour
     #region 사운드 호출 함수
     public AudioClip LoadAudioClip(string filename)
     {
-        return db.AudioList[filename];
-    }
+        if (db.AudioList.ContainsKey(filename))
+            return db.AudioList[filename];
 
-    public AudioClip RandomSound(string filename)
-    {
         int i = 1;
         string temp = filename + i;
 
@@ -61,14 +59,13 @@ public class GameManager : MonoBehaviour
             i++;
             temp = filename + i;
         }
-                
+
         int rand = UnityEngine.Random.Range(1, i);
 
         filename += rand;
 
         return db.AudioList[filename];
     }
-
     #endregion
 
     #region 함수
@@ -132,7 +129,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region 게임 Start & End 음악
-    private void GameStart()
+    public void GameStart()
     {
         AudioSource Audio = GetComponent<AudioSource>();
 
@@ -156,7 +153,7 @@ public class GameManager : MonoBehaviour
         player.transform.Find("Body").GetComponent<HoldFire>().SendMessage("OpenFire");
     }    
 
-    private IEnumerator GameEnd()
+    public IEnumerator GameEnd()
     {
         AudioSource Audio = GetComponent<AudioSource>();
 
@@ -165,7 +162,7 @@ public class GameManager : MonoBehaviour
 
         Audio.Play();
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(7.5f);
 
         ChangeToScene(1);
     }

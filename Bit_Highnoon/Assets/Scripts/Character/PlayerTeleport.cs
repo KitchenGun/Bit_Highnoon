@@ -133,7 +133,7 @@ public class PlayerTeleport : MonoBehaviour
         Vector3 offset = new Vector3(targetPos.x - head.transform.position.x, targetPos.y - cameraRig.position.y, targetPos.z - head.transform.position.z);
 
         cameraRig.position += offset;
-        WalkAudio.clip = GM.GetComponent<GameManager>().RandomSound("walk");
+        WalkAudio.clip = GM.GetComponent<GameManager>().LoadAudioClip("walk");
         WalkAudio.Play();
     }
     #endregion
