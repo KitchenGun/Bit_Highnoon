@@ -11,6 +11,7 @@ public class StartIntro : MonoBehaviour
     public GameObject bullet2;
     public GameObject bullet3;
     public GameObject logo;
+    public Light pointlight;
     
     void Start()
     {
@@ -19,6 +20,7 @@ public class StartIntro : MonoBehaviour
         Invoke("InvokeBullet3", 2.5f);
 
         Invoke("InvokeLogo", 3.0f);
+        Invoke("InvokeLight", 3.0f);
 
         Invoke("InvokeMain", 5f);
     }
@@ -53,4 +55,14 @@ public class StartIntro : MonoBehaviour
         logo.SetActive(true);   
     }
     #endregion
+
+    void InvokeLight()
+    {
+        //pointlight = GetComponent<Light>();
+        
+        for(int i = 0; i < 10; i++)
+        {
+            pointlight.intensity = pointlight.intensity + 0.1f;
+        }
+    }
 }
