@@ -10,12 +10,13 @@ public class AIHard : AIParent
 
         lifeCount = 2;
 
-        idleTime = 4;   //대기 시간
+        idleTime = 3;   //대기 시간
 
         StartCoroutine(CheckState());               //상태를 체크
         StartCoroutine(CheckStateForAction());      //상태의 따른
     }
 
+    #region 상태의 따른 행동
     protected override void AttackAction()
     {
         base.AttackAction();
@@ -39,13 +40,17 @@ public class AIHard : AIParent
             PlayerDeadAudio();
         }
     }
+    #endregion
 
+    #region 플레이어가 호출
     protected override void Dead()
     {
         ReTurn();
 
         base.Dead();
+        GameEnd();
     }
+    #endregion
 
     #region 방향 맞추기..
     private void Turn()
@@ -60,12 +65,4 @@ public class AIHard : AIParent
         gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
     }
     #endregion
-
-    protected override void PlayerDead()
-    {
-        base.PlayerDead();
-
-        Debug.Log("hard");
-    }
-
 }

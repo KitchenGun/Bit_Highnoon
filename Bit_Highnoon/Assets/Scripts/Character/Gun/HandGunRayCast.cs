@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using OVRTouchSample;
+using UnityEngine.UI;
 
 
 public class HandGunRayCast : MonoBehaviour
@@ -27,7 +28,12 @@ public class HandGunRayCast : MonoBehaviour
     #region Animation
     private Animator GunAni;
     #endregion
-
+    #region UI
+    [SerializeField]
+    private Sprite[] BulletUI;
+    [SerializeField]
+    private Image BulletUIImage;
+    #endregion
     void Start()
     {//초기화
         #region Animation
@@ -60,6 +66,10 @@ public class HandGunRayCast : MonoBehaviour
 
     private void Update()
     {
+        #region UI
+        BulletUIImage.sprite = BulletUI[Bullet];
+        #endregion
+
         #region 사격
         GunAni.SetBool("FireState", FireState);
         switch (FirePos.tag)//발사 위치 오브젝트의 태그를 통해서 판별
@@ -164,7 +174,7 @@ public class HandGunRayCast : MonoBehaviour
     private void Gun_Fire_SFX()
     {
         //사운드 효과
-        HandGunFireAudio.clip = GM.GetComponent<GameManager>().RandomSound("fire");
+        HandGunFireAudio.clip = GM.GetComponent<GameManager>().LoadAudioClip("fire");
         HandGunFireAudio.Play();
     }
     private void Gun_BulletEmpty_SFX()
@@ -195,6 +205,9 @@ public class HandGunRayCast : MonoBehaviour
             else
             {
                 Bullet--;
+                #region UI
+                BulletUIImage.sprite = BulletUI[Bullet];
+                #endregion
             }
             FireState = false;
             return true;

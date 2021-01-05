@@ -48,11 +48,9 @@ public class GameManager : MonoBehaviour
     #region 사운드 호출 함수
     public AudioClip LoadAudioClip(string filename)
     {
-        return db.AudioList[filename];
-    }
+        if (db.AudioList.ContainsKey(filename))
+            return db.AudioList[filename];
 
-    public AudioClip RandomSound(string filename)
-    {
         int i = 1;
         string temp = filename + i;
 
@@ -61,14 +59,13 @@ public class GameManager : MonoBehaviour
             i++;
             temp = filename + i;
         }
-                
+
         int rand = UnityEngine.Random.Range(1, i);
 
         filename += rand;
 
         return db.AudioList[filename];
     }
-
     #endregion
 
     #region 함수
@@ -132,11 +129,11 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region 게임 Start & End 음악
-    private void GameStart()
+    public void GameStart()
     {
         AudioSource Audio = GetComponent<AudioSource>();
 
-        Audio.clip = db.AudioList["BattleStart"];
+        Audio.clip = LoadAudioClip("BattleStart");
         Audio.loop = false;
 
         Audio.Play();
@@ -144,7 +141,6 @@ public class GameManager : MonoBehaviour
         //yield return new WaitForSeconds(1.5f);  //노래 시작후 플레이어가 공격할 수 있는 시간
 
         PlayerStart();
-
     }
 
 
@@ -152,25 +148,23 @@ public class GameManager : MonoBehaviour
     {
         GameObject player = GameObject.Find("PlayerCtrl");
 
-        Debug.Log("gamestart");
         player.transform.Find("Body").GetComponent<HoldFire>().SendMessage("OpenFire");
     }    
 
-    private IEnumerator GameEnd()
+    public IEnumerator GameEnd()
     {
         AudioSource Audio = GetComponent<AudioSource>();
 
-        Audio.clip = db.AudioList["BattleEnd"];
+        Audio.clip = LoadAudioClip("BattleEnd");
         Audio.loop = false;
 
         Audio.Play();
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(7.5f);
 
         ChangeToScene(1);
     }
     #endregion
-
 
     #region Update함수
     /*
@@ -288,5 +282,4 @@ public class GameManager : MonoBehaviour
 
     }*/
     #endregion
-
 }
