@@ -16,7 +16,7 @@ namespace OVRTouchSample
     // Animating controller that updates with the tracked controller.
     public class TouchController : MonoBehaviour
     {
-        private GameManager gameManager;
+        private GameManager GM;
         #region 기존 오큘러스 컨트롤러 스크립트 변수
         [SerializeField]
         private OVRInput.Controller m_controller = OVRInput.Controller.None;
@@ -48,7 +48,7 @@ namespace OVRTouchSample
 
         private void Start()
         {
-            gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+            GM = GameObject.Find("GameManager").GetComponent<GameManager>();
             HandAudio = this.gameObject.GetComponent<AudioSource>();//오디오 소스 선택
             side=this.gameObject.tag;//현재 컨트롤러 오른쪽 왼쪽 확인용
             isHandOnColider = false;
@@ -119,7 +119,7 @@ namespace OVRTouchSample
                                     //컨트롤러->총으로 모델링 교체
                                     HandtoGun();
                                     //사운드 효과
-                                    HandAudio.clip =  gameManager.GetComponent<GameManager>().LoadAudioClip("gripup");
+                                    HandAudio.clip =  GM.GetComponent<GameManager>().LoadAudioClip("gripup");
                                     HandAudio.Play();
                                 }
                             }
@@ -136,7 +136,7 @@ namespace OVRTouchSample
                                     //컨트롤러->총으로 모델링 교체
                                     HandtoGun();
                                     //사운드 효과
-                                    HandAudio.clip = gameManager.GetComponent<GameManager>().LoadAudioClip("gripup");
+                                    HandAudio.clip = GM.GetComponent<GameManager>().LoadAudioClip("gripup");
                                     HandAudio.Play();
                                 }
                             }
@@ -193,7 +193,7 @@ namespace OVRTouchSample
                                     //컨트롤러로 교체
                                     GuntoHand();
                                     //사운드 효과
-                                    HandAudio.clip = gameManager.GetComponent<GameManager>().LoadAudioClip("gripdown");
+                                    HandAudio.clip = GM.GetComponent<GameManager>().LoadAudioClip("gripdown");
                                     HandAudio.Play();
                                 }
                             }
@@ -207,7 +207,7 @@ namespace OVRTouchSample
                                     //컨트롤러로 교체
                                     GuntoHand();
                                     //사운드 효과
-                                    HandAudio.clip = gameManager.GetComponent<GameManager>().LoadAudioClip("gripdown");
+                                    HandAudio.clip = GM.GetComponent<GameManager>().LoadAudioClip("gripdown");
                                     HandAudio.Play();
                                 }
                             }
@@ -303,7 +303,7 @@ namespace OVRTouchSample
             this.gameObject.transform.Find("OculusTouchForQuest2").GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
             this.gameObject.transform.Find("gun_hand").gameObject.SetActive(true);
             //사운드 효과
-            HandAudio.clip = gameManager.GetComponent<GameManager>().LoadAudioClip("gripup");
+            HandAudio.clip = GM.GetComponent<GameManager>().LoadAudioClip("gripup");
             HandAudio.Play();
         }
         private void GuntoHand()

@@ -18,7 +18,7 @@ public class PlayerTeleport : MonoBehaviour
     private Vector3 targetPos; //위치
     bool targetAcquired = false; //목표를 획득했는가
 
-    #region 
+    #region Audio
     private AudioSource WalkAudio;
     #endregion
 
@@ -33,6 +33,14 @@ public class PlayerTeleport : MonoBehaviour
         else
         {
             SceneIdx = GM.GetComponent<GameManager>().GetSceneIndex();
+            if(SceneIdx==6)
+            {
+                SetTeleportEnable(true);
+            }
+            else
+            {
+                SetTeleportEnable(false);
+            }
         }
         #endregion
         #region 씬 넘버를 통해서 텔레포드 조건 확인
@@ -56,6 +64,14 @@ public class PlayerTeleport : MonoBehaviour
     #region 텔포 가능 불가능 함수 전달
     private void SetTeleportEnable(bool value)
     {
+        if(value)
+        {
+            this.gameObject.GetComponent<LineRenderer>().enabled = value;
+        }
+        else
+        {
+            this.gameObject.GetComponent<LineRenderer>().enabled = value;
+        }
         TeleportEnable = value; 
     }
     #endregion
