@@ -9,13 +9,16 @@ using UnityEngine.Networking;
 
 public class SoundDB : MonoBehaviour
 {
+    #region AudioClip Dictionary
     private Dictionary<string, AudioClip> audioList = new Dictionary<string, AudioClip>();
 
     public Dictionary<string, AudioClip> AudioList 
     { 
         get { return audioList; } 
     }
+    #endregion
 
+    #region XML 불러오기
     //주소값 변동있을수 있음
     readonly string xmlname = "SoundData";
     XmlDocument xmlDoc = new XmlDocument();
@@ -25,8 +28,9 @@ public class SoundDB : MonoBehaviour
         TextAsset txtAsset = (TextAsset)Resources.Load("DBXML/" + xmlname);
         xmlDoc.LoadXml(txtAsset.text);
     }
+    #endregion
 
-    #region 오디오 소스 간결화
+    #region 오디오 소스 Dictionary에 추가
     private void SoundLoad(string Folder1, string Folder2)
     {
         //xml 불러오기
@@ -61,7 +65,9 @@ public class SoundDB : MonoBehaviour
             audioList.Add(fileName, OpenWavParser.ByteArrayToAudioClip(wavFile));
         }
     }
+    #endregion
 
+    #region 씬 별로 필요한 오디오 클립 추가
     public void SoundUpdate(int idx)
     {
         audioList.Clear();

@@ -148,7 +148,6 @@ public class GameManager : MonoBehaviour
     {
         GameObject player = GameObject.Find("PlayerCtrl");
 
-        Debug.Log("gamestart");
         player.transform.Find("Body").GetComponent<HoldFire>().SendMessage("OpenFire");
     }    
 

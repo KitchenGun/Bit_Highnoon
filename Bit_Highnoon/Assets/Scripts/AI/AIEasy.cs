@@ -21,7 +21,8 @@ public class AIEasy : AIParent
         StartCoroutine(CheckState());               //상태를 체크
         StartCoroutine(CheckStateForAction());      //상태의 따른
     }
-    
+
+    #region 상태의 따른 행동
     protected override void AttackAction()
     {
         base.AttackAction();
@@ -48,6 +49,18 @@ public class AIEasy : AIParent
             && isPlayerDeadAudio == false)
             PlayerDeadAudio();
     }
+    #endregion
+
+    #region 플레이어가 호출
+    //죽었을때
+    protected override void Dead()
+    {
+        ReChange();
+
+        base.Dead();
+        GameEnd();
+    }
+    #endregion
 
     #region 오브젝트 변경
     //Shoot으로 변경
@@ -79,21 +92,4 @@ public class AIEasy : AIParent
         }
     }
     #endregion
-
-    #region 플레이어가 호출
-    //죽었을때
-    protected override void Dead()
-    {
-        ReChange();
-
-        base.Dead();
-    }
-    #endregion
-
-    protected override void PlayerDead()
-    {
-        base.PlayerDead();
-
-        Debug.Log("easy");
-    }
 }

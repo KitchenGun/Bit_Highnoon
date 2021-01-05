@@ -20,6 +20,7 @@ public class AINormal : AIParent
         StartCoroutine(CheckStateForAction());      //상태의 따른
     }
 
+    #region 상태의 따른 행동
     protected override void AttackAction()
     {
         base.AttackAction();
@@ -47,13 +48,39 @@ public class AINormal : AIParent
             PlayerDeadAudio();
         }
     }
+    #endregion
 
+    #region 플레이어가 호출
     protected override void Dead()
     {
         ReTurn();
 
         base.Dead();
+        base.GameEnd();
     }
+    #endregion
+
+    #region Animation 이벤트 호출
+    protected override void PlayerDead()
+    {
+        if (player_Dead_Count == 0)
+        {
+            base.PlayerDead();         
+        }
+    }
+
+    protected override void GameEnd()
+    {
+        player_Dead_Count--;
+
+        if (player_Dead_Count == 0)
+        {
+            base.GameEnd();
+
+            SendMessageDead();
+        }
+    }
+    #endregion
 
     #region 방향 맞추기..
     private void TurnS()
@@ -73,26 +100,4 @@ public class AINormal : AIParent
         gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
     }
     #endregion
-
-    protected override void PlayerDead()
-    {
-        if (player_Dead_Count == 0)
-        {
-            base.PlayerDead();
-
-            Debug.Log("normal");            
-        }
-    }
-
-    protected override void GameEnd()
-    {
-        player_Dead_Count--;
-
-        if (player_Dead_Count == 0)
-        {
-            base.GameEnd();
-
-            SendMessageDead();
-        }
-    }
 }

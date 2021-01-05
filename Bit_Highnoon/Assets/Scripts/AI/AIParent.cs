@@ -54,6 +54,7 @@ public class AIParent : MonoBehaviour
         //Debug.Log("idle");
     }
 
+    #region 상태 체크 및 행동
     //상태를 체크하고 바꿔준다
     protected IEnumerator CheckState()
     {
@@ -118,6 +119,7 @@ public class AIParent : MonoBehaviour
             yield return null;
         }
     }
+    #endregion
 
     #region 자식에서 필요의 의해 재정의(상태의 따른 행동)
     protected virtual void IdleAction()
@@ -185,7 +187,6 @@ public class AIParent : MonoBehaviour
         isDead = true;
 
         DeadAudio();
-        GameEnd();
     }
     #endregion
 
@@ -233,6 +234,7 @@ public class AIParent : MonoBehaviour
     }
     #endregion
 
+    #region Animation 이벤트 호출
     private void GameStart()
     {
         GameManager.Instance.GameStart();
@@ -251,6 +253,6 @@ public class AIParent : MonoBehaviour
     protected virtual void PlayerDead()
     {
         isPlayerDead = true;
-    }    
-
+    }
+    #endregion
 }
