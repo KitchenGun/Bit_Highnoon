@@ -91,6 +91,8 @@ public class AINormal : AIParent
         if (player_Dead_Count == 0)
         {
             base.GameEnd();
+
+            SendMessageDead();
         }
     }
 }

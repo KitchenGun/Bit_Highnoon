@@ -167,7 +167,6 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-
     #region Update함수
     /*
     void Update()
@@ -284,5 +283,4 @@ public class GameManager : MonoBehaviour
 
     }*/
     #endregion
-
 }
