@@ -895,10 +895,22 @@ PrefabInstance:
       propertyPath: SandDecal
       value: 
       objectReference: {fileID: 6432400424565375059, guid: 078f500f10098884da703fa6ee6b78a3, type: 3}
+    - target: {fileID: 5479935348405643082, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
+      propertyPath: BloodDecal
+      value: 
+      objectReference: {fileID: 1240250018707908, guid: 5656e7ea1f1a75d4c895547ec2b824b3, type: 3}
     - target: {fileID: 6983693388997093783, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
       propertyPath: SandDecal
       value: 
       objectReference: {fileID: 6432400424565375059, guid: 078f500f10098884da703fa6ee6b78a3, type: 3}
+    - target: {fileID: 6983693388997093783, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
+      propertyPath: BloodDecal
+      value: 
+      objectReference: {fileID: 1240250018707908, guid: 5656e7ea1f1a75d4c895547ec2b824b3, type: 3}
+    - target: {fileID: 7998200332926414183, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
 --- !u!1001 &2002317951
