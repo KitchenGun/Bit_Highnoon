@@ -162,7 +162,7 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(7.5f);
 
-        ChangeToScene(1);
+        //ChangeToScene(1);
     }
     #endregion
 

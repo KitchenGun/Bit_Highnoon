@@ -22,19 +22,16 @@ public class Test : MonoBehaviour
 
     public void AIHit_easy()
     {
-        if (isGameStart == true)
             easyai.SendMessage("Hit");
     }
 
     public void AIHit_normal()
     {
-        if (isGameStart == true)
             normalai.SendMessage("Hit");
     }
 
     public void AIHit_hard()
     {
-        if (isGameStart == true)
             hardlai.SendMessage("Hit");
     }
 
@@ -51,8 +48,6 @@ public class Test : MonoBehaviour
     private void GameStart()
     {
         Debug.Log("GameStart");
-
-        isGameStart = true;
     }
 
     private void Dead()
