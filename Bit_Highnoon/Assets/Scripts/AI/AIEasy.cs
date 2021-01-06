@@ -92,4 +92,14 @@ public class AIEasy : AIParent
         }
     }
     #endregion
+
+    #region 혈흔 효과
+    protected override void CreateBloodEffect()
+    {
+        base.CreateBloodEffect();
+
+        bloodEffect.transform.position 
+            = gameObject.transform.position + new Vector3(-0.27f, 0.01f, 1.3f);
+    }
+    #endregion
 }
