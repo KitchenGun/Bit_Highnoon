@@ -12,15 +12,27 @@ public class StartIntro : MonoBehaviour
     public GameObject bullet3;
     public GameObject logo;
     public Light pointlight;
+    public AudioClip gunaudio;
+    private AudioSource audios;
     
     void Start()
     {
-        Invoke("InvokeBullet1", 1.0f);
-        Invoke("InvokeBullet2", 2.0f);
-        Invoke("InvokeBullet3", 2.5f);
+        audios = GetComponent<AudioSource>();
+        gunaudio = GameManager.Instance.LoadAudioClip("fire");
+        audios.clip = gunaudio;
 
-        Invoke("InvokeLogo", 3.0f);
-        Invoke("InvokeLight", 3.0f);
+        Invoke("InvokeBullet1", 1.0f);
+
+        Invoke("InvokeBullet2", 2.0f);
+
+        Invoke("InvokeBullet3", 2.3f);
+
+        Invoke("InvokeLogo", 2.7f);
+
+        for (float i = 0.0f; i < 10; i++)
+        {
+            Invoke("InvokeLight", 2.7f+(0.02f*i));
+        }
 
         Invoke("InvokeMain", 5f);
     }
@@ -40,14 +52,17 @@ public class StartIntro : MonoBehaviour
     void InvokeBullet1()
     {
         bullet1.SetActive(true);
+        audios.Play();
     }
     void InvokeBullet2()
     {
         bullet2.SetActive(true);
+        audios.Play();
     }
     void InvokeBullet3()
     {
         bullet3.SetActive(true);
+        audios.Play();
     }
 
     void InvokeLogo()
@@ -58,11 +73,15 @@ public class StartIntro : MonoBehaviour
 
     void InvokeLight()
     {
-        //pointlight = GetComponent<Light>();
-        
-        for(int i = 0; i < 10; i++)
+        /*
+        for(int i = 0; i < 20; i++)
         {
             pointlight.intensity = pointlight.intensity + 0.1f;
         }
+        */
+
+        if (pointlight.intensity < 2.0f)
+            pointlight.intensity = pointlight.intensity + 0.2f;
+        
     }
 }
