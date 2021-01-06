@@ -27,6 +27,7 @@ public class HandGunRayCast : MonoBehaviour
     #endregion
     #region Animation
     private Animator GunAni;
+    private ParticleSystem GunFireEffect;
     #endregion
     #region UI
     [SerializeField]
@@ -36,10 +37,7 @@ public class HandGunRayCast : MonoBehaviour
     #endregion
     void Start()
     {//초기화
-        #region Animation
-        GunAni = this.gameObject.GetComponent<Animator>();
-        GunAni.SetBool("FireState", FireState);
-        #endregion
+       
         #region Scene
         GM = GameObject.Find("GameManager");
         if (GM == null)
@@ -53,6 +51,7 @@ public class HandGunRayCast : MonoBehaviour
         #endregion
         #region Ray
         FirePos = this.gameObject.transform.parent.Find("GunFirePos").gameObject;
+
         #endregion
         #region Audio
         this.HandGunFireClickAudio = this.gameObject.transform.parent.GetComponent<AudioSource>(); //격발음 SFX
@@ -61,6 +60,11 @@ public class HandGunRayCast : MonoBehaviour
         this.HandGunReloadAudio.loop = false;
         this.HandGunFireAudio = FirePos.GetComponent<AudioSource>();
         this.HandGunFireAudio = FirePos.GetComponent<AudioSource>();
+        #endregion
+        #region Animation
+        GunAni = this.gameObject.GetComponent<Animator>();
+        GunAni.SetBool("FireState", FireState);
+        GunFireEffect = FirePos.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>();
         #endregion
     }
 
@@ -197,6 +201,7 @@ public class HandGunRayCast : MonoBehaviour
             //격발 효과
             GunAni.SetTrigger("Fire");
             Gun_Fire_SFX();
+            GunFireEffect.Play();
             //총알 감소 격발 상태 
             if (SceneIdx == 1 || SceneIdx == 2|| SceneIdx ==6 )//메뉴 씬이 아닐 경우
             {
