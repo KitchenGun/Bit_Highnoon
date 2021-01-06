@@ -35,6 +35,10 @@ public class HandGunRayCast : MonoBehaviour
     [SerializeField]
     private Image BulletUIImage;
     #endregion
+    #region 이펙트
+    [SerializeField]
+    private GameObject SandDecal;
+    #endregion
     void Start()
     {//초기화
        
@@ -97,6 +101,13 @@ public class HandGunRayCast : MonoBehaviour
                             else if (HitObj.transform.gameObject.tag == "Button")
                             {
                                 ButtonHit(HitObj.transform.gameObject);
+                            }
+
+                            if(HitObj.transform.gameObject.layer==8)
+                            {
+                                GameObject BulletHole = Instantiate<GameObject>(SandDecal, HitObj.point, Quaternion.identity) as GameObject;
+                                BulletHole.transform.LookAt(this.gameObject.transform);
+                                Destroy(BulletHole, 3f);
                             }
                         }
                     }

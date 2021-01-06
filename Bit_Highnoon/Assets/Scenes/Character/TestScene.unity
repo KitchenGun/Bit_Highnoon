@@ -835,6 +835,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 571480056, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
+      propertyPath: m_Name
+      value: BloodEffectCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059642953, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
+      propertyPath: m_Name
+      value: BloodEffectPanel
+      objectReference: {fileID: 0}
     - target: {fileID: 3366610077945000640, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -883,6 +891,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCtrl
       objectReference: {fileID: 0}
+    - target: {fileID: 5479935348405643082, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
+      propertyPath: SandDecal
+      value: 
+      objectReference: {fileID: 6432400424565375059, guid: 078f500f10098884da703fa6ee6b78a3, type: 3}
+    - target: {fileID: 6983693388997093783, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
+      propertyPath: SandDecal
+      value: 
+      objectReference: {fileID: 6432400424565375059, guid: 078f500f10098884da703fa6ee6b78a3, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
 --- !u!1001 &2002317951
