@@ -12,14 +12,15 @@ public class StartIntro : MonoBehaviour
     public GameObject bullet3;
     public GameObject logo;
     public Light pointlight;
-    public AudioClip gunaudio;
     private AudioSource audios;
     
     void Start()
     {
         audios = GetComponent<AudioSource>();
-        gunaudio = GameManager.Instance.LoadAudioClip("fire");
-        audios.clip = gunaudio;
+
+        GameManager.Instance.GameStart();
+
+        audios.clip = GameManager.Instance.LoadAudioClip("fire");
 
         Invoke("InvokeBullet1", 1.0f);
 
@@ -64,7 +65,6 @@ public class StartIntro : MonoBehaviour
         bullet3.SetActive(true);
         audios.Play();
     }
-
     void InvokeLogo()
     {
         logo.SetActive(true);   
@@ -79,6 +79,8 @@ public class StartIntro : MonoBehaviour
             pointlight.intensity = pointlight.intensity + 0.1f;
         }
         */
+
+        GameManager.Instance.GameEnd();
 
         if (pointlight.intensity < 2.0f)
             pointlight.intensity = pointlight.intensity + 0.2f;
