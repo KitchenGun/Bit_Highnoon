@@ -22,20 +22,18 @@ public class StartIntro : MonoBehaviour
 
         audios.clip = GameManager.Instance.LoadAudioClip("fire");
 
-        Invoke("InvokeBullet1", 1.0f);
+        Invoke("InvokeBullet1", 1.5f*2);
 
-        Invoke("InvokeBullet2", 2.0f);
+        Invoke("InvokeBullet2", 1.5f*2.5f);
 
-        Invoke("InvokeBullet3", 2.3f);
+        Invoke("InvokeBullet3", 1.5f*3f);
 
-        Invoke("InvokeLogo", 2.7f);
+        Invoke("InvokeLogo", 1.5f*3.5f);
 
-        for (float i = 0.0f; i < 10; i++)
-        {
-            Invoke("InvokeLight", 2.7f+(0.02f*i));
-        }
+       
 
-        Invoke("InvokeMain", 5f);
+
+        Invoke("InvokeMain", 1.5f * 6f);
     }
 
     #region 시간 지연 씬 전환
@@ -67,23 +65,21 @@ public class StartIntro : MonoBehaviour
     }
     void InvokeLogo()
     {
-        logo.SetActive(true);   
+        logo.SetActive(true);
+        StartCoroutine(InvokeLight());
     }
     #endregion
 
-    void InvokeLight()
+    private IEnumerator InvokeLight()
     {
-        /*
-        for(int i = 0; i < 20; i++)
+
+        GameObject GM = GameObject.Find("GameManager").gameObject;
+        GM.GetComponent<GameManager>().StartCoroutine("GameEnd");
+
+        for (int i = 0; i < 200; i++)
         {
-            pointlight.intensity = pointlight.intensity + 0.1f;
+            pointlight.intensity += 0.01f;
+            yield return new WaitForSeconds(0.01f);
         }
-        */
-
-        GameManager.Instance.GameEnd();
-
-        if (pointlight.intensity < 2.0f)
-            pointlight.intensity = pointlight.intensity + 0.2f;
-        
     }
 }
