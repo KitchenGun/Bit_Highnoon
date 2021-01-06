@@ -1074,6 +1074,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6a2d299359b5e44a29890543b50df4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BulletUI: []
+  BulletUIImage: {fileID: 0}
+  SandDecal: {fileID: 0}
 --- !u!1 &3966277362485667298
 GameObject:
   m_ObjectHideFlags: 0
@@ -2085,7 +2088,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 314399e99d749454b9a40c089d158ce4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameras: {fileID: 4308368070096012320}
   head: {fileID: 1545579001556384872}
   leftHand: {fileID: 4629925105588825518}
   rightHand: {fileID: 4308368070095901960}

@@ -6,33 +6,32 @@ using UnityEngine.XR;
 
 public class PlayerControl : MonoBehaviourPunCallbacks
 {
-    [SerializeField] GameObject cameras;
     public Transform head;
     public Transform leftHand;
     public Transform rightHand;
 
     PhotonView PV;
 
-    PlayerManager playerManager;
     void Awake()
     {
         PV = GetComponent<PhotonView>();
 
-        playerManager = PhotonView.Find((int)PV.InstantiationData[0]).GetComponent<PlayerManager>();
     }
     void Start()
     {
-        if (!PV.IsMine) {
-            Destroy(GetComponentInChildren<OVRCameraRig>().gameObject);
-        }
     }
     void Update()
     {
-        if (!PV.IsMine)
-            return;
-        MapPosition(transform, XRNode.Head);
-        MapPosition(transform, XRNode.LeftHand);
-        MapPosition(transform, XRNode.RightHand);
+        if (PV.IsMine)
+        {
+            rightHand.gameObject.SetActive(false);
+            leftHand.gameObject.SetActive(false);
+            head.gameObject.SetActive(false);
+
+            MapPosition(transform, XRNode.Head);
+            MapPosition(transform, XRNode.LeftHand);
+            MapPosition(transform, XRNode.RightHand);
+        }
     }
     void MapPosition(Transform target,XRNode node)
     {
