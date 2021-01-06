@@ -27682,6 +27682,10 @@ PrefabInstance:
       value: NormalAI
       objectReference: {fileID: 0}
     - target: {fileID: 100134, guid: dda7d6a2867eaf9449be2cab99f90a9e, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 100134, guid: dda7d6a2867eaf9449be2cab99f90a9e, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
