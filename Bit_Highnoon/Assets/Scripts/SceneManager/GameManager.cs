@@ -7,8 +7,9 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     private SoundDB sounddb;
-    public GameObject normal;
-    public GameObject hard;
+    private LogicalDB leveldb;
+    private GameObject normal;
+    private GameObject hard;
 
 
     #region Singleton 싱글톤
@@ -32,7 +33,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         sounddb = this.gameObject.AddComponent<SoundDB>();
-
+        leveldb = this.gameObject.AddComponent<LogicalDB>();
         if(instance == null)
         {
             instance = this;
@@ -43,6 +44,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        leveldb.StartXml();
         sounddb.SoundUpdate(GetSceneIndex());
 
         DontDestroyOnLoad(gameObject);
@@ -107,7 +109,6 @@ public class GameManager : MonoBehaviour
                 case "Single":
                     {
                         ChangeToScene(2);
-                        LockLevel();
                         break;
                     }
                 case "Multi":
@@ -168,25 +169,23 @@ public class GameManager : MonoBehaviour
 
         Audio.Play();
 
-        Debug.Log(winner);
-
         if (winner.Equals("AI"))
         {
             //AI가 이겼을 때
             if (GetSceneIndex() == 3)
             {
                 //이지 난이도
-
+                leveldb.EasyLoseCount();
             }
             else if (GetSceneIndex() == 4)
             {
                 //노말 난이도
-
+                leveldb.NormalLoseCount();
             }
             else if(GetSceneIndex() == 5)
             {
                 //하드 난이도
-
+                leveldb.HardLoseCount();
             }
         }
         else if(winner.Equals("player"))
@@ -195,17 +194,19 @@ public class GameManager : MonoBehaviour
             if (GetSceneIndex() == 3)
             {
                 //이지 난이도
-
+                leveldb.EasyWinCount();
+                leveldb.NormalUser();
             }
             else if (GetSceneIndex() == 4)
             {
                 //노말 난이도
-
+                leveldb.NormalWinCount();
+                leveldb.HardUser();
             }
             else if (GetSceneIndex() == 5)
             {
                 //하드 난이도
-
+                leveldb.HardWinCount();
             }
         }
 
@@ -341,19 +342,29 @@ public class GameManager : MonoBehaviour
 
     public void LockLevel()
     {
-            string db = this.gameObject.AddComponent<LogicalDB>().Mode();
-            //db에서 가져온 값이 이지일때(노말 하드 잠김)
-            if (db == "easy")
-            {
-                normal.SetActive(false);
-                hard.SetActive(false);
-            }
-            //db에서 가져온 값이 노말일때(하드 잠김)
-            else if (db == "normal")
-            {
-                hard.SetActive(false);
-            }
+        string db = leveldb.Mode();
+        StageLock(db);
     }   
+
+    private void StageLock(string stage)
+    {
+        if(stage.Equals("easy"))
+        {
+            normal = GameObject.Find("Bottle").transform.GetChild(1).gameObject;
+            normal.GetComponent<MeshRenderer>().enabled = false;
+            normal.GetComponent<BoxCollider>().enabled = false;
+
+            hard = GameObject.Find("Bottle").transform.GetChild(2).gameObject;
+            hard.GetComponent<MeshRenderer>().enabled = false;
+            hard.GetComponent<BoxCollider>().enabled = false;
+        }
+        else if(stage.Equals("normal"))
+        {
+            hard = GameObject.Find("Bottle").transform.GetChild(2).gameObject;
+            hard.GetComponent<MeshRenderer>().enabled = false;
+            hard.GetComponent<BoxCollider>().enabled = false;
+        }
+    }
     #endregion
 
     #region 승률 출력
@@ -361,18 +372,18 @@ public class GameManager : MonoBehaviour
     {
         if (level.Equals("W/LResultEasy"))
         {
-            return 10; //여기다 
+            return leveldb.EasyRate(); 
         }
         else if (level.Equals("W/LResultNormal"))
         {
-            return 20; //여기다 
+            return leveldb.NormalRate(); 
         }
         else if(level.Equals("W/LResultHard"))
         {
-            return 30; //여기다 
+            return leveldb.HardRate();
         }
 
-        return -1; //여기다 
+        return -1;
     }
     #endregion
 }

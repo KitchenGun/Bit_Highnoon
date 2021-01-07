@@ -329,9 +329,15 @@ public class LogicalDB : MonoBehaviour
             int win = int.Parse(dr["EasyWin"].ToString());
             int lose = int.Parse(dr["EasyLose"].ToString());
 
-            float rate = (win / (win + (float)lose)) * 100;
-
-            return (int)rate;
+            if (win + lose == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                float rate = (win / (win + (float)lose)) * 100;
+                return (int)rate;
+            }
         }
         catch (Exception)
         {
@@ -350,9 +356,15 @@ public class LogicalDB : MonoBehaviour
             int win = int.Parse(dr["NormalWin"].ToString());
             int lose = int.Parse(dr["NormalLose"].ToString());
 
-            float rate = (win / (win + (float)lose)) * 100;
-
-            return (int)rate;
+            if (win + lose == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                float rate = (win / (win + (float)lose)) * 100;
+                return (int)rate;
+            }
         }
         catch (Exception)
         {
@@ -360,43 +372,32 @@ public class LogicalDB : MonoBehaviour
         }
     }
 
-    //하드 승률
-    public int HardRate()
-    {
+        //하드 승률
+        public int HardRate()
+        {
         try
         {
-            StartXml();
-            DataRow dr = UserInfo.Rows.Find(1);
+                StartXml();
+                DataRow dr = UserInfo.Rows.Find(1);
 
-            int win = int.Parse(dr["HardWin"].ToString());
-            int lose = int.Parse(dr["HardLose"].ToString());
+                int win = int.Parse(dr["HardWin"].ToString());
+                int lose = int.Parse(dr["HardLose"].ToString());
 
-            float rate = (win / (win + (float)lose)) * 100;
-
-            return (int)rate;
-        }
+                if (win + lose == 0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    float rate = (win / (win + (float)lose)) * 100;
+                    return (int)rate;
+                }
+            }
         catch (Exception)
         {
             return 0;
         }
     }
-
-
-    public void Select()
-    {
-        try
-        {
-            DataRow dr = UserInfo.Rows.Find(1);
-
-            int win = int.Parse(dr["EasyWin"].ToString());
-
-            Debug.Log(win);
-        }
-        catch (Exception)
-        {
-        }
-    }
-
     #endregion
 
 }

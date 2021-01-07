@@ -70,7 +70,7 @@ public class StartIntro : MonoBehaviour
     private IEnumerator InvokeLight()
     {
         GameObject GM = GameObject.Find("GameManager").gameObject;
-        GM.GetComponent<GameManager>().StartCoroutine("GameEnd");
+        GM.GetComponent<GameManager>().StartCoroutine("GameEnd","Intro");
 
         for (int i = 0; i < 200; i++)
         {

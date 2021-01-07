@@ -83,8 +83,8 @@ public class SoundDB : MonoBehaviour
         #endregion
 
         #region AI 테스트 용
-        folder1.AddRange(("AI,Gun,Bgm").Split(','));
-        folder2.AddRange(("Hard,EnemyFire,Battle").Split(','));
+        //folder1.AddRange(("AI,Gun,Bgm").Split(','));
+        //folder2.AddRange(("Hard,EnemyFire,Battle").Split(','));
         #endregion
 
         switch (idx)
