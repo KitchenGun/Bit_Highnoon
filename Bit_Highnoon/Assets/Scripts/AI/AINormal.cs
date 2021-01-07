@@ -56,7 +56,7 @@ public class AINormal : AIParent
         ReTurn();
 
         base.Dead();
-        base.GameEnd();
+        base.GameEnd("player");
     }
     #endregion
 
@@ -69,13 +69,13 @@ public class AINormal : AIParent
         }
     }
 
-    protected override void GameEnd()
+    protected override void GameEnd(string winner)
     {
         player_Dead_Count--;
 
         if (player_Dead_Count == 0)
         {
-            base.GameEnd();
+            base.GameEnd(winner);
 
             SendMessageDead();
         }

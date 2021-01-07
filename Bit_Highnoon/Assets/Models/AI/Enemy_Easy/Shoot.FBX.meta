@@ -482,23 +482,23 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.55421686
-        functionName: GameEnd
+      - time: 0.54699457
+        functionName: AttackAudio
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.55774647
+      - time: 0.549482
         functionName: SendMessageDead
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.55801386
-        functionName: AttackAudio
-        data: 
+      - time: 0.55421686
+        functionName: GameEnd
+        data: AI
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
