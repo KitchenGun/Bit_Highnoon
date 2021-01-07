@@ -6,7 +6,7 @@ using System.IO;
 using System.Xml;
 using UnityEngine;
 
-public class LogicalDB
+public class LogicalDB : MonoBehaviour
 {
     public DataTable UserInfo { get; set; }
 

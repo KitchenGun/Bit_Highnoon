@@ -6,7 +6,10 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private SoundDB db;
+    private SoundDB sounddb;
+    public GameObject normal;
+    public GameObject hard;
+
 
     #region Singleton 싱글톤
     private static GameManager instance;
@@ -28,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        db = this.gameObject.AddComponent<SoundDB>();
+        sounddb = this.gameObject.AddComponent<SoundDB>();
 
         if(instance == null)
         {
@@ -40,7 +43,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        db.SoundUpdate(GetSceneIndex());
+        sounddb.SoundUpdate(GetSceneIndex());
 
         DontDestroyOnLoad(gameObject);
     }
@@ -49,13 +52,13 @@ public class GameManager : MonoBehaviour
     #region 사운드 호출 함수
     public AudioClip LoadAudioClip(string filename)
     {
-        if (db.AudioList.ContainsKey(filename))
-            return db.AudioList[filename];
+        if (sounddb.AudioList.ContainsKey(filename))
+            return sounddb.AudioList[filename];
 
         int i = 1;
         string temp = filename + i;
 
-        while (db.AudioList.ContainsKey(temp))
+        while (sounddb.AudioList.ContainsKey(temp))
         {
             i++;
             temp = filename + i;
@@ -65,7 +68,7 @@ public class GameManager : MonoBehaviour
 
         filename += rand;
 
-        return db.AudioList[filename];
+        return sounddb.AudioList[filename];
     }
     #endregion
 
@@ -73,7 +76,7 @@ public class GameManager : MonoBehaviour
     //씬 이동
     public void ChangeToScene(int idx)
     {
-        db.SoundUpdate(idx);        
+        sounddb.SoundUpdate(idx);        
 
         SceneManager.LoadScene(idx);
     }
@@ -102,7 +105,11 @@ public class GameManager : MonoBehaviour
             switch (bottle.name)
             {
                 case "Single":
-                    ChangeToScene(2);  break;
+                    {
+                        ChangeToScene(2);
+                        LockLevel();
+                        break;
+                    }
                 case "Multi":
                     ChangeToScene(6); break;
                 case "Option":
@@ -328,6 +335,25 @@ public class GameManager : MonoBehaviour
         #endregion
 
     }*/
+    #endregion
+
+    #region 난이도 잠김
+
+    public void LockLevel()
+    {
+            string db = this.gameObject.AddComponent<LogicalDB>().Mode();
+            //db에서 가져온 값이 이지일때(노말 하드 잠김)
+            if (db == "easy")
+            {
+                normal.SetActive(false);
+                hard.SetActive(false);
+            }
+            //db에서 가져온 값이 노말일때(하드 잠김)
+            else if (db == "normal")
+            {
+                hard.SetActive(false);
+            }
+    }   
     #endregion
 
     #region 승률 출력
