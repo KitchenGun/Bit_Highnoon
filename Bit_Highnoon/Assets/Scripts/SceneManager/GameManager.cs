@@ -129,6 +129,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region 게임 Start & End 음악
+
     public void GameStart()
     {
         AudioSource Audio = GetComponent<AudioSource>();
@@ -139,10 +140,9 @@ public class GameManager : MonoBehaviour
         Audio.Play();
 
         //yield return new WaitForSeconds(1.5f);  //노래 시작후 플레이어가 공격할 수 있는 시간
-
-        PlayerStart();
+        if(GetSceneIndex() != 0)
+            PlayerStart();
     }
-
 
     private void PlayerStart()
     {
@@ -160,9 +160,14 @@ public class GameManager : MonoBehaviour
 
         Audio.Play();
 
-        yield return new WaitForSeconds(7.5f);
+        if (GetSceneIndex() != 0)
+        {
+            yield return new WaitForSeconds(7.5f);
 
-        //ChangeToScene(1);
+            ChangeToScene(1);
+        }
+
+        yield return null;
     }
     #endregion
 

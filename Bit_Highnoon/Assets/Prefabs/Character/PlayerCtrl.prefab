@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 571480059}
   - component: {fileID: 571480058}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: BloodEffectCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 1059642956}
   - component: {fileID: 1059642955}
   m_Layer: 0
-  m_Name: Panel
+  m_Name: BloodEffectPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2417,7 +2417,7 @@ GameObject:
   - component: {fileID: 4276758157003292358}
   - component: {fileID: 1029992412930876695}
   - component: {fileID: 1131848730}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2636,6 +2636,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BulletUI
       objectReference: {fileID: 0}
+    - target: {fileID: 7882518585461515088, guid: 4f0c76f61a1809d459cbe0d2c769ed0e, type: 3}
+      propertyPath: SandDecal
+      value: 
+      objectReference: {fileID: 6432400424565375059, guid: 078f500f10098884da703fa6ee6b78a3, type: 3}
+    - target: {fileID: 7882518585461515088, guid: 4f0c76f61a1809d459cbe0d2c769ed0e, type: 3}
+      propertyPath: BloodDecal
+      value: 
+      objectReference: {fileID: 1240250018707908, guid: 5656e7ea1f1a75d4c895547ec2b824b3, type: 3}
     - target: {fileID: 7882518585461515088, guid: 4f0c76f61a1809d459cbe0d2c769ed0e, type: 3}
       propertyPath: BulletUIAni
       value: 
@@ -2912,6 +2920,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BulletUI
       objectReference: {fileID: 0}
+    - target: {fileID: 6709156382225900699, guid: 784ad1b410e49f84ab3a7e4d43ff0535, type: 3}
+      propertyPath: SandDecal
+      value: 
+      objectReference: {fileID: 6432400424565375059, guid: 078f500f10098884da703fa6ee6b78a3, type: 3}
+    - target: {fileID: 6709156382225900699, guid: 784ad1b410e49f84ab3a7e4d43ff0535, type: 3}
+      propertyPath: BloodDecal
+      value: 
+      objectReference: {fileID: 1240250018707908, guid: 5656e7ea1f1a75d4c895547ec2b824b3, type: 3}
     - target: {fileID: 6709156382225900699, guid: 784ad1b410e49f84ab3a7e4d43ff0535, type: 3}
       propertyPath: BulletUIAni
       value: 

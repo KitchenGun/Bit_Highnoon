@@ -38,7 +38,10 @@ public class HandGunRayCast : MonoBehaviour
     #region 이펙트
     [SerializeField]
     private GameObject SandDecal;
+    [SerializeField]
+    private GameObject BloodDecal;
     #endregion
+
     void Start()
     {//초기화
        
@@ -90,6 +93,7 @@ public class HandGunRayCast : MonoBehaviour
                         Debug.DrawRay(FirePos.transform.position, FirePos.transform.forward * 2000, Color.red, 0.3f);//개발 확인용 레이 
                         if (Physics.Raycast(FirePos.transform.position, FirePos.transform.forward, out HitObj, 2000))
                         {
+                            //오브젝트 태그로 식별
                             if (HitObj.transform.gameObject.tag == "Bottle")
                             {
                                 BottleHit(HitObj.transform.gameObject);
@@ -102,12 +106,19 @@ public class HandGunRayCast : MonoBehaviour
                             {
                                 ButtonHit(HitObj.transform.gameObject);
                             }
+                            //오브젝트 레이어로 식별
 
-                            if(HitObj.transform.gameObject.layer==8)
+                            Debug.Log(HitObj.transform.gameObject.layer);
+                            if (HitObj.transform.gameObject.layer==8)
                             {
                                 GameObject BulletHole = Instantiate<GameObject>(SandDecal, HitObj.point, Quaternion.identity) as GameObject;
                                 BulletHole.transform.LookAt(this.gameObject.transform);
                                 Destroy(BulletHole, 3f);
+                            }
+                            else if (HitObj.transform.gameObject.layer == 20)
+                            {
+                                GameObject BloodParticle = Instantiate<GameObject>(BloodDecal, HitObj.point, Quaternion.identity) as GameObject;
+                                Destroy(BloodParticle, 3f);
                             }
                         }
                     }
@@ -121,6 +132,7 @@ public class HandGunRayCast : MonoBehaviour
                         Debug.DrawRay(FirePos.transform.position, FirePos.transform.forward * 2000, Color.red, 0.3f);//개발 확인용 레이 
                         if (Physics.Raycast(FirePos.transform.position, FirePos.transform.forward, out HitObj, 2000))
                         {
+                            //오브젝트 태그로 식별
                             if (HitObj.transform.gameObject.tag == "Bottle")
                             {
                                 BottleHit(HitObj.transform.gameObject);
@@ -132,6 +144,19 @@ public class HandGunRayCast : MonoBehaviour
                             else if (HitObj.transform.gameObject.tag == "Button")
                             {
                                 ButtonHit(HitObj.transform.gameObject);
+                            }
+                            //오브젝트 레이어로 식별
+                            Debug.Log(HitObj.transform.gameObject.layer);
+                            if (HitObj.transform.gameObject.layer == 8)
+                            {
+                                GameObject BulletHole = Instantiate<GameObject>(SandDecal, HitObj.point, Quaternion.identity) as GameObject;
+                                BulletHole.transform.LookAt(this.gameObject.transform);
+                                Destroy(BulletHole, 3f);
+                            }
+                            else if (HitObj.transform.gameObject.layer == 20)
+                            {
+                                GameObject BloodParticle = Instantiate<GameObject>(BloodDecal, HitObj.point, Quaternion.identity) as GameObject;
+                                Destroy(BloodParticle, 3f);
                             }
                         }
                     }
