@@ -8,12 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SceneManager/Intro.unity
     guid: a769f40a5ef79fa48b1e352af2744937
-  - enabled: 0
-    path: Assets/Scenes/NetworkScene/Network.unity
-    guid: 8e213cf86ae2e4046b2741cd9564d640
-  - enabled: 0
-    path: Assets/Scenes/NetworkScene/Multi_Mode2.unity
-    guid: 3cd990110c965e64080fa18e9b82e0f5
   - enabled: 1
     path: Assets/Scenes/SceneManager/Main_Menu.unity
     guid: 22b0215b6bd36a04394c1048107e925b
@@ -23,15 +17,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SceneManager/Easy_Mode.unity
     guid: 30c6dc1f431038147abc5fbdac25959c
-  - enabled: 0
-    path: Assets/Scenes/Character/TestScene.unity
-    guid: 7f12a7dedbc76c6489e2148e00791b2f
   - enabled: 1
     path: Assets/Scenes/SceneManager/Normal_Mode.unity
     guid: bf37f2cfe75e44d45be98f4a8e49bdf3
   - enabled: 1
     path: Assets/Scenes/SceneManager/Hard_Mode.unity
     guid: bac6382e40910614ab623e04725efc54
+  - enabled: 1
+    path: Assets/Scenes/Character/TestScene.unity
+    guid: 7f12a7dedbc76c6489e2148e00791b2f
+  - enabled: 0
+    path: Assets/Scenes/NetworkScene/Network.unity
+    guid: 8e213cf86ae2e4046b2741cd9564d640
+  - enabled: 0
+    path: Assets/Scenes/NetworkScene/Multi_Mode2.unity
+    guid: 3cd990110c965e64080fa18e9b82e0f5
   - enabled: 0
     path: Assets/Scenes/SceneManager/Lobby.unity
     guid: f07c31710788a7245b4f8b00c2e84002

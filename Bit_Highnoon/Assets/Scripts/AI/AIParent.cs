@@ -36,6 +36,7 @@ public class AIParent : MonoBehaviour
 
     protected GameObject bloodEffect;
 
+    protected new CapsuleCollider collider;
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -55,6 +56,8 @@ public class AIParent : MonoBehaviour
 
         AIAudio = GetComponent<AudioSource>();
         AIAudio.loop = false;
+
+        collider = GetComponent<CapsuleCollider>();
 
         //Debug.Log("idle");
     }
@@ -191,6 +194,8 @@ public class AIParent : MonoBehaviour
         animator.SetTrigger("dead");
         isDead = true;
 
+        Invoke("UpdateCollider", 1);
+
         DeadAudio();
         Invoke("CreateBloodEffect", 2.5f);
     }
@@ -266,6 +271,14 @@ public class AIParent : MonoBehaviour
     protected virtual void CreateBloodEffect()
     {
         bloodEffect.SetActive(true);
+    }
+    #endregion
+
+    #region 콜라이더
+    protected virtual void UpdateCollider()
+    {
+        collider.direction = 2;
+        collider.center = new Vector3(0.1f, 0f, -0.9f);
     }
     #endregion
 }

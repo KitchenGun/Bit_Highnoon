@@ -110,4 +110,13 @@ public class AINormal : AIParent
             = gameObject.transform.position + new Vector3(0.15f, 0.001f, -1.08f);
     }
     #endregion
+
+    #region 콜라이더
+    protected override void UpdateCollider()
+    {
+        base.UpdateCollider();
+
+        collider.center = new Vector3(0, 0, 1.1f);
+    }
+    #endregion
 }

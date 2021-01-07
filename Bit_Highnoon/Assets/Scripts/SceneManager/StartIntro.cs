@@ -30,9 +30,6 @@ public class StartIntro : MonoBehaviour
 
         Invoke("InvokeLogo", 1.5f*3.5f);
 
-       
-
-
         Invoke("InvokeMain", 1.5f * 6f);
     }
 
@@ -72,7 +69,6 @@ public class StartIntro : MonoBehaviour
 
     private IEnumerator InvokeLight()
     {
-
         GameObject GM = GameObject.Find("GameManager").gameObject;
         GM.GetComponent<GameManager>().StartCoroutine("GameEnd");
 
