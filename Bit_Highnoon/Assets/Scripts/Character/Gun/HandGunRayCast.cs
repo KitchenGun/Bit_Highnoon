@@ -107,8 +107,6 @@ public class HandGunRayCast : MonoBehaviour
                                 ButtonHit(HitObj.transform.gameObject);
                             }
                             //오브젝트 레이어로 식별
-
-                            Debug.Log(HitObj.transform.gameObject.layer);
                             if (HitObj.transform.gameObject.layer==8)
                             {
                                 GameObject BulletHole = Instantiate<GameObject>(SandDecal, HitObj.point, Quaternion.identity) as GameObject;
