@@ -34,10 +34,15 @@ public class AIParent : MonoBehaviour
 
     protected AudioSource AIAudio;
 
+    protected GameObject bloodEffect;
+
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        animator = GetComponent<Animator>();        
+        animator = GetComponent<Animator>();
+
+        bloodEffect = gameObject.transform.Find("BloodDecal").gameObject;
 
         aiState = AIState.WALK;
 
@@ -187,6 +192,7 @@ public class AIParent : MonoBehaviour
         isDead = true;
 
         DeadAudio();
+        Invoke("CreateBloodEffect", 2.5f);
     }
     #endregion
 
@@ -253,6 +259,13 @@ public class AIParent : MonoBehaviour
     protected virtual void PlayerDead()
     {
         isPlayerDead = true;
+    }
+    #endregion
+
+    #region 혈흔 효과
+    protected virtual void CreateBloodEffect()
+    {
+        bloodEffect.SetActive(true);
     }
     #endregion
 }

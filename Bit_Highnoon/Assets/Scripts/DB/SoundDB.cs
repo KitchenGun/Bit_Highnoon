@@ -82,16 +82,24 @@ public class SoundDB : MonoBehaviour
         folder2.AddRange(("DropGun,GripGun,GunFire,Reload,Walk").Split(','));
         #endregion
 
+        #region AI 테스트 용
+        //folder1.AddRange(("AI,Gun,Bgm").Split(','));
+        //folder2.AddRange(("Hard,EnemyFire,Battle").Split(','));
+        #endregion
+
         switch (idx)
         {
-            case 0: break;
+            case 0:
+                folder1.AddRange(("Bgm").Split(','));
+                folder2.AddRange(("Battle").Split(','));
+                break;
             case 1:
-                folder1.AddRange(("Effect").Split(','));
-                folder2.AddRange(("glass").Split(','));
+                folder1.AddRange(("WindSound,Effect").Split(','));
+                folder2.AddRange(("WindSound,glass").Split(','));
                 break;
             case 2:
-                folder1.AddRange(("Effect").Split(','));
-                folder2.AddRange(("glass").Split(','));
+                folder1.AddRange(("WindSound,Effect").Split(','));
+                folder2.AddRange(("WindSound,glass").Split(','));
                 break;
             case 3:
                 folder1.AddRange(("AI,Gun,Bgm").Split(','));

@@ -100,4 +100,14 @@ public class AINormal : AIParent
         gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
     }
     #endregion
+
+    #region 혈흔 효과
+    protected override void CreateBloodEffect()
+    {
+        base.CreateBloodEffect();
+
+        bloodEffect.transform.position
+            = gameObject.transform.position + new Vector3(0.15f, 0.001f, -1.08f);
+    }
+    #endregion
 }

@@ -21,7 +21,6 @@ public class HoldFire : MonoBehaviour
         #endregion
         //확인한 씬을 통해서 총기 사용가능을 확인
         SceneCheck();
-        Debug.Log(Holster.Count);
     }
 
     #region 씬에 따른 충돌체 상태 초기화
