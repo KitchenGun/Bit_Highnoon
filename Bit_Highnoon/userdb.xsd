@@ -7,7 +7,6 @@
           <xs:complexType>
             <xs:sequence>
               <xs:element name="PID" type="xs:int" />
-              <xs:element name="UserName" type="xs:string" />
               <xs:element name="Mode" type="xs:string" />
               <xs:element name="EasyWin" type="xs:int" />
               <xs:element name="EasyLose" type="xs:int" />
