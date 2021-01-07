@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     private SoundDB db;
+    public GameObject normal;
+    public GameObject hard;
 
     #region Singleton 싱글톤
     private static GameManager instance;
@@ -127,7 +129,7 @@ public class GameManager : MonoBehaviour
         }
     }
     #endregion
-
+    
     #region 게임 Start & End 음악
 
     public void GameStart()
@@ -169,6 +171,30 @@ public class GameManager : MonoBehaviour
 
         yield return null;
     }
+    #endregion
+
+    #region 난이도 잠김
+    /*
+    public void LockLevel()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            string db; //db에서 가져온 난이도값 넣기(우선 넣은거임)
+            //db에서 가져온 값이 이지일때(노말 하드 잠김)
+            if (db == "easy")
+            {
+                normal.SetActive(false);
+                hard.SetActive(false);
+            }
+            //db에서 가져온 값이 노말일때(하드 잠김)
+            else if (db == "normal")
+            {
+                hard.SetActive(false);
+            }
+
+        }
+    }
+    */
     #endregion
 
     #region Update함수
@@ -287,4 +313,5 @@ public class GameManager : MonoBehaviour
 
     }*/
     #endregion
+
 }
