@@ -9,16 +9,9 @@ public class logicaltest : MonoBehaviour
     void Start()
     {
         db.StartXml();
-        db.EasyLoseCount(1);
-        db.EasyWinCount(1);
-        db.NormalLoseCount(1);
-        db.NormalWinCount(1);
-        db.NormalWinCount(1);
-        db.HardLoseCount(1);
-        db.HardWinCount(1);
-        db.NormalUser(1);
-        db.Select(1);
+        db.EasyLoseCount();
 
-        db.ResetUser(1);
+        Debug.Log(db.EasyRate());
+        db.Select();
     }
 }

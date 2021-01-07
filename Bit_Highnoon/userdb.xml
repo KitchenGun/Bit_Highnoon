@@ -2,10 +2,9 @@
 <DocumentElement>
   <UserInfo>
     <PID>1</PID>
-    <UserName>Player</UserName>
     <Mode>easy</Mode>
-    <EasyWin>0</EasyWin>
-    <EasyLose>0</EasyLose>
+    <EasyWin>1</EasyWin>
+    <EasyLose>10</EasyLose>
     <NormalWin>0</NormalWin>
     <NormalLose>0</NormalLose>
     <HardWin>0</HardWin>
