@@ -23874,9 +23874,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1718609870}
     m_Modifications:
+    - target: {fileID: 100000, guid: dee70c6cc2c168b4eb713be19d5881e9, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: dee70c6cc2c168b4eb713be19d5881e9, type: 3}
       propertyPath: m_Name
       value: Windmill
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: dee70c6cc2c168b4eb713be19d5881e9, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: dee70c6cc2c168b4eb713be19d5881e9, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: dee70c6cc2c168b4eb713be19d5881e9, type: 3}
       propertyPath: m_RootOrder
@@ -25053,6 +25065,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 38386455202fea741a152d7c844c3e77, type: 3}
       propertyPath: m_Name
       value: Barn
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 38386455202fea741a152d7c844c3e77, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 38386455202fea741a152d7c844c3e77, type: 3}
       propertyPath: m_RootOrder

@@ -438,7 +438,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1207,7 +1207,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 1000
-  field of view: 97.48452
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -1794,7 +1794,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2016,7 +2016,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2238,7 +2238,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2620,6 +2620,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 2638797564006596606, guid: 4f0c76f61a1809d459cbe0d2c769ed0e, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4197952570771200824, guid: 4f0c76f61a1809d459cbe0d2c769ed0e, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -1
@@ -2641,9 +2645,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6432400424565375059, guid: 078f500f10098884da703fa6ee6b78a3, type: 3}
     - target: {fileID: 7882518585461515088, guid: 4f0c76f61a1809d459cbe0d2c769ed0e, type: 3}
+      propertyPath: WoodDecal
+      value: 
+      objectReference: {fileID: 5909562328176187779, guid: 4a85d28944b1f4d42ae3cf2d267f2b54, type: 3}
+    - target: {fileID: 7882518585461515088, guid: 4f0c76f61a1809d459cbe0d2c769ed0e, type: 3}
       propertyPath: BloodDecal
       value: 
       objectReference: {fileID: 1240250018707908, guid: 5656e7ea1f1a75d4c895547ec2b824b3, type: 3}
+    - target: {fileID: 7882518585461515088, guid: 4f0c76f61a1809d459cbe0d2c769ed0e, type: 3}
+      propertyPath: MetalDecal
+      value: 
+      objectReference: {fileID: 5482009037991827918, guid: 93e36ed3e3da6514d99698d52ae5d3e2, type: 3}
     - target: {fileID: 7882518585461515088, guid: 4f0c76f61a1809d459cbe0d2c769ed0e, type: 3}
       propertyPath: BulletUIAni
       value: 
@@ -2686,6 +2698,11 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: df492c13959fca442b4a114fd4a538e5, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f0c76f61a1809d459cbe0d2c769ed0e, type: 3}
+--- !u!4 &2968474111426202071 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 602026268317879757, guid: 4f0c76f61a1809d459cbe0d2c769ed0e, type: 3}
+  m_PrefabInstance: {fileID: 2407438749123871770}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5267070249869250050 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7525678486581021208, guid: 4f0c76f61a1809d459cbe0d2c769ed0e, type: 3}
@@ -2697,11 +2714,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &2968474111426202071 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 602026268317879757, guid: 4f0c76f61a1809d459cbe0d2c769ed0e, type: 3}
-  m_PrefabInstance: {fileID: 2407438749123871770}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3366610076366438156
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2925,9 +2937,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6432400424565375059, guid: 078f500f10098884da703fa6ee6b78a3, type: 3}
     - target: {fileID: 6709156382225900699, guid: 784ad1b410e49f84ab3a7e4d43ff0535, type: 3}
+      propertyPath: WoodDecal
+      value: 
+      objectReference: {fileID: 5909562328176187779, guid: 4a85d28944b1f4d42ae3cf2d267f2b54, type: 3}
+    - target: {fileID: 6709156382225900699, guid: 784ad1b410e49f84ab3a7e4d43ff0535, type: 3}
       propertyPath: BloodDecal
       value: 
       objectReference: {fileID: 1240250018707908, guid: 5656e7ea1f1a75d4c895547ec2b824b3, type: 3}
+    - target: {fileID: 6709156382225900699, guid: 784ad1b410e49f84ab3a7e4d43ff0535, type: 3}
+      propertyPath: MetalDecal
+      value: 
+      objectReference: {fileID: 5482009037991827918, guid: 93e36ed3e3da6514d99698d52ae5d3e2, type: 3}
     - target: {fileID: 6709156382225900699, guid: 784ad1b410e49f84ab3a7e4d43ff0535, type: 3}
       propertyPath: BulletUIAni
       value: 
@@ -2935,7 +2955,7 @@ PrefabInstance:
     - target: {fileID: 6709156382225900699, guid: 784ad1b410e49f84ab3a7e4d43ff0535, type: 3}
       propertyPath: BulletUIImage
       value: 
-      objectReference: {fileID: 3453315947744982051}
+      objectReference: {fileID: 5267070249869250050}
     - target: {fileID: 6709156382225900699, guid: 784ad1b410e49f84ab3a7e4d43ff0535, type: 3}
       propertyPath: BulletUI.Array.size
       value: 7
@@ -2968,6 +2988,10 @@ PrefabInstance:
       propertyPath: BulletUI.Array.data[6]
       value: 
       objectReference: {fileID: 21300000, guid: df492c13959fca442b4a114fd4a538e5, type: 3}
+    - target: {fileID: 7016994633940594289, guid: 784ad1b410e49f84ab3a7e4d43ff0535, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 784ad1b410e49f84ab3a7e4d43ff0535, type: 3}
 --- !u!4 &2968474111739419203 stripped
@@ -2975,17 +2999,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1495904768451614543, guid: 784ad1b410e49f84ab3a7e4d43ff0535, type: 3}
   m_PrefabInstance: {fileID: 4463249801436515596}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3453315947744982051 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1304920752972314927, guid: 784ad1b410e49f84ab3a7e4d43ff0535, type: 3}
-  m_PrefabInstance: {fileID: 4463249801436515596}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &4808611021689429140
 PrefabInstance:
   m_ObjectHideFlags: 0
