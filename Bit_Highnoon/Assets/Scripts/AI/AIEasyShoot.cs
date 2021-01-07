@@ -21,9 +21,9 @@ public class AIEasyShoot : MonoBehaviour
         easyAI.SendMessage("SendMessageDead");
     }
 
-    private void GameEnd()
+    private void GameEnd(string winner)
     {
-        easyAI.SendMessage("GameEnd");
+        easyAI.SendMessage("GameEnd", winner);
     }
 
     private void PlayerDead()

@@ -256,9 +256,9 @@ public class AIParent : MonoBehaviour
         player.transform.Find("Body").GetComponent<PlayerHit>().SendMessage("Die");      //플레이어에게 죽어다고 알리기
     }
 
-    protected virtual void GameEnd()
+    protected virtual void GameEnd(string winner)
     {
-        StartCoroutine(GameManager.Instance.GameEnd());
+        StartCoroutine(GameManager.Instance.GameEnd(winner));
     }
 
     protected virtual void PlayerDead()

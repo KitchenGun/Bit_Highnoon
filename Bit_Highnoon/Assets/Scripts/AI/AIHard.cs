@@ -48,7 +48,7 @@ public class AIHard : AIParent
         ReTurn();
 
         base.Dead();
-        GameEnd();
+        GameEnd("player");
     }
     #endregion
 
