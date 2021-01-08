@@ -143,6 +143,7 @@ MonoBehaviour:
   rightHand: {fileID: 8512811213727240190}
   leftEye: {fileID: 20131489337305086}
   rightEye: {fileID: 20504667576486672}
+  speed: 3
 --- !u!1 &100010
 GameObject:
   m_ObjectHideFlags: 0
