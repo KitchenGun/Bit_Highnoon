@@ -56,7 +56,7 @@ public class AINormal : AIParent
         ReTurn();
 
         base.Dead();
-        base.GameEnd();
+        base.GameEnd("player");
     }
     #endregion
 
@@ -69,13 +69,13 @@ public class AINormal : AIParent
         }
     }
 
-    protected override void GameEnd()
+    protected override void GameEnd(string winner)
     {
         player_Dead_Count--;
 
         if (player_Dead_Count == 0)
         {
-            base.GameEnd();
+            base.GameEnd(winner);
 
             SendMessageDead();
         }
@@ -108,6 +108,15 @@ public class AINormal : AIParent
 
         bloodEffect.transform.position
             = gameObject.transform.position + new Vector3(0.15f, 0.001f, -1.08f);
+    }
+    #endregion
+
+    #region 콜라이더
+    protected override void UpdateCollider()
+    {
+        base.UpdateCollider();
+
+        collider.center = new Vector3(0, 0, 1.1f);
     }
     #endregion
 }

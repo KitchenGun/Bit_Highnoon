@@ -39,6 +39,10 @@ public class HandGunRayCast : MonoBehaviour
     [SerializeField]
     private GameObject SandDecal;
     [SerializeField]
+    private GameObject MetalDecal;
+    [SerializeField]
+    private GameObject WoodDecal;
+    [SerializeField]
     private GameObject BloodDecal;
     #endregion
 
@@ -107,12 +111,29 @@ public class HandGunRayCast : MonoBehaviour
                                 ButtonHit(HitObj.transform.gameObject);
                             }
                             //오브젝트 레이어로 식별
-
-                            Debug.Log(HitObj.transform.gameObject.layer);
-                            if (HitObj.transform.gameObject.layer==8)
+                            if (HitObj.transform.gameObject.layer == 8)
                             {
                                 GameObject BulletHole = Instantiate<GameObject>(SandDecal, HitObj.point, Quaternion.identity) as GameObject;
-                                BulletHole.transform.LookAt(this.gameObject.transform);
+                                BulletHole.transform.LookAt(this.gameObject.transform.position);
+                                BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("etc");
+                                BulletHole.GetComponent<AudioSource>().Play();
+                                Destroy(BulletHole, 3f);
+                            }
+                            else if (HitObj.transform.gameObject.layer == 9)
+                            {
+                                GameObject BulletHole = Instantiate<GameObject>(MetalDecal, HitObj.point, Quaternion.identity) as GameObject;
+                                BulletHole.transform.LookAt(this.gameObject.transform.position);
+                                BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("metal");
+                                BulletHole.GetComponent<AudioSource>().Play();
+                                Destroy(BulletHole, 3f);
+
+                            }
+                            else if (HitObj.transform.gameObject.layer == 10)
+                            {
+                                GameObject BulletHole = Instantiate<GameObject>(WoodDecal, HitObj.point, Quaternion.identity) as GameObject;
+                                BulletHole.transform.LookAt(this.gameObject.transform.position);
+                                BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("wood");
+                                BulletHole.GetComponent<AudioSource>().Play();
                                 Destroy(BulletHole, 3f);
                             }
                             else if (HitObj.transform.gameObject.layer == 20)
@@ -120,6 +141,7 @@ public class HandGunRayCast : MonoBehaviour
                                 GameObject BloodParticle = Instantiate<GameObject>(BloodDecal, HitObj.point, Quaternion.identity) as GameObject;
                                 Destroy(BloodParticle, 3f);
                             }
+
                         }
                     }
                 }
@@ -145,12 +167,31 @@ public class HandGunRayCast : MonoBehaviour
                             {
                                 ButtonHit(HitObj.transform.gameObject);
                             }
+
                             //오브젝트 레이어로 식별
-                            Debug.Log(HitObj.transform.gameObject.layer);
                             if (HitObj.transform.gameObject.layer == 8)
                             {
                                 GameObject BulletHole = Instantiate<GameObject>(SandDecal, HitObj.point, Quaternion.identity) as GameObject;
-                                BulletHole.transform.LookAt(this.gameObject.transform);
+                                BulletHole.transform.LookAt(this.gameObject.transform.position);
+                                BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("etc");
+                                BulletHole.GetComponent<AudioSource>().Play();
+                                Destroy(BulletHole, 3f);
+                            }
+                            else if (HitObj.transform.gameObject.layer == 9)
+                            {
+                                GameObject BulletHole = Instantiate<GameObject>(MetalDecal, HitObj.point, Quaternion.identity) as GameObject;
+                                BulletHole.transform.LookAt(this.gameObject.transform.position);
+                                BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("metal");
+                                BulletHole.GetComponent<AudioSource>().Play();
+                                Destroy(BulletHole, 3f);
+
+                            }
+                            else if (HitObj.transform.gameObject.layer == 10)
+                            {
+                                GameObject BulletHole = Instantiate<GameObject>(WoodDecal, HitObj.point, Quaternion.identity) as GameObject;
+                                BulletHole.transform.LookAt(this.gameObject.transform.position);
+                                BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("wood");
+                                BulletHole.GetComponent<AudioSource>().Play();
                                 Destroy(BulletHole, 3f);
                             }
                             else if (HitObj.transform.gameObject.layer == 20)
@@ -158,6 +199,7 @@ public class HandGunRayCast : MonoBehaviour
                                 GameObject BloodParticle = Instantiate<GameObject>(BloodDecal, HitObj.point, Quaternion.identity) as GameObject;
                                 Destroy(BloodParticle, 3f);
                             }
+
                         }
                     }
                 }

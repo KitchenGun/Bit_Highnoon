@@ -78,8 +78,8 @@ public class SoundDB : MonoBehaviour
         List<string> folder2 = new List<string>();
 
         #region 모든 씬에 들어가는 소리
-        folder1.AddRange(("Gun,Gun,Gun,Gun,User").Split(','));
-        folder2.AddRange(("DropGun,GripGun,GunFire,Reload,Walk").Split(','));
+        folder1.AddRange(("Gun,Gun,Gun,Gun,User,Effect,Effect,Effect,Effect").Split(','));
+        folder2.AddRange(("DropGun,GripGun,GunFire,Reload,Walk,glass,etc,metal,wood").Split(','));
         #endregion
 
         #region AI 테스트 용
@@ -94,12 +94,12 @@ public class SoundDB : MonoBehaviour
                 folder2.AddRange(("Battle").Split(','));
                 break;
             case 1:
-                folder1.AddRange(("WindSound,Effect").Split(','));
-                folder2.AddRange(("WindSound,glass").Split(','));
+                folder1.AddRange(("Bgm").Split(','));
+                folder2.AddRange(("WindSound").Split(','));
                 break;
             case 2:
-                folder1.AddRange(("WindSound,Effect").Split(','));
-                folder2.AddRange(("WindSound,glass").Split(','));
+                folder1.AddRange(("Bgm").Split(','));
+                folder2.AddRange(("WindSound").Split(','));
                 break;
             case 3:
                 folder1.AddRange(("AI,Gun,Bgm").Split(','));

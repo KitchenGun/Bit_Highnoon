@@ -58,7 +58,7 @@ public class AIEasy : AIParent
         ReChange();
 
         base.Dead();
-        GameEnd();
+        GameEnd("player");
     }
     #endregion
 

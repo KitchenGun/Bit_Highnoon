@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private SoundDB db;
+    private SoundDB sounddb;
+    private LogicalDB leveldb;
+    private GameObject normal;
+    private GameObject hard;
+
 
     #region Singleton 싱글톤
     private static GameManager instance;
@@ -27,8 +32,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        db = this.gameObject.AddComponent<SoundDB>();
-
+        sounddb = this.gameObject.AddComponent<SoundDB>();
+        leveldb = this.gameObject.AddComponent<LogicalDB>();
         if(instance == null)
         {
             instance = this;
@@ -39,7 +44,8 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        db.SoundUpdate(GetSceneIndex());
+        leveldb.StartXml();
+        sounddb.SoundUpdate(GetSceneIndex());
 
         DontDestroyOnLoad(gameObject);
     }
@@ -48,13 +54,13 @@ public class GameManager : MonoBehaviour
     #region 사운드 호출 함수
     public AudioClip LoadAudioClip(string filename)
     {
-        if (db.AudioList.ContainsKey(filename))
-            return db.AudioList[filename];
+        if (sounddb.AudioList.ContainsKey(filename))
+            return sounddb.AudioList[filename];
 
         int i = 1;
         string temp = filename + i;
 
-        while (db.AudioList.ContainsKey(temp))
+        while (sounddb.AudioList.ContainsKey(temp))
         {
             i++;
             temp = filename + i;
@@ -64,7 +70,7 @@ public class GameManager : MonoBehaviour
 
         filename += rand;
 
-        return db.AudioList[filename];
+        return sounddb.AudioList[filename];
     }
     #endregion
 
@@ -72,7 +78,7 @@ public class GameManager : MonoBehaviour
     //씬 이동
     public void ChangeToScene(int idx)
     {
-        db.SoundUpdate(idx);
+        sounddb.SoundUpdate(idx);        
 
         SceneManager.LoadScene(idx);
     }
@@ -101,7 +107,10 @@ public class GameManager : MonoBehaviour
             switch (bottle.name)
             {
                 case "Single":
-                    ChangeToScene(2); break;
+                    {
+                        ChangeToScene(2);
+                        break;
+                    }
                 case "Multi":
                     ChangeToScene(6); break;
                 case "Option":
@@ -151,7 +160,7 @@ public class GameManager : MonoBehaviour
         player.transform.Find("Body").GetComponent<HoldFire>().SendMessage("OpenFire");
     }    
 
-    public IEnumerator GameEnd()
+    public IEnumerator GameEnd(string winner)
     {
         AudioSource Audio = GetComponent<AudioSource>();
 
@@ -159,6 +168,47 @@ public class GameManager : MonoBehaviour
         Audio.loop = false;
 
         Audio.Play();
+
+        if (winner.Equals("AI"))
+        {
+            //AI가 이겼을 때
+            if (GetSceneIndex() == 3)
+            {
+                //이지 난이도
+                leveldb.EasyLoseCount();
+            }
+            else if (GetSceneIndex() == 4)
+            {
+                //노말 난이도
+                leveldb.NormalLoseCount();
+            }
+            else if(GetSceneIndex() == 5)
+            {
+                //하드 난이도
+                leveldb.HardLoseCount();
+            }
+        }
+        else if(winner.Equals("player"))
+        {
+            //player가 이겼을 때
+            if (GetSceneIndex() == 3)
+            {
+                //이지 난이도
+                leveldb.EasyWinCount();
+                leveldb.NormalUser();
+            }
+            else if (GetSceneIndex() == 4)
+            {
+                //노말 난이도
+                leveldb.NormalWinCount();
+                leveldb.HardUser();
+            }
+            else if (GetSceneIndex() == 5)
+            {
+                //하드 난이도
+                leveldb.HardWinCount();
+            }
+        }
 
         if (GetSceneIndex() != 0)
         {
@@ -286,5 +336,54 @@ public class GameManager : MonoBehaviour
         #endregion
 
     }*/
+    #endregion
+
+    #region 난이도 잠김
+
+    public void LockLevel()
+    {
+        string db = leveldb.Mode();
+        StageLock(db);
+    }   
+
+    private void StageLock(string stage)
+    {
+        if(stage.Equals("easy"))
+        {
+            normal = GameObject.Find("Bottle").transform.GetChild(1).gameObject;
+            normal.GetComponent<MeshRenderer>().enabled = false;
+            normal.GetComponent<BoxCollider>().enabled = false;
+
+            hard = GameObject.Find("Bottle").transform.GetChild(2).gameObject;
+            hard.GetComponent<MeshRenderer>().enabled = false;
+            hard.GetComponent<BoxCollider>().enabled = false;
+        }
+        else if(stage.Equals("normal"))
+        {
+            hard = GameObject.Find("Bottle").transform.GetChild(2).gameObject;
+            hard.GetComponent<MeshRenderer>().enabled = false;
+            hard.GetComponent<BoxCollider>().enabled = false;
+        }
+    }
+    #endregion
+
+    #region 승률 출력
+    public int ReturnResult(string level)
+    {
+        if (level.Equals("W/LResultEasy"))
+        {
+            return leveldb.EasyRate(); 
+        }
+        else if (level.Equals("W/LResultNormal"))
+        {
+            return leveldb.NormalRate(); 
+        }
+        else if(level.Equals("W/LResultHard"))
+        {
+            return leveldb.HardRate();
+        }
+
+        return -1;
+    }
     #endregion
 }

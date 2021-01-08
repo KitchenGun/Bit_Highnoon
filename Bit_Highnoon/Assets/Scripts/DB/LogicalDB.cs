@@ -6,7 +6,7 @@ using System.IO;
 using System.Xml;
 using UnityEngine;
 
-public class LogicalDB
+public class LogicalDB : MonoBehaviour
 {
     public DataTable UserInfo { get; set; }
 
@@ -25,11 +25,6 @@ public class LogicalDB
         dc_pid.ColumnName = "PID";
         dc_pid.DataType = typeof(int);
         UserInfo.Columns.Add(dc_pid);
-
-        //유저 이름
-        DataColumn dc_name = new DataColumn("UserName", typeof(string));
-        dc_name.AllowDBNull = false;
-        UserInfo.Columns.Add(dc_name);
 
         //클리어 진도
         DataColumn dc_mode = new DataColumn("Mode", typeof(string));
@@ -130,7 +125,6 @@ public class LogicalDB
         {
             DataRow dr = UserInfo.NewRow();
             dr["PID"] = 1;
-            dr["UserName"] = "Player";
             dr["Mode"] = "easy";
             dr["EasyWin"] = 0;
             dr["EasyLose"] = 0;
@@ -149,11 +143,11 @@ public class LogicalDB
     }
 
     //정보 초기화
-    public void ResetUser(int number)
+    public void ResetUser()
     {
         try
         {
-            DataRow dr = UserInfo.Rows.Find(number);
+            DataRow dr = UserInfo.Rows.Find(1);
 
             dr["PID"] = 1;
             dr["UserName"] = "Player";
@@ -177,11 +171,13 @@ public class LogicalDB
     #region 유저 난이도 설정 변경
 
     //노멀 난이도
-    public void NormalUser(int number)
+    public void NormalUser()
     {
         try
         {
-            DataRow dr = UserInfo.Rows.Find(number);
+            StartXml();
+
+            DataRow dr = UserInfo.Rows.Find(1);
             dr["Mode"] = "normal";
             Save();
         }
@@ -191,11 +187,12 @@ public class LogicalDB
     }
 
     //하드 난이도
-    public void HardUser(int number)
+    public void HardUser()
     {
         try
         {
-            DataRow dr = UserInfo.Rows.Find(number);
+            StartXml();
+            DataRow dr = UserInfo.Rows.Find(1);
             dr["Mode"] = "hard";
             Save();
         }
@@ -209,11 +206,13 @@ public class LogicalDB
     #region 전적 카운트
 
     //승리수(easy)
-    public void EasyWinCount(int number)
+    public void EasyWinCount()
     {
         try
         {
-            DataRow dr = UserInfo.Rows.Find(number);
+            StartXml();
+
+            DataRow dr = UserInfo.Rows.Find(1);
             dr["EasyWin"] = int.Parse(dr["EasyWin"].ToString()) + 1;
             Save();
         }
@@ -223,11 +222,12 @@ public class LogicalDB
     }
 
     //패배수(easy)
-    public void EasyLoseCount(int number)
+    public void EasyLoseCount()
     {
         try
         {
-            DataRow dr = UserInfo.Rows.Find(number);
+            StartXml();
+            DataRow dr = UserInfo.Rows.Find(1);
             dr["EasyLose"] = int.Parse(dr["EasyLose"].ToString()) + 1;
             Save();
         }
@@ -237,11 +237,12 @@ public class LogicalDB
     }
 
     //승리수(normal)
-    public void NormalWinCount(int number)
+    public void NormalWinCount()
     {
         try
         {
-            DataRow dr = UserInfo.Rows.Find(number);
+            StartXml();
+            DataRow dr = UserInfo.Rows.Find(1);
             dr["NormalWin"] = int.Parse(dr["NormalWin"].ToString()) + 1;
             Save();
         }
@@ -251,11 +252,12 @@ public class LogicalDB
     }
 
     //패배수(normal)
-    public void NormalLoseCount(int number)
+    public void NormalLoseCount()
     {
         try
         {
-            DataRow dr = UserInfo.Rows.Find(number);
+            StartXml();
+            DataRow dr = UserInfo.Rows.Find(1);
             dr["NormalLose"] = int.Parse(dr["NormalLose"].ToString()) + 1;
             Save();
         }
@@ -265,11 +267,12 @@ public class LogicalDB
     }
 
     //승리수(hard)
-    public void HardWinCount(int number)
+    public void HardWinCount()
     {
         try
         {
-            DataRow dr = UserInfo.Rows.Find(number);
+            StartXml();
+            DataRow dr = UserInfo.Rows.Find(1);
             dr["HardWin"] = int.Parse(dr["HardWin"].ToString()) + 1;
             Save();
         }
@@ -279,11 +282,12 @@ public class LogicalDB
     }
 
     //패배수(hard)
-    public void HardLoseCount(int number)
+    public void HardLoseCount()
     {
         try
         {
-            DataRow dr = UserInfo.Rows.Find(number);
+            StartXml();
+            DataRow dr = UserInfo.Rows.Find(1);
             dr["HardLose"] = int.Parse(dr["HardLose"].ToString()) + 1;
             Save();
         }
@@ -296,24 +300,104 @@ public class LogicalDB
 
     #region 파싱
 
-    public void Select(int number)
+    //난이도
+    public string Mode()
     {
         try
         {
-            DataRow dr = UserInfo.Rows.Find(number);
+            StartXml();
+            DataRow dr = UserInfo.Rows.Find(1);
 
             string mode = dr["Mode"].ToString();
-            int win = int.Parse(dr["EasyWin"].ToString());
-            int lose = int.Parse(dr["EasyLose"].ToString());
-            Debug.Log(mode);
-            Debug.Log(win);
-            Debug.Log(lose);
+
+            return mode;
         }
         catch (Exception)
         {
+            return "";
         }
     }
 
+    //이지 승률
+    public int EasyRate()
+    {
+        try
+        {
+            StartXml();
+            DataRow dr = UserInfo.Rows.Find(1);
+
+            int win = int.Parse(dr["EasyWin"].ToString());
+            int lose = int.Parse(dr["EasyLose"].ToString());
+
+            if (win + lose == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                float rate = (win / (win + (float)lose)) * 100;
+                return (int)rate;
+            }
+        }
+        catch (Exception)
+        {
+            return 0;
+        }
+    }
+
+    //노말 승률
+    public int NormalRate()
+    {
+        try
+        {
+            StartXml();
+            DataRow dr = UserInfo.Rows.Find(1);
+
+            int win = int.Parse(dr["NormalWin"].ToString());
+            int lose = int.Parse(dr["NormalLose"].ToString());
+
+            if (win + lose == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                float rate = (win / (win + (float)lose)) * 100;
+                return (int)rate;
+            }
+        }
+        catch (Exception)
+        {
+            return 0;
+        }
+    }
+
+        //하드 승률
+        public int HardRate()
+        {
+        try
+        {
+                StartXml();
+                DataRow dr = UserInfo.Rows.Find(1);
+
+                int win = int.Parse(dr["HardWin"].ToString());
+                int lose = int.Parse(dr["HardLose"].ToString());
+
+                if (win + lose == 0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    float rate = (win / (win + (float)lose)) * 100;
+                    return (int)rate;
+                }
+            }
+        catch (Exception)
+        {
+            return 0;
+        }
+    }
     #endregion
 
 }

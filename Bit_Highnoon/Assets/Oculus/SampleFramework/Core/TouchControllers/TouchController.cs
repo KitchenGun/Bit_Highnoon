@@ -353,6 +353,7 @@ namespace OVRTouchSample
         #region 강제 Drop
         private void Drop()
         {
+            this.gameObject.GetComponent<SphereCollider>().enabled = false;
             if (this.gameObject.transform.Find("OculusTouchForQuest2").GetComponentInChildren<SkinnedMeshRenderer>().enabled == false)
             {
                 //총을 들고있을 경우
@@ -364,6 +365,7 @@ namespace OVRTouchSample
                 //컨트롤러로 교체
                 GuntoHand();
             }
+           
         }
         #endregion
 

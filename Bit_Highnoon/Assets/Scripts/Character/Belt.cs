@@ -6,6 +6,8 @@ public class Belt : MonoBehaviour
 {
     [SerializeField]
     private List<GameObject> BeltGun;
+    private bool GunRefill;
+    private GameManager GM;
 
     #region 밸트에 총있는지 확인용 변수
     public bool RightGunSet { get;  set; }
@@ -19,8 +21,49 @@ public class Belt : MonoBehaviour
         RightGunSet = true;
         LeftGunSet = true;
 
+        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
+        if (GM.GetSceneIndex() == 1 || GM.GetSceneIndex() == 2 || GM.GetSceneIndex() == 6)
+        {
+            GunRefill = true;
+        }
+        else
+        {
+            GunRefill = false;
+        }
     }
 
+    private void Update()
+    {
+       if(GunRefill==true)
+        {
+            if (OVRInput.GetDown(OVRInput.Button.Three))
+            {
+                Debug.Log("재배치");
+                if (RightGunSet == false)
+                {
+                    foreach (GameObject Gun in BeltGun)
+                    {
+                        if (Gun.tag == "Right")
+                        {
+                            Gun.GetComponent<MeshRenderer>().enabled = true;
+                            RightGunSet = true;
+                        }
+                    }
+                }
+                if (LeftGunSet == false)
+                {
+                    foreach (GameObject Gun in BeltGun)
+                    {
+                        if (Gun.tag == "Left")
+                        {
+                            Gun.GetComponent<MeshRenderer>().enabled = true;
+                            LeftGunSet = true;
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     #region 벨트에서 총 꺼네기
     //왼쪽 
