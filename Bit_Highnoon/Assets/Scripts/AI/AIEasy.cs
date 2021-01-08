@@ -93,6 +93,13 @@ public class AIEasy : AIParent
     }
     #endregion
 
+    #region Animation 이벤트 호출
+    private void WaterLeak()
+    {
+        gameObject.transform.GetChild(6).gameObject.SetActive(true);
+    }
+    #endregion
+
     #region 혈흔 효과
     protected override void CreateBloodEffect()
     {
