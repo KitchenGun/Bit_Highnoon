@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 11158871}
   - component: {fileID: 11158870}
   - component: {fileID: 11158869}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (68)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 18168047}
   - component: {fileID: 18168046}
   - component: {fileID: 18168045}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (82)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -337,7 +337,7 @@ GameObject:
   - component: {fileID: 18421921}
   - component: {fileID: 18421920}
   - component: {fileID: 18421919}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_02 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -438,7 +438,7 @@ GameObject:
   - component: {fileID: 18534256}
   - component: {fileID: 18534255}
   - component: {fileID: 18534254}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_01 (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -539,7 +539,7 @@ GameObject:
   - component: {fileID: 19853916}
   - component: {fileID: 19853915}
   - component: {fileID: 19853914}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (81)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -640,7 +640,7 @@ GameObject:
   - component: {fileID: 20264620}
   - component: {fileID: 20264619}
   - component: {fileID: 20264618}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (49)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -741,7 +741,7 @@ GameObject:
   - component: {fileID: 29726269}
   - component: {fileID: 29726268}
   - component: {fileID: 29726267}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (49)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -842,7 +842,7 @@ GameObject:
   - component: {fileID: 47634807}
   - component: {fileID: 47634806}
   - component: {fileID: 47634805}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_01 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -943,7 +943,7 @@ GameObject:
   - component: {fileID: 53488609}
   - component: {fileID: 53488608}
   - component: {fileID: 53488607}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (96)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1044,7 +1044,7 @@ GameObject:
   - component: {fileID: 53980921}
   - component: {fileID: 53980920}
   - component: {fileID: 53980919}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1145,7 +1145,7 @@ GameObject:
   - component: {fileID: 59704334}
   - component: {fileID: 59704333}
   - component: {fileID: 59704332}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (50)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1246,7 +1246,7 @@ GameObject:
   - component: {fileID: 75623712}
   - component: {fileID: 75623711}
   - component: {fileID: 75623710}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (30)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1347,7 +1347,7 @@ GameObject:
   - component: {fileID: 77932918}
   - component: {fileID: 77932917}
   - component: {fileID: 77932916}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (84)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1448,7 +1448,7 @@ GameObject:
   - component: {fileID: 79672473}
   - component: {fileID: 79672472}
   - component: {fileID: 79672471}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (102)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1549,7 +1549,7 @@ GameObject:
   - component: {fileID: 82644100}
   - component: {fileID: 82644099}
   - component: {fileID: 82644098}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (29)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1649,6 +1649,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gnarled Bush (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
       propertyPath: m_RootOrder
       value: 71
@@ -1712,7 +1716,7 @@ GameObject:
   - component: {fileID: 87065842}
   - component: {fileID: 87065841}
   - component: {fileID: 87065840}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (95)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1812,6 +1816,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrel (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -1879,7 +1887,7 @@ GameObject:
   - component: {fileID: 89761400}
   - component: {fileID: 89761399}
   - component: {fileID: 89761398}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_01 (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1980,7 +1988,7 @@ GameObject:
   - component: {fileID: 92195748}
   - component: {fileID: 92195747}
   - component: {fileID: 92195746}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2081,7 +2089,7 @@ GameObject:
   - component: {fileID: 95845883}
   - component: {fileID: 95845882}
   - component: {fileID: 95845881}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (88)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2182,7 +2190,7 @@ GameObject:
   - component: {fileID: 104702775}
   - component: {fileID: 104702774}
   - component: {fileID: 104702773}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_03 (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2282,6 +2290,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gnarled Bush (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
       propertyPath: m_RootOrder
       value: 65
@@ -2345,7 +2357,7 @@ GameObject:
   - component: {fileID: 116440829}
   - component: {fileID: 116440828}
   - component: {fileID: 116440827}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2446,7 +2458,7 @@ GameObject:
   - component: {fileID: 118581684}
   - component: {fileID: 118581683}
   - component: {fileID: 118581682}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (105)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2547,7 +2559,7 @@ GameObject:
   - component: {fileID: 126467438}
   - component: {fileID: 126467437}
   - component: {fileID: 126467436}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (38)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2782,7 +2794,7 @@ GameObject:
   - component: {fileID: 144155425}
   - component: {fileID: 144155424}
   - component: {fileID: 144155423}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (103)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2883,7 +2895,7 @@ GameObject:
   - component: {fileID: 145184646}
   - component: {fileID: 145184645}
   - component: {fileID: 145184644}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (83)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2984,7 +2996,7 @@ GameObject:
   - component: {fileID: 146271648}
   - component: {fileID: 146271647}
   - component: {fileID: 146271646}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (62)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3085,7 +3097,7 @@ GameObject:
   - component: {fileID: 155013201}
   - component: {fileID: 155013200}
   - component: {fileID: 155013199}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3183,7 +3195,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 164719588}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3332,7 +3344,7 @@ GameObject:
   - component: {fileID: 172828586}
   - component: {fileID: 172828585}
   - component: {fileID: 172828584}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_01 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3433,7 +3445,7 @@ GameObject:
   - component: {fileID: 175506740}
   - component: {fileID: 175506739}
   - component: {fileID: 175506738}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Gnarled Bush (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3525,7 +3537,7 @@ GameObject:
   - component: {fileID: 179544002}
   - component: {fileID: 179544001}
   - component: {fileID: 179544000}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (34)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3626,7 +3638,7 @@ GameObject:
   - component: {fileID: 180348404}
   - component: {fileID: 180348403}
   - component: {fileID: 180348402}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (30)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3715,102 +3727,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 180348400}
   m_Mesh: {fileID: 4300000, guid: 01a0727320dfea84186077b025ae663f, type: 3}
---- !u!1 &181187620
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 181187624}
-  - component: {fileID: 181187623}
-  - component: {fileID: 181187622}
-  - component: {fileID: 181187621}
-  m_Layer: 0
-  m_Name: Plane
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!64 &181187621
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 181187620}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &181187622
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 181187620}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &181187623
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 181187620}
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &181187624
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 181187620}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.01, z: 0}
-  m_LocalScale: {x: 10, y: 0.05, z: 10}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &191146470
 GameObject:
   m_ObjectHideFlags: 0
@@ -3823,7 +3739,7 @@ GameObject:
   - component: {fileID: 191146474}
   - component: {fileID: 191146473}
   - component: {fileID: 191146472}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (59)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3923,6 +3839,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrel (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -3990,7 +3910,7 @@ GameObject:
   - component: {fileID: 197963770}
   - component: {fileID: 197963769}
   - component: {fileID: 197963768}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (32)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4091,7 +4011,7 @@ GameObject:
   - component: {fileID: 201610875}
   - component: {fileID: 201610874}
   - component: {fileID: 201610873}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_03 (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4192,7 +4112,7 @@ GameObject:
   - component: {fileID: 213656630}
   - component: {fileID: 213656629}
   - component: {fileID: 213656628}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (110)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4293,7 +4213,7 @@ GameObject:
   - component: {fileID: 220100376}
   - component: {fileID: 220100375}
   - component: {fileID: 220100374}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (42)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4394,7 +4314,7 @@ GameObject:
   - component: {fileID: 232306551}
   - component: {fileID: 232306550}
   - component: {fileID: 232306549}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (52)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4494,6 +4414,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reservoir (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4f7e7e4c72989e94da4e7c2c762d8b66, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4f7e7e4c72989e94da4e7c2c762d8b66, type: 3}
       propertyPath: m_RootOrder
       value: 18
@@ -4573,7 +4497,7 @@ GameObject:
   - component: {fileID: 239084975}
   - component: {fileID: 239084974}
   - component: {fileID: 239084973}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (89)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4674,7 +4598,7 @@ GameObject:
   - component: {fileID: 239899632}
   - component: {fileID: 239899631}
   - component: {fileID: 239899630}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (74)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4775,7 +4699,7 @@ GameObject:
   - component: {fileID: 240380893}
   - component: {fileID: 240380892}
   - component: {fileID: 240380891}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (51)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4876,7 +4800,7 @@ GameObject:
   - component: {fileID: 240654414}
   - component: {fileID: 240654413}
   - component: {fileID: 240654412}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_02 (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4977,7 +4901,7 @@ GameObject:
   - component: {fileID: 245575658}
   - component: {fileID: 245575657}
   - component: {fileID: 245575656}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (55)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5078,7 +5002,7 @@ GameObject:
   - component: {fileID: 247740691}
   - component: {fileID: 247740690}
   - component: {fileID: 247740689}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (74)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5179,7 +5103,7 @@ GameObject:
   - component: {fileID: 251221030}
   - component: {fileID: 251221029}
   - component: {fileID: 251221028}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (25)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5279,6 +5203,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House_Standard_03 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 1ec043cbaab7bef42b38b3b0ce5fd881, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1ec043cbaab7bef42b38b3b0ce5fd881, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -5346,7 +5274,7 @@ GameObject:
   - component: {fileID: 265202849}
   - component: {fileID: 265202848}
   - component: {fileID: 265202847}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (48)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5447,7 +5375,7 @@ GameObject:
   - component: {fileID: 276301675}
   - component: {fileID: 276301674}
   - component: {fileID: 276301673}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (36)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5547,6 +5475,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrel (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -5612,6 +5544,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 2f765c0cfd6386e45ac5428676baee21, type: 3}
       propertyPath: m_Name
       value: Bank
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 2f765c0cfd6386e45ac5428676baee21, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2f765c0cfd6386e45ac5428676baee21, type: 3}
       propertyPath: m_RootOrder
@@ -5688,7 +5624,7 @@ GameObject:
   - component: {fileID: 303140738}
   - component: {fileID: 303140737}
   - component: {fileID: 303140736}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (59)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5789,7 +5725,7 @@ GameObject:
   - component: {fileID: 304097456}
   - component: {fileID: 304097455}
   - component: {fileID: 304097454}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5891,7 +5827,7 @@ GameObject:
   - component: {fileID: 315845870}
   - component: {fileID: 315845869}
   - component: {fileID: 315845872}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (92)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6046,7 +5982,7 @@ GameObject:
   - component: {fileID: 327914517}
   - component: {fileID: 327914516}
   - component: {fileID: 327914515}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (39)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6147,7 +6083,7 @@ GameObject:
   - component: {fileID: 334655042}
   - component: {fileID: 334655041}
   - component: {fileID: 334655040}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6248,7 +6184,7 @@ GameObject:
   - component: {fileID: 336289137}
   - component: {fileID: 336289136}
   - component: {fileID: 336289135}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (28)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6348,6 +6284,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrel (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -6413,6 +6353,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
       propertyPath: m_Name
       value: Barrel
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
       propertyPath: m_RootOrder
@@ -6650,7 +6594,7 @@ GameObject:
   - component: {fileID: 354156886}
   - component: {fileID: 354156885}
   - component: {fileID: 354156884}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (94)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6751,7 +6695,7 @@ GameObject:
   - component: {fileID: 356076429}
   - component: {fileID: 356076428}
   - component: {fileID: 356076427}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_03 (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6852,7 +6796,7 @@ GameObject:
   - component: {fileID: 358942421}
   - component: {fileID: 358942420}
   - component: {fileID: 358942419}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (109)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6952,6 +6896,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_Woodpicket_02
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4cbcf59d5cae28b428811d445483d9ad, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4cbcf59d5cae28b428811d445483d9ad, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -7023,7 +6971,7 @@ GameObject:
   - component: {fileID: 362345455}
   - component: {fileID: 362345454}
   - component: {fileID: 362345453}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (64)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7124,7 +7072,7 @@ GameObject:
   - component: {fileID: 364245393}
   - component: {fileID: 364245392}
   - component: {fileID: 364245391}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7225,7 +7173,7 @@ GameObject:
   - component: {fileID: 390584441}
   - component: {fileID: 390584440}
   - component: {fileID: 390584439}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (77)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7326,7 +7274,7 @@ GameObject:
   - component: {fileID: 394143918}
   - component: {fileID: 394143917}
   - component: {fileID: 394143916}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (104)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7427,7 +7375,7 @@ GameObject:
   - component: {fileID: 394371471}
   - component: {fileID: 394371470}
   - component: {fileID: 394371469}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (53)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7528,7 +7476,7 @@ GameObject:
   - component: {fileID: 399010491}
   - component: {fileID: 399010490}
   - component: {fileID: 399010489}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7629,7 +7577,7 @@ GameObject:
   - component: {fileID: 401433855}
   - component: {fileID: 401433854}
   - component: {fileID: 401433853}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (65)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7730,7 +7678,7 @@ GameObject:
   - component: {fileID: 405728538}
   - component: {fileID: 405728537}
   - component: {fileID: 405728536}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (70)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7830,6 +7778,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gnarled Bush (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
       propertyPath: m_RootOrder
       value: 67
@@ -7893,7 +7845,7 @@ GameObject:
   - component: {fileID: 412945155}
   - component: {fileID: 412945154}
   - component: {fileID: 412945153}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (55)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7994,7 +7946,7 @@ GameObject:
   - component: {fileID: 425053458}
   - component: {fileID: 425053457}
   - component: {fileID: 425053456}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (69)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8095,7 +8047,7 @@ GameObject:
   - component: {fileID: 426879831}
   - component: {fileID: 426879830}
   - component: {fileID: 426879829}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (108)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8196,7 +8148,7 @@ GameObject:
   - component: {fileID: 429910423}
   - component: {fileID: 429910422}
   - component: {fileID: 429910421}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (66)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8297,7 +8249,7 @@ GameObject:
   - component: {fileID: 430393175}
   - component: {fileID: 430393174}
   - component: {fileID: 430393173}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8398,7 +8350,7 @@ GameObject:
   - component: {fileID: 436620188}
   - component: {fileID: 436620187}
   - component: {fileID: 436620186}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_02 (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8499,7 +8451,7 @@ GameObject:
   - component: {fileID: 441777429}
   - component: {fileID: 441777428}
   - component: {fileID: 441777427}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (92)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8600,7 +8552,7 @@ GameObject:
   - component: {fileID: 449969812}
   - component: {fileID: 449969811}
   - component: {fileID: 449969810}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_03 (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8701,7 +8653,7 @@ GameObject:
   - component: {fileID: 471307379}
   - component: {fileID: 471307378}
   - component: {fileID: 471307377}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_01 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8802,7 +8754,7 @@ GameObject:
   - component: {fileID: 485386619}
   - component: {fileID: 485386618}
   - component: {fileID: 485386617}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (75)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8902,6 +8854,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House_Standard_04
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d08585f135af6594a9b349376178e9d1, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d08585f135af6594a9b349376178e9d1, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -8975,6 +8931,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 60b13bcc34b3d0548a8bdc525bfa65b5, type: 3}
       propertyPath: m_Name
       value: UI_Woodpicket_Single
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 60b13bcc34b3d0548a8bdc525bfa65b5, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 60b13bcc34b3d0548a8bdc525bfa65b5, type: 3}
       propertyPath: m_RootOrder
@@ -9153,7 +9113,7 @@ GameObject:
   - component: {fileID: 501766160}
   - component: {fileID: 501766159}
   - component: {fileID: 501766158}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (56)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9254,7 +9214,7 @@ GameObject:
   - component: {fileID: 503195670}
   - component: {fileID: 503195669}
   - component: {fileID: 503195668}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (91)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9355,7 +9315,7 @@ GameObject:
   - component: {fileID: 512398526}
   - component: {fileID: 512398525}
   - component: {fileID: 512398524}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9455,6 +9415,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gnarled Bush (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
       propertyPath: m_RootOrder
       value: 77
@@ -9517,6 +9481,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gnarled Bush
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
       propertyPath: m_RootOrder
       value: 79
@@ -9578,6 +9546,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
       propertyPath: m_Name
       value: Barrel (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
       propertyPath: m_RootOrder
@@ -9646,7 +9618,7 @@ GameObject:
   - component: {fileID: 534211495}
   - component: {fileID: 534211494}
   - component: {fileID: 534211493}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (27)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9747,7 +9719,7 @@ GameObject:
   - component: {fileID: 538353829}
   - component: {fileID: 538353828}
   - component: {fileID: 538353827}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9848,7 +9820,7 @@ GameObject:
   - component: {fileID: 538381197}
   - component: {fileID: 538381196}
   - component: {fileID: 538381195}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (45)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9949,7 +9921,7 @@ GameObject:
   - component: {fileID: 538609146}
   - component: {fileID: 538609145}
   - component: {fileID: 538609144}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Gate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10049,6 +10021,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reservoir (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4f7e7e4c72989e94da4e7c2c762d8b66, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4f7e7e4c72989e94da4e7c2c762d8b66, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -10128,7 +10104,7 @@ GameObject:
   - component: {fileID: 549218133}
   - component: {fileID: 549218132}
   - component: {fileID: 549218131}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (58)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10229,7 +10205,7 @@ GameObject:
   - component: {fileID: 564029245}
   - component: {fileID: 564029244}
   - component: {fileID: 564029243}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_02 (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10330,7 +10306,7 @@ GameObject:
   - component: {fileID: 564182045}
   - component: {fileID: 564182044}
   - component: {fileID: 564182043}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (75)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10431,7 +10407,7 @@ GameObject:
   - component: {fileID: 565420883}
   - component: {fileID: 565420882}
   - component: {fileID: 565420881}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10532,7 +10508,7 @@ GameObject:
   - component: {fileID: 566666526}
   - component: {fileID: 566666525}
   - component: {fileID: 566666524}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (39)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10633,7 +10609,7 @@ GameObject:
   - component: {fileID: 571978240}
   - component: {fileID: 571978239}
   - component: {fileID: 571978238}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_03 (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10734,7 +10710,7 @@ GameObject:
   - component: {fileID: 574944844}
   - component: {fileID: 574944843}
   - component: {fileID: 574944842}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (49)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10834,6 +10810,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gnarled Bush (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
       propertyPath: m_RootOrder
       value: 69
@@ -10895,6 +10875,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: d08585f135af6594a9b349376178e9d1, type: 3}
       propertyPath: m_Name
       value: House_Standard_04 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d08585f135af6594a9b349376178e9d1, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d08585f135af6594a9b349376178e9d1, type: 3}
       propertyPath: m_RootOrder
@@ -10970,6 +10954,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gnarled Bush (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
       propertyPath: m_RootOrder
       value: 75
@@ -11031,6 +11019,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: e88043ad7e1ad6548a1eaae33b34c573, type: 3}
       propertyPath: m_Name
       value: Church
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e88043ad7e1ad6548a1eaae33b34c573, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e88043ad7e1ad6548a1eaae33b34c573, type: 3}
       propertyPath: m_RootOrder
@@ -11111,7 +11103,7 @@ GameObject:
   - component: {fileID: 622457923}
   - component: {fileID: 622457922}
   - component: {fileID: 622457921}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (79)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11211,6 +11203,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gnarled Bush (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
       propertyPath: m_RootOrder
       value: 74
@@ -11274,7 +11270,7 @@ GameObject:
   - component: {fileID: 623475099}
   - component: {fileID: 623475098}
   - component: {fileID: 623475097}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (60)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11372,7 +11368,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 626538495}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11485,7 +11481,7 @@ GameObject:
   - component: {fileID: 640242165}
   - component: {fileID: 640242164}
   - component: {fileID: 640242163}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (30)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11586,7 +11582,7 @@ GameObject:
   - component: {fileID: 640538410}
   - component: {fileID: 640538409}
   - component: {fileID: 640538408}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_03 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11687,7 +11683,7 @@ GameObject:
   - component: {fileID: 643079975}
   - component: {fileID: 643079974}
   - component: {fileID: 643079973}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (101)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11787,6 +11783,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_Woodpicket_02 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4cbcf59d5cae28b428811d445483d9ad, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4cbcf59d5cae28b428811d445483d9ad, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -11858,7 +11858,7 @@ GameObject:
   - component: {fileID: 671652665}
   - component: {fileID: 671652664}
   - component: {fileID: 671652663}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (31)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11959,7 +11959,7 @@ GameObject:
   - component: {fileID: 672361236}
   - component: {fileID: 672361235}
   - component: {fileID: 672361234}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (33)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12060,7 +12060,7 @@ GameObject:
   - component: {fileID: 673326483}
   - component: {fileID: 673326482}
   - component: {fileID: 673326481}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12161,7 +12161,7 @@ GameObject:
   - component: {fileID: 674533432}
   - component: {fileID: 674533431}
   - component: {fileID: 674533430}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (31)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12262,7 +12262,7 @@ GameObject:
   - component: {fileID: 678951609}
   - component: {fileID: 678951608}
   - component: {fileID: 678951607}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12363,7 +12363,7 @@ GameObject:
   - component: {fileID: 682011682}
   - component: {fileID: 682011681}
   - component: {fileID: 682011680}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_01 (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12464,7 +12464,7 @@ GameObject:
   - component: {fileID: 682212556}
   - component: {fileID: 682212555}
   - component: {fileID: 682212554}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (35)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12564,6 +12564,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrel (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -12631,7 +12635,7 @@ GameObject:
   - component: {fileID: 695412429}
   - component: {fileID: 695412428}
   - component: {fileID: 695412427}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12732,7 +12736,7 @@ GameObject:
   - component: {fileID: 701142902}
   - component: {fileID: 701142901}
   - component: {fileID: 701142900}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_01 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12833,7 +12837,7 @@ GameObject:
   - component: {fileID: 703413617}
   - component: {fileID: 703413616}
   - component: {fileID: 703413615}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (56)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12933,6 +12937,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrel (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -13000,7 +13008,7 @@ GameObject:
   - component: {fileID: 710326373}
   - component: {fileID: 710326372}
   - component: {fileID: 710326371}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_03 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13101,7 +13109,7 @@ GameObject:
   - component: {fileID: 711825541}
   - component: {fileID: 711825540}
   - component: {fileID: 711825539}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (86)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13202,7 +13210,7 @@ GameObject:
   - component: {fileID: 721461571}
   - component: {fileID: 721461570}
   - component: {fileID: 721461569}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13303,7 +13311,7 @@ GameObject:
   - component: {fileID: 722993906}
   - component: {fileID: 722993905}
   - component: {fileID: 722993904}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13404,7 +13412,7 @@ GameObject:
   - component: {fileID: 732448566}
   - component: {fileID: 732448565}
   - component: {fileID: 732448564}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (38)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13505,7 +13513,7 @@ GameObject:
   - component: {fileID: 733397337}
   - component: {fileID: 733397336}
   - component: {fileID: 733397335}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (39)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13606,7 +13614,7 @@ GameObject:
   - component: {fileID: 736950762}
   - component: {fileID: 736950761}
   - component: {fileID: 736950760}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (37)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13707,7 +13715,7 @@ GameObject:
   - component: {fileID: 746436882}
   - component: {fileID: 746436881}
   - component: {fileID: 746436880}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (72)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13808,7 +13816,7 @@ GameObject:
   - component: {fileID: 749312078}
   - component: {fileID: 749312077}
   - component: {fileID: 749312076}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (65)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13909,7 +13917,7 @@ GameObject:
   - component: {fileID: 749881286}
   - component: {fileID: 749881285}
   - component: {fileID: 749881284}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14010,7 +14018,7 @@ GameObject:
   - component: {fileID: 750441333}
   - component: {fileID: 750441332}
   - component: {fileID: 750441331}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_02 (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14111,7 +14119,7 @@ GameObject:
   - component: {fileID: 750555200}
   - component: {fileID: 750555199}
   - component: {fileID: 750555198}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (97)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14212,7 +14220,7 @@ GameObject:
   - component: {fileID: 752603784}
   - component: {fileID: 752603783}
   - component: {fileID: 752603782}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (51)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14313,7 +14321,7 @@ GameObject:
   - component: {fileID: 765199003}
   - component: {fileID: 765199002}
   - component: {fileID: 765199001}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14413,6 +14421,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gnarled Bush (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
       propertyPath: m_RootOrder
       value: 63
@@ -14476,7 +14488,7 @@ GameObject:
   - component: {fileID: 771131537}
   - component: {fileID: 771131536}
   - component: {fileID: 771131535}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14576,6 +14588,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_Woodpicket_01
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 60b13bcc34b3d0548a8bdc525bfa65b5, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 60b13bcc34b3d0548a8bdc525bfa65b5, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -14653,6 +14669,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
       propertyPath: m_Name
       value: Barrel (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
       propertyPath: m_RootOrder
@@ -14754,6 +14774,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrel (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -14821,7 +14845,7 @@ GameObject:
   - component: {fileID: 790869085}
   - component: {fileID: 790869084}
   - component: {fileID: 790869083}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (68)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14921,6 +14945,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrel (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -14986,6 +15014,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 4f7e7e4c72989e94da4e7c2c762d8b66, type: 3}
       propertyPath: m_Name
       value: Reservoir
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4f7e7e4c72989e94da4e7c2c762d8b66, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4f7e7e4c72989e94da4e7c2c762d8b66, type: 3}
       propertyPath: m_RootOrder
@@ -15065,6 +15097,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Well
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 32aa7293d38312f469fa0eb4fc071560, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 32aa7293d38312f469fa0eb4fc071560, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -15131,6 +15167,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gnarled Bush (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
       propertyPath: m_RootOrder
       value: 66
@@ -15194,7 +15234,7 @@ GameObject:
   - component: {fileID: 810443485}
   - component: {fileID: 810443484}
   - component: {fileID: 810443483}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (61)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15296,7 +15336,7 @@ GameObject:
   - component: {fileID: 810742771}
   - component: {fileID: 810742770}
   - component: {fileID: 810742773}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (89)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15409,6 +15449,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Western_Wagon (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: ad2dbbe804268de44863165f4f48ed51, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: ad2dbbe804268de44863165f4f48ed51, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -15480,7 +15524,7 @@ GameObject:
   - component: {fileID: 816963894}
   - component: {fileID: 816963893}
   - component: {fileID: 816963892}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (76)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15750,7 +15794,7 @@ GameObject:
   - component: {fileID: 820825086}
   - component: {fileID: 820825085}
   - component: {fileID: 820825084}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (42)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15851,7 +15895,7 @@ GameObject:
   - component: {fileID: 830101412}
   - component: {fileID: 830101411}
   - component: {fileID: 830101410}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_03 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15949,7 +15993,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 832640595}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16215,6 +16259,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrel (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -16280,6 +16328,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 4cbcf59d5cae28b428811d445483d9ad, type: 3}
       propertyPath: m_Name
       value: UI_Woodpicket_02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4cbcf59d5cae28b428811d445483d9ad, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4cbcf59d5cae28b428811d445483d9ad, type: 3}
       propertyPath: m_RootOrder
@@ -16352,7 +16404,7 @@ GameObject:
   - component: {fileID: 838789855}
   - component: {fileID: 838789854}
   - component: {fileID: 838789853}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_03 (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16453,7 +16505,7 @@ GameObject:
   - component: {fileID: 840562944}
   - component: {fileID: 840562943}
   - component: {fileID: 840562942}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (53)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16554,7 +16606,7 @@ GameObject:
   - component: {fileID: 843389425}
   - component: {fileID: 843389424}
   - component: {fileID: 843389423}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (34)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16655,7 +16707,7 @@ GameObject:
   - component: {fileID: 866783974}
   - component: {fileID: 866783973}
   - component: {fileID: 866783972}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (57)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16754,6 +16806,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 4cbcf59d5cae28b428811d445483d9ad, type: 3}
       propertyPath: m_Name
       value: UI_Woodpicket_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4cbcf59d5cae28b428811d445483d9ad, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4cbcf59d5cae28b428811d445483d9ad, type: 3}
       propertyPath: m_RootOrder
@@ -16858,7 +16914,7 @@ GameObject:
   - component: {fileID: 873759958}
   - component: {fileID: 873759957}
   - component: {fileID: 873759956}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (90)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16959,7 +17015,7 @@ GameObject:
   - component: {fileID: 877574889}
   - component: {fileID: 877574888}
   - component: {fileID: 877574887}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17117,7 +17173,7 @@ GameObject:
   - component: {fileID: 878503429}
   - component: {fileID: 878503428}
   - component: {fileID: 878503427}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (82)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17218,7 +17274,7 @@ GameObject:
   - component: {fileID: 879337206}
   - component: {fileID: 879337205}
   - component: {fileID: 879337204}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17319,7 +17375,7 @@ GameObject:
   - component: {fileID: 882470827}
   - component: {fileID: 882470826}
   - component: {fileID: 882470825}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_03 (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17420,7 +17476,7 @@ GameObject:
   - component: {fileID: 887574316}
   - component: {fileID: 887574315}
   - component: {fileID: 887574314}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (25)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17520,6 +17576,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gnarled Bush (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
       propertyPath: m_RootOrder
       value: 73
@@ -17581,6 +17641,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
       propertyPath: m_Name
       value: Gnarled Bush (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
       propertyPath: m_RootOrder
@@ -17645,7 +17709,7 @@ GameObject:
   - component: {fileID: 907627603}
   - component: {fileID: 907627602}
   - component: {fileID: 907627601}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (77)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17745,6 +17809,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gnarled Bush (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
       propertyPath: m_RootOrder
       value: 78
@@ -17806,6 +17874,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 1ec043cbaab7bef42b38b3b0ce5fd881, type: 3}
       propertyPath: m_Name
       value: House_Standard_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 1ec043cbaab7bef42b38b3b0ce5fd881, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1ec043cbaab7bef42b38b3b0ce5fd881, type: 3}
       propertyPath: m_RootOrder
@@ -17873,6 +17945,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hay (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ec9c62c4ec748934f964ca23e2de8511, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ec9c62c4ec748934f964ca23e2de8511, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -17938,6 +18014,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: d08585f135af6594a9b349376178e9d1, type: 3}
       propertyPath: m_Name
       value: House_Standard_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d08585f135af6594a9b349376178e9d1, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d08585f135af6594a9b349376178e9d1, type: 3}
       propertyPath: m_RootOrder
@@ -18014,7 +18094,7 @@ GameObject:
   - component: {fileID: 930043178}
   - component: {fileID: 930043177}
   - component: {fileID: 930043176}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_01 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18115,7 +18195,7 @@ GameObject:
   - component: {fileID: 930147159}
   - component: {fileID: 930147158}
   - component: {fileID: 930147157}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_01 (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18216,7 +18296,7 @@ GameObject:
   - component: {fileID: 936250572}
   - component: {fileID: 936250571}
   - component: {fileID: 936250570}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (70)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18316,6 +18396,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrel (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -18383,7 +18467,7 @@ GameObject:
   - component: {fileID: 940029591}
   - component: {fileID: 940029590}
   - component: {fileID: 940029589}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (47)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18484,7 +18568,7 @@ GameObject:
   - component: {fileID: 941097490}
   - component: {fileID: 941097489}
   - component: {fileID: 941097488}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_01 (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18585,7 +18669,7 @@ GameObject:
   - component: {fileID: 946245944}
   - component: {fileID: 946245943}
   - component: {fileID: 946245942}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18686,7 +18770,7 @@ GameObject:
   - component: {fileID: 948700320}
   - component: {fileID: 948700319}
   - component: {fileID: 948700318}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (60)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18787,7 +18871,7 @@ GameObject:
   - component: {fileID: 950176136}
   - component: {fileID: 950176135}
   - component: {fileID: 950176134}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_01 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18888,7 +18972,7 @@ GameObject:
   - component: {fileID: 966066715}
   - component: {fileID: 966066714}
   - component: {fileID: 966066713}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_01 (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18989,7 +19073,7 @@ GameObject:
   - component: {fileID: 966635322}
   - component: {fileID: 966635321}
   - component: {fileID: 966635320}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_02 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19090,7 +19174,7 @@ GameObject:
   - component: {fileID: 975482150}
   - component: {fileID: 975482149}
   - component: {fileID: 975482148}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (46)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19191,7 +19275,7 @@ GameObject:
   - component: {fileID: 988426090}
   - component: {fileID: 988426089}
   - component: {fileID: 988426088}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (36)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19289,7 +19373,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1000799196}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WoodPicket (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19326,7 +19410,7 @@ GameObject:
   - component: {fileID: 1028439708}
   - component: {fileID: 1028439707}
   - component: {fileID: 1028439706}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (90)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19426,6 +19510,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrel (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
       propertyPath: m_RootOrder
       value: 18
@@ -19493,7 +19581,7 @@ GameObject:
   - component: {fileID: 1043030804}
   - component: {fileID: 1043030803}
   - component: {fileID: 1043030802}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (53)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19594,7 +19682,7 @@ GameObject:
   - component: {fileID: 1055255063}
   - component: {fileID: 1055255062}
   - component: {fileID: 1055255061}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19695,7 +19783,7 @@ GameObject:
   - component: {fileID: 1057615381}
   - component: {fileID: 1057615380}
   - component: {fileID: 1057615379}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dead Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19786,7 +19874,7 @@ GameObject:
   - component: {fileID: 1059733989}
   - component: {fileID: 1059733988}
   - component: {fileID: 1059733987}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (69)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19887,7 +19975,7 @@ GameObject:
   - component: {fileID: 1071349687}
   - component: {fileID: 1071349686}
   - component: {fileID: 1071349685}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (107)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19988,7 +20076,7 @@ GameObject:
   - component: {fileID: 1086662830}
   - component: {fileID: 1086662829}
   - component: {fileID: 1086662828}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20089,7 +20177,7 @@ GameObject:
   - component: {fileID: 1093778347}
   - component: {fileID: 1093778346}
   - component: {fileID: 1093778345}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (44)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20189,7 +20277,7 @@ GameObject:
   - component: {fileID: 1093973811}
   - component: {fileID: 1093973812}
   - component: {fileID: 1093973813}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ctrl2-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20292,7 +20380,7 @@ GameObject:
   - component: {fileID: 1094026358}
   - component: {fileID: 1094026357}
   - component: {fileID: 1094026356}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_01 (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20393,7 +20481,7 @@ GameObject:
   - component: {fileID: 1094949626}
   - component: {fileID: 1094949625}
   - component: {fileID: 1094949624}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (78)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20494,7 +20582,7 @@ GameObject:
   - component: {fileID: 1096160880}
   - component: {fileID: 1096160879}
   - component: {fileID: 1096160878}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_01 (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20595,7 +20683,7 @@ GameObject:
   - component: {fileID: 1096279364}
   - component: {fileID: 1096279363}
   - component: {fileID: 1096279362}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (93)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20696,7 +20784,7 @@ GameObject:
   - component: {fileID: 1099077024}
   - component: {fileID: 1099077023}
   - component: {fileID: 1099077022}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (33)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20797,7 +20885,7 @@ GameObject:
   - component: {fileID: 1103628606}
   - component: {fileID: 1103628605}
   - component: {fileID: 1103628604}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (29)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20897,6 +20985,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hay (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ec9c62c4ec748934f964ca23e2de8511, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ec9c62c4ec748934f964ca23e2de8511, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -20964,7 +21056,7 @@ GameObject:
   - component: {fileID: 1120536473}
   - component: {fileID: 1120536472}
   - component: {fileID: 1120536471}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (31)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21065,7 +21157,7 @@ GameObject:
   - component: {fileID: 1139095342}
   - component: {fileID: 1139095341}
   - component: {fileID: 1139095340}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (46)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21165,6 +21257,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hay (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ec9c62c4ec748934f964ca23e2de8511, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ec9c62c4ec748934f964ca23e2de8511, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -21232,7 +21328,7 @@ GameObject:
   - component: {fileID: 1155654594}
   - component: {fileID: 1155654593}
   - component: {fileID: 1155654592}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_03 (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21333,7 +21429,7 @@ GameObject:
   - component: {fileID: 1158334705}
   - component: {fileID: 1158334704}
   - component: {fileID: 1158334703}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_03 (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21434,7 +21530,7 @@ GameObject:
   - component: {fileID: 1160817565}
   - component: {fileID: 1160817564}
   - component: {fileID: 1160817563}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (48)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21535,7 +21631,7 @@ GameObject:
   - component: {fileID: 1170117114}
   - component: {fileID: 1170117113}
   - component: {fileID: 1170117112}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (63)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21733,6 +21829,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gnarled Bush (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
       propertyPath: m_RootOrder
       value: 72
@@ -21796,7 +21896,7 @@ GameObject:
   - component: {fileID: 1189242119}
   - component: {fileID: 1189242118}
   - component: {fileID: 1189242117}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21896,6 +21996,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House_Standard_03
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 1ec043cbaab7bef42b38b3b0ce5fd881, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1ec043cbaab7bef42b38b3b0ce5fd881, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -21961,6 +22065,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
       propertyPath: m_Name
       value: Barrel (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
       propertyPath: m_RootOrder
@@ -22040,6 +22148,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hay (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ec9c62c4ec748934f964ca23e2de8511, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ec9c62c4ec748934f964ca23e2de8511, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -22107,7 +22219,7 @@ GameObject:
   - component: {fileID: 1210590240}
   - component: {fileID: 1210590239}
   - component: {fileID: 1210590238}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (43)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22250,6 +22362,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Western_Wagon (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: ad2dbbe804268de44863165f4f48ed51, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: ad2dbbe804268de44863165f4f48ed51, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -22321,7 +22437,7 @@ GameObject:
   - component: {fileID: 1227582371}
   - component: {fileID: 1227582370}
   - component: {fileID: 1227582369}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Gnarled Bush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22412,6 +22528,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gnarled Bush (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
       propertyPath: m_RootOrder
       value: 70
@@ -22474,7 +22594,7 @@ GameObject:
   - component: {fileID: 1236892648}
   - component: {fileID: 1236892647}
   - component: {fileID: 1236892646}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ctrl3-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22576,6 +22696,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrel (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -22643,7 +22767,7 @@ GameObject:
   - component: {fileID: 1244304493}
   - component: {fileID: 1244304492}
   - component: {fileID: 1244304491}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (58)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22743,6 +22867,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrel (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -22808,6 +22936,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 60b13bcc34b3d0548a8bdc525bfa65b5, type: 3}
       propertyPath: m_Name
       value: UI_Woodpicket_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 60b13bcc34b3d0548a8bdc525bfa65b5, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 60b13bcc34b3d0548a8bdc525bfa65b5, type: 3}
       propertyPath: m_RootOrder
@@ -22887,6 +23019,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrel (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -22954,7 +23090,7 @@ GameObject:
   - component: {fileID: 1247349843}
   - component: {fileID: 1247349842}
   - component: {fileID: 1247349841}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (28)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23055,7 +23191,7 @@ GameObject:
   - component: {fileID: 1254567151}
   - component: {fileID: 1254567150}
   - component: {fileID: 1254567149}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (112)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23156,7 +23292,7 @@ GameObject:
   - component: {fileID: 1266873238}
   - component: {fileID: 1266873237}
   - component: {fileID: 1266873236}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (80)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23257,7 +23393,7 @@ GameObject:
   - component: {fileID: 1276997985}
   - component: {fileID: 1276997984}
   - component: {fileID: 1276997983}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (87)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23358,7 +23494,7 @@ GameObject:
   - component: {fileID: 1280707452}
   - component: {fileID: 1280707451}
   - component: {fileID: 1280707450}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (85)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23458,6 +23594,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_Woodpicket_Multi
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 60b13bcc34b3d0548a8bdc525bfa65b5, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 60b13bcc34b3d0548a8bdc525bfa65b5, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -23536,6 +23676,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barn
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 38386455202fea741a152d7c844c3e77, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 38386455202fea741a152d7c844c3e77, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -23608,7 +23752,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1298585833}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WoodPicket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23645,7 +23789,7 @@ GameObject:
   - component: {fileID: 1303924102}
   - component: {fileID: 1303924101}
   - component: {fileID: 1303924100}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (47)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23746,7 +23890,7 @@ GameObject:
   - component: {fileID: 1304149540}
   - component: {fileID: 1304149539}
   - component: {fileID: 1304149538}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_03 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23847,7 +23991,7 @@ GameObject:
   - component: {fileID: 1304291601}
   - component: {fileID: 1304291600}
   - component: {fileID: 1304291599}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23957,7 +24101,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: dee70c6cc2c168b4eb713be19d5881e9, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: dee70c6cc2c168b4eb713be19d5881e9, type: 3}
       propertyPath: m_RootOrder
@@ -24060,7 +24204,7 @@ GameObject:
   - component: {fileID: 1306951836}
   - component: {fileID: 1306951835}
   - component: {fileID: 1306951834}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24161,7 +24305,7 @@ GameObject:
   - component: {fileID: 1315847791}
   - component: {fileID: 1315847790}
   - component: {fileID: 1315847789}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24262,7 +24406,7 @@ GameObject:
   - component: {fileID: 1317687707}
   - component: {fileID: 1317687706}
   - component: {fileID: 1317687705}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (32)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24363,7 +24507,7 @@ GameObject:
   - component: {fileID: 1324882967}
   - component: {fileID: 1324882966}
   - component: {fileID: 1324882965}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (61)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24464,7 +24608,7 @@ GameObject:
   - component: {fileID: 1325434252}
   - component: {fileID: 1325434251}
   - component: {fileID: 1325434250}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (99)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24565,7 +24709,7 @@ GameObject:
   - component: {fileID: 1327233370}
   - component: {fileID: 1327233369}
   - component: {fileID: 1327233368}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (51)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24666,7 +24810,7 @@ GameObject:
   - component: {fileID: 1330186763}
   - component: {fileID: 1330186762}
   - component: {fileID: 1330186761}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24766,6 +24910,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hay (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ec9c62c4ec748934f964ca23e2de8511, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ec9c62c4ec748934f964ca23e2de8511, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -24833,7 +24981,7 @@ GameObject:
   - component: {fileID: 1334544255}
   - component: {fileID: 1334544254}
   - component: {fileID: 1334544253}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_01 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24934,7 +25082,7 @@ GameObject:
   - component: {fileID: 1340043296}
   - component: {fileID: 1340043295}
   - component: {fileID: 1340043294}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (85)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25035,7 +25183,7 @@ GameObject:
   - component: {fileID: 1347793223}
   - component: {fileID: 1347793222}
   - component: {fileID: 1347793221}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (93)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25137,7 +25285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 38386455202fea741a152d7c844c3e77, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 38386455202fea741a152d7c844c3e77, type: 3}
       propertyPath: m_RootOrder
@@ -25214,7 +25362,7 @@ GameObject:
   - component: {fileID: 1356547345}
   - component: {fileID: 1356547344}
   - component: {fileID: 1356547343}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (45)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25315,7 +25463,7 @@ GameObject:
   - component: {fileID: 1356611735}
   - component: {fileID: 1356611734}
   - component: {fileID: 1356611733}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_03 (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25416,7 +25564,7 @@ GameObject:
   - component: {fileID: 1362772761}
   - component: {fileID: 1362772760}
   - component: {fileID: 1362772759}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_02 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25516,6 +25664,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hay (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ec9c62c4ec748934f964ca23e2de8511, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ec9c62c4ec748934f964ca23e2de8511, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -25583,7 +25735,7 @@ GameObject:
   - component: {fileID: 1374920023}
   - component: {fileID: 1374920022}
   - component: {fileID: 1374920021}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (34)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25683,6 +25835,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_Woodpicket_Exit
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 60b13bcc34b3d0548a8bdc525bfa65b5, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 60b13bcc34b3d0548a8bdc525bfa65b5, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -25762,7 +25918,7 @@ GameObject:
   - component: {fileID: 1379174968}
   - component: {fileID: 1379174967}
   - component: {fileID: 1379174966}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25863,7 +26019,7 @@ GameObject:
   - component: {fileID: 1384027427}
   - component: {fileID: 1384027426}
   - component: {fileID: 1384027425}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_02 (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25963,6 +26119,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hay (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ec9c62c4ec748934f964ca23e2de8511, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ec9c62c4ec748934f964ca23e2de8511, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -26030,7 +26190,7 @@ GameObject:
   - component: {fileID: 1389218433}
   - component: {fileID: 1389218432}
   - component: {fileID: 1389218431}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_02 (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26131,7 +26291,7 @@ GameObject:
   - component: {fileID: 1393104091}
   - component: {fileID: 1393104090}
   - component: {fileID: 1393104089}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (100)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26401,7 +26561,7 @@ GameObject:
   - component: {fileID: 1396100041}
   - component: {fileID: 1396100040}
   - component: {fileID: 1396100039}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_03 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26502,7 +26662,7 @@ GameObject:
   - component: {fileID: 1396479595}
   - component: {fileID: 1396479594}
   - component: {fileID: 1396479593}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (113)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26603,7 +26763,7 @@ GameObject:
   - component: {fileID: 1398879776}
   - component: {fileID: 1398879775}
   - component: {fileID: 1398879774}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (37)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26704,7 +26864,7 @@ GameObject:
   - component: {fileID: 1409439876}
   - component: {fileID: 1409439875}
   - component: {fileID: 1409439874}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26805,7 +26965,7 @@ GameObject:
   - component: {fileID: 1417665193}
   - component: {fileID: 1417665192}
   - component: {fileID: 1417665191}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26906,7 +27066,7 @@ GameObject:
   - component: {fileID: 1419503259}
   - component: {fileID: 1419503258}
   - component: {fileID: 1419503257}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_01 (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27007,7 +27167,7 @@ GameObject:
   - component: {fileID: 1421189928}
   - component: {fileID: 1421189927}
   - component: {fileID: 1421189926}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (26)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27108,7 +27268,7 @@ GameObject:
   - component: {fileID: 1430990761}
   - component: {fileID: 1430990760}
   - component: {fileID: 1430990759}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_02 (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27209,7 +27369,7 @@ GameObject:
   - component: {fileID: 1434306667}
   - component: {fileID: 1434306666}
   - component: {fileID: 1434306665}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (63)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27311,7 +27471,7 @@ GameObject:
   - component: {fileID: 1434371759}
   - component: {fileID: 1434371758}
   - component: {fileID: 1434371761}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (106)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27424,6 +27584,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrel (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -27491,7 +27655,7 @@ GameObject:
   - component: {fileID: 1455065586}
   - component: {fileID: 1455065585}
   - component: {fileID: 1455065584}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27591,6 +27755,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Western_Wagon
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: ad2dbbe804268de44863165f4f48ed51, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: ad2dbbe804268de44863165f4f48ed51, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -27662,7 +27830,7 @@ GameObject:
   - component: {fileID: 1468424575}
   - component: {fileID: 1468424574}
   - component: {fileID: 1468424573}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (67)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27763,7 +27931,7 @@ GameObject:
   - component: {fileID: 1471633305}
   - component: {fileID: 1471633304}
   - component: {fileID: 1471633303}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (41)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27864,7 +28032,7 @@ GameObject:
   - component: {fileID: 1481479591}
   - component: {fileID: 1481479590}
   - component: {fileID: 1481479589}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (98)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27965,7 +28133,7 @@ GameObject:
   - component: {fileID: 1493807731}
   - component: {fileID: 1493807730}
   - component: {fileID: 1493807729}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (67)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28065,6 +28233,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_Woodpicket_Option
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 60b13bcc34b3d0548a8bdc525bfa65b5, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 60b13bcc34b3d0548a8bdc525bfa65b5, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -28144,7 +28316,7 @@ GameObject:
   - component: {fileID: 1496640597}
   - component: {fileID: 1496640596}
   - component: {fileID: 1496640595}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28245,7 +28417,7 @@ GameObject:
   - component: {fileID: 1503434945}
   - component: {fileID: 1503434944}
   - component: {fileID: 1503434943}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_02 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28346,7 +28518,7 @@ GameObject:
   - component: {fileID: 1508736426}
   - component: {fileID: 1508736425}
   - component: {fileID: 1508736424}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28447,7 +28619,7 @@ GameObject:
   - component: {fileID: 1516778030}
   - component: {fileID: 1516778029}
   - component: {fileID: 1516778028}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28548,7 +28720,7 @@ GameObject:
   - component: {fileID: 1519925927}
   - component: {fileID: 1519925926}
   - component: {fileID: 1519925925}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_01 (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28648,6 +28820,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gnarled Bush (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
       propertyPath: m_RootOrder
       value: 68
@@ -28711,7 +28887,7 @@ GameObject:
   - component: {fileID: 1529629922}
   - component: {fileID: 1529629921}
   - component: {fileID: 1529629920}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_01 (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28807,9 +28983,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 132834766}
     m_Modifications:
+    - target: {fileID: 100000, guid: ad2dbbe804268de44863165f4f48ed51, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: ad2dbbe804268de44863165f4f48ed51, type: 3}
       propertyPath: m_Name
       value: Western_Wagon (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: ad2dbbe804268de44863165f4f48ed51, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: ad2dbbe804268de44863165f4f48ed51, type: 3}
       propertyPath: m_RootOrder
@@ -28882,7 +29066,7 @@ GameObject:
   - component: {fileID: 1531191609}
   - component: {fileID: 1531191608}
   - component: {fileID: 1531191607}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (32)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28983,7 +29167,7 @@ GameObject:
   - component: {fileID: 1538189388}
   - component: {fileID: 1538189387}
   - component: {fileID: 1538189386}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (73)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29083,6 +29267,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_Woodpicket_02 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4cbcf59d5cae28b428811d445483d9ad, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4cbcf59d5cae28b428811d445483d9ad, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -29152,6 +29340,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 4cbcf59d5cae28b428811d445483d9ad, type: 3}
       propertyPath: m_Name
       value: UI_Woodpicket_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4cbcf59d5cae28b428811d445483d9ad, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4cbcf59d5cae28b428811d445483d9ad, type: 3}
       propertyPath: m_RootOrder
@@ -29224,7 +29416,7 @@ GameObject:
   - component: {fileID: 1564131024}
   - component: {fileID: 1564131023}
   - component: {fileID: 1564131022}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (52)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29325,7 +29517,7 @@ GameObject:
   - component: {fileID: 1569455493}
   - component: {fileID: 1569455492}
   - component: {fileID: 1569455491}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (87)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29426,7 +29618,7 @@ GameObject:
   - component: {fileID: 1572805336}
   - component: {fileID: 1572805335}
   - component: {fileID: 1572805334}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (36)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29527,7 +29719,7 @@ GameObject:
   - component: {fileID: 1581709781}
   - component: {fileID: 1581709780}
   - component: {fileID: 1581709779}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (86)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29628,7 +29820,7 @@ GameObject:
   - component: {fileID: 1586435855}
   - component: {fileID: 1586435854}
   - component: {fileID: 1586435853}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (50)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29726,7 +29918,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1587069860}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WoodPicket (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29815,7 +30007,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1602203675
 GameObject:
@@ -29826,7 +30018,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1602203676}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29868,7 +30060,7 @@ GameObject:
   - component: {fileID: 1620063548}
   - component: {fileID: 1620063547}
   - component: {fileID: 1620063546}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_01 (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29969,7 +30161,7 @@ GameObject:
   - component: {fileID: 1620858686}
   - component: {fileID: 1620858685}
   - component: {fileID: 1620858684}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30070,7 +30262,7 @@ GameObject:
   - component: {fileID: 1624256132}
   - component: {fileID: 1624256131}
   - component: {fileID: 1624256130}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (25)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30171,7 +30363,7 @@ GameObject:
   - component: {fileID: 1633296141}
   - component: {fileID: 1633296140}
   - component: {fileID: 1633296139}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_02 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30272,7 +30464,7 @@ GameObject:
   - component: {fileID: 1640159534}
   - component: {fileID: 1640159533}
   - component: {fileID: 1640159532}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (111)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30373,7 +30565,7 @@ GameObject:
   - component: {fileID: 1641641936}
   - component: {fileID: 1641641935}
   - component: {fileID: 1641641934}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (41)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30474,7 +30666,7 @@ GameObject:
   - component: {fileID: 1645448881}
   - component: {fileID: 1645448880}
   - component: {fileID: 1645448879}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_03 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30575,7 +30767,7 @@ GameObject:
   - component: {fileID: 1649081966}
   - component: {fileID: 1649081965}
   - component: {fileID: 1649081964}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (71)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30676,7 +30868,7 @@ GameObject:
   - component: {fileID: 1661706019}
   - component: {fileID: 1661706018}
   - component: {fileID: 1661706017}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (71)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30777,7 +30969,7 @@ GameObject:
   - component: {fileID: 1667512894}
   - component: {fileID: 1667512893}
   - component: {fileID: 1667512892}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30878,7 +31070,7 @@ GameObject:
   - component: {fileID: 1668689415}
   - component: {fileID: 1668689414}
   - component: {fileID: 1668689413}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (45)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30979,7 +31171,7 @@ GameObject:
   - component: {fileID: 1671995175}
   - component: {fileID: 1671995174}
   - component: {fileID: 1671995173}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31080,7 +31272,7 @@ GameObject:
   - component: {fileID: 1673153728}
   - component: {fileID: 1673153727}
   - component: {fileID: 1673153726}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (44)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31181,7 +31373,7 @@ GameObject:
   - component: {fileID: 1673991457}
   - component: {fileID: 1673991456}
   - component: {fileID: 1673991455}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (35)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31282,7 +31474,7 @@ GameObject:
   - component: {fileID: 1684702933}
   - component: {fileID: 1684702932}
   - component: {fileID: 1684702931}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_02 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31474,6 +31666,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Saloon
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 39a4524c44f9d1248995557f55e195de, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 39a4524c44f9d1248995557f55e195de, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -31546,7 +31742,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3366610077945000640, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 3366610077945000640, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -31606,7 +31802,7 @@ GameObject:
   - component: {fileID: 1705414052}
   - component: {fileID: 1705414051}
   - component: {fileID: 1705414050}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (27)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31925,7 +32121,7 @@ GameObject:
   - component: {fileID: 1723538539}
   - component: {fileID: 1723538538}
   - component: {fileID: 1723538537}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (40)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32026,7 +32222,7 @@ GameObject:
   - component: {fileID: 1730041474}
   - component: {fileID: 1730041473}
   - component: {fileID: 1730041472}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (43)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32127,7 +32323,7 @@ GameObject:
   - component: {fileID: 1735756716}
   - component: {fileID: 1735756715}
   - component: {fileID: 1735756714}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32228,7 +32424,7 @@ GameObject:
   - component: {fileID: 1738323186}
   - component: {fileID: 1738323185}
   - component: {fileID: 1738323184}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (28)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32329,7 +32525,7 @@ GameObject:
   - component: {fileID: 1739083027}
   - component: {fileID: 1739083026}
   - component: {fileID: 1739083025}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_02 (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32430,7 +32626,7 @@ GameObject:
   - component: {fileID: 1749424906}
   - component: {fileID: 1749424905}
   - component: {fileID: 1749424904}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (88)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32531,7 +32727,7 @@ GameObject:
   - component: {fileID: 1750997352}
   - component: {fileID: 1750997351}
   - component: {fileID: 1750997350}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32632,7 +32828,7 @@ GameObject:
   - component: {fileID: 1755453983}
   - component: {fileID: 1755453982}
   - component: {fileID: 1755453981}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (80)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32732,6 +32928,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrel (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -32799,7 +32999,7 @@ GameObject:
   - component: {fileID: 1766773465}
   - component: {fileID: 1766773464}
   - component: {fileID: 1766773463}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32900,7 +33100,7 @@ GameObject:
   - component: {fileID: 1770831885}
   - component: {fileID: 1770831884}
   - component: {fileID: 1770831883}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (54)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33001,7 +33201,7 @@ GameObject:
   - component: {fileID: 1782205201}
   - component: {fileID: 1782205200}
   - component: {fileID: 1782205199}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (54)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33102,7 +33302,7 @@ GameObject:
   - component: {fileID: 1784728531}
   - component: {fileID: 1784728530}
   - component: {fileID: 1784728529}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (42)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33203,7 +33403,7 @@ GameObject:
   - component: {fileID: 1797082050}
   - component: {fileID: 1797082049}
   - component: {fileID: 1797082048}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33304,7 +33504,7 @@ GameObject:
   - component: {fileID: 1799163257}
   - component: {fileID: 1799163256}
   - component: {fileID: 1799163255}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_03 (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33405,7 +33605,7 @@ GameObject:
   - component: {fileID: 1811210093}
   - component: {fileID: 1811210092}
   - component: {fileID: 1811210091}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33506,7 +33706,7 @@ GameObject:
   - component: {fileID: 1813032242}
   - component: {fileID: 1813032241}
   - component: {fileID: 1813032240}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (73)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33607,7 +33807,7 @@ GameObject:
   - component: {fileID: 1814716471}
   - component: {fileID: 1814716470}
   - component: {fileID: 1814716469}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (48)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33707,6 +33907,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrel (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -33772,6 +33976,10 @@ PrefabInstance:
     - target: {fileID: 100002, guid: ad2dbbe804268de44863165f4f48ed51, type: 3}
       propertyPath: m_Name
       value: Western_Wagon (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: ad2dbbe804268de44863165f4f48ed51, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: ad2dbbe804268de44863165f4f48ed51, type: 3}
       propertyPath: m_RootOrder
@@ -33844,7 +34052,7 @@ GameObject:
   - component: {fileID: 1843667078}
   - component: {fileID: 1843667077}
   - component: {fileID: 1843667076}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (33)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33945,7 +34153,7 @@ GameObject:
   - component: {fileID: 1847320286}
   - component: {fileID: 1847320285}
   - component: {fileID: 1847320284}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (26)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34046,7 +34254,7 @@ GameObject:
   - component: {fileID: 1868258853}
   - component: {fileID: 1868258852}
   - component: {fileID: 1868258851}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (38)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34147,7 +34355,7 @@ GameObject:
   - component: {fileID: 1872480567}
   - component: {fileID: 1872480566}
   - component: {fileID: 1872480565}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_01 (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34247,6 +34455,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House_Standard_03 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 1ec043cbaab7bef42b38b3b0ce5fd881, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1ec043cbaab7bef42b38b3b0ce5fd881, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -34314,7 +34526,7 @@ GameObject:
   - component: {fileID: 1879650569}
   - component: {fileID: 1879650568}
   - component: {fileID: 1879650567}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_03 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34415,7 +34627,7 @@ GameObject:
   - component: {fileID: 1890002361}
   - component: {fileID: 1890002360}
   - component: {fileID: 1890002359}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (84)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34516,7 +34728,7 @@ GameObject:
   - component: {fileID: 1894283443}
   - component: {fileID: 1894283442}
   - component: {fileID: 1894283441}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (81)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34617,7 +34829,7 @@ GameObject:
   - component: {fileID: 1908149358}
   - component: {fileID: 1908149357}
   - component: {fileID: 1908149356}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (64)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34718,7 +34930,7 @@ GameObject:
   - component: {fileID: 1911275529}
   - component: {fileID: 1911275528}
   - component: {fileID: 1911275527}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_04 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34820,6 +35032,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hay
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ec9c62c4ec748934f964ca23e2de8511, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ec9c62c4ec748934f964ca23e2de8511, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -34885,6 +35101,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
       propertyPath: m_Name
       value: Barrel (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
       propertyPath: m_RootOrder
@@ -34953,7 +35173,7 @@ GameObject:
   - component: {fileID: 1929056603}
   - component: {fileID: 1929056602}
   - component: {fileID: 1929056601}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_01 (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35053,6 +35273,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrel (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
       propertyPath: m_RootOrder
       value: 21
@@ -35118,6 +35342,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
       propertyPath: m_Name
       value: Barrel (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
       propertyPath: m_RootOrder
@@ -35186,7 +35414,7 @@ GameObject:
   - component: {fileID: 1935809203}
   - component: {fileID: 1935809202}
   - component: {fileID: 1935809201}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (44)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35287,7 +35515,7 @@ GameObject:
   - component: {fileID: 1937738087}
   - component: {fileID: 1937738086}
   - component: {fileID: 1937738085}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (57)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35388,7 +35616,7 @@ GameObject:
   - component: {fileID: 1947345410}
   - component: {fileID: 1947345409}
   - component: {fileID: 1947345408}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (54)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35488,6 +35716,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hay (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ec9c62c4ec748934f964ca23e2de8511, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ec9c62c4ec748934f964ca23e2de8511, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -35555,7 +35787,7 @@ GameObject:
   - component: {fileID: 1956549072}
   - component: {fileID: 1956549071}
   - component: {fileID: 1956549070}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35656,7 +35888,7 @@ GameObject:
   - component: {fileID: 1957124706}
   - component: {fileID: 1957124705}
   - component: {fileID: 1957124704}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (78)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35757,7 +35989,7 @@ GameObject:
   - component: {fileID: 1960575576}
   - component: {fileID: 1960575575}
   - component: {fileID: 1960575574}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (29)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35858,7 +36090,7 @@ GameObject:
   - component: {fileID: 1970822845}
   - component: {fileID: 1970822844}
   - component: {fileID: 1970822843}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (40)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35959,7 +36191,7 @@ GameObject:
   - component: {fileID: 1979370558}
   - component: {fileID: 1979370557}
   - component: {fileID: 1979370556}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36060,7 +36292,7 @@ GameObject:
   - component: {fileID: 1992158732}
   - component: {fileID: 1992158731}
   - component: {fileID: 1992158730}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36161,7 +36393,7 @@ GameObject:
   - component: {fileID: 1999131254}
   - component: {fileID: 1999131253}
   - component: {fileID: 1999131252}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_02 (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36261,6 +36493,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House_Standard_04
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d08585f135af6594a9b349376178e9d1, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d08585f135af6594a9b349376178e9d1, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -36336,7 +36572,7 @@ GameObject:
   - component: {fileID: 2002043570}
   - component: {fileID: 2002043569}
   - component: {fileID: 2002043568}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (83)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36437,7 +36673,7 @@ GameObject:
   - component: {fileID: 2006418743}
   - component: {fileID: 2006418742}
   - component: {fileID: 2006418741}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_02 (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36538,7 +36774,7 @@ GameObject:
   - component: {fileID: 2012795304}
   - component: {fileID: 2012795303}
   - component: {fileID: 2012795302}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (41)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36639,7 +36875,7 @@ GameObject:
   - component: {fileID: 2019268513}
   - component: {fileID: 2019268512}
   - component: {fileID: 2019268511}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (79)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36740,7 +36976,7 @@ GameObject:
   - component: {fileID: 2021806511}
   - component: {fileID: 2021806510}
   - component: {fileID: 2021806509}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (76)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36840,6 +37076,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gnarled Bush (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
       propertyPath: m_RootOrder
       value: 76
@@ -36903,7 +37143,7 @@ GameObject:
   - component: {fileID: 2036034520}
   - component: {fileID: 2036034519}
   - component: {fileID: 2036034518}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (72)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37004,7 +37244,7 @@ GameObject:
   - component: {fileID: 2038156289}
   - component: {fileID: 2038156288}
   - component: {fileID: 2038156287}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_02 (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37105,7 +37345,7 @@ GameObject:
   - component: {fileID: 2039668092}
   - component: {fileID: 2039668091}
   - component: {fileID: 2039668090}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (27)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37206,7 +37446,7 @@ GameObject:
   - component: {fileID: 2043101648}
   - component: {fileID: 2043101647}
   - component: {fileID: 2043101646}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (66)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37307,7 +37547,7 @@ GameObject:
   - component: {fileID: 2044393391}
   - component: {fileID: 2044393390}
   - component: {fileID: 2044393389}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_03 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37408,7 +37648,7 @@ GameObject:
   - component: {fileID: 2048805356}
   - component: {fileID: 2048805355}
   - component: {fileID: 2048805354}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (40)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37509,7 +37749,7 @@ GameObject:
   - component: {fileID: 2058133634}
   - component: {fileID: 2058133633}
   - component: {fileID: 2058133632}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37611,7 +37851,7 @@ GameObject:
   - component: {fileID: 2067394930}
   - component: {fileID: 2067394929}
   - component: {fileID: 2067394932}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (47)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37725,7 +37965,7 @@ GameObject:
   - component: {fileID: 2071578648}
   - component: {fileID: 2071578647}
   - component: {fileID: 2071578646}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_01 (46)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37826,7 +38066,7 @@ GameObject:
   - component: {fileID: 2072572617}
   - component: {fileID: 2072572616}
   - component: {fileID: 2072572615}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37927,7 +38167,7 @@ GameObject:
   - component: {fileID: 2073934302}
   - component: {fileID: 2073934301}
   - component: {fileID: 2073934300}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (52)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38027,6 +38267,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_Woodpicket_01
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 60b13bcc34b3d0548a8bdc525bfa65b5, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 60b13bcc34b3d0548a8bdc525bfa65b5, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -38105,7 +38349,7 @@ GameObject:
   - component: {fileID: 2103317663}
   - component: {fileID: 2103317665}
   - component: {fileID: 2103317664}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Flowers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38186,7 +38430,7 @@ GameObject:
   - component: {fileID: 2104003054}
   - component: {fileID: 2104003053}
   - component: {fileID: 2104003052}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ctrl1-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38288,6 +38532,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Western_Wagon (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: ad2dbbe804268de44863165f4f48ed51, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: ad2dbbe804268de44863165f4f48ed51, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -38359,7 +38607,7 @@ GameObject:
   - component: {fileID: 2121581349}
   - component: {fileID: 2121581348}
   - component: {fileID: 2121581347}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus_01 (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38460,7 +38708,7 @@ GameObject:
   - component: {fileID: 2136568268}
   - component: {fileID: 2136568267}
   - component: {fileID: 2136568266}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38659,7 +38907,7 @@ GameObject:
   - component: {fileID: 2140487490}
   - component: {fileID: 2140487489}
   - component: {fileID: 2140487488}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (50)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38760,7 +39008,7 @@ GameObject:
   - component: {fileID: 2141513095}
   - component: {fileID: 2141513094}
   - component: {fileID: 2141513093}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_03 (62)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38861,7 +39109,7 @@ GameObject:
   - component: {fileID: 2145518196}
   - component: {fileID: 2145518195}
   - component: {fileID: 2145518194}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_02 (35)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
