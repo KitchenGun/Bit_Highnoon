@@ -52,14 +52,11 @@ namespace OVRTouchSample
         private void Start()
         {
             PV = this.gameObject.transform.parent.parent.parent.parent.gameObject.GetComponent<PhotonView>();
-            if (PV.IsMine)
-            {
-                GM = GameObject.Find("GameManager").GetComponent<GameManager>();
-                HandAudio = this.gameObject.GetComponent<AudioSource>();//오디오 소스 선택
-                side = this.gameObject.tag;//현재 컨트롤러 오른쪽 왼쪽 확인용
-                isHandOnColider = false;
-                this.gameObject.transform.Find("gun_hand").gameObject.SetActive(false);//현재 컨트롤러 총든손 총 내리도록 만들기
-            }
+            GM = GameObject.Find("GameManager").GetComponent<GameManager>();
+            HandAudio = this.gameObject.GetComponent<AudioSource>();//오디오 소스 선택
+            side = this.gameObject.tag;//현재 컨트롤러 오른쪽 왼쪽 확인용
+            isHandOnColider = false;
+            this.gameObject.transform.Find("gun_hand").gameObject.SetActive(false);//현재 컨트롤러 총든손 총 내리도록 만들기
         }
 
         private void Update()

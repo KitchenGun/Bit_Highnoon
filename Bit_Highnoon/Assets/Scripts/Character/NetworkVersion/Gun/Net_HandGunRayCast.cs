@@ -51,37 +51,34 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks
     void Start()
     {//초기화
         PV = this.gameObject.transform.parent.parent.parent.parent.parent.gameObject.GetComponent<PhotonView>();
-        if (PV.IsMine)
+        #region Scene
+        GM = GameObject.Find("GameManager");
+        if (GM == null)
         {
-            #region Scene
-            GM = GameObject.Find("GameManager");
-            if (GM == null)
-            {
-                SceneIdx = 0;
-            }//gamemanager가 존재 안할경우
-            else
-            {
-                SceneIdx = GM.GetComponent<GameManager>().GetSceneIndex();
-            }
-            #endregion
-            #region Ray
-            FirePos = this.gameObject.transform.parent.Find("GunFirePos").gameObject;
-
-            #endregion
-            #region Audio
-            this.HandGunFireClickAudio = this.gameObject.transform.parent.GetComponent<AudioSource>(); //격발음 SFX
-            this.HandGunFireClickAudio.loop = false;
-            this.HandGunReloadAudio = this.gameObject.GetComponent<AudioSource>();//노리쇠 후퇴 SFX
-            this.HandGunReloadAudio.loop = false;
-            this.HandGunFireAudio = FirePos.GetComponent<AudioSource>();
-            this.HandGunFireAudio = FirePos.GetComponent<AudioSource>();
-            #endregion
-            #region Animation
-            GunAni = this.gameObject.GetComponent<Animator>();
-            GunAni.SetBool("FireState", FireState);
-            GunFireEffect = FirePos.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>();
-            #endregion
+            SceneIdx = 0;
+        }//gamemanager가 존재 안할경우
+        else
+        {
+            SceneIdx = GM.GetComponent<GameManager>().GetSceneIndex();
         }
+        #endregion
+        #region Ray
+        FirePos = this.gameObject.transform.parent.Find("GunFirePos").gameObject;
+
+        #endregion
+        #region Audio
+        this.HandGunFireClickAudio = this.gameObject.transform.parent.GetComponent<AudioSource>(); //격발음 SFX
+        this.HandGunFireClickAudio.loop = false;
+        this.HandGunReloadAudio = this.gameObject.GetComponent<AudioSource>();//노리쇠 후퇴 SFX
+        this.HandGunReloadAudio.loop = false;
+        this.HandGunFireAudio = FirePos.GetComponent<AudioSource>();
+        this.HandGunFireAudio = FirePos.GetComponent<AudioSource>();
+        #endregion
+        #region Animation
+        GunAni = this.gameObject.GetComponent<Animator>();
+        GunAni.SetBool("FireState", FireState);
+        GunFireEffect = FirePos.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>();
+        #endregion
     }
 
     private void Update()
