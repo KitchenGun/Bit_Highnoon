@@ -1421,7 +1421,7 @@ GameObject:
   - component: {fileID: 7187229283781097993}
   - component: {fileID: 8717608289911984253}
   m_Layer: 0
-  m_Name: NetPlayerCtrl
+  m_Name: NetworkPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

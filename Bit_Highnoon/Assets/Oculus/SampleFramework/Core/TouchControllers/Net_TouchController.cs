@@ -380,15 +380,15 @@ namespace OVRTouchSample
         private void getGunInfo(GameObject gun)
         {
             //총에 정보에 접근 
-            this.FireState = gun.GetComponent<Net_Revolver>().FireState;//발사 가능 상태 체크
-            this.Bullet = gun.GetComponent<Net_Revolver>().cur_bullet;//사격가능한 총알 수 체크
+            this.FireState = gun.GetComponent<Revolver>().FireState;//발사 가능 상태 체크
+            this.Bullet = gun.GetComponent<Revolver>().cur_bullet;//사격가능한 총알 수 체크
             this.gameObject.transform.Find("gun_hand").gameObject.GetComponentInChildren<Net_HandGunRayCast>().setGunInfo(ref this.FireState, ref this.Bullet);
         }
         private void setGunInfo(GameObject gun)
         {
             this.gameObject.transform.Find("gun_hand").gameObject.GetComponentInChildren<Net_HandGunRayCast>().getGunInfo(ref FireState, ref Bullet);
-            gun.GetComponent<Net_Revolver>().setFireState(this.FireState);
-            gun.GetComponent<Net_Revolver>().setbullet(this.Bullet,false);
+            gun.GetComponent<Revolver>().setFireState(this.FireState);
+            gun.GetComponent<Revolver>().setbullet(this.Bullet,false);
         }
         #endregion
     }
