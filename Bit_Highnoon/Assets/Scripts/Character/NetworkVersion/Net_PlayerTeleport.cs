@@ -27,44 +27,41 @@ public class Net_PlayerTeleport : MonoBehaviourPunCallbacks
     private void Awake()
     {
         PV = this.gameObject.transform.parent.parent.parent.parent.parent.gameObject.GetComponent<PhotonView>();
-        if (PV.IsMine)
+        #region Scene 확인
+        GM = GameObject.Find("GameManager");
+        if (GM == null)
         {
-            #region Scene 확인
-            GM = GameObject.Find("GameManager");
-            if (GM == null)
+            SceneIdx = 0;
+        }//gamemanager가 존재 안할경우
+        else
+        {
+            SceneIdx = GM.GetComponent<GameManager>().GetSceneIndex();
+            if (SceneIdx == 6)
             {
-                SceneIdx = 0;
-            }//gamemanager가 존재 안할경우
-            else
-            {
-                SceneIdx = GM.GetComponent<GameManager>().GetSceneIndex();
-                if (SceneIdx == 6)
-                {
-                    SetTeleportEnable(true);
-                }
-                else
-                {
-                    SetTeleportEnable(false);
-                }
-            }
-            #endregion
-            #region 씬 넘버를 통해서 텔레포드 조건 확인
-            if (SceneIdx == 0 || SceneIdx == 6)
-            {
-                TeleportEnable = true;
+                SetTeleportEnable(true);
             }
             else
             {
-                TeleportEnable = false;
+                SetTeleportEnable(false);
             }
-            #endregion
-            laser = this.gameObject.GetComponent<LineRenderer>();
-            laser.startWidth = laser.endWidth = 0.5f;
-            laser.positionCount = laserSteps;//레이저가 보여질 거리
-            #region Audio
-            WalkAudio = this.gameObject.GetComponent<AudioSource>();
-            #endregion
         }
+        #endregion
+        #region 씬 넘버를 통해서 텔레포드 조건 확인
+        if (SceneIdx == 0 || SceneIdx == 6)
+        {
+            TeleportEnable = true;
+        }
+        else
+        {
+            TeleportEnable = false;
+        }
+        #endregion
+        laser = this.gameObject.GetComponent<LineRenderer>();
+        laser.startWidth = laser.endWidth = 0.5f;
+        laser.positionCount = laserSteps;//레이저가 보여질 거리
+        #region Audio
+        WalkAudio = this.gameObject.GetComponent<AudioSource>();
+        #endregion
     }
 
     #region 텔포 가능 불가능 함수 전달

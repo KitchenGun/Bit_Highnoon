@@ -52,36 +52,36 @@ namespace OVRTouchSample
         private void Start()
         {
             PV = this.gameObject.transform.parent.parent.parent.parent.gameObject.GetComponent<PhotonView>();
-            if (PV.IsMine)
-            {
-                GM = GameObject.Find("GameManager").GetComponent<GameManager>();
-                HandAudio = this.gameObject.GetComponent<AudioSource>();//오디오 소스 선택
-                side = this.gameObject.tag;//현재 컨트롤러 오른쪽 왼쪽 확인용
-                isHandOnColider = false;
-                this.gameObject.transform.Find("gun_hand").gameObject.SetActive(false);//현재 컨트롤러 총든손 총 내리도록 만들기
-            }
+            GM = GameObject.Find("GameManager").GetComponent<GameManager>();
+            HandAudio = this.gameObject.GetComponent<AudioSource>();//오디오 소스 선택
+            side = this.gameObject.tag;//현재 컨트롤러 오른쪽 왼쪽 확인용
+            isHandOnColider = false;
+            this.gameObject.transform.Find("gun_hand").gameObject.SetActive(false);//현재 컨트롤러 총든손 총 내리도록 만들기
         }
-       
+
         private void Update()
         {
-            #region 기존 컨트롤러 애니메이션 (사용안함)
-            //m_animator.SetFloat("Button 1", OVRInput.Get(OVRInput.Button.One, m_controller) ? 1.0f : 0.0f);
-            //m_animator.SetFloat("Button 2", OVRInput.Get(OVRInput.Button.Two, m_controller) ? 1.0f : 0.0f);
-            //m_animator.SetFloat("Joy X", OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, m_controller).x);
-            //m_animator.SetFloat("Joy Y", OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, m_controller).y);
-            //m_animator.SetFloat("Grip", OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, m_controller));
-            //m_animator.SetFloat("Trigger", OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, m_controller));
-            #endregion
+            if (PV.IsMine)
+            {
+                #region 기존 컨트롤러 애니메이션 (사용안함)
+                //m_animator.SetFloat("Button 1", OVRInput.Get(OVRInput.Button.One, m_controller) ? 1.0f : 0.0f);
+                //m_animator.SetFloat("Button 2", OVRInput.Get(OVRInput.Button.Two, m_controller) ? 1.0f : 0.0f);
+                //m_animator.SetFloat("Joy X", OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, m_controller).x);
+                //m_animator.SetFloat("Joy Y", OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, m_controller).y);
+                //m_animator.SetFloat("Grip", OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, m_controller));
+                //m_animator.SetFloat("Trigger", OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, m_controller));
+                #endregion
 
-            #region 컨트롤러 연결 확인
-            OVRManager.InputFocusAcquired += OnInputFocusAcquired;
-            OVRManager.InputFocusLost += OnInputFocusLost;
-            #endregion
+                #region 컨트롤러 연결 확인
+                OVRManager.InputFocusAcquired += OnInputFocusAcquired;
+                OVRManager.InputFocusLost += OnInputFocusLost;
+                #endregion
 
-            #region 총 들고있는지 확인
-            DropCheck();
-            #endregion
+                #region 총 들고있는지 확인
+                DropCheck();
+                #endregion
 
+            }
         }
 
         #region 컨트롤러 연결 확인
@@ -380,15 +380,15 @@ namespace OVRTouchSample
         private void getGunInfo(GameObject gun)
         {
             //총에 정보에 접근 
-            this.FireState = gun.GetComponent<Net_Revolver>().FireState;//발사 가능 상태 체크
-            this.Bullet = gun.GetComponent<Net_Revolver>().cur_bullet;//사격가능한 총알 수 체크
+            this.FireState = gun.GetComponent<Revolver>().FireState;//발사 가능 상태 체크
+            this.Bullet = gun.GetComponent<Revolver>().cur_bullet;//사격가능한 총알 수 체크
             this.gameObject.transform.Find("gun_hand").gameObject.GetComponentInChildren<Net_HandGunRayCast>().setGunInfo(ref this.FireState, ref this.Bullet);
         }
         private void setGunInfo(GameObject gun)
         {
             this.gameObject.transform.Find("gun_hand").gameObject.GetComponentInChildren<Net_HandGunRayCast>().getGunInfo(ref FireState, ref Bullet);
-            gun.GetComponent<Net_Revolver>().setFireState(this.FireState);
-            gun.GetComponent<Net_Revolver>().setbullet(this.Bullet,false);
+            gun.GetComponent<Revolver>().setFireState(this.FireState);
+            gun.GetComponent<Revolver>().setbullet(this.Bullet,false);
         }
         #endregion
     }

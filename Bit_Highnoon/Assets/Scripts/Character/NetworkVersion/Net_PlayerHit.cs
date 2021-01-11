@@ -17,10 +17,7 @@ public class Net_PlayerHit : MonoBehaviourPunCallbacks
     void Start()
     {
         PV = this.gameObject.transform.parent.gameObject.GetPhotonView();
-        if (PV.IsMine)
-        {
-            Panel.color = new Vector4(0, 0, 0, 0);
-        }
+        Panel.color = new Vector4(0, 0, 0, 0);
     }
 
     private void FixedUpdate()
@@ -56,7 +53,7 @@ public class Net_PlayerHit : MonoBehaviourPunCallbacks
         PanelSetRed();
         foreach(GameObject controller in Controllers)
         {
-            controller.GetComponent<OVRTouchSample.TouchController>().SendMessage("Drop");
+            controller.GetComponent<OVRTouchSample.Net_TouchController>().SendMessage("Drop");
         }
     }
     #endregion
