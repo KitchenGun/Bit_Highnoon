@@ -61,27 +61,30 @@ namespace OVRTouchSample
                 this.gameObject.transform.Find("gun_hand").gameObject.SetActive(false);//현재 컨트롤러 총든손 총 내리도록 만들기
             }
         }
-       
+
         private void Update()
         {
-            #region 기존 컨트롤러 애니메이션 (사용안함)
-            //m_animator.SetFloat("Button 1", OVRInput.Get(OVRInput.Button.One, m_controller) ? 1.0f : 0.0f);
-            //m_animator.SetFloat("Button 2", OVRInput.Get(OVRInput.Button.Two, m_controller) ? 1.0f : 0.0f);
-            //m_animator.SetFloat("Joy X", OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, m_controller).x);
-            //m_animator.SetFloat("Joy Y", OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, m_controller).y);
-            //m_animator.SetFloat("Grip", OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, m_controller));
-            //m_animator.SetFloat("Trigger", OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, m_controller));
-            #endregion
+            if (PV.IsMine)
+            {
+                #region 기존 컨트롤러 애니메이션 (사용안함)
+                //m_animator.SetFloat("Button 1", OVRInput.Get(OVRInput.Button.One, m_controller) ? 1.0f : 0.0f);
+                //m_animator.SetFloat("Button 2", OVRInput.Get(OVRInput.Button.Two, m_controller) ? 1.0f : 0.0f);
+                //m_animator.SetFloat("Joy X", OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, m_controller).x);
+                //m_animator.SetFloat("Joy Y", OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, m_controller).y);
+                //m_animator.SetFloat("Grip", OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, m_controller));
+                //m_animator.SetFloat("Trigger", OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, m_controller));
+                #endregion
 
-            #region 컨트롤러 연결 확인
-            OVRManager.InputFocusAcquired += OnInputFocusAcquired;
-            OVRManager.InputFocusLost += OnInputFocusLost;
-            #endregion
+                #region 컨트롤러 연결 확인
+                OVRManager.InputFocusAcquired += OnInputFocusAcquired;
+                OVRManager.InputFocusLost += OnInputFocusLost;
+                #endregion
 
-            #region 총 들고있는지 확인
-            DropCheck();
-            #endregion
+                #region 총 들고있는지 확인
+                DropCheck();
+                #endregion
 
+            }
         }
 
         #region 컨트롤러 연결 확인
