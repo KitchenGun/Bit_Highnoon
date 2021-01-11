@@ -13,6 +13,7 @@ public class Net_HoldFire : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     private void Awake()
     {
+        PV = this.gameObject.transform.parent.GetComponent<PhotonView>();
         if (PV.IsMine)
         {
             #region 씬확인

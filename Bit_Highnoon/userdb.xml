@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="yes"?>
+<DocumentElement>
+  <UserInfo>
+    <PID>1</PID>
+    <Mode>easy</Mode>
+    <EasyWin>0</EasyWin>
+    <EasyLose>0</EasyLose>
+    <NormalWin>0</NormalWin>
+    <NormalLose>0</NormalLose>
+    <HardWin>0</HardWin>
+    <HardLose>0</HardLose>
+  </UserInfo>
+</DocumentElement>
