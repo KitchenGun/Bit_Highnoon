@@ -22,8 +22,8 @@ public class Net_HoldFire : MonoBehaviourPunCallbacks
             #endregion
             #region 홀스터
             Holster = new List<GameObject>();
-            Holster.Add(this.gameObject.GetComponent<Net_PlayerTracking>().GetBeltObj().transform.GetChild(1).gameObject);
-            Holster.Add(this.gameObject.GetComponent<Net_PlayerTracking>().GetBeltObj().transform.GetChild(2).gameObject);
+            Holster.Add(this.gameObject.GetComponent<PlayerTracking>().GetBeltObj().transform.GetChild(1).gameObject);
+            Holster.Add(this.gameObject.GetComponent<PlayerTracking>().GetBeltObj().transform.GetChild(2).gameObject);
             #endregion
             //확인한 씬을 통해서 총기 사용가능을 확인
             SceneCheck();
