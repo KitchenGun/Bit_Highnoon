@@ -9,6 +9,7 @@ public class Net_PlayerTracking : MonoBehaviourPunCallbacks
     private OVRCameraRig ovrCamRig;
     [SerializeField]
     private GameObject Head; //머리의 위치정보를 담고 있는 오브젝트
+    private Camera HeadCam;
     private GameObject Body; //플레이어의 머리 밑에 같이 따라 움직이는 몸통 오브젝트
     [SerializeField]
     private GameObject Belt;//사용자가 가지고 있는 홀스터
@@ -20,7 +21,24 @@ public class Net_PlayerTracking : MonoBehaviourPunCallbacks
     }
     void Start()
     {
+        HeadCam = this.gameObject.transform.parent.GetComponent<Camera>();
         Body = this.gameObject;
+        if(PV.IsMine)
+        {
+            if (HeadCam.transform.gameObject.tag != "MainCamera")
+            {
+                HeadCam.transform.gameObject.tag = "MainCamera";
+                HeadCam.enabled = true;
+            }
+        }
+        else
+        {
+            if (HeadCam.transform.gameObject.tag == "MainCamera")
+            {
+                HeadCam.transform.gameObject.tag = "Untagged";
+                HeadCam.enabled = false;
+            }
+        }
     }
 
     void Update()

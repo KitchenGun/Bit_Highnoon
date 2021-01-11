@@ -1420,7 +1420,6 @@ GameObject:
   - component: {fileID: 1299032423939519629}
   - component: {fileID: 7187229283781097993}
   - component: {fileID: 8717608289911984253}
-  - component: {fileID: 391181909297108815}
   m_Layer: 0
   m_Name: NetworkPlayer
   m_TagString: Untagged
@@ -1495,24 +1494,6 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
---- !u!114 &391181909297108815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1299032423939877027}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37c605e5b67ec2e489a2fed876d5d87d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ovrCamRig: {fileID: 1299032423939877039}
-  leftHand: {fileID: 1299840780202398991}
-  rightHand: {fileID: 1299032423939471751}
-  leftEye: {fileID: 1315212036402629109}
-  rightEye: {fileID: 1319501886738752795}
-  speed: 3
 --- !u!1 &1299032423939877029
 GameObject:
   m_ObjectHideFlags: 0
