@@ -53,7 +53,7 @@ public class Net_PlayerHit : MonoBehaviourPunCallbacks
         PanelSetRed();
         foreach(GameObject controller in Controllers)
         {
-            controller.GetComponent<OVRTouchSample.TouchController>().SendMessage("Drop");
+            controller.GetComponent<OVRTouchSample.Net_TouchController>().SendMessage("Drop");
         }
     }
     #endregion
