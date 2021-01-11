@@ -349,7 +349,7 @@ public class HandGunRayCast : MonoBehaviour
     #region 버튼 식별
     private void ButtonHit(GameObject button)
     {
-        button.GetComponent<ButtonClick>().SendMessage("Hit", button);
+        button.GetComponent<ButtonClick>().SendMessage("Hit");
     }
     #endregion
 }

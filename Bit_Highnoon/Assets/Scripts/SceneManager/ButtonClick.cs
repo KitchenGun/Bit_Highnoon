@@ -7,7 +7,6 @@ public class ButtonClick : MonoBehaviour
 {
    public void Hit()
     {
-        Button btn = GameObject.Find("button").GetComponent<Button>();
-        btn.onClick.Invoke();
+        
     }
 }
