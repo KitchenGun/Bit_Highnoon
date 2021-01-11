@@ -21,23 +21,16 @@ public class Net_PlayerTracking : MonoBehaviourPunCallbacks
     }
     void Start()
     {
-        HeadCam = this.gameObject.transform.parent.GetComponent<Camera>();
+        HeadCam = Head.transform.parent.GetComponent<Camera>();
         Body = this.gameObject;
         if(PV.IsMine)
         {
-            if (HeadCam.transform.gameObject.tag != "MainCamera")
-            {
-                HeadCam.transform.gameObject.tag = "MainCamera";
-                HeadCam.enabled = true;
-            }
+            HeadCam.enabled = true;
         }
         else
         {
-            if (HeadCam.transform.gameObject.tag == "MainCamera")
-            {
-                HeadCam.transform.gameObject.tag = "Untagged";
-                HeadCam.enabled = false;
-            }
+            HeadCam.transform.gameObject.tag = "Untagged";
+            HeadCam.enabled = false;
         }
     }
 
