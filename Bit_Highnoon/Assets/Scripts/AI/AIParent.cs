@@ -28,15 +28,17 @@ public class AIParent : MonoBehaviour
     protected float walkTime;           //걷는 시간
     #endregion
 
-    protected Animator animator;        //Animator
+    protected Animator animator;                //Animator
 
-    protected GameObject player;        //플레이어
+    protected GameObject player;                //플레이어
 
-    protected AudioSource AIAudio;
+    protected AudioSource AIAudio;              //오디오 소스  
 
-    protected GameObject bloodEffect;
+    protected GameObject bloodEffect;           //바닥에 출혈 효과
+        
+    protected new CapsuleCollider collider;     //콜라이더
 
-    protected new CapsuleCollider collider;
+    private GameObject canvas;                  //게임 안내 캠버스
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -58,6 +60,8 @@ public class AIParent : MonoBehaviour
         AIAudio.loop = false;
 
         collider = GetComponent<CapsuleCollider>();
+
+        canvas = GameObject.Find("GameUI");
 
         //Debug.Log("idle");
     }
@@ -209,6 +213,8 @@ public class AIParent : MonoBehaviour
             AIAudio.clip = GameManager.Instance.LoadAudioClip("Start");
             AIAudio.Play();
             isIdleAudio = true;
+
+            canvas.transform.GetChild(0).gameObject.SetActive(false);
         }
     }
 
@@ -253,7 +259,11 @@ public class AIParent : MonoBehaviour
 
     protected void SendMessageDead()
     {
-        player.transform.Find("Body").GetComponent<PlayerHit>().SendMessage("Die");      //플레이어에게 죽어다고 알리기
+        //플레이어에게 죽어다고 알리기
+        player.transform.Find("Body").GetComponent<PlayerHit>().SendMessage("Die");
+
+        //테스트
+        //GameObject.Find("Canvas").transform.GetChild(2).gameObject.SetActive(false);
     }
 
     protected virtual void GameEnd(string winner)
@@ -264,6 +274,8 @@ public class AIParent : MonoBehaviour
     protected virtual void PlayerDead()
     {
         isPlayerDead = true;
+
+        canvas.transform.GetChild(2).gameObject.SetActive(true);
     }
     #endregion
 
@@ -271,6 +283,8 @@ public class AIParent : MonoBehaviour
     protected virtual void CreateBloodEffect()
     {
         bloodEffect.SetActive(true);
+
+        canvas.transform.GetChild(1).gameObject.SetActive(true);
     }
     #endregion
 
