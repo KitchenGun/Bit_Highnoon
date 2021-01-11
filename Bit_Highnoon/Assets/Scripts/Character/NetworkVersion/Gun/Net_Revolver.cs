@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Revolver : MonoBehaviour
+public class Net_Revolver : MonoBehaviour
 {
     private GameManager GM;
     private bool NewGun = true;
@@ -17,13 +17,13 @@ public class Revolver : MonoBehaviour
 
     private void Start()
     {
-        GM = GameObject.Find("GameManager").GetComponent<GameManager>(); 
-        if (this.gameObject.name != "Gun(Clone)")
-        {
-            setbullet(Max_bullet, NewGun);
-            setFireState(true);
-        }
-        HitOtherObjAudio = this.gameObject.GetComponent<AudioSource>();
+            GM = GameObject.Find("GameManager").GetComponent<GameManager>();
+            if (this.gameObject.name != "Gun(Clone)")
+            {
+                setbullet(Max_bullet, NewGun);
+                setFireState(true);
+            }
+            HitOtherObjAudio = this.gameObject.GetComponent<AudioSource>();
     }
     public void setbullet(int bullet,bool isNewGun)
     {
