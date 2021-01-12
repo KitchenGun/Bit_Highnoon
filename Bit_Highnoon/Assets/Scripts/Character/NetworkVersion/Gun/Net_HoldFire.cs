@@ -14,20 +14,17 @@ public class Net_HoldFire : MonoBehaviourPunCallbacks
     private void Awake()
     {
         PV = this.gameObject.transform.parent.GetComponent<PhotonView>();
-        if (PV.IsMine)
-        {
-            #region 씬확인
-            GM = GameObject.Find("GameManager").GetComponent<GameManager>();
-            SceneNum = GM.GetSceneIndex();
-            #endregion
-            #region 홀스터
-            Holster = new List<GameObject>();
-            Holster.Add(this.gameObject.GetComponent<PlayerTracking>().GetBeltObj().transform.GetChild(1).gameObject);
-            Holster.Add(this.gameObject.GetComponent<PlayerTracking>().GetBeltObj().transform.GetChild(2).gameObject);
-            #endregion
-            //확인한 씬을 통해서 총기 사용가능을 확인
-            SceneCheck();
-        }
+        #region 씬확인
+        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
+        SceneNum = GM.GetSceneIndex();
+        #endregion
+        #region 홀스터
+        Holster = new List<GameObject>();
+        Holster.Add(this.gameObject.GetComponent<Net_PlayerTracking>().GetBeltObj().transform.GetChild(1).gameObject);
+        Holster.Add(this.gameObject.GetComponent<Net_PlayerTracking>().GetBeltObj().transform.GetChild(2).gameObject);
+        #endregion
+        //확인한 씬을 통해서 총기 사용가능을 확인
+        SceneCheck();
     }
 
     #region 씬에 따른 충돌체 상태 초기화

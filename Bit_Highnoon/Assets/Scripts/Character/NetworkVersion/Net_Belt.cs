@@ -13,31 +13,29 @@ public class Net_Belt : MonoBehaviourPunCallbacks
     private GameManager GM;
 
     #region 밸트에 총있는지 확인용 변수
-    public bool RightGunSet { get;  set; }
-    public bool LeftGunSet{ get;  set; }
+    public bool RightGunSet { get; set; }
+    public bool LeftGunSet { get; set; }
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
         PV = this.gameObject.transform.parent.GetComponent<PhotonView>();
-        if (PV.IsMine)
-        {
-            //양쪽에 총있을때 true
-            RightGunSet = true;
-            LeftGunSet = true;
+        //양쪽에 총있을때 true
+        RightGunSet = true;
+        LeftGunSet = true;
 
-            GM = GameObject.Find("GameManager").GetComponent<GameManager>();
-            if (GM.GetSceneIndex() == 1 || GM.GetSceneIndex() == 2 || GM.GetSceneIndex() == 6)
-            {
-                GunRefill = true;
-            }
-            else
-            {
-                GunRefill = false;
-            }
+        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
+        if (GM.GetSceneIndex() == 1 || GM.GetSceneIndex() == 2 || GM.GetSceneIndex() == 6)
+        {
+            GunRefill = true;
+        }
+        else
+        {
+            GunRefill = false;
         }
     }
+
 
     private void Update()
     {
@@ -79,9 +77,9 @@ public class Net_Belt : MonoBehaviourPunCallbacks
     //왼쪽 
     public void GrabGun(string side)
     {
-        foreach(GameObject Gun in BeltGun)
+        foreach (GameObject Gun in BeltGun)
         {
-            if(Gun.tag == side)
+            if (Gun.tag == side)
             {
                 Gun.GetComponent<MeshRenderer>().enabled = false;
                 switch (side)
@@ -126,7 +124,7 @@ public class Net_Belt : MonoBehaviourPunCallbacks
     #region 벨트에 총이 있는지 없는지 확인용
     public bool isSet(string side)
     {
-        if(side=="Left")
+        if (side == "Left")
         {
             if (LeftGunSet == true)
                 return true;
@@ -144,5 +142,4 @@ public class Net_Belt : MonoBehaviourPunCallbacks
     }
     #endregion
 }
-
 
