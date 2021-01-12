@@ -22,7 +22,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 
 using Node = UnityEngine.XR.XRNode;
 
@@ -110,8 +109,6 @@ public class OVRCameraRig : MonoBehaviour
 	protected Camera _centerEyeCamera;
 	protected Camera _leftEyeCamera;
 	protected Camera _rightEyeCamera;
-
-
 
 #region Unity Messages
 	protected virtual void Awake()
