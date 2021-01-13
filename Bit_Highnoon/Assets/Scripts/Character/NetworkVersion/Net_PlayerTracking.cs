@@ -20,10 +20,10 @@ public class Net_PlayerTracking : MonoBehaviourPunCallbacks
         ovrCamRig = this.gameObject.transform.parent.Find("OVRCameraRig").gameObject.GetComponent<OVRCameraRig>();
         ovrManager = this.gameObject.transform.parent.Find("OVRCameraRig").gameObject.GetComponent<OVRManager>();
         PV = this.gameObject.transform.parent.GetComponent<PhotonView>();
+        HeadCam = Head.transform.parent.GetComponent<Camera>();
     }
     void Start()
     {
-        HeadCam = Head.transform.parent.GetComponent<Camera>();
         Body = this.gameObject;
         if(PV.IsMine)
         {
