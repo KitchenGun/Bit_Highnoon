@@ -27,6 +27,9 @@ public class Net_PlayerTracking : MonoBehaviourPunCallbacks
         Body = this.gameObject;
         if(PV.IsMine)
         {
+            ovrCamRig.enabled = true;
+            ovrManager.enabled = true;
+            HeadCam.transform.gameObject.tag = "MainCamera";
             HeadCam.enabled = true;
         }
         else

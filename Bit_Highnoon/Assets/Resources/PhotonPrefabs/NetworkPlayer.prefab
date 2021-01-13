@@ -20,7 +20,6 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 2062504191727366847}
-  - {fileID: 0}
   - {fileID: 4597539156562428863}
   - {fileID: 5055888788352173225}
   - {fileID: 6588814842728087675}
@@ -309,22 +308,6 @@ MonoBehaviour:
   Controllers:
   - {fileID: 836061054695816764}
   - {fileID: 836632039576532190}
---- !u!114 &4597539156562428863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5465229761108827619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 1
 --- !u!114 &6658690529734465446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,6 +322,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Head: {fileID: 2677167125809604141}
   Belt: {fileID: 531080093050584996}
+--- !u!114 &4597539156562428863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5465229761108827619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 1
+  m_UseLocal: 1
 --- !u!114 &691620526718729186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,7 +478,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3366610077945360110, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
       propertyPath: m_Name
-      value: NetPlayerCtrl
+      value: NetworkPlayer
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5479935348405643082, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
