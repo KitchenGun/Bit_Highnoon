@@ -7,7 +7,6 @@ public class Net_PlayerTracking : MonoBehaviourPunCallbacks
 {
     private PhotonView PV;
     private OVRCameraRig ovrCamRig;
-    private OVRManager ovrManager;
     [SerializeField]
     private GameObject Head; //머리의 위치정보를 담고 있는 오브젝트
     private Camera HeadCam;
