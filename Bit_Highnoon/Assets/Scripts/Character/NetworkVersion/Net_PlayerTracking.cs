@@ -22,6 +22,17 @@ public class Net_PlayerTracking : MonoBehaviourPunCallbacks
         Body = this.gameObject;
     }
 
+    private void Start()
+    {
+        if (!PV.IsMine)
+        {
+            #region PV
+            ovrCamRig.enabled = false;
+            HeadCam.transform.gameObject.tag = "Untagged";
+            HeadCam.transform.gameObject.SetActive(false);
+            #endregion
+        }
+    }
     void Update()
     {
         if (PV.IsMine)
@@ -52,14 +63,7 @@ public class Net_PlayerTracking : MonoBehaviourPunCallbacks
             Belt.transform.eulerAngles = new Vector3(0, Head.transform.rotation.eulerAngles.y, 0); // 회전값 y축 만 전달
             #endregion
         }
-        else
-        {
-            #region PV
-            ovrCamRig.enabled = false;
-            HeadCam.transform.gameObject.tag = "Untagged";
-            HeadCam.enabled = false;
-            #endregion
-        }
+      
     }
 
     #region 벨트 오브젝트 반환
