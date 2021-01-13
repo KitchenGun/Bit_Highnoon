@@ -50,7 +50,7 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks
 
     void Start()
     {//초기화
-        PV = this.gameObject.transform.parent.parent.parent.parent.parent.gameObject.GetComponent<PhotonView>();
+        PV = this.gameObject.transform.parent.parent.gameObject.GetComponent<PhotonView>();
         #region Scene
         GM = GameObject.Find("GameManager");
         if (GM == null)
