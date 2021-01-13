@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 using Photon.Pun;
 
 public class Net_PlayerTracking : MonoBehaviourPunCallbacks
@@ -14,11 +15,14 @@ public class Net_PlayerTracking : MonoBehaviourPunCallbacks
     [SerializeField]
     private GameObject Belt;//사용자가 가지고 있는 홀스터
 
+    private Vector3 headPos;
+    private Quaternion headRot;
+    private List<XRNodeState> mNodeStates = new List<XRNodeState>();
     private void Awake()
     {
         ovrCamRig = this.gameObject.transform.parent.Find("OVRCameraRig").gameObject.GetComponent<OVRCameraRig>();
         PV = this.gameObject.transform.parent.GetComponent<PhotonView>();
-        HeadCam = Head.transform.parent.GetComponent<Camera>();
+        HeadCam = this.transform.parent.GetChild(1).GetChild(0).Find("CenterEyeAnchor").GetComponent<Camera>();
         Body = this.gameObject;
     }
 
@@ -27,7 +31,6 @@ public class Net_PlayerTracking : MonoBehaviourPunCallbacks
         if (!PV.IsMine)
         {
             #region PV
-            ovrCamRig.enabled = false;
             HeadCam.transform.gameObject.tag = "Untagged";
             HeadCam.transform.gameObject.SetActive(false);
             #endregion
@@ -37,6 +40,22 @@ public class Net_PlayerTracking : MonoBehaviourPunCallbacks
     {
         if (PV.IsMine)
         {
+            #region 머리위치 추적
+            InputTracking.GetNodeStates(mNodeStates);
+
+            foreach (XRNodeState nodeState in mNodeStates)
+            {
+                switch (nodeState.nodeType)
+                {
+                    case XRNode.Head:
+                        nodeState.TryGetPosition(out headPos);
+                        nodeState.TryGetRotation(out headRot);
+                        break;
+                }
+            }
+            Head.transform.position = headPos;
+            Head.transform.rotation = headRot.normalized;
+            #endregion 
             #region PV
             ovrCamRig.enabled = true;
             HeadCam.transform.gameObject.tag = "MainCamera";
