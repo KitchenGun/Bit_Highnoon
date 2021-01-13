@@ -18,33 +18,20 @@ public class Net_PlayerTracking : MonoBehaviourPunCallbacks
     private void Awake()
     {
         ovrCamRig = this.gameObject.transform.parent.Find("OVRCameraRig").gameObject.GetComponent<OVRCameraRig>();
-        //ovrManager = this.gameObject.transform.parent.Find("OVRCameraRig").gameObject.GetComponent<OVRManager>();
         PV = this.gameObject.transform.parent.GetComponent<PhotonView>();
         HeadCam = Head.transform.parent.GetComponent<Camera>();
-    }
-    void Start()
-    {
         Body = this.gameObject;
-        if(PV.IsMine)
-        {
-            ovrCamRig.enabled = true;
-            //ovrManager.enabled = true;
-            HeadCam.transform.gameObject.tag = "MainCamera";
-            HeadCam.enabled = true;
-        }
-        else
-        {
-            ovrCamRig.enabled = false;
-            //ovrManager.enabled = false;
-            HeadCam.transform.gameObject.tag = "Untagged";
-            HeadCam.enabled = false;
-        }
     }
 
     void Update()
     {
         if (PV.IsMine)
         {
+            #region PV
+            ovrCamRig.enabled = true;
+            HeadCam.transform.gameObject.tag = "MainCamera";
+            HeadCam.enabled = true;
+            #endregion
             #region Body 회전과 위치 값 전달
             Body.transform.position = new Vector3
                 (Head.transform.position.x,
@@ -64,6 +51,14 @@ public class Net_PlayerTracking : MonoBehaviourPunCallbacks
                 (float)(Head.transform.position.y) / 3 * 2,
                 Body.transform.position.z);
             Belt.transform.eulerAngles = new Vector3(0, Head.transform.rotation.eulerAngles.y, 0); // 회전값 y축 만 전달
+            #endregion
+        }
+        else
+        {
+            #region PV
+            ovrCamRig.enabled = false;
+            HeadCam.transform.gameObject.tag = "Untagged";
+            HeadCam.enabled = false;
             #endregion
         }
     }
