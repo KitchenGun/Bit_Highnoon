@@ -18,7 +18,7 @@ public class Net_PlayerTracking : MonoBehaviourPunCallbacks
     private void Awake()
     {
         ovrCamRig = this.gameObject.transform.parent.Find("OVRCameraRig").gameObject.GetComponent<OVRCameraRig>();
-        ovrManager = this.gameObject.transform.parent.Find("OVRCameraRig").gameObject.GetComponent<OVRManager>();
+        //ovrManager = this.gameObject.transform.parent.Find("OVRCameraRig").gameObject.GetComponent<OVRManager>();
         PV = this.gameObject.transform.parent.GetComponent<PhotonView>();
         HeadCam = Head.transform.parent.GetComponent<Camera>();
     }
@@ -28,14 +28,14 @@ public class Net_PlayerTracking : MonoBehaviourPunCallbacks
         if(PV.IsMine)
         {
             ovrCamRig.enabled = true;
-            ovrManager.enabled = true;
+            //ovrManager.enabled = true;
             HeadCam.transform.gameObject.tag = "MainCamera";
             HeadCam.enabled = true;
         }
         else
         {
             ovrCamRig.enabled = false;
-            ovrManager.enabled = false;
+            //ovrManager.enabled = false;
             HeadCam.transform.gameObject.tag = "Untagged";
             HeadCam.enabled = false;
         }
