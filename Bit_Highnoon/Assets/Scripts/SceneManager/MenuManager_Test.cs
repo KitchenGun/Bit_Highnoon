@@ -24,26 +24,51 @@ public class MenuManager_Test : MonoBehaviour
         public void OpenMenu(string menuName)
         {
             
-                if (menuName == "FindRoomMenu")
-                {
-                    FM.Open();
-                }
-                else if (FM.open)
-                {
-                    CloseMenu(FM);
-                }
-
-        }
-        public void OpenMenu(Menu menu)
-        {
-            for (int i = 0; i < menus.Length; i++)
+            if (menuName == "FindRoomMenu")
             {
-                if (menus[i].open)
-                {
-                    CloseMenu(menus[i]);
-                }
+                FM.Open();
+                CloseMenu(LM);
+                CloseMenu(TM);
+                CloseMenu(CM);
+                CloseMenu(RM);
+                CloseMenu(EM);
             }
-            menu.Open();
+            else if (menuName == "TitleMenu")
+            {
+                TM.Open();
+                CloseMenu(LM);
+                CloseMenu(CM);
+                CloseMenu(RM);
+                CloseMenu(EM);
+                CloseMenu(FM);
+            }
+            else if (menuName == "CreateRoomMenu")
+            {
+                CM.Open();
+                CloseMenu(LM);
+                CloseMenu(TM);
+                CloseMenu(RM);
+                CloseMenu(EM);
+                CloseMenu(FM);
+            }
+            else if (menuName == "RoomMenu")
+            {
+                RM.Open();
+                CloseMenu(LM);
+                CloseMenu(TM);
+                CloseMenu(CM);
+                CloseMenu(EM);
+                CloseMenu(FM);
+            }
+            else if (menuName == "ErrorMenu")
+            {
+                EM.Open();
+                CloseMenu(LM);
+                CloseMenu(TM);
+                CloseMenu(CM);
+                CloseMenu(RM);
+                CloseMenu(FM);
+            }
         }
         public void CloseMenu(Menu menu)
         {
