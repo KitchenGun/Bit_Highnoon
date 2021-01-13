@@ -18,7 +18,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OVRHeadsetEmulator : MonoBehaviour {
+public class OVRHeadsetEmulator : MonoBehaviour
+{
 	public enum OpMode
 	{
 		Off,
@@ -52,97 +53,97 @@ public class OVRHeadsetEmulator : MonoBehaviour {
 
 	private CursorLockMode previousCursorLockMode = CursorLockMode.None;
 
-	// Use this for initialization
-	void Start () {
-	}
 
 	// Update is called once per frame
-	void Update () {
-		if (!emulatorHasInitialized)
-		{
-			if (OVRManager.OVRManagerinitialized)
+	void Update () 
+	{ 
+		
+			if (!emulatorHasInitialized)
 			{
-				previousCursorLockMode = Cursor.lockState;
-				manager = OVRManager.instance;
-				recordedHeadPoseRelativeOffsetTranslation = manager.headPoseRelativeOffsetTranslation;
-				recordedHeadPoseRelativeOffsetRotation = manager.headPoseRelativeOffsetRotation;
-				emulatorHasInitialized = true;
-				lastFrameEmulationActivated = false;
-			}
-			else
-				return;
-		}
-		bool emulationActivated = IsEmulationActivated();
-		if (emulationActivated)
-		{
-			if (!lastFrameEmulationActivated)
-			{
-				previousCursorLockMode = Cursor.lockState;
-				Cursor.lockState = CursorLockMode.Locked;
-			}
-
-			if (!lastFrameEmulationActivated && resetHmdPoseOnRelease)
-			{
-				manager.headPoseRelativeOffsetTranslation = recordedHeadPoseRelativeOffsetTranslation;
-				manager.headPoseRelativeOffsetRotation = recordedHeadPoseRelativeOffsetRotation;
-			}
-
-			if (resetHmdPoseByMiddleMouseButton && Input.GetMouseButton(2))
-			{
-				manager.headPoseRelativeOffsetTranslation = Vector3.zero;
-				manager.headPoseRelativeOffsetRotation = Vector3.zero;
-			}
-			else
-			{
-				Vector3 emulatedTranslation = manager.headPoseRelativeOffsetTranslation;
-				float deltaMouseScrollWheel = Input.GetAxis("Mouse ScrollWheel");
-				float emulatedHeight = deltaMouseScrollWheel * MOUSE_SCALE_HEIGHT;
-				emulatedTranslation.y += emulatedHeight;
-				manager.headPoseRelativeOffsetTranslation = emulatedTranslation;
-
-				float deltaX = Input.GetAxis("Mouse X");
-				float deltaY = Input.GetAxis("Mouse Y");
-
-				Vector3 emulatedAngles = manager.headPoseRelativeOffsetRotation;
-				float emulatedRoll = emulatedAngles.x;
-				float emulatedYaw = emulatedAngles.y;
-				float emulatedPitch = emulatedAngles.z;
-				if (IsTweakingPitch())
+				if (OVRManager.OVRManagerinitialized)
 				{
-					emulatedPitch += deltaX * MOUSE_SCALE_X_PITCH;
+					previousCursorLockMode = Cursor.lockState;
+					manager = OVRManager.instance;
+					recordedHeadPoseRelativeOffsetTranslation = manager.headPoseRelativeOffsetTranslation;
+					recordedHeadPoseRelativeOffsetRotation = manager.headPoseRelativeOffsetRotation;
+					emulatorHasInitialized = true;
+					lastFrameEmulationActivated = false;
 				}
 				else
+					return;
+			}
+			bool emulationActivated = IsEmulationActivated();
+			if (emulationActivated)
+			{
+				if (!lastFrameEmulationActivated)
 				{
-					emulatedRoll += deltaY * MOUSE_SCALE_Y;
-					emulatedYaw += deltaX * MOUSE_SCALE_X;
+					previousCursorLockMode = Cursor.lockState;
+					Cursor.lockState = CursorLockMode.Locked;
 				}
 
-				manager.headPoseRelativeOffsetRotation = new Vector3(emulatedRoll, emulatedYaw, emulatedPitch);
-			}
+				if (!lastFrameEmulationActivated && resetHmdPoseOnRelease)
+				{
+					manager.headPoseRelativeOffsetTranslation = recordedHeadPoseRelativeOffsetTranslation;
+					manager.headPoseRelativeOffsetRotation = recordedHeadPoseRelativeOffsetRotation;
+				}
 
-			if (!hasSentEvent)
-			{
-				OVRPlugin.SendEvent("headset_emulator", "activated");
-				hasSentEvent = true;
-			}
-		}
-		else
-		{
-			if (lastFrameEmulationActivated)
-			{
-				Cursor.lockState = previousCursorLockMode;
-
-				recordedHeadPoseRelativeOffsetTranslation = manager.headPoseRelativeOffsetTranslation;
-				recordedHeadPoseRelativeOffsetRotation = manager.headPoseRelativeOffsetRotation;
-
-				if (resetHmdPoseOnRelease)
+				if (resetHmdPoseByMiddleMouseButton && Input.GetMouseButton(2))
 				{
 					manager.headPoseRelativeOffsetTranslation = Vector3.zero;
 					manager.headPoseRelativeOffsetRotation = Vector3.zero;
 				}
+				else
+				{
+					Vector3 emulatedTranslation = manager.headPoseRelativeOffsetTranslation;
+					float deltaMouseScrollWheel = Input.GetAxis("Mouse ScrollWheel");
+					float emulatedHeight = deltaMouseScrollWheel * MOUSE_SCALE_HEIGHT;
+					emulatedTranslation.y += emulatedHeight;
+					manager.headPoseRelativeOffsetTranslation = emulatedTranslation;
+
+					float deltaX = Input.GetAxis("Mouse X");
+					float deltaY = Input.GetAxis("Mouse Y");
+
+					Vector3 emulatedAngles = manager.headPoseRelativeOffsetRotation;
+					float emulatedRoll = emulatedAngles.x;
+					float emulatedYaw = emulatedAngles.y;
+					float emulatedPitch = emulatedAngles.z;
+					if (IsTweakingPitch())
+					{
+						emulatedPitch += deltaX * MOUSE_SCALE_X_PITCH;
+					}
+					else
+					{
+						emulatedRoll += deltaY * MOUSE_SCALE_Y;
+						emulatedYaw += deltaX * MOUSE_SCALE_X;
+					}
+
+					manager.headPoseRelativeOffsetRotation = new Vector3(emulatedRoll, emulatedYaw, emulatedPitch);
+				}
+
+				if (!hasSentEvent)
+				{
+					OVRPlugin.SendEvent("headset_emulator", "activated");
+					hasSentEvent = true;
+				}
 			}
-		}
-		lastFrameEmulationActivated = emulationActivated;
+			else
+			{
+				if (lastFrameEmulationActivated)
+				{
+					Cursor.lockState = previousCursorLockMode;
+
+					recordedHeadPoseRelativeOffsetTranslation = manager.headPoseRelativeOffsetTranslation;
+					recordedHeadPoseRelativeOffsetRotation = manager.headPoseRelativeOffsetRotation;
+
+					if (resetHmdPoseOnRelease)
+					{
+						manager.headPoseRelativeOffsetTranslation = Vector3.zero;
+						manager.headPoseRelativeOffsetRotation = Vector3.zero;
+					}
+				}
+			}
+			lastFrameEmulationActivated = emulationActivated;
+
 	}
 
 	bool IsEmulationActivated()

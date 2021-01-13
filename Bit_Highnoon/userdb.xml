@@ -2,8 +2,8 @@
 <DocumentElement>
   <UserInfo>
     <PID>1</PID>
-    <Mode>easy</Mode>
-    <EasyWin>0</EasyWin>
+    <Mode>normal</Mode>
+    <EasyWin>1</EasyWin>
     <EasyLose>0</EasyLose>
     <NormalWin>0</NormalWin>
     <NormalLose>0</NormalLose>
