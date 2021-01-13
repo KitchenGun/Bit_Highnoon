@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 using Photon.Pun;
 
 public class Net_PlayerTracking : MonoBehaviourPunCallbacks
 {
     private PhotonView PV;
     private OVRCameraRig ovrCamRig;
-    private OVRManager ovrManager;
     [SerializeField]
     private GameObject Head; //머리의 위치정보를 담고 있는 오브젝트
     private Camera HeadCam;
@@ -15,36 +15,52 @@ public class Net_PlayerTracking : MonoBehaviourPunCallbacks
     [SerializeField]
     private GameObject Belt;//사용자가 가지고 있는 홀스터
 
+    private Vector3 headPos;
+    private Quaternion headRot;
+    private List<XRNodeState> mNodeStates = new List<XRNodeState>();
     private void Awake()
     {
         ovrCamRig = this.gameObject.transform.parent.Find("OVRCameraRig").gameObject.GetComponent<OVRCameraRig>();
-        ovrManager = this.gameObject.transform.parent.Find("OVRCameraRig").gameObject.GetComponent<OVRManager>();
         PV = this.gameObject.transform.parent.GetComponent<PhotonView>();
-        HeadCam = Head.transform.parent.GetComponent<Camera>();
-    }
-    void Start()
-    {
+        HeadCam = this.transform.parent.GetChild(1).GetChild(0).Find("CenterEyeAnchor").GetComponent<Camera>();
         Body = this.gameObject;
-        if(PV.IsMine)
-        {
-            ovrCamRig.enabled = true;
-            ovrManager.enabled = true;
-            HeadCam.transform.gameObject.tag = "MainCamera";
-            HeadCam.enabled = true;
-        }
-        else
-        {
-            ovrCamRig.enabled = false;
-            ovrManager.enabled = false;
-            HeadCam.transform.gameObject.tag = "Untagged";
-            HeadCam.enabled = false;
-        }
     }
 
+    private void Start()
+    {
+        if (!PV.IsMine)
+        {
+            #region PV
+            HeadCam.transform.gameObject.tag = "Untagged";
+            HeadCam.transform.gameObject.SetActive(false);
+            #endregion
+        }
+    }
     void Update()
     {
         if (PV.IsMine)
         {
+            #region 머리위치 추적
+            InputTracking.GetNodeStates(mNodeStates);
+
+            foreach (XRNodeState nodeState in mNodeStates)
+            {
+                switch (nodeState.nodeType)
+                {
+                    case XRNode.Head:
+                        nodeState.TryGetPosition(out headPos);
+                        nodeState.TryGetRotation(out headRot);
+                        break;
+                }
+            }
+            Head.transform.position = headPos;
+            Head.transform.rotation = headRot.normalized;
+            #endregion 
+            #region PV
+            ovrCamRig.enabled = true;
+            HeadCam.transform.gameObject.tag = "MainCamera";
+            HeadCam.enabled = true;
+            #endregion
             #region Body 회전과 위치 값 전달
             Body.transform.position = new Vector3
                 (Head.transform.position.x,
@@ -66,6 +82,7 @@ public class Net_PlayerTracking : MonoBehaviourPunCallbacks
             Belt.transform.eulerAngles = new Vector3(0, Head.transform.rotation.eulerAngles.y, 0); // 회전값 y축 만 전달
             #endregion
         }
+      
     }
 
     #region 벨트 오브젝트 반환
