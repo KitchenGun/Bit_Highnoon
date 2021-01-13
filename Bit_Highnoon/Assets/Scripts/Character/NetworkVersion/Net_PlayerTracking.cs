@@ -41,20 +41,20 @@ public class Net_PlayerTracking : MonoBehaviourPunCallbacks
         if (PV.IsMine)
         {
             #region 머리위치 추적
-            InputTracking.GetNodeStates(mNodeStates);
-
-            foreach (XRNodeState nodeState in mNodeStates)
-            {
-                switch (nodeState.nodeType)
-                {
-                    case XRNode.Head:
-                        nodeState.TryGetPosition(out headPos);
-                        nodeState.TryGetRotation(out headRot);
-                        break;
-                }
-            }
-            Head.transform.position = headPos;
-            Head.transform.rotation = headRot.normalized;
+           //InputTracking.GetNodeStates(mNodeStates);
+           //
+           //foreach (XRNodeState nodeState in mNodeStates)
+           //{
+           //    switch (nodeState.nodeType)
+           //    {
+           //        case XRNode.Head:
+           //            nodeState.TryGetPosition(out headPos);
+           //            nodeState.TryGetRotation(out headRot);
+           //            break;
+           //    }
+           //}
+            Head.transform.position = HeadCam.transform.gameObject.transform.position;
+            Head.transform.rotation = HeadCam.transform.gameObject.transform.rotation;
             #endregion 
             #region PV
             ovrCamRig.enabled = true;
