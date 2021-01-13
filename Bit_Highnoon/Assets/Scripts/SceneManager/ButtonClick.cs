@@ -8,36 +8,33 @@ public class ButtonClick : MonoBehaviour
 {
     public void Hit()
     {
-        MenuManager mm = GameObject.Find("Canvas").GetComponent<MenuManager>();
-        NetworkManager nm = GameObject.Find("Canvas").GetComponent<NetworkManager>();
-
         if (this.gameObject.name == "Find")
         {
-            mm.OpenMenu("FindRoomMenu");
+            MenuManager.Instance.OpenMenu("FindRoomMenu");
         }
         else if (this.gameObject.name == "Create")
         {
-            mm.OpenMenu("CreateRoomMenu");
+            MenuManager.Instance.OpenMenu("CreateRoomMenu");
         }
         else if (this.gameObject.name == "CreateRoom")
         {
-            nm.CreateRoom();
+            NetworkManager.Instance.CreateRoom();
         }
         else if (this.gameObject.name == "LeaveRoom")
         {
-            nm.LeaveRoom();
+            NetworkManager.Instance.LeaveRoom();
         }
         else if (this.gameObject.name == "StartRoom")
         {
-            nm.StartGame();
+            NetworkManager.Instance.StartGame();
         }
         else if (this.gameObject.name == "OK")
         {
-            mm.OpenMenu("TitleMenu");
+            MenuManager.Instance.OpenMenu("TitleMenu");
         }
         else if (this.gameObject.name == "Back")
         {
-            mm.OpenMenu("TitleMenu");
+            MenuManager.Instance.OpenMenu("TitleMenu");
         }
     }
 }

@@ -11,19 +11,19 @@ public class Net_PlayerTracking : MonoBehaviourPunCallbacks
     [SerializeField]
     private GameObject Head; //머리의 위치정보를 담고 있는 오브젝트
     private Camera HeadCam;
+    private GameObject LHand;
+    private GameObject RHand;
     private GameObject Body; //플레이어의 머리 밑에 같이 따라 움직이는 몸통 오브젝트
     [SerializeField]
     private GameObject Belt;//사용자가 가지고 있는 홀스터
-
-    private Vector3 headPos;
-    private Quaternion headRot;
-    private List<XRNodeState> mNodeStates = new List<XRNodeState>();
     private void Awake()
     {
         ovrCamRig = this.gameObject.transform.parent.Find("OVRCameraRig").gameObject.GetComponent<OVRCameraRig>();
         PV = this.gameObject.transform.parent.GetComponent<PhotonView>();
         HeadCam = this.transform.parent.GetChild(1).GetChild(0).Find("CenterEyeAnchor").GetComponent<Camera>();
         Body = this.gameObject;
+        LHand = Body.transform.parent.Find("LeftControllerAnchor").gameObject;
+        RHand = Body.transform.parent.Find("RightControllerAnchor").gameObject;
     }
 
     private void Start()
@@ -41,21 +41,15 @@ public class Net_PlayerTracking : MonoBehaviourPunCallbacks
         if (PV.IsMine)
         {
             #region 머리위치 추적
-            InputTracking.GetNodeStates(mNodeStates);
-
-            foreach (XRNodeState nodeState in mNodeStates)
-            {
-                switch (nodeState.nodeType)
-                {
-                    case XRNode.Head:
-                        nodeState.TryGetPosition(out headPos);
-                        nodeState.TryGetRotation(out headRot);
-                        break;
-                }
-            }
-            Head.transform.position = headPos;
-            Head.transform.rotation = headRot.normalized;
-            #endregion 
+            Head.transform.position = HeadCam.transform.gameObject.transform.position;
+            Head.transform.rotation = HeadCam.transform.gameObject.transform.rotation;
+            #endregion
+            #region 손위치 추적
+            LHand.transform.position = this.transform.parent.GetChild(1).GetChild(0).Find("LeftHandAnchor").GetChild(0).gameObject.transform.position;
+            LHand.transform.rotation = this.transform.parent.GetChild(1).GetChild(0).Find("LeftHandAnchor").GetChild(0).gameObject.transform.rotation;
+            RHand.transform.position = this.transform.parent.GetChild(1).GetChild(0).Find("RightHandAnchor").GetChild(0).gameObject.transform.position;
+            RHand.transform.rotation = this.transform.parent.GetChild(1).GetChild(0).Find("RightHandAnchor").GetChild(0).gameObject.transform.rotation;
+            #endregion
             #region PV
             ovrCamRig.enabled = true;
             HeadCam.transform.gameObject.tag = "MainCamera";
