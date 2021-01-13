@@ -49,7 +49,7 @@ public class AIParent : MonoBehaviour
 
         aiState = AIState.WALK;
 
-        walkTime = 3;
+        walkTime = 5;
 
         //초기 설정
         isDead = isPlayerDead = isHit = isPlayerDeadAudio = isIdleAudio = false;  

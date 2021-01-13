@@ -6,17 +6,14 @@ using UnityEngine;
 
 public class ButtonClick : MonoBehaviour
 {
-    public GameObject hitObject;
-
     public void Hit()
     {
-        
         MenuManager mm = GameObject.Find("Canvas").GetComponent<MenuManager>();
         NetworkManager nm = GameObject.Find("Canvas").GetComponent<NetworkManager>();
 
         if (this.gameObject.name == "Find")
         {
-            hitObject.GetComponent<MenuManager>().OpenMenu("FindRoomMenu");
+            mm.OpenMenu("FindRoomMenu");
         }
         else if (this.gameObject.name == "Create")
         {

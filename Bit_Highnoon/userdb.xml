@@ -4,10 +4,10 @@
     <PID>1</PID>
     <Mode>normal</Mode>
     <EasyWin>1</EasyWin>
-    <EasyLose>0</EasyLose>
+    <EasyLose>5</EasyLose>
     <NormalWin>0</NormalWin>
     <NormalLose>0</NormalLose>
     <HardWin>0</HardWin>
-    <HardLose>0</HardLose>
+    <HardLose>1</HardLose>
   </UserInfo>
 </DocumentElement>
