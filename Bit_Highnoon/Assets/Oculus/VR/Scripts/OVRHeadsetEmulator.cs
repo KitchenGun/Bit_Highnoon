@@ -17,9 +17,8 @@ permissions and limitations under the License.
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 
-public class OVRHeadsetEmulator : MonoBehaviourPunCallbacks
+public class OVRHeadsetEmulator : MonoBehaviour
 {
 	public enum OpMode
 	{
@@ -54,17 +53,11 @@ public class OVRHeadsetEmulator : MonoBehaviourPunCallbacks
 
 	private CursorLockMode previousCursorLockMode = CursorLockMode.None;
 
-	private PhotonView PV;
-
-	// Use this for initialization
-	void Start () {
-		PV = this.gameObject.transform.parent.gameObject.GetComponent<PhotonView>();
-	}
 
 	// Update is called once per frame
-	void Update () {
-		if (PV.IsMine)
-		{
+	void Update () 
+	{ 
+		
 			if (!emulatorHasInitialized)
 			{
 				if (OVRManager.OVRManagerinitialized)
@@ -150,7 +143,7 @@ public class OVRHeadsetEmulator : MonoBehaviourPunCallbacks
 				}
 			}
 			lastFrameEmulationActivated = emulationActivated;
-		}
+
 	}
 
 	bool IsEmulationActivated()
