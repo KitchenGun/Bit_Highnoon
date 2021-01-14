@@ -256,8 +256,9 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks
     }
 
     #region FX
+
     [PunRPC]
-    private void Gun_Fire_FX()
+    public void Gun_Fire_FX()
     {
         //격발 효과
         GunAni.SetTrigger("Fire");
@@ -291,7 +292,7 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks
     {
         if (Bullet > 0&&FireState)//총알이 있고 발사가능상태
         {
-            PV.RPC("Gun_Fire_SFX",RpcTarget.All);
+            PV.RPC("Gun_Fire_FX",RpcTarget.All);
             //총알 감소 격발 상태 
             if (SceneIdx == 1 || SceneIdx == 2|| SceneIdx ==6 )//메뉴 씬이 아닐 경우
             {
