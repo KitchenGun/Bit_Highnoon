@@ -20,7 +20,7 @@ public class Net_Belt : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        PV = this.gameObject.transform.parent.GetComponent<PhotonView>();
+        PV = this.gameObject.GetPhotonView();//this.gameObject.transform.parent.GetComponent<PhotonView>();
         //양쪽에 총있을때 true
         RightGunSet = true;
         LeftGunSet = true;

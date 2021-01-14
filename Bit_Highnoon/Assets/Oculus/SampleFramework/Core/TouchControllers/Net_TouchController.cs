@@ -51,7 +51,7 @@ namespace OVRTouchSample
 
         private void Start()
         {
-            PV = this.gameObject.transform.parent.gameObject.GetComponent<PhotonView>();
+            PV = this.gameObject.GetPhotonView();//this.gameObject.transform.parent.gameObject.GetComponent<PhotonView>();
             GM = GameObject.Find("GameManager").GetComponent<GameManager>();
             HandAudio = this.gameObject.GetComponent<AudioSource>();//오디오 소스 선택
             side = this.gameObject.tag;//현재 컨트롤러 오른쪽 왼쪽 확인용

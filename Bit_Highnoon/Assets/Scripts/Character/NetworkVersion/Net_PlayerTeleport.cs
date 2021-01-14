@@ -26,7 +26,7 @@ public class Net_PlayerTeleport : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
-        PV = this.gameObject.transform.parent.parent.gameObject.GetComponent<PhotonView>();
+        PV = this.gameObject.GetPhotonView();//this.gameObject.transform.parent.parent.gameObject.GetComponent<PhotonView>();
         #region Scene 확인
         GM = GameObject.Find("GameManager");
         if (GM == null)

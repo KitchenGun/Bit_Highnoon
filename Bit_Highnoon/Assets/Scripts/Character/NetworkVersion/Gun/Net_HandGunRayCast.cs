@@ -50,7 +50,7 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks
 
     void Start()
     {//초기화
-        PV = this.gameObject.transform.parent.parent.gameObject.GetComponent<PhotonView>();
+        PV = this.gameObject.GetPhotonView();//this.gameObject.transform.parent.parent.gameObject.GetComponent<PhotonView>();
         #region Scene
         GM = GameObject.Find("GameManager");
         if (GM == null)
@@ -292,7 +292,7 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks
     {
         if (Bullet > 0&&FireState)//총알이 있고 발사가능상태
         {
-            PV.RPC("Gun_Fire_FX",RpcTarget.All);
+            photonView.RPC("Gun_Fire_FX", RpcTarget.All);
             //총알 감소 격발 상태 
             if (SceneIdx == 1 || SceneIdx == 2|| SceneIdx ==6 )//메뉴 씬이 아닐 경우
             {
@@ -314,8 +314,7 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks
         }
         else if(!FireState)
         {
-           
-            PV.RPC("Gun_BulletEmpty_FX",RpcTarget.All);
+            photonView.RPC("Gun_BulletEmpty_FX", RpcTarget.All);
             //----------수정요망-----------------
             FireState = false;
             //----------수정요망-----------------
@@ -323,7 +322,7 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks
         }
         else
         {
-            PV.RPC("Gun_BulletEmpty_FX", RpcTarget.All);
+            photonView.RPC("Gun_BulletEmpty_FX", RpcTarget.All);
             //----------수정요망-----------------
             FireState = false;
             //----------수정요망-----------------
@@ -375,6 +374,11 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks
     private void ButtonHit(GameObject button)
     {
         button.GetComponent<ButtonClick>().SendMessage("Hit", button);
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        throw new System.NotImplementedException();
     }
     #endregion
 }
