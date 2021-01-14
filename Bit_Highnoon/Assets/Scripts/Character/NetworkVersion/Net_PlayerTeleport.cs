@@ -94,6 +94,7 @@ public class Net_PlayerTeleport : MonoBehaviourPunCallbacks
                 else if (targetAcquired == true && OVRInput.Get(stick).y < .2f)
                 {
                     Teleport();
+                    PV.RPC("Teleport_SFX", RpcTarget.All);
                 }
                 else if (targetAcquired == false && OVRInput.Get(stick).y < .2f)
                 {
@@ -155,6 +156,11 @@ public class Net_PlayerTeleport : MonoBehaviourPunCallbacks
         Vector3 offset = new Vector3(targetPos.x - head.transform.position.x, targetPos.y - cameraRig.position.y, targetPos.z - head.transform.position.z);
 
         cameraRig.position += offset;
+    }
+
+    [PunRPC]
+    private void Teleport_SFX()
+    {
         WalkAudio.clip = GM.GetComponent<GameManager>().LoadAudioClip("walk");
         WalkAudio.Play();
     }
