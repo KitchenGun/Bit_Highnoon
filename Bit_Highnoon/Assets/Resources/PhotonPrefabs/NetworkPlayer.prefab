@@ -1515,14 +1515,10 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 2062504191727366847}
-  - {fileID: 4597539156562428863}
-  - {fileID: 5055888788352173225}
   - {fileID: 8372677633558596488}
   - {fileID: 6588814842728087675}
   - {fileID: 4534068127385564178}
   - {fileID: 4273643093673766924}
-  - {fileID: 535658077097129671}
-  - {fileID: 5281851248927345653}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -2490,6 +2486,7 @@ GameObject:
   - component: {fileID: 8740728755526644492}
   - component: {fileID: 461553287924853413}
   - component: {fileID: 8688820814210998021}
+  - component: {fileID: 2121135257489176849}
   m_Layer: 0
   m_Name: OculusTouchForQuest2
   m_TagString: Untagged
@@ -2762,6 +2759,28 @@ MonoBehaviour:
   head: {fileID: 2677167125809604142}
   cameraRig: {fileID: 837580839777518154}
   collisionLayer: 8
+--- !u!114 &2121135257489176849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837580841422309710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &837580841422309722
 GameObject:
   m_ObjectHideFlags: 0
