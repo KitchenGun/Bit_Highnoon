@@ -64,7 +64,6 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks
         #endregion
         #region Ray
         FirePos = this.gameObject.transform.parent.Find("GunFirePos").gameObject;
-
         #endregion
         #region Audio
         this.HandGunFireClickAudio = this.gameObject.transform.parent.GetComponent<AudioSource>(); //격발음 SFX
