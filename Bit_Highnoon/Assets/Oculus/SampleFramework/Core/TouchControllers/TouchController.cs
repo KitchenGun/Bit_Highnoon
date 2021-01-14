@@ -178,6 +178,7 @@ namespace OVRTouchSample
         {
             switch (other.gameObject.name)
             {
+                
                 case "BeltGunPos":
                     if (!Belt.GetComponent<Belt>().isSet(other.gameObject.tag))
                     {

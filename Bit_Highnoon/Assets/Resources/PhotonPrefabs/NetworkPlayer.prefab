@@ -2777,7 +2777,8 @@ MonoBehaviour:
   observableSearch: 2
   Synchronization: 3
   OwnershipTransfer: 0
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 461553287924853413}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -3102,7 +3103,8 @@ GameObject:
   - component: {fileID: 8029458406098289765}
   - component: {fileID: 2677167126714952385}
   - component: {fileID: 535658077097129671}
-  - component: {fileID: 6273072409072184250}
+  - component: {fileID: 2948245850001745740}
+  - component: {fileID: 4879993849458968205}
   m_Layer: 0
   m_Name: BeltGun
   m_TagString: Right
@@ -3314,7 +3316,7 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
---- !u!114 &6273072409072184250
+--- !u!114 &2948245850001745740
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3323,7 +3325,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 1836487058117240407}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56374532806f057498cac90566cb9d6b, type: 3}
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 535658077097129671}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &4879993849458968205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836487058117240407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e027f23ac0aaff4f848997659ad07f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2165674093267098661
@@ -3486,7 +3511,8 @@ GameObject:
   - component: {fileID: 8716825599688617751}
   - component: {fileID: 2677167126365838153}
   - component: {fileID: 5281851248927345653}
-  - component: {fileID: 5621512494536538583}
+  - component: {fileID: 6396120022228268453}
+  - component: {fileID: 517286662629717142}
   m_Layer: 0
   m_Name: BeltGun
   m_TagString: Left
@@ -3698,7 +3724,7 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
---- !u!114 &5621512494536538583
+--- !u!114 &6396120022228268453
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3707,7 +3733,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 2189888424309184462}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56374532806f057498cac90566cb9d6b, type: 3}
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &517286662629717142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2189888424309184462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e027f23ac0aaff4f848997659ad07f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2197398570362866539
