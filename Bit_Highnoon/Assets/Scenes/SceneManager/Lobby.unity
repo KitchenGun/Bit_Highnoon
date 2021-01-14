@@ -3296,7 +3296,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &114901750
 AudioListener:
   m_ObjectHideFlags: 0
@@ -6617,6 +6617,7 @@ GameObject:
   - component: {fileID: 218776783}
   - component: {fileID: 218776782}
   - component: {fileID: 218776786}
+  - component: {fileID: 218776787}
   m_Layer: 5
   m_Name: StartRoom
   m_TagString: Button
@@ -6749,6 +6750,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628ba424d2040ad4dbb0237b32a5a0df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &218776787
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218776781}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 650, y: 120, z: 0.05}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &223203266
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11633,7 +11647,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.02
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 65363388009998808, guid: affd85d75c3c8e54b802be2df6f1770f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: affd85d75c3c8e54b802be2df6f1770f, type: 3}
 --- !u!1 &448710893
 GameObject:
@@ -13770,7 +13785,8 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: c36edfb96ee647e499eaf67c73968ac8, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2300000, guid: 86dafa9071da7df47b71ee78a2d910c6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 86dafa9071da7df47b71ee78a2d910c6, type: 3}
 --- !u!1 &529977220 stripped
 GameObject:
@@ -13786,7 +13802,7 @@ BoxCollider:
   m_GameObject: {fileID: 529977220}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 820.5711, y: 490.92087, z: 679.20844}
   m_Center: {x: 0.36734006, y: 285.7659, z: -341.8646}
@@ -13795,6 +13811,72 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 86dafa9071da7df47b71ee78a2d910c6, type: 3}
   m_PrefabInstance: {fileID: 529977219}
   m_PrefabAsset: {fileID: 0}
+--- !u!64 &529977223
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529977220}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 86dafa9071da7df47b71ee78a2d910c6, type: 3}
+--- !u!137 &529977224
+SkinnedMeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529977220}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 3
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 8e6b5f4b282f1c04cb010f18b0cdfd25, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  serializedVersion: 2
+  m_Quality: 0
+  m_UpdateWhenOffscreen: 0
+  m_SkinnedMotionVectors: 1
+  m_Mesh: {fileID: 4300000, guid: 86dafa9071da7df47b71ee78a2d910c6, type: 3}
+  m_Bones: []
+  m_BlendShapeWeights: []
+  m_RootBone: {fileID: 0}
+  m_AABB:
+    m_Center: {x: 0.3673401, y: 285.76593, z: -341.86462}
+    m_Extent: {x: 410.28558, y: 245.46045, z: 339.60425}
+  m_DirtyAABB: 0
 --- !u!1 &530912518
 GameObject:
   m_ObjectHideFlags: 0
@@ -16002,6 +16084,7 @@ GameObject:
   - component: {fileID: 607359693}
   - component: {fileID: 607359692}
   - component: {fileID: 607359695}
+  - component: {fileID: 607359696}
   m_Layer: 5
   m_Name: Find
   m_TagString: Button
@@ -16021,12 +16104,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1093577932}
-  m_Father: {fileID: 1477605053}
-  m_RootOrder: 1
+  m_Father: {fileID: 1145415592}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -35}
+  m_AnchoredPosition: {x: 9.999817, y: -496.99994}
   m_SizeDelta: {x: 600, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &607359692
@@ -16134,6 +16217,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628ba424d2040ad4dbb0237b32a5a0df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &607359696
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607359690}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 600, y: 80, z: 0.05}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &620423411
 GameObject:
   m_ObjectHideFlags: 0
@@ -29224,7 +29320,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 2.6, z: -0.2}
   m_LocalScale: {x: 0.005, y: 0.005, z: 1}
   m_Children:
-  - {fileID: 1477605053}
+  - {fileID: 607359691}
+  - {fileID: 1688833891}
   m_Father: {fileID: 212024064}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -31722,6 +31819,7 @@ GameObject:
   - component: {fileID: 1208205311}
   - component: {fileID: 1208205310}
   - component: {fileID: 1208205313}
+  - component: {fileID: 1208205314}
   m_Layer: 5
   m_Name: LeaveRoom
   m_TagString: Button
@@ -31854,6 +31952,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628ba424d2040ad4dbb0237b32a5a0df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1208205314
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208205308}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 650, y: 120, z: 0.05}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1211277400
 GameObject:
   m_ObjectHideFlags: 0
@@ -40510,70 +40621,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1476505650}
   m_Mesh: {fileID: 4300000, guid: 24fabdc37f852ac47840250fde455089, type: 3}
---- !u!1 &1477605052
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1477605053}
-  - component: {fileID: 1477605054}
-  m_Layer: 0
-  m_Name: ButtonContainer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1477605053
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1477605052}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1688833891}
-  - {fileID: 607359691}
-  m_Father: {fileID: 1145415592}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: -462}
-  m_SizeDelta: {x: 600, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1477605054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1477605052}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 0
-  m_Spacing: 10
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 1
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 1
 --- !u!1 &1478374040
 GameObject:
   m_ObjectHideFlags: 0
@@ -41370,6 +41417,7 @@ GameObject:
   - component: {fileID: 1497417179}
   - component: {fileID: 1497417178}
   - component: {fileID: 1497417181}
+  - component: {fileID: 1497417182}
   m_Layer: 5
   m_Name: Back
   m_TagString: Button
@@ -41502,6 +41550,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628ba424d2040ad4dbb0237b32a5a0df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1497417182
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497417176}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 600, y: 80, z: 0.05}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1502542970
 GameObject:
   m_ObjectHideFlags: 0
@@ -47211,6 +47272,7 @@ GameObject:
   - component: {fileID: 1688833893}
   - component: {fileID: 1688833892}
   - component: {fileID: 1688833895}
+  - component: {fileID: 1688833896}
   m_Layer: 5
   m_Name: Create
   m_TagString: Button
@@ -47230,12 +47292,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 43540182}
-  m_Father: {fileID: 1477605053}
-  m_RootOrder: 0
+  m_Father: {fileID: 1145415592}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -115}
+  m_AnchoredPosition: {x: 9.999817, y: -577}
   m_SizeDelta: {x: 600, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1688833892
@@ -47343,6 +47405,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628ba424d2040ad4dbb0237b32a5a0df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1688833896
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688833890}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 600, y: 80, z: 0.05}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1694109361
 GameObject:
   m_ObjectHideFlags: 0
@@ -47598,6 +47673,7 @@ GameObject:
   - component: {fileID: 1703513873}
   - component: {fileID: 1703513872}
   - component: {fileID: 1703513875}
+  - component: {fileID: 1703513876}
   m_Layer: 5
   m_Name: CreateRoom
   m_TagString: Button
@@ -47730,6 +47806,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628ba424d2040ad4dbb0237b32a5a0df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1703513876
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703513870}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 600, y: 80, z: 0.05}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1704238799
 GameObject:
   m_ObjectHideFlags: 0
@@ -58491,7 +58580,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3366610077945000640, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.814
+      value: 0.943
       objectReference: {fileID: 0}
     - target: {fileID: 3366610077945000640, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -58531,7 +58620,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3366610077945360110, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
@@ -59131,6 +59220,7 @@ GameObject:
   - component: {fileID: 1918778294}
   - component: {fileID: 1918778293}
   - component: {fileID: 1918778296}
+  - component: {fileID: 1918778297}
   m_Layer: 5
   m_Name: OK
   m_TagString: Button
@@ -59263,6 +59353,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628ba424d2040ad4dbb0237b32a5a0df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1918778297
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918778291}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 600, y: 120, z: 0.05}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1929069783
 GameObject:
   m_ObjectHideFlags: 0

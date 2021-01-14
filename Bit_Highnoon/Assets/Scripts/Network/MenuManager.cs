@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class MenuManager : MonoBehaviour
 {
@@ -10,6 +12,40 @@ public class MenuManager : MonoBehaviour
     {
         Instance = this;
     }
+    public void Hit(GameObject button)
+    {
+        Button btn = button.gameObject.GetComponent<Button>();
+
+        if (button.gameObject == this.gameObject.transform.GetChild(1).GetChild(0).gameObject)
+        {
+            btn.onClick.Invoke();
+        }
+        else if (button.gameObject == this.gameObject.transform.GetChild(1).GetChild(1).gameObject)
+        {
+            btn.onClick.Invoke();
+        }
+        else if (button.gameObject == this.gameObject.transform.GetChild(2).GetChild(1).gameObject)
+        {
+            btn.onClick.Invoke();
+        }
+        else if (button.gameObject == this.gameObject.transform.GetChild(3).GetChild(1).gameObject)
+        {
+            btn.onClick.Invoke();
+        }
+        else if (button.gameObject == this.gameObject.transform.GetChild(3).GetChild(2).gameObject)
+        {
+            btn.onClick.Invoke();
+        }
+        else if (button.gameObject == this.gameObject.transform.GetChild(4).GetChild(1).gameObject)
+        {
+            btn.onClick.Invoke();
+        }
+        else if (button.gameObject == this.gameObject.transform.GetChild(5).GetChild(2).gameObject)
+        {
+            btn.onClick.Invoke();
+        }
+    }
+
     public void OpenMenu(string menuName)
     {
         for(int i=0; i<menus.Length; i++)
