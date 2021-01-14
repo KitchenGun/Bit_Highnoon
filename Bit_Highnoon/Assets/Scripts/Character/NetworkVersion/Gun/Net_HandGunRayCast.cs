@@ -50,7 +50,7 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks
 
     void Start()
     {//초기화
-        PV = this.gameObject.transform.parent.parent.gameObject.GetComponent<PhotonView>();
+        PV = this.gameObject.GetPhotonView();//this.gameObject.transform.parent.parent.gameObject.GetComponent<PhotonView>();
         #region Scene
         GM = GameObject.Find("GameManager");
         if (GM == null)
@@ -64,7 +64,6 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks
         #endregion
         #region Ray
         FirePos = this.gameObject.transform.parent.Find("GunFirePos").gameObject;
-
         #endregion
         #region Audio
         this.HandGunFireClickAudio = this.gameObject.transform.parent.GetComponent<AudioSource>(); //격발음 SFX
@@ -98,7 +97,6 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks
                     {
                         if (Fire())//총알 발사
                         {
-                            Debug.DrawRay(FirePos.transform.position, FirePos.transform.forward * 2000, Color.red, 0.3f);//개발 확인용 레이 
                             if (Physics.Raycast(FirePos.transform.position, FirePos.transform.forward, out HitObj, 2000))
                             {
                                 //오브젝트 태그로 식별
@@ -241,14 +239,14 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks
                         ReloadStick = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).y;//스틱컨트롤러y축 버튼
                         if (ReloadStick < -0.9)
                         {
-                            Reload();
+                            PV.RPC("Reload",RpcTarget.All);
                         }
                         break;
                     case "Right": //오른쪽
                         ReloadStick = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick).y;//스틱컨트롤러y축 버튼
                         if (ReloadStick < -0.9)
                         {
-                            Reload();
+                            PV.RPC("Reload", RpcTarget.All);
                         }
                         break;
                 }
@@ -257,23 +255,36 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks
         }
     }
 
-    #region SFX
-    private void Gun_Fire_SFX()
+    #region FX
+
+    [PunRPC]
+    public void Gun_Fire_FX()
     {
+        //격발 효과
+        GunAni.SetTrigger("Fire");
+        GunFireEffect.Play();
         //사운드 효과
         HandGunFireAudio.clip = GM.GetComponent<GameManager>().LoadAudioClip("fire");
         HandGunFireAudio.Play();
     }
-    private void Gun_BulletEmpty_SFX()
+    [PunRPC]
+    private void Gun_BulletEmpty_FX()
     {
+        //격발불가 효과
+        GunAni.SetTrigger("FireF");
+        //사운드 효과
         HandGunFireClickAudio.clip = GM.GetComponent<GameManager>().LoadAudioClip("empty");
         HandGunFireClickAudio.Play();
     }
-    private void Gun_Reload_SFX()
+    [PunRPC]
+    private void Gun_Reload_FX()
     {
+        //사운드 효과
         HandGunReloadAudio.clip = GM.GetComponent<GameManager>().LoadAudioClip("reload");
         HandGunReloadAudio.Play();
     }
+
+
     #endregion
 
     #region Gun
@@ -281,10 +292,7 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks
     {
         if (Bullet > 0&&FireState)//총알이 있고 발사가능상태
         {
-            //격발 효과
-            GunAni.SetTrigger("Fire");
-            Gun_Fire_SFX();
-            GunFireEffect.Play();
+            photonView.RPC("Gun_Fire_FX", RpcTarget.All);
             //총알 감소 격발 상태 
             if (SceneIdx == 1 || SceneIdx == 2|| SceneIdx ==6 )//메뉴 씬이 아닐 경우
             {
@@ -292,44 +300,55 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks
             }
             else
             {
+                //----------수정요망-----------------
                 Bullet--;
                 #region UI
                 BulletUIImage.sprite = BulletUI[Bullet];
                 #endregion
+                //----------수정요망-----------------
             }
+            //----------수정요망-----------------
             FireState = false;
+            //----------수정요망-----------------
             return true;
         }
         else if(!FireState)
         {
-            GunAni.SetTrigger("FireF");
-            Gun_BulletEmpty_SFX();
+            photonView.RPC("Gun_BulletEmpty_FX", RpcTarget.All);
+            //----------수정요망-----------------
             FireState = false;
+            //----------수정요망-----------------
             return false;
         }
         else
         {
-            GunAni.SetTrigger("FireF");
-            Gun_BulletEmpty_SFX();
+            photonView.RPC("Gun_BulletEmpty_FX", RpcTarget.All);
+            //----------수정요망-----------------
             FireState = false;
+            //----------수정요망-----------------
             return false;
         }
     }
+    [PunRPC]
     private void Reload()//재장전
     {
         GunAni.SetTrigger("Reload");
-        Gun_Reload_SFX();
+        Gun_Reload_FX();
+        //----------수정요망-----------------
         FireState = true;
         ReloadState = false;
+        //----------수정요망-----------------
     }
     #endregion
-    
+
     #region Gun 정보 전달
+    [PunRPC]
     public void setGunInfo(ref bool firestate, ref int bullet)
     {
         this.FireState=firestate;
         this.Bullet = bullet;
     }
+    [PunRPC]
     public void getGunInfo(ref bool firestate,ref int bullet)
     {
         firestate = this.FireState;
@@ -355,6 +374,11 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks
     private void ButtonHit(GameObject button)
     {
         button.GetComponent<ButtonClick>().SendMessage("Hit", button);
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        throw new System.NotImplementedException();
     }
     #endregion
 }

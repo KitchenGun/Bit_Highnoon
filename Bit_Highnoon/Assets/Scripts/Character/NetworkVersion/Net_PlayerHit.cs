@@ -16,7 +16,7 @@ public class Net_PlayerHit : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        PV = this.gameObject.transform.parent.gameObject.GetPhotonView();
+        PV = this.gameObject.GetPhotonView();//this.gameObject.transform.parent.gameObject.GetPhotonView();
         Panel.color = new Vector4(0, 0, 0, 0);
     }
 

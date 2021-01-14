@@ -19,7 +19,7 @@ public class Net_PlayerTracking : MonoBehaviourPunCallbacks
     private void Awake()
     {
         ovrCamRig = this.gameObject.transform.parent.Find("OVRCameraRig").gameObject.GetComponent<OVRCameraRig>();
-        PV = this.gameObject.transform.parent.GetComponent<PhotonView>();
+        PV = this.gameObject.GetPhotonView();//this.gameObject.transform.parent.GetComponent<PhotonView>();
         HeadCam = this.transform.parent.GetChild(1).GetChild(0).Find("CenterEyeAnchor").GetComponent<Camera>();
         Body = this.gameObject;
         LHand = Body.transform.parent.Find("LeftControllerAnchor").gameObject;

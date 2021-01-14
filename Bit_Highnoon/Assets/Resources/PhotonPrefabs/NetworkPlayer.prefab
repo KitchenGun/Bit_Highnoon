@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 870626479040357662}
   - component: {fileID: 691620526718729186}
   - component: {fileID: 5055888788352173225}
+  - component: {fileID: 2535536061177098762}
   m_Layer: 0
   m_Name: Belt
   m_TagString: Untagged
@@ -97,6 +98,28 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &2535536061177098762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531080093050584996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &531080093111300221
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,6 +133,8 @@ GameObject:
   - component: {fileID: 5491797525118436547}
   - component: {fileID: 7027171278153458165}
   - component: {fileID: 7797581336171532667}
+  - component: {fileID: 3713040554270766731}
+  - component: {fileID: 3739935688761231251}
   m_Layer: 0
   m_Name: gun_hand
   m_TagString: Right
@@ -299,6 +324,60 @@ MonoBehaviour:
   MetalDecal: {fileID: 5482009037991827918, guid: 93e36ed3e3da6514d99698d52ae5d3e2, type: 3}
   WoodDecal: {fileID: 5909562328176187779, guid: 4a85d28944b1f4d42ae3cf2d267f2b54, type: 3}
   BloodDecal: {fileID: 1240250018707908, guid: 5656e7ea1f1a75d4c895547ec2b824b3, type: 3}
+--- !u!114 &3713040554270766731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531080093111300221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 1
+    Name: FireState
+  - Type: 9
+    SynchronizeType: 1
+    Name: Reload
+  - Type: 9
+    SynchronizeType: 1
+    Name: Fire
+  - Type: 9
+    SynchronizeType: 1
+    Name: FireF
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
+--- !u!114 &3739935688761231251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531080093111300221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 7027171278153458165}
+  - {fileID: 3713040554270766731}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &531080093402227689
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,6 +391,8 @@ GameObject:
   - component: {fileID: 7360194700042203590}
   - component: {fileID: 2956800941476537960}
   - component: {fileID: 6340815181774923516}
+  - component: {fileID: 8289083342785449601}
+  - component: {fileID: 3635738399340152935}
   m_Layer: 0
   m_Name: gun_hand
   m_TagString: Left
@@ -501,6 +582,60 @@ MonoBehaviour:
   MetalDecal: {fileID: 5482009037991827918, guid: 93e36ed3e3da6514d99698d52ae5d3e2, type: 3}
   WoodDecal: {fileID: 5909562328176187779, guid: 4a85d28944b1f4d42ae3cf2d267f2b54, type: 3}
   BloodDecal: {fileID: 1240250018707908, guid: 5656e7ea1f1a75d4c895547ec2b824b3, type: 3}
+--- !u!114 &8289083342785449601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531080093402227689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 1
+    Name: FireState
+  - Type: 9
+    SynchronizeType: 1
+    Name: Reload
+  - Type: 9
+    SynchronizeType: 1
+    Name: Fire
+  - Type: 9
+    SynchronizeType: 1
+    Name: FireF
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
+--- !u!114 &3635738399340152935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531080093402227689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 2956800941476537960}
+  - {fileID: 8289083342785449601}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &751065795826676557
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,6 +710,7 @@ GameObject:
   - component: {fileID: 2677167126751198583}
   - component: {fileID: 1288103938008530135}
   - component: {fileID: 4757718533061382040}
+  - component: {fileID: 557100940020946910}
   m_Layer: 0
   m_Name: LeftControllerAnchor
   m_TagString: Left
@@ -756,6 +892,33 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &557100940020946910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836061054695816764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 4757718533061382040}
+  - {fileID: 461553287924853413}
+  - {fileID: 5050420615854049988}
+  - {fileID: 2546919770956542177}
+  - {fileID: 7226845100672376762}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &836632039576532190
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,6 +933,7 @@ GameObject:
   - component: {fileID: 2677167126096451017}
   - component: {fileID: 3227665287801013721}
   - component: {fileID: 6185987114773852290}
+  - component: {fileID: 8148885952726601103}
   m_Layer: 0
   m_Name: RightControllerAnchor
   m_TagString: Right
@@ -951,6 +1115,33 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &8148885952726601103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836632039576532190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 6185987114773852290}
+  - {fileID: 5227346636175615507}
+  - {fileID: 5054409052151707981}
+  - {fileID: 7339941798706917147}
+  - {fileID: 5532329684996526490}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &837580839777225920
 GameObject:
   m_ObjectHideFlags: 0
@@ -1327,14 +1518,6 @@ MonoBehaviour:
   - {fileID: 4597539156562428863}
   - {fileID: 5055888788352173225}
   - {fileID: 8372677633558596488}
-  - {fileID: 4757718533061382040}
-  - {fileID: 6185987114773852290}
-  - {fileID: 461553287924853413}
-  - {fileID: 2956800941476537960}
-  - {fileID: 5050420615854049988}
-  - {fileID: 5227346636175615507}
-  - {fileID: 7027171278153458165}
-  - {fileID: 5054409052151707981}
   - {fileID: 6588814842728087675}
   - {fileID: 4534068127385564178}
   - {fileID: 4273643093673766924}
@@ -4575,6 +4758,7 @@ GameObject:
   - component: {fileID: 4105497835492202714}
   - component: {fileID: 4194654274046803614}
   - component: {fileID: 4193715885645012530}
+  - component: {fileID: 5532329684996526490}
   m_Layer: 0
   m_Name: FlashHeadon
   m_TagString: Untagged
@@ -9434,6 +9618,22 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &5532329684996526490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4102840030055923462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &4103081158145901228
 GameObject:
   m_ObjectHideFlags: 0
@@ -9445,6 +9645,7 @@ GameObject:
   - component: {fileID: 4105141394440982390}
   - component: {fileID: 4194933730153119288}
   - component: {fileID: 4193786514636528810}
+  - component: {fileID: 7339941798706917147}
   m_Layer: 0
   m_Name: MuzzleFlash
   m_TagString: Untagged
@@ -14305,6 +14506,22 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &7339941798706917147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4103081158145901228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &4106511729586477337
 GameObject:
   m_ObjectHideFlags: 0
@@ -14782,8 +14999,9 @@ GameObject:
   - component: {fileID: 2196962440499613250}
   - component: {fileID: 1928675851107767598}
   - component: {fileID: 3958085003584036216}
-  - component: {fileID: 4597539156562428863}
   - component: {fileID: 6658690529734465446}
+  - component: {fileID: 4597539156562428863}
+  - component: {fileID: 4248138210103934078}
   m_Layer: 20
   m_Name: Body
   m_TagString: Untagged
@@ -14848,6 +15066,20 @@ MonoBehaviour:
   Controllers:
   - {fileID: 836061054695816764}
   - {fileID: 836632039576532190}
+--- !u!114 &6658690529734465446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5465229761108827619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0f2f9cd59fa95d4eb8c1dfefc5a1132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Head: {fileID: 2677167125809604141}
+  Belt: {fileID: 531080093050584996}
 --- !u!114 &4597539156562428863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14864,7 +15096,7 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 1
   m_UseLocal: 1
---- !u!114 &6658690529734465446
+--- !u!114 &4248138210103934078
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14873,11 +15105,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 5465229761108827619}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0f2f9cd59fa95d4eb8c1dfefc5a1132, type: 3}
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Head: {fileID: 2677167125809604141}
-  Belt: {fileID: 531080093050584996}
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 4597539156562428863}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &5667892897435752808
 GameObject:
   m_ObjectHideFlags: 0
@@ -15843,6 +16084,7 @@ GameObject:
   - component: {fileID: 7463568638056923140}
   - component: {fileID: 7303974897642746186}
   - component: {fileID: 7302827474221716440}
+  - component: {fileID: 2546919770956542177}
   m_Layer: 0
   m_Name: MuzzleFlash
   m_TagString: Untagged
@@ -20703,6 +20945,22 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &2546919770956542177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7465449670180572638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &7465771079734489204
 GameObject:
   m_ObjectHideFlags: 0
@@ -20714,6 +20972,7 @@ GameObject:
   - component: {fileID: 7463063813486335912}
   - component: {fileID: 7304257702684471788}
   - component: {fileID: 7302756224330731840}
+  - component: {fileID: 7226845100672376762}
   m_Layer: 0
   m_Name: FlashHeadon
   m_TagString: Untagged
@@ -25573,6 +25832,22 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &7226845100672376762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7465771079734489204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &7997417613081237915
 GameObject:
   m_ObjectHideFlags: 0

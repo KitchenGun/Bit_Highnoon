@@ -13,7 +13,7 @@ public class Net_HoldFire : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     private void Awake()
     {
-        PV = this.gameObject.transform.parent.GetComponent<PhotonView>();
+        PV = this.gameObject.GetPhotonView();//this.gameObject.transform.parent.GetComponent<PhotonView>();
         #region 씬확인
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         SceneNum = GM.GetSceneIndex();
