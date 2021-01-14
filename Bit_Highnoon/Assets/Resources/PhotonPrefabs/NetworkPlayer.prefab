@@ -874,7 +874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_controller: 1
   m_animator: {fileID: 837580841415031528}
-  GunSample: {fileID: 6427453903766255031, guid: a3ce6bd5f07f106478125463bfcd52a0, type: 3}
+  GunSample: {fileID: 1999633363641786296, guid: 40f33b95f8ff0ef4aa58acd9e9d509c5, type: 3}
   Belt: {fileID: 531080093050584996}
 --- !u!114 &4757718533061382040
 MonoBehaviour:
@@ -912,7 +912,6 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 4757718533061382040}
-  - {fileID: 461553287924853413}
   - {fileID: 5050420615854049988}
   - {fileID: 2546919770956542177}
   - {fileID: 7226845100672376762}
@@ -1097,7 +1096,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_controller: 2
   m_animator: {fileID: 837580841079971283}
-  GunSample: {fileID: 6427453903766255031, guid: a3ce6bd5f07f106478125463bfcd52a0, type: 3}
+  GunSample: {fileID: 1999633363641786296, guid: 40f33b95f8ff0ef4aa58acd9e9d509c5, type: 3}
   Belt: {fileID: 531080093050584996}
 --- !u!114 &6185987114773852290
 MonoBehaviour:
