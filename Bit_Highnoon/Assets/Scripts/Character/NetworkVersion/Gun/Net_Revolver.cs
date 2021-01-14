@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Photon.Pun;
 
 public class Net_Revolver : MonoBehaviour
 {
+    private PhotonView PV;
     private GameManager GM;
     private bool NewGun = true;
     int Max_bullet=6;
@@ -17,6 +18,7 @@ public class Net_Revolver : MonoBehaviour
 
     private void Start()
     {
+        PV = this.gameObject.GetPhotonView();
             GM = GameObject.Find("GameManager").GetComponent<GameManager>();
             if (this.gameObject.name != "Gun(Clone)")
             {
@@ -56,12 +58,15 @@ public class Net_Revolver : MonoBehaviour
     #region 바닥충돌 감지
     private void OnCollisionEnter(Collision collision)
     {
-        if (this.gameObject.name != "BeltGun")
+        if (PV.IsMine)
         {
-            if (collision.gameObject.layer == 8)
+            if (this.gameObject.name != "BeltGun")
             {
-                HitOtherObjAudio.clip = GM.GetComponent<GameManager>().LoadAudioClip("drop");
-                HitOtherObjAudio.Play();
+                if (collision.gameObject.layer == 8)
+                {
+                    HitOtherObjAudio.clip = GM.GetComponent<GameManager>().LoadAudioClip("drop");
+                    HitOtherObjAudio.Play();
+                }
             }
         }
     }
