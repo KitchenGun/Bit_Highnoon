@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 6392258817382284355}
   - component: {fileID: 1999633363641786295}
   - component: {fileID: 725722900658225891}
-  - component: {fileID: 5953647302620177367}
   - component: {fileID: 3054145297285917460}
   - component: {fileID: 5750146120565448859}
+  - component: {fileID: 5953647302620177367}
   m_Layer: 0
   m_Name: Net_Gun
   m_TagString: DropObj
@@ -226,18 +226,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5953647302620177367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1999633363641786296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e027f23ac0aaff4f848997659ad07f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3054145297285917460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,3 +265,15 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &5953647302620177367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999633363641786296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e027f23ac0aaff4f848997659ad07f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
