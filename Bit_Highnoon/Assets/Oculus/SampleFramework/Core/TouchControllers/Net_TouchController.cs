@@ -123,8 +123,7 @@ namespace OVRTouchSample
                                  //벨트에서 총 제거
                                     if (Belt.GetComponent<Net_Belt>().isSet(collision.gameObject.tag))
                                     {
-                                        PV.RPC("GrapGun", RpcTarget.All, collision);
-                                    }
+                                        PV.RPC("GrapGun", RpcTarget.All, collision.gameObject.GetPhotonView().ViewID);                                    }
                                 }
                             }
                             else if (side == "Right")
@@ -134,7 +133,7 @@ namespace OVRTouchSample
                                  //벨트에서 총 제거
                                     if (Belt.GetComponent<Net_Belt>().isSet(collision.gameObject.tag))
                                     {
-                                        PV.RPC("GrapGun", RpcTarget.All, collision);
+                                        PV.RPC("GrapGun", RpcTarget.All, collision.gameObject.GetPhotonView().ViewID);
                                     }
                                 }
                             }
@@ -146,10 +145,13 @@ namespace OVRTouchSample
         }
 
         [PunRPC]
-        private void GrapGun(Collision collision)
+        private void GrapGun(int ViewID)
         {
-            Belt.GetComponent<Net_Belt>().GrabGun(collision.transform.gameObject.tag);
-            getGunInfo(collision.transform.gameObject);
+            PhotonView PVN = PhotonView.Find(ViewID);
+            GameObject gun = PVN.gameObject;
+
+            Belt.GetComponent<Net_Belt>().GrabGun(gun.tag);
+            getGunInfo(gun);
             //컨트롤러->총으로 모델링 교체
             HandtoGun();
             //사운드 효과
@@ -172,14 +174,14 @@ namespace OVRTouchSample
                                 {
                                     if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch) <= 0.1)
                                     {
-                                        PV.RPC("DropGun_Belt", RpcTarget.All, other);
+                                        PV.RPC("DropGun_Belt", RpcTarget.All, other.gameObject.GetPhotonView().ViewID);
                                     }
                                 }
                                 else if (side == "Right")
                                 {
                                     if (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch) <= 0.1)
                                     {
-                                        PV.RPC("DropGun_Belt", RpcTarget.All, other);
+                                        PV.RPC("DropGun_Belt", RpcTarget.All, other.gameObject.GetPhotonView().ViewID);
                                     }
                                 }
                             }
@@ -196,14 +198,14 @@ namespace OVRTouchSample
                                     {
                                         if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch) > 0.9)
                                         {
-                                            PV.RPC("GrapGun_Ground", RpcTarget.All, other);
+                                            PV.RPC("GrapGun_Ground", RpcTarget.All, other.gameObject.GetPhotonView().ViewID);
                                         }
                                     }
                                     else if (side == "Right")
                                     {
                                         if (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch) > 0.9)
                                         {
-                                            PV.RPC("GrapGun_Ground", RpcTarget.All, other);
+                                            PV.RPC("GrapGun_Ground", RpcTarget.All, other.gameObject.GetPhotonView().ViewID);
                                         }
                                     }
                                 }
@@ -221,7 +223,7 @@ namespace OVRTouchSample
                                     {
                                         if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch) > 0.9)
                                         {
-                                            PV.RPC("GrapGun_Ground", RpcTarget.All, other);
+                                            PV.RPC("GrapGun_Ground", RpcTarget.All, other.gameObject.GetPhotonView().ViewID);
                                             //getGunInfo(other.gameObject);
                                             //HandtoGun();
                                             //Destroy(other.gameObject);
@@ -231,7 +233,7 @@ namespace OVRTouchSample
                                     {
                                         if (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch) > 0.9)
                                         {
-                                            PV.RPC("GrapGun_Ground", RpcTarget.All, other);
+                                            PV.RPC("GrapGun_Ground", RpcTarget.All, other.gameObject.GetPhotonView().ViewID);
                                             //getGunInfo(other.gameObject);
                                             //HandtoGun();
                                             //Destroy(other.gameObject);
@@ -246,11 +248,16 @@ namespace OVRTouchSample
         }
 
         [PunRPC]
-        private void DropGun_Belt(Collider other)
+        private void DropGun_Belt(int ViewID)
         {
+            PhotonView PVN = PhotonView.Find(ViewID);
+            GameObject gun = PVN.gameObject;
+
             //밸트 위에서 드랍 할 경우 밸트에 총 생성
-            Belt.GetComponent<Net_Belt>().DropGun(other.gameObject.tag);
-            setGunInfo(other.gameObject.transform.Find("BeltGun").gameObject);
+            Belt.GetComponent<Net_Belt>().DropGun(gun.tag);
+            setGunInfo(gun.transform.Find("BeltGun").gameObject);
+            //Belt.GetComponent<Net_Belt>().DropGun(other.gameObject.tag);
+            //setGunInfo(other.gameObject.transform.Find("BeltGun").gameObject);
             //컨트롤러로 교체
             GuntoHand();
             //사운드 효과
@@ -259,13 +266,16 @@ namespace OVRTouchSample
         }
 
         [PunRPC]
-        private void GrapGun_Ground(Collider other)
+        private void GrapGun_Ground(int ViewID)
         {
+            PhotonView PVN = PhotonView.Find(ViewID);
+            GameObject gun = PVN.gameObject;
+
             //총에 정보에 접근 
-            getGunInfo(other.gameObject);
+            getGunInfo(gun);
             //컨트롤러->총으로 모델링 교체
             HandtoGun();
-            Destroy(other.gameObject);
+            Destroy(gun);
         }
 
         private void OnTriggerEnter(Collider other)
