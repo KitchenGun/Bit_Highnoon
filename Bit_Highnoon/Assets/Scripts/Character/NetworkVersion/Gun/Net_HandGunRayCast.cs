@@ -115,35 +115,21 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks
                                 //오브젝트 레이어로 식별
                                 if (HitObj.transform.gameObject.layer == 8)
                                 {
-                                    GameObject BulletHole = Instantiate<GameObject>(SandDecal, HitObj.point, Quaternion.identity) as GameObject;
-                                    BulletHole.transform.LookAt(this.gameObject.transform.position);
-                                    BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("etc");
-                                    BulletHole.GetComponent<AudioSource>().Play();
-                                    Destroy(BulletHole, 3f);
+                                    PV.RPC("BulletHole_Ground_FX", RpcTarget.All, HitObj.point);
                                 }
                                 else if (HitObj.transform.gameObject.layer == 9)
                                 {
-                                    GameObject BulletHole = Instantiate<GameObject>(MetalDecal, HitObj.point, Quaternion.identity) as GameObject;
-                                    BulletHole.transform.LookAt(this.gameObject.transform.position);
-                                    BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("metal");
-                                    BulletHole.GetComponent<AudioSource>().Play();
-                                    Destroy(BulletHole, 3f);
+                                    PV.RPC("BulletHole_Metal_FX", RpcTarget.All, HitObj.point);
 
                                 }
                                 else if (HitObj.transform.gameObject.layer == 10)
                                 {
-                                    GameObject BulletHole = Instantiate<GameObject>(WoodDecal, HitObj.point, Quaternion.identity) as GameObject;
-                                    BulletHole.transform.LookAt(this.gameObject.transform.position);
-                                    BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("wood");
-                                    BulletHole.GetComponent<AudioSource>().Play();
-                                    Destroy(BulletHole, 3f);
+                                    PV.RPC("BulletHole_Wood_FX", RpcTarget.All, HitObj.point);
                                 }
                                 else if (HitObj.transform.gameObject.layer == 20)
                                 {
-                                    GameObject BloodParticle = Instantiate<GameObject>(BloodDecal, HitObj.point, Quaternion.identity) as GameObject;
-                                    Destroy(BloodParticle, 3f);
+                                    PV.RPC("BloodSpray_FX", RpcTarget.All, HitObj.point);
                                 }
-
                             }
                         }
                     }
@@ -173,33 +159,20 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks
                                 //오브젝트 레이어로 식별
                                 if (HitObj.transform.gameObject.layer == 8)
                                 {
-                                    GameObject BulletHole = Instantiate<GameObject>(SandDecal, HitObj.point, Quaternion.identity) as GameObject;
-                                    BulletHole.transform.LookAt(this.gameObject.transform.position);
-                                    BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("etc");
-                                    BulletHole.GetComponent<AudioSource>().Play();
-                                    Destroy(BulletHole, 3f);
+                                    PV.RPC("BulletHole_Ground_FX", RpcTarget.All, HitObj.point);
                                 }
                                 else if (HitObj.transform.gameObject.layer == 9)
                                 {
-                                    GameObject BulletHole = Instantiate<GameObject>(MetalDecal, HitObj.point, Quaternion.identity) as GameObject;
-                                    BulletHole.transform.LookAt(this.gameObject.transform.position);
-                                    BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("metal");
-                                    BulletHole.GetComponent<AudioSource>().Play();
-                                    Destroy(BulletHole, 3f);
+                                    PV.RPC("BulletHole_Metal_FX", RpcTarget.All, HitObj.point);
 
                                 }
                                 else if (HitObj.transform.gameObject.layer == 10)
                                 {
-                                    GameObject BulletHole = Instantiate<GameObject>(WoodDecal, HitObj.point, Quaternion.identity) as GameObject;
-                                    BulletHole.transform.LookAt(this.gameObject.transform.position);
-                                    BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("wood");
-                                    BulletHole.GetComponent<AudioSource>().Play();
-                                    Destroy(BulletHole, 3f);
+                                    PV.RPC("BulletHole_Wood_FX", RpcTarget.All, HitObj.point);
                                 }
                                 else if (HitObj.transform.gameObject.layer == 20)
                                 {
-                                    GameObject BloodParticle = Instantiate<GameObject>(BloodDecal, HitObj.point, Quaternion.identity) as GameObject;
-                                    Destroy(BloodParticle, 3f);
+                                    PV.RPC("BloodSpray_FX", RpcTarget.All, HitObj.point);
                                 }
 
                             }
@@ -283,7 +256,40 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks
         HandGunReloadAudio.clip = GM.GetComponent<GameManager>().LoadAudioClip("reload");
         HandGunReloadAudio.Play();
     }
-
+    [PunRPC]//Ground
+    private void BulletHole_Ground_FX(Vector3 point)
+    {
+        GameObject BulletHole = Instantiate<GameObject>(SandDecal, point, Quaternion.identity) as GameObject;
+        BulletHole.transform.LookAt(this.gameObject.transform.position);
+        BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("etc");
+        BulletHole.GetComponent<AudioSource>().Play();
+        Destroy(BulletHole, 3f);
+    }
+    [PunRPC]//Metal
+    private void BulletHole_Metal_FX(Vector3 point)
+    {
+        GameObject BulletHole = Instantiate<GameObject>(MetalDecal, point, Quaternion.identity) as GameObject;
+        BulletHole.transform.LookAt(this.gameObject.transform.position);
+        BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("metal");
+        BulletHole.GetComponent<AudioSource>().Play();
+        Destroy(BulletHole, 3f);
+    }
+    [PunRPC]//Wood
+    private void BulletHole_Wood_FX(Vector3 point)
+    {
+        GameObject BulletHole = Instantiate<GameObject>(WoodDecal, point, Quaternion.identity) as GameObject;
+        BulletHole.transform.LookAt(this.gameObject.transform.position);
+        BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("wood");
+        BulletHole.GetComponent<AudioSource>().Play();
+        Destroy(BulletHole, 3f);
+    }
+    [PunRPC]//Blood
+    private void BloodSpray_FX(Vector3 point)
+    {
+        GameObject BloodParticle = Instantiate<GameObject>(BloodDecal, point, Quaternion.identity) as GameObject;
+        BloodParticle.transform.LookAt(this.gameObject.transform.position);
+        Destroy(BloodParticle, 3f);
+    }
 
     #endregion
 
