@@ -5,7 +5,7 @@ using OVRTouchSample;
 using UnityEngine.UI;
 using Photon.Pun;
 
-public class Net_HandGunRayCast : MonoBehaviourPunCallbacks
+public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
 {
     private PhotonView PV;
 
@@ -381,10 +381,25 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks
     {
         button.GetComponent<ButtonClick>().SendMessage("Hit", button);
     }
-
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        throw new System.NotImplementedException();
-    }
     #endregion
+
+    void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            // We own this player: send the others our data
+            stream.SendNext(Bullet);
+            stream.SendNext(BulletUIImage.sprite);
+            stream.SendNext(FireState);
+            stream.SendNext(ReloadState);
+        }
+        else
+        {
+            // Network player, receive data
+            this.Bullet = (int)stream.ReceiveNext();
+            this.BulletUIImage.sprite = (Sprite)stream.ReceiveNext();
+            this.FireState = (bool)stream.ReceiveNext();
+            this.ReloadState = (bool)stream.ReceiveNext();
+        }
+    }
 }
