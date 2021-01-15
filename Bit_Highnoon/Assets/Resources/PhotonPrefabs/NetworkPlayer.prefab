@@ -304,6 +304,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 7027171278153458165}
+  - {fileID: 7797581336171532667}
   - {fileID: 3713040554270766731}
   viewIdField: 0
   InstantiationId: 0
@@ -3317,7 +3318,7 @@ MonoBehaviour:
   prefixField: -1
   observableSearch: 2
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 535658077097129671}
   viewIdField: 0
