@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7089685543609122268}
   - component: {fileID: 2976195744293615604}
   - component: {fileID: 3945410074017584982}
+  - component: {fileID: 6240243398228741591}
   m_Layer: 0
   m_Name: Dust
   m_TagString: Untagged
@@ -4641,6 +4642,22 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &6240243398228741591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372139103039869669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &5046999114037353494
 GameObject:
   m_ObjectHideFlags: 0
@@ -4652,6 +4669,7 @@ GameObject:
   - component: {fileID: 888694246985075214}
   - component: {fileID: 1996762591459937139}
   - component: {fileID: 4757078498092466436}
+  - component: {fileID: 9039154490580113337}
   m_Layer: 0
   m_Name: Dust2
   m_TagString: Untagged
@@ -9273,6 +9291,22 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &9039154490580113337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5046999114037353494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &6432400424565375059
 GameObject:
   m_ObjectHideFlags: 0
@@ -9422,7 +9456,8 @@ MonoBehaviour:
   observableSearch: 2
   Synchronization: 3
   OwnershipTransfer: 0
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 8084384083880693058}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
