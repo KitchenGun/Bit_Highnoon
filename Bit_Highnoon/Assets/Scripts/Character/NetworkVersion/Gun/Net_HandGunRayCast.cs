@@ -226,6 +226,12 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
             }
             #endregion
         }
+        else
+        {
+            #region UI
+            BulletUIImage.gameObject.SetActive(false);
+            #endregion
+        }
     }
 
     #region FX
@@ -300,38 +306,30 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
         {
             photonView.RPC("Gun_Fire_FX", RpcTarget.All);
             //총알 감소 격발 상태 
-            if (SceneIdx == 1 || SceneIdx == 2|| SceneIdx ==6 )//메뉴 씬이 아닐 경우
+            if (SceneIdx == 0 || SceneIdx == 2|| SceneIdx ==6 )//메뉴 씬이 아닐 경우
             {
 
             }
             else
             {
-                //----------수정요망-----------------
                 Bullet--;
                 #region UI
                 BulletUIImage.sprite = BulletUI[Bullet];
                 #endregion
-                //----------수정요망-----------------
             }
-            //----------수정요망-----------------
             FireState = false;
-            //----------수정요망-----------------
             return true;
         }
         else if(!FireState)
         {
             photonView.RPC("Gun_BulletEmpty_FX", RpcTarget.All);
-            //----------수정요망-----------------
             FireState = false;
-            //----------수정요망-----------------
             return false;
         }
         else
         {
             photonView.RPC("Gun_BulletEmpty_FX", RpcTarget.All);
-            //----------수정요망-----------------
             FireState = false;
-            //----------수정요망-----------------
             return false;
         }
     }
@@ -340,10 +338,8 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
     {
         GunAni.SetTrigger("Reload");
         Gun_Reload_FX();
-        //----------수정요망-----------------
         FireState = true;
         ReloadState = false;
-        //----------수정요망-----------------
     }
     #endregion
 
@@ -389,7 +385,6 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
         {
             // We own this player: send the others our data
             stream.SendNext(Bullet);
-            stream.SendNext(BulletUIImage.sprite);
             stream.SendNext(FireState);
             stream.SendNext(ReloadState);
         }
@@ -397,7 +392,6 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
         {
             // Network player, receive data
             this.Bullet = (int)stream.ReceiveNext();
-            this.BulletUIImage.sprite = (Sprite)stream.ReceiveNext();
             this.FireState = (bool)stream.ReceiveNext();
             this.ReloadState = (bool)stream.ReceiveNext();
         }
