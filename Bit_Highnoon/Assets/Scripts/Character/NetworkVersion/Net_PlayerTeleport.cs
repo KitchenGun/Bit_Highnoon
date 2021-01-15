@@ -27,25 +27,7 @@ public class Net_PlayerTeleport : MonoBehaviourPunCallbacks
     private void Awake()
     {
         PV = this.gameObject.GetPhotonView();//this.gameObject.transform.parent.parent.gameObject.GetComponent<PhotonView>();
-        #region Scene 확인
-        GM = GameObject.Find("GameManager");
-        if (GM == null)
-        {
-            SceneIdx = 0;
-        }//gamemanager가 존재 안할경우
-        else
-        {
-            SceneIdx = GM.GetComponent<GameManager>().GetSceneIndex();
-            if (SceneIdx == 6)
-            {
-                SetTeleportEnable(true);
-            }
-            else
-            {
-                SetTeleportEnable(false);
-            }
-        }
-        #endregion
+        
         #region 씬 넘버를 통해서 텔레포드 조건 확인
         if (SceneIdx == 0 || SceneIdx == 6)
         {
@@ -59,8 +41,32 @@ public class Net_PlayerTeleport : MonoBehaviourPunCallbacks
         laser = this.gameObject.GetComponent<LineRenderer>();
         laser.startWidth = laser.endWidth = 0.5f;
         laser.positionCount = laserSteps;//레이저가 보여질 거리
+        ResetLaser();
         #region Audio
         WalkAudio = this.gameObject.GetComponent<AudioSource>();
+        #endregion
+    }
+
+    private void Start()
+    {
+        #region Scene 확인
+        GM = GameObject.Find("GameManager");
+        if (GM == null)
+        {
+            SceneIdx = 0;
+        }//gamemanager가 존재 안할경우
+        else
+        {
+            SceneIdx = GM.GetComponent<GameManager>().GetSceneIndex();
+            if (SceneIdx == 1)
+            {
+                SetTeleportEnable(true);
+            }
+            else
+            {
+                SetTeleportEnable(false);
+            }
+        }
         #endregion
     }
 
@@ -83,6 +89,7 @@ public class Net_PlayerTeleport : MonoBehaviourPunCallbacks
     {
         if (PV.IsMine)
         {
+           
             //텔레포트 가능 상태일 경우
             if (TeleportEnable)
             {
@@ -93,7 +100,7 @@ public class Net_PlayerTeleport : MonoBehaviourPunCallbacks
                 }
                 else if (targetAcquired == true && OVRInput.Get(stick).y < .2f)
                 {
-                    Teleport();
+                    PV.RPC("Teleport", RpcTarget.All);
                     PV.RPC("Teleport_SFX", RpcTarget.All);
                 }
                 else if (targetAcquired == false && OVRInput.Get(stick).y < .2f)
@@ -148,6 +155,7 @@ public class Net_PlayerTeleport : MonoBehaviourPunCallbacks
     #endregion
 
     #region 이동
+    [PunRPC]
     private void Teleport()
     {
         targetAcquired = false;

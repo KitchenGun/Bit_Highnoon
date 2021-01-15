@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3284228056919496886}
   - component: {fileID: 810214590447612611}
   - component: {fileID: 2717605602849024141}
+  - component: {fileID: 6151140561514234397}
   m_Layer: 0
   m_Name: Sparks
   m_TagString: Untagged
@@ -4655,6 +4656,22 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &6151140561514234397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4393864979590806407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &5482009037991827918
 GameObject:
   m_ObjectHideFlags: 0
@@ -4804,7 +4821,8 @@ MonoBehaviour:
   observableSearch: 2
   Synchronization: 3
   OwnershipTransfer: 0
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 7986379322614771364}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -4835,6 +4853,7 @@ GameObject:
   - component: {fileID: 8509316849654046168}
   - component: {fileID: 4708648939331356588}
   - component: {fileID: 563336647311592525}
+  - component: {fileID: 3938614834703905308}
   m_Layer: 0
   m_Name: Dust
   m_TagString: Untagged
@@ -9487,3 +9506,19 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &3938614834703905308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5585759543873079340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1

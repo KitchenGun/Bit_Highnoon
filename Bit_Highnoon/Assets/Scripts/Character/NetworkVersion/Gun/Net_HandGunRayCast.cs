@@ -5,7 +5,7 @@ using OVRTouchSample;
 using UnityEngine.UI;
 using Photon.Pun;
 
-public class Net_HandGunRayCast : MonoBehaviourPunCallbacks
+public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
 {
     private PhotonView PV;
 
@@ -115,35 +115,21 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks
                                 //오브젝트 레이어로 식별
                                 if (HitObj.transform.gameObject.layer == 8)
                                 {
-                                    GameObject BulletHole = Instantiate<GameObject>(SandDecal, HitObj.point, Quaternion.identity) as GameObject;
-                                    BulletHole.transform.LookAt(this.gameObject.transform.position);
-                                    BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("etc");
-                                    BulletHole.GetComponent<AudioSource>().Play();
-                                    Destroy(BulletHole, 3f);
+                                    PV.RPC("BulletHole_Ground_FX", RpcTarget.All, HitObj.point);
                                 }
                                 else if (HitObj.transform.gameObject.layer == 9)
                                 {
-                                    GameObject BulletHole = Instantiate<GameObject>(MetalDecal, HitObj.point, Quaternion.identity) as GameObject;
-                                    BulletHole.transform.LookAt(this.gameObject.transform.position);
-                                    BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("metal");
-                                    BulletHole.GetComponent<AudioSource>().Play();
-                                    Destroy(BulletHole, 3f);
+                                    PV.RPC("BulletHole_Metal_FX", RpcTarget.All, HitObj.point);
 
                                 }
                                 else if (HitObj.transform.gameObject.layer == 10)
                                 {
-                                    GameObject BulletHole = Instantiate<GameObject>(WoodDecal, HitObj.point, Quaternion.identity) as GameObject;
-                                    BulletHole.transform.LookAt(this.gameObject.transform.position);
-                                    BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("wood");
-                                    BulletHole.GetComponent<AudioSource>().Play();
-                                    Destroy(BulletHole, 3f);
+                                    PV.RPC("BulletHole_Wood_FX", RpcTarget.All, HitObj.point);
                                 }
                                 else if (HitObj.transform.gameObject.layer == 20)
                                 {
-                                    GameObject BloodParticle = Instantiate<GameObject>(BloodDecal, HitObj.point, Quaternion.identity) as GameObject;
-                                    Destroy(BloodParticle, 3f);
+                                    PV.RPC("BloodSpray_FX", RpcTarget.All, HitObj.point);
                                 }
-
                             }
                         }
                     }
@@ -173,33 +159,20 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks
                                 //오브젝트 레이어로 식별
                                 if (HitObj.transform.gameObject.layer == 8)
                                 {
-                                    GameObject BulletHole = Instantiate<GameObject>(SandDecal, HitObj.point, Quaternion.identity) as GameObject;
-                                    BulletHole.transform.LookAt(this.gameObject.transform.position);
-                                    BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("etc");
-                                    BulletHole.GetComponent<AudioSource>().Play();
-                                    Destroy(BulletHole, 3f);
+                                    PV.RPC("BulletHole_Ground_FX", RpcTarget.All, HitObj.point);
                                 }
                                 else if (HitObj.transform.gameObject.layer == 9)
                                 {
-                                    GameObject BulletHole = Instantiate<GameObject>(MetalDecal, HitObj.point, Quaternion.identity) as GameObject;
-                                    BulletHole.transform.LookAt(this.gameObject.transform.position);
-                                    BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("metal");
-                                    BulletHole.GetComponent<AudioSource>().Play();
-                                    Destroy(BulletHole, 3f);
+                                    PV.RPC("BulletHole_Metal_FX", RpcTarget.All, HitObj.point);
 
                                 }
                                 else if (HitObj.transform.gameObject.layer == 10)
                                 {
-                                    GameObject BulletHole = Instantiate<GameObject>(WoodDecal, HitObj.point, Quaternion.identity) as GameObject;
-                                    BulletHole.transform.LookAt(this.gameObject.transform.position);
-                                    BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("wood");
-                                    BulletHole.GetComponent<AudioSource>().Play();
-                                    Destroy(BulletHole, 3f);
+                                    PV.RPC("BulletHole_Wood_FX", RpcTarget.All, HitObj.point);
                                 }
                                 else if (HitObj.transform.gameObject.layer == 20)
                                 {
-                                    GameObject BloodParticle = Instantiate<GameObject>(BloodDecal, HitObj.point, Quaternion.identity) as GameObject;
-                                    Destroy(BloodParticle, 3f);
+                                    PV.RPC("BloodSpray_FX", RpcTarget.All, HitObj.point);
                                 }
 
                             }
@@ -253,6 +226,12 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks
             }
             #endregion
         }
+        else
+        {
+            #region UI
+            BulletUIImage.gameObject.SetActive(false);
+            #endregion
+        }
     }
 
     #region FX
@@ -283,7 +262,40 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks
         HandGunReloadAudio.clip = GM.GetComponent<GameManager>().LoadAudioClip("reload");
         HandGunReloadAudio.Play();
     }
-
+    [PunRPC]//Ground
+    private void BulletHole_Ground_FX(Vector3 point)
+    {
+        GameObject BulletHole = Instantiate<GameObject>(SandDecal, point, Quaternion.identity) as GameObject;
+        BulletHole.transform.LookAt(this.gameObject.transform.position);
+        BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("etc");
+        BulletHole.GetComponent<AudioSource>().Play();
+        Destroy(BulletHole, 3f);
+    }
+    [PunRPC]//Metal
+    private void BulletHole_Metal_FX(Vector3 point)
+    {
+        GameObject BulletHole = Instantiate<GameObject>(MetalDecal, point, Quaternion.identity) as GameObject;
+        BulletHole.transform.LookAt(this.gameObject.transform.position);
+        BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("metal");
+        BulletHole.GetComponent<AudioSource>().Play();
+        Destroy(BulletHole, 3f);
+    }
+    [PunRPC]//Wood
+    private void BulletHole_Wood_FX(Vector3 point)
+    {
+        GameObject BulletHole = Instantiate<GameObject>(WoodDecal, point, Quaternion.identity) as GameObject;
+        BulletHole.transform.LookAt(this.gameObject.transform.position);
+        BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("wood");
+        BulletHole.GetComponent<AudioSource>().Play();
+        Destroy(BulletHole, 3f);
+    }
+    [PunRPC]//Blood
+    private void BloodSpray_FX(Vector3 point)
+    {
+        GameObject BloodParticle = Instantiate<GameObject>(BloodDecal, point, Quaternion.identity) as GameObject;
+        BloodParticle.transform.LookAt(this.gameObject.transform.position);
+        Destroy(BloodParticle, 3f);
+    }
 
     #endregion
 
@@ -294,38 +306,30 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks
         {
             photonView.RPC("Gun_Fire_FX", RpcTarget.All);
             //총알 감소 격발 상태 
-            if (SceneIdx == 1 || SceneIdx == 2|| SceneIdx ==6 )//메뉴 씬이 아닐 경우
+            if (SceneIdx == 0 || SceneIdx == 2|| SceneIdx ==6 )//메뉴 씬이 아닐 경우
             {
 
             }
             else
             {
-                //----------수정요망-----------------
                 Bullet--;
                 #region UI
                 BulletUIImage.sprite = BulletUI[Bullet];
                 #endregion
-                //----------수정요망-----------------
             }
-            //----------수정요망-----------------
             FireState = false;
-            //----------수정요망-----------------
             return true;
         }
         else if(!FireState)
         {
             photonView.RPC("Gun_BulletEmpty_FX", RpcTarget.All);
-            //----------수정요망-----------------
             FireState = false;
-            //----------수정요망-----------------
             return false;
         }
         else
         {
             photonView.RPC("Gun_BulletEmpty_FX", RpcTarget.All);
-            //----------수정요망-----------------
             FireState = false;
-            //----------수정요망-----------------
             return false;
         }
     }
@@ -334,10 +338,8 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks
     {
         GunAni.SetTrigger("Reload");
         Gun_Reload_FX();
-        //----------수정요망-----------------
         FireState = true;
         ReloadState = false;
-        //----------수정요망-----------------
     }
     #endregion
 
@@ -375,10 +377,23 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks
     {
         button.GetComponent<ButtonClick>().SendMessage("Hit", button);
     }
-
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        throw new System.NotImplementedException();
-    }
     #endregion
+
+    void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            // We own this player: send the others our data
+            stream.SendNext(Bullet);
+            stream.SendNext(FireState);
+            stream.SendNext(ReloadState);
+        }
+        else
+        {
+            // Network player, receive data
+            this.Bullet = (int)stream.ReceiveNext();
+            this.FireState = (bool)stream.ReceiveNext();
+            this.ReloadState = (bool)stream.ReceiveNext();
+        }
+    }
 }
