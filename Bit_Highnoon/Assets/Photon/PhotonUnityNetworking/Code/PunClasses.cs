@@ -418,12 +418,6 @@ namespace Photon.Pun
         public virtual void OnErrorInfo(ErrorInfo errorInfo)
         {
         }
-
-    #region
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-
-    }
     }
 
 
@@ -978,4 +972,3 @@ namespace Photon.Pun
         }
     }
 }
-#endregion
