@@ -107,10 +107,12 @@ namespace OVRTouchSample
         #region 충돌처리
         private void OnCollisionStay(Collision collision)//벨트에서 총을 뽑을때
         {
-            if (PV.IsMine)
+            if (!PV.IsMine)
             {
-                if (collision.transform.gameObject.name == "BeltGun")
-                {
+                return;
+            }
+            if (collision.transform.gameObject.name == "BeltGun")
+            {
                     if (Belt.GetComponent<Net_Belt>().isSet(collision.gameObject.tag))
                     {
                         //총을 들고있지 않을 경우
@@ -140,7 +142,6 @@ namespace OVRTouchSample
                         }
 
                     }
-                }
             }
         }
 
@@ -161,9 +162,11 @@ namespace OVRTouchSample
 
         private void OnTriggerStay(Collider other)
         {
-            if (PV.IsMine)
+            if (!PV.IsMine)
             {
-                switch (other.gameObject.name)
+                return;
+            }
+            switch (other.gameObject.name)
                 {
                     case "BeltGunPos":
                         if (!Belt.GetComponent<Net_Belt>().isSet(other.gameObject.tag))
@@ -244,7 +247,6 @@ namespace OVRTouchSample
                         }
                         break;
                 }
-            }
         }
 
         [PunRPC]
@@ -280,24 +282,26 @@ namespace OVRTouchSample
 
         private void OnTriggerEnter(Collider other)
         {
-            if (PV.IsMine)
+            if (!PV.IsMine)
             {
-                if (other.gameObject.name == "BeltGunPos")
-                {
-                    //밸트에 총 넣는 공간에서 손이 떠날 경우
-                    isHandOnColider = true;
-                }
+                return;
+            }
+            if (other.gameObject.name == "BeltGunPos")
+            {
+                //밸트에 총 넣는 공간에서 손이 떠날 경우
+                isHandOnColider = true;
             }
         }
 
         private void OnTriggerExit(Collider other)
         {
-            if (PV.IsMine)
+            if (!PV.IsMine)
             {
-                if (other.gameObject.name == "BeltGunPos")
-                {//밸트에 총 넣는 공간에서 손이 떠날 경우
-                    isHandOnColider = false;
-                }
+                return;
+            }
+            if (other.gameObject.name == "BeltGunPos")
+            {//밸트에 총 넣는 공간에서 손이 떠날 경우
+                isHandOnColider = false;
             }
         }
         #endregion

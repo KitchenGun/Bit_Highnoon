@@ -58,8 +58,7 @@ public class Net_Revolver : MonoBehaviour
     #region 바닥충돌 감지
     private void OnCollisionEnter(Collision collision)
     {
-        if (PV.IsMine)
-        {
+      
             if (this.gameObject.name != "BeltGun")
             {
                 if (collision.gameObject.layer == 8)
@@ -68,7 +67,6 @@ public class Net_Revolver : MonoBehaviour
                     HitOtherObjAudio.Play();
                 }
             }
-        }
     }
     #endregion
 }
