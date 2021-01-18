@@ -191,6 +191,7 @@ namespace OVRTouchSample
                                         if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch) > 0.9)
                                         {
                                             PV.RPC("GrapGun_Ground", RpcTarget.All, other.gameObject.GetPhotonView().ViewID);
+                                            PhotonNetwork.Destroy(other.gameObject);
                                         }
                                     }
                                     else if (side == "Right")
@@ -198,6 +199,7 @@ namespace OVRTouchSample
                                         if (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch) > 0.9)
                                         {
                                             PV.RPC("GrapGun_Ground", RpcTarget.All, other.gameObject.GetPhotonView().ViewID);
+                                            PhotonNetwork.Destroy(other.gameObject);
                                         }
                                     }
                                 }
@@ -216,9 +218,7 @@ namespace OVRTouchSample
                                         if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch) > 0.9)
                                         {
                                             PV.RPC("GrapGun_Ground", RpcTarget.All, other.gameObject.GetPhotonView().ViewID);
-                                            //getGunInfo(other.gameObject);
-                                            //HandtoGun();
-                                            //Destroy(other.gameObject);
+                                            PhotonNetwork.Destroy(other.gameObject);
                                         }
                                     }
                                     else if (side == "Right")
@@ -226,9 +226,7 @@ namespace OVRTouchSample
                                         if (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch) > 0.9)
                                         {
                                             PV.RPC("GrapGun_Ground", RpcTarget.All, other.gameObject.GetPhotonView().ViewID);
-                                            //getGunInfo(other.gameObject);
-                                            //HandtoGun();
-                                            //Destroy(other.gameObject);
+                                            PhotonNetwork.Destroy(other.gameObject);
                                         }
                                     }
                                 }
@@ -266,7 +264,8 @@ namespace OVRTouchSample
             getGunInfo(gun);
             //컨트롤러->총으로 모델링 교체
             HandtoGun();
-            Destroy(gun);
+            
+            //Destroy(gun);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -320,14 +319,16 @@ namespace OVRTouchSample
                     {
                         if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch) <= 0.1)
                         {
-                            PV.RPC("DropGun", RpcTarget.All);
+                            GameObject Gun = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Net_Gun"), this.transform.position, Quaternion.identity, 0);
+                            PV.RPC("DropGun", RpcTarget.All, Gun.GetPhotonView().ViewID);
                         }
                     }
                     else if (side == "Right")
                     {
                         if (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch) <= 0.1)
                         {
-                            PV.RPC("DropGun", RpcTarget.All);
+                            GameObject Gun = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Net_Gun"), this.transform.position, Quaternion.identity, 0);
+                            PV.RPC("DropGun", RpcTarget.All, Gun.GetPhotonView().ViewID);
                         }
                     }
                 }
@@ -335,13 +336,15 @@ namespace OVRTouchSample
         }
 
         [PunRPC]
-        private void DropGun()
+        private void DropGun(int ViewID)
         {
-            //드랍 할 경우 손 위치에 총 모양 생성
-            GameObject Gun = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Net_Gun"), this.transform.position, Quaternion.identity, 0, new object[] { PV.ViewID });
+            PhotonView PVN = PhotonView.Find(ViewID);
+            GameObject Gun = PVN.gameObject;
+
+            //드랍 할 경우 손 위치에 총 모양 생성            
             Gun.name = "Gun";
             Gun.tag = "DropObj";
-            //Gun.GetPhotonView().SetOwnerInternal(photonView.Owner, photonView.ViewID);
+
             setGunInfo(Gun);//총기 설정 저장
                             //컨트롤러로 교체
             GuntoHand();
