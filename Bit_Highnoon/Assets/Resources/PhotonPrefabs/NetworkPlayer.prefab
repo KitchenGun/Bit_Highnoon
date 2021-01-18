@@ -918,7 +918,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_controller: 1
   m_animator: {fileID: 837580841415031528}
-  GunSample: {fileID: 1999633363641786296, guid: 40f33b95f8ff0ef4aa58acd9e9d509c5, type: 3}
   Belt: {fileID: 531080093050584996}
 --- !u!1 &836632039576532190
 GameObject:
@@ -1141,7 +1140,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_controller: 2
   m_animator: {fileID: 837580841079971283}
-  GunSample: {fileID: 1999633363641786296, guid: 40f33b95f8ff0ef4aa58acd9e9d509c5, type: 3}
   Belt: {fileID: 531080093050584996}
 --- !u!1 &837580839777225920
 GameObject:
