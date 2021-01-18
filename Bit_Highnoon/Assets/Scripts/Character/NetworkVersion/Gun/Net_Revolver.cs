@@ -58,7 +58,11 @@ public class Net_Revolver : MonoBehaviour
 
     private void OnGrab()
     {
-        if (PV.IsMine)
+        if(PV==null)
+        {
+            return;
+        }
+        else if (PV.IsMine)
         {
             PhotonNetwork.Destroy(this.gameObject);
         }
