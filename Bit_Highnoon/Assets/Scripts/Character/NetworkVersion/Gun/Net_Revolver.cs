@@ -58,7 +58,10 @@ public class Net_Revolver : MonoBehaviour
 
     private void OnGrab()
     {
-        PhotonNetwork.Destroy(this.gameObject);
+        if (PV.IsMine)
+        {
+            PhotonNetwork.Destroy(this.gameObject);
+        }
     }
 
     #region 바닥충돌 감지

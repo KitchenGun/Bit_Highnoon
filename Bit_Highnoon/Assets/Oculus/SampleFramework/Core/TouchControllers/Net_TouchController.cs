@@ -258,8 +258,8 @@ namespace OVRTouchSample
             getGunInfo(gun);
             //컨트롤러->총으로 모델링 교체
             HandtoGun();
-            if (gun.GetPhotonView().Owner == photonView.Owner)
-                gun.GetComponent<Net_Revolver>().SendMessage("OnGrab");
+            gun.GetComponent<Net_Revolver>().SendMessage("OnGrab");
+           
         }
 
         private void OnTriggerEnter(Collider other)
