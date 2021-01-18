@@ -56,6 +56,11 @@ public class Net_Revolver : MonoBehaviour
         FireState = state;
     }
 
+    private void OnGrab()
+    {
+        PhotonNetwork.Destroy(this.gameObject);
+    }
+
     #region 바닥충돌 감지
     private void OnCollisionEnter(Collision collision)
     {
