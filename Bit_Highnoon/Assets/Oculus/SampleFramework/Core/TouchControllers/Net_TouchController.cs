@@ -342,7 +342,7 @@ namespace OVRTouchSample
             GameObject Gun = PVN.gameObject;
 
             //드랍 할 경우 손 위치에 총 모양 생성            
-            Gun.name = "Gun";
+            Gun.name = "Gun(Clone)";
             Gun.tag = "DropObj";
 
             setGunInfo(Gun);//총기 설정 저장

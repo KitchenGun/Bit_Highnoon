@@ -50,7 +50,7 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
 
     void Start()
     {//초기화
-        PV = this.gameObject.GetPhotonView();//this.gameObject.transform.parent.parent.gameObject.GetComponent<PhotonView>();
+        PV = this.gameObject.GetPhotonView();
         #region Scene
         GM = GameObject.Find("GameManager");
         if (GM == null)
@@ -344,13 +344,11 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
     #endregion
 
     #region Gun 정보 전달
-    [PunRPC]
     public void setGunInfo(ref bool firestate, ref int bullet)
     {
         this.FireState=firestate;
         this.Bullet = bullet;
     }
-    [PunRPC]
     public void getGunInfo(ref bool firestate,ref int bullet)
     {
         firestate = this.FireState;
