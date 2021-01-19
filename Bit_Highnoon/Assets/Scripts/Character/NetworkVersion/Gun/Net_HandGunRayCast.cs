@@ -217,17 +217,6 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
         }
         else if (layer == 20)
         {
-
-            if (HitObj.transform.gameObject.name == "Head")
-            {
-                Debug.Log("머리");
-                isHeadShot = true;
-            }
-            else
-            {
-                Debug.Log("몸통");
-                isHeadShot = false;
-            }
             Debug.Log("isHeadShot" + isHeadShot);
             PV.RPC("PlayerHit", RpcTarget.All, HitObj.transform.gameObject.GetPhotonView().ViewID);
             PV.RPC("BloodSpray_FX", RpcTarget.All, HitObj.point);
@@ -384,12 +373,24 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
     {
         PhotonView PVN = PhotonView.Find(ViewID);
         GameObject Player = PVN.gameObject;
+
+        if (Player.name == "Head")
+        {
+            isHeadShot = true;
+        }
+        else
+        {
+            isHeadShot = false;
+        }
+
         if (isHeadShot)
         {
+            Debug.Log("머리");
             Player.transform.parent.GetChild(2).transform.gameObject.GetComponent<Net_PlayerHit>().SendMessage("Die");
         }
         else
         {
+            Debug.Log("몸통");
             Player.transform.parent.GetChild(2).transform.gameObject.GetComponent<Net_PlayerHit>().SendMessage("Hit");
         }
 
@@ -404,7 +405,6 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
             stream.SendNext(Bullet);
             stream.SendNext(FireState);
             stream.SendNext(ReloadState);
-            stream.SendNext(isHeadShot);
         }
         else
         {
@@ -412,7 +412,6 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
             this.Bullet = (int)stream.ReceiveNext();
             this.FireState = (bool)stream.ReceiveNext();
             this.ReloadState = (bool)stream.ReceiveNext();
-            this.isHeadShot = (bool)stream.ReceiveNext();
         }
     }
 }
