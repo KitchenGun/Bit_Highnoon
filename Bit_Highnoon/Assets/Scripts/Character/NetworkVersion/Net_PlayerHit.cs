@@ -66,7 +66,7 @@ public class Net_PlayerHit : MonoBehaviourPunCallbacks
     {
         foreach (GameObject controller in Controllers)
         {
-            controller.GetComponent<OVRTouchSample.Net_TouchController>().SendMessage("Drop");
+            controller.GetComponent<OVRTouchSample.Net_TouchController>().SendMessage("Drop_Die");
         }
     }
     #endregion

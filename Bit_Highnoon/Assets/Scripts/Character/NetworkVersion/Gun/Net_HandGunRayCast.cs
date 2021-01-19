@@ -135,7 +135,7 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
                                         isHeadShot = true;
                                     }
                                     isHeadShot = false;
-                                    PlayerHit();
+                                    PV.RPC("PlayerHit", RpcTarget.All);
                                     PV.RPC("BloodSpray_FX", RpcTarget.All, HitObj.point);
                                 }
                             }
@@ -386,6 +386,7 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
     #endregion
 
     #region Player 피격 처리
+    [PunRPC]
     private void PlayerHit()
     {
         if(isHeadShot)

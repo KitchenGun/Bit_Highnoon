@@ -362,8 +362,11 @@ namespace OVRTouchSample
                 //총을 들고있을 경우
                 this.gameObject.GetComponent<SphereCollider>().enabled = false;
                 //드랍 할 경우 손 위치에 총 모양 생성
-                GameObject Gun = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Net_Gun"), this.transform.position, Quaternion.identity, 0);
-                PV.RPC("DropGun", RpcTarget.All, Gun.GetPhotonView().ViewID);
+                if (PV.IsMine)
+                {
+                    GameObject Gun = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Net_Gun"), this.transform.position, Quaternion.identity, 0);
+                    PV.RPC("DropGunInfoSet", RpcTarget.All, Gun.GetPhotonView().ViewID);
+                }
             }
 
         }
