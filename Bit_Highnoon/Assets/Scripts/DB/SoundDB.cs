@@ -78,8 +78,8 @@ public class SoundDB : MonoBehaviour
         List<string> folder2 = new List<string>();
 
         #region 모든 씬에 들어가는 소리
-        folder1.AddRange(("Gun,Gun,Gun,Gun,User,Effect,Effect,Effect,Effect").Split(','));
-        folder2.AddRange(("DropGun,GripGun,GunFire,Reload,Walk,glass,etc,metal,wood").Split(','));
+        folder1.AddRange(("Gun,Gun,Gun,Gun,User,Effect,Effect,Effect,Effect,NetWork,NetWork").Split(','));
+        folder2.AddRange(("DropGun,GripGun,GunFire,Reload,Walk,glass,etc,metal,wood,Dead,Hit").Split(','));
         #endregion
 
         #region AI 테스트 용
