@@ -20,28 +20,26 @@ namespace OVRTouchSample
     {
         private GameManager GM;
         private PhotonView PV;
-        private int PVN;
-
+        #region 컨트롤러 관련 변수
         [SerializeField]
         private OVRInput.Controller m_controller = OVRInput.Controller.None;
         [SerializeField]
         private Animator m_animator = null;
-
         private bool m_restoreOnInputAcquired = false;
-
         private string side; //컨트롤러 방향
         private bool isHandOnColider;//손이 이벤트 오브젝트와 충돌하는가?
-
+        #endregion
         [SerializeField]
         private GameObject Belt; //밸트
-
+        #region 사격관련 변수
         private bool FireState;
         private int Bullet;
-
+        #endregion
+        #region Audio
         private AudioSource HandAudio;
         private AudioClip Pistol_Garb;
         private AudioClip Pistol_DropOnHolster;
-
+        #endregion
         private void Awake()
         {
             PV = this.gameObject.GetPhotonView();
@@ -60,22 +58,23 @@ namespace OVRTouchSample
         {
             if (PV.IsMine)
             {
-
+                #region 컨트롤러 애니메이션 현재 사용하지 않음
                 //m_animator.SetFloat("Button 1", OVRInput.Get(OVRInput.Button.One, m_controller) ? 1.0f : 0.0f);
                 //m_animator.SetFloat("Button 2", OVRInput.Get(OVRInput.Button.Two, m_controller) ? 1.0f : 0.0f);
                 //m_animator.SetFloat("Joy X", OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, m_controller).x);
                 //m_animator.SetFloat("Joy Y", OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, m_controller).y);
                 //m_animator.SetFloat("Grip", OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, m_controller));
                 //m_animator.SetFloat("Trigger", OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, m_controller));
-
+                #endregion
+                #region 컨트롤러 추적
                 OVRManager.InputFocusAcquired += OnInputFocusAcquired;
                 OVRManager.InputFocusLost += OnInputFocusLost;
-
-                DropCheck();
+                #endregion
+                isDrop();
 
             }
         }
-
+        #region 컨트롤러 추적
         private void OnInputFocusLost()
         {
             if (gameObject.activeInHierarchy)
@@ -93,7 +92,9 @@ namespace OVRTouchSample
                 m_restoreOnInputAcquired = false;
             }
         }
+        #endregion
 
+        #region belt 총 grab 함수
         private void OnCollisionStay(Collision collision)//벨트에서 총을 뽑을때
         {
             if (!PV.IsMine)
@@ -114,7 +115,7 @@ namespace OVRTouchSample
                                  //벨트에서 총 제거
                                     if (Belt.GetComponent<Net_Belt>().isSet(collision.gameObject.tag))
                                     {
-                                        PV.RPC("GrapGun", RpcTarget.All, collision.gameObject.GetPhotonView().ViewID);                                    }
+                                        PV.RPC("GrapBeltGun", RpcTarget.All, collision.gameObject.GetPhotonView().ViewID);                                    }
                                 }
                             }
                             else if (side == "Right")
@@ -124,7 +125,7 @@ namespace OVRTouchSample
                                  //벨트에서 총 제거
                                     if (Belt.GetComponent<Net_Belt>().isSet(collision.gameObject.tag))
                                     {
-                                        PV.RPC("GrapGun", RpcTarget.All, collision.gameObject.GetPhotonView().ViewID);
+                                        PV.RPC("GrapBeltGun", RpcTarget.All, collision.gameObject.GetPhotonView().ViewID);
                                     }
                                 }
                             }
@@ -135,7 +136,7 @@ namespace OVRTouchSample
         }
 
         [PunRPC]
-        private void GrapGun(int ViewID)
+        private void GrapBeltGun(int ViewID)
         {
             PhotonView PVN = PhotonView.Find(ViewID);
             GameObject gun = PVN.gameObject;
@@ -148,7 +149,9 @@ namespace OVRTouchSample
             HandAudio.clip = GM.GetComponent<GameManager>().LoadAudioClip("gripup");
             HandAudio.Play();
         }
+        #endregion
 
+        #region 벨트에 손이 닿고 있는지 판정과 바닥에 떨어진 총을 집을 때 호출
         private void OnTriggerStay(Collider other)
         {
             if (!PV.IsMine)
@@ -166,14 +169,14 @@ namespace OVRTouchSample
                                 {
                                     if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch) <= 0.1)
                                     {
-                                        PV.RPC("DropGun_Belt", RpcTarget.All, other.gameObject.GetPhotonView().ViewID);
+                                        PV.RPC("Gun_into_Belt", RpcTarget.All, other.gameObject.GetPhotonView().ViewID);
                                     }
                                 }
                                 else if (side == "Right")
                                 {
                                     if (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch) <= 0.1)
                                     {
-                                        PV.RPC("DropGun_Belt", RpcTarget.All, other.gameObject.GetPhotonView().ViewID);
+                                        PV.RPC("Gun_into_Belt", RpcTarget.All, other.gameObject.GetPhotonView().ViewID);
                                     }
                                 }
                             }
@@ -190,14 +193,14 @@ namespace OVRTouchSample
                                     {
                                         if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch) > 0.9)
                                         {
-                                            PV.RPC("GrapGun_Ground", RpcTarget.All, other.gameObject.GetPhotonView().ViewID);
+                                            PV.RPC("Groundgun_Grab", RpcTarget.All, other.gameObject.GetPhotonView().ViewID);
                                         }
                                     }
                                     else if (side == "Right")
                                     {
                                         if (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch) > 0.9)
                                         {
-                                            PV.RPC("GrapGun_Ground", RpcTarget.All, other.gameObject.GetPhotonView().ViewID);
+                                            PV.RPC("Groundgun_Grab", RpcTarget.All, other.gameObject.GetPhotonView().ViewID);
                                         }
                                     }
                                 }
@@ -215,14 +218,14 @@ namespace OVRTouchSample
                                     {
                                         if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch) > 0.9)
                                         {
-                                            PV.RPC("GrapGun_Ground", RpcTarget.All, other.gameObject.GetPhotonView().ViewID);
+                                            PV.RPC("Groundgun_Grab", RpcTarget.All, other.gameObject.GetPhotonView().ViewID);
                                         }
                                     }
                                     else if (side == "Right")
                                     {
                                         if (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch) > 0.9)
                                         {
-                                            PV.RPC("GrapGun_Ground", RpcTarget.All, other.gameObject.GetPhotonView().ViewID);
+                                            PV.RPC("Groundgun_Grab", RpcTarget.All, other.gameObject.GetPhotonView().ViewID);
                                         }
                                     }
                                 }
@@ -231,9 +234,10 @@ namespace OVRTouchSample
                         break;
                 }
         }
-
+        #endregion
+        #region 총을 벨트에 집어 넣기
         [PunRPC]
-        private void DropGun_Belt(int ViewID)
+        private void Gun_into_Belt(int ViewID)
         {
             PhotonView PVN = PhotonView.Find(ViewID);
             GameObject gun = PVN.gameObject;
@@ -247,46 +251,48 @@ namespace OVRTouchSample
             HandAudio.clip = GM.GetComponent<GameManager>().LoadAudioClip("gripdown");
             HandAudio.Play();
         }
+        #endregion
 
+        #region 바닥에 떨어진 총 줍기
         [PunRPC]
-        private void GrapGun_Ground(int ViewID)
+        private void Groundgun_Grab(int ViewID)
         {
             PhotonView PVN = PhotonView.Find(ViewID);
             GameObject gun = PVN.transform.gameObject;
-
             //총에 정보에 접근 
             getGunInfo(gun);
             //컨트롤러->총으로 모델링 교체
             HandtoGun();
             gun.GetComponent<Net_Revolver>().SendMessage("OnGrab");
-           
         }
+        #endregion
 
+        #region 밸트에 총 넣는 공간에서 손이 떠나는 상황 확인용
         private void OnTriggerEnter(Collider other)
         {
-            if (!PV.IsMine)
+            if (PV.IsMine)
             {
-                return;
-            }
-            if (other.gameObject.name == "BeltGunPos")
-            {
-                //밸트에 총 넣는 공간에서 손이 떠날 경우
-                isHandOnColider = true;
+                if (other.gameObject.name == "BeltGunPos")
+                {
+                    //밸트에 총 넣는 공간에서 손이 떠날 경우
+                    isHandOnColider = true;
+                }
             }
         }
 
         private void OnTriggerExit(Collider other)
         {
-            if (!PV.IsMine)
+            if (PV.IsMine)
             {
-                return;
-            }
-            if (other.gameObject.name == "BeltGunPos")
-            {//밸트에 총 넣는 공간에서 손이 떠날 경우
-                isHandOnColider = false;
+                if (other.gameObject.name == "BeltGunPos")
+                {//밸트에 총 넣는 공간에서 손이 떠날 경우
+                    isHandOnColider = false;
+                }
             }
         }
+        #endregion
 
+        #region 손, 총 두가지 모델링 교체하는 함수
         private void HandtoGun()
         {
             //컨트롤러->총으로 모델링 교체
@@ -302,8 +308,9 @@ namespace OVRTouchSample
             this.gameObject.transform.Find("OculusTouchForQuest2").GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
             this.gameObject.transform.Find("gun_hand").gameObject.SetActive(false);
         }
-
-        private void DropCheck()
+        #endregion
+        #region isDrop
+        private void isDrop()
         {
             if(!isHandOnColider)
             {// 손이 이벤트 오브젝트와 충돌 안했을 경우
@@ -314,7 +321,7 @@ namespace OVRTouchSample
                         if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch) <= 0.1)
                         {
                             GameObject Gun = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Net_Gun"), this.transform.position, Quaternion.identity, 0);
-                            PV.RPC("DropGun", RpcTarget.All, Gun.GetPhotonView().ViewID);
+                            PV.RPC("DropGunInfoSet", RpcTarget.All, Gun.GetPhotonView().ViewID);
                         }
                     }
                     else if (side == "Right")
@@ -322,15 +329,16 @@ namespace OVRTouchSample
                         if (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch) <= 0.1)
                         {
                             GameObject Gun = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Net_Gun"), this.transform.position, Quaternion.identity, 0);
-                            PV.RPC("DropGun", RpcTarget.All, Gun.GetPhotonView().ViewID);
+                            PV.RPC("DropGunInfoSet", RpcTarget.All, Gun.GetPhotonView().ViewID);
                         }
                     }
                 }
             }
         }
-
+        #endregion
+        #region DropGunInfoSet
         [PunRPC]
-        private void DropGun(int ViewID)
+        private void DropGunInfoSet(int ViewID)
         {
             PhotonView PVN = PhotonView.Find(ViewID);
             GameObject Gun = PVN.gameObject;
@@ -343,7 +351,25 @@ namespace OVRTouchSample
                             //컨트롤러로 교체
             GuntoHand();
         }
+        #endregion
 
+        #region 죽을 경우 강제 Drop
+        private void Drop_Die()
+        {
+            this.gameObject.GetComponent<SphereCollider>().enabled = false;
+            if (this.gameObject.transform.Find("OculusTouchForQuest2").GetComponentInChildren<SkinnedMeshRenderer>().enabled == false)
+            {
+                //총을 들고있을 경우
+                this.gameObject.GetComponent<SphereCollider>().enabled = false;
+                //드랍 할 경우 손 위치에 총 모양 생성
+                GameObject Gun = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Net_Gun"), this.transform.position, Quaternion.identity, 0);
+                PV.RPC("DropGun", RpcTarget.All, Gun.GetPhotonView().ViewID);
+            }
+
+        }
+        #endregion
+
+        #region 총 정보 세팅과 가져오는 함수
         private void getGunInfo(GameObject gun)
         {
             //총에 정보에 접근 
@@ -357,6 +383,6 @@ namespace OVRTouchSample
             gun.GetComponent<Net_Revolver>().setFireState(this.FireState);
             gun.GetComponent<Net_Revolver>().setbullet(this.Bullet,false);
         }
-
+        #endregion
     }
 }
