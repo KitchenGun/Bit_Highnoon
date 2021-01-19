@@ -61,8 +61,11 @@ public class Net_PlayerHit : MonoBehaviourPunCallbacks
         }
         else
         {
-            PanelSetRed();
-            HitSFX("net_hit");
+            if (!isDeath)
+            {
+                PanelSetRed();
+                HitSFX("net_hit");
+            }
         }
     }
     #endregion

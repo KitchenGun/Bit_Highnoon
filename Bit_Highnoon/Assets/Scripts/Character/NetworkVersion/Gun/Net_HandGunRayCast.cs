@@ -220,10 +220,12 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
 
             if (HitObj.transform.gameObject.name == "Head")
             {
+                Debug.Log("머리");
                 isHeadShot = true;
             }
             else
             {
+                Debug.Log("몸통");
                 isHeadShot = false;
             }
             Debug.Log("isHeadShot" + isHeadShot);
