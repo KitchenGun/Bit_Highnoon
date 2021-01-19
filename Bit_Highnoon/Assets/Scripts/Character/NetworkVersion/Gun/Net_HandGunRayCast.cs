@@ -18,6 +18,8 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
     private int Bullet; 
     private bool ReloadState;
     private float ReloadStick;
+    //헤드샷판정
+    private bool isHeadShot;
     //총알 무한을 위한 씬넘버 획득용
     private GameObject GM;
     private int SceneIdx;
@@ -128,6 +130,13 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
                                 }
                                 else if (HitObj.transform.gameObject.layer == 20)
                                 {
+
+                                    if (HitObj.transform.gameObject.name == "Head")
+                                    {
+                                        isHeadShot = true;
+                                    }
+                                    isHeadShot = false;
+                                    PV.RPC("PlayerHit", RpcTarget.All, HitObj.transform.gameObject.GetPhotonView().ViewID);
                                     PV.RPC("BloodSpray_FX", RpcTarget.All, HitObj.point);
                                 }
                             }
@@ -139,7 +148,6 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
                     {
                         if (Fire())//총알 발사
                         {
-                            Debug.DrawRay(FirePos.transform.position, FirePos.transform.forward * 2000, Color.red, 0.3f);//개발 확인용 레이 
                             if (Physics.Raycast(FirePos.transform.position, FirePos.transform.forward, out HitObj, 2000))
                             {
                                 //오브젝트 태그로 식별
@@ -155,7 +163,6 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
                                 {
                                     ButtonHit(HitObj.transform.gameObject);
                                 }
-
                                 //오브젝트 레이어로 식별
                                 if (HitObj.transform.gameObject.layer == 8)
                                 {
@@ -172,9 +179,15 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
                                 }
                                 else if (HitObj.transform.gameObject.layer == 20)
                                 {
+
+                                    if (HitObj.transform.gameObject.name == "Head")
+                                    {
+                                        isHeadShot = true;
+                                    }
+                                    isHeadShot = false;
+                                    PV.RPC("PlayerHit", RpcTarget.All,HitObj.transform.gameObject.GetPhotonView().ViewID);
                                     PV.RPC("BloodSpray_FX", RpcTarget.All, HitObj.point);
                                 }
-
                             }
                         }
                     }
@@ -374,6 +387,24 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
     private void ButtonHit(GameObject button)
     {
         GameObject.Find("Canvas").GetComponent<MenuManager>().SendMessage("Hit", button);
+    }
+    #endregion
+
+    #region Player 피격 처리
+    [PunRPC]
+    private void PlayerHit(int ViewID)
+    {
+        PhotonView PVN = PhotonView.Find(ViewID);
+        GameObject Player = PVN.gameObject;
+        if (isHeadShot)
+        {
+            Player.transform.parent.GetChild(2).transform.gameObject.GetComponent<Net_PlayerHit>().SendMessage("Die");
+        }
+        else
+        {
+            Player.transform.parent.GetChild(2).transform.gameObject.GetComponent<Net_PlayerHit>().SendMessage("Hit");
+        }
+
     }
     #endregion
 

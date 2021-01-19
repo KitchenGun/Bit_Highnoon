@@ -11,13 +11,15 @@ public class Net_PlayerHit : MonoBehaviourPunCallbacks
     private  Image Panel;
     [SerializeField]
     private List<GameObject> Controllers;
-
+    //맞은 횟수
+    private int hitCount;
 
 
     void Start()
     {
         PV = this.gameObject.GetPhotonView();//this.gameObject.transform.parent.gameObject.GetPhotonView();
         Panel.color = new Vector4(0, 0, 0, 0);
+        hitCount = 0;
     }
 
     private void FixedUpdate()
@@ -43,7 +45,12 @@ public class Net_PlayerHit : MonoBehaviourPunCallbacks
     #region 피격
     private void Hit()
     {
+        hitCount++;
         PanelSetRed();
+        if(hitCount>=2)//맞은 횟수가 상수보다 클경우 사망처리
+        {
+            Die();
+        }
     }
     #endregion
 
@@ -51,9 +58,15 @@ public class Net_PlayerHit : MonoBehaviourPunCallbacks
     private void Die()
     {
         PanelSetRed();
-        foreach(GameObject controller in Controllers)
+        PV.RPC("SendDropGun", RpcTarget.All);
+    }
+    
+    [PunRPC]
+    private void SendDropGun()
+    {
+        foreach (GameObject controller in Controllers)
         {
-            controller.GetComponent<OVRTouchSample.Net_TouchController>().SendMessage("Drop");
+            controller.GetComponent<OVRTouchSample.Net_TouchController>().SendMessage("Drop_Die");
         }
     }
     #endregion
