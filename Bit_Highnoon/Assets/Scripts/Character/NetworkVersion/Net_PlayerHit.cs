@@ -14,6 +14,7 @@ public class Net_PlayerHit : MonoBehaviourPunCallbacks
     private List<GameObject> Controllers;
     //맞은 횟수
     private int hitCount;
+    private bool isDeath;
 
     #region Audio
     private AudioSource HitAudio;
@@ -27,6 +28,7 @@ public class Net_PlayerHit : MonoBehaviourPunCallbacks
         PV = this.gameObject.GetPhotonView();//this.gameObject.transform.parent.gameObject.GetPhotonView();
         Panel.color = new Vector4(0, 0, 0, 0);
         hitCount = 0;
+        isDeath = false;
     }
 
     private void FixedUpdate()
@@ -53,13 +55,13 @@ public class Net_PlayerHit : MonoBehaviourPunCallbacks
     private void Hit()
     {
         hitCount++;
-        PanelSetRed();
         if (hitCount>=2)//맞은 횟수가 상수보다 클경우 사망처리
         {
             Die();
         }
         else
         {
+            PanelSetRed();
             HitSFX("net_hit");
         }
     }
@@ -68,9 +70,13 @@ public class Net_PlayerHit : MonoBehaviourPunCallbacks
     #region 사망
     private void Die()
     {
-        PanelSetRed();
-        HitSFX("net_death");
-        PV.RPC("SendDropGun", RpcTarget.All);
+        if (!isDeath)
+        {
+            isDeath = true;
+            PanelSetRed();
+            HitSFX("net_death");
+            PV.RPC("SendDropGun", RpcTarget.All);
+        }
     }
     
     //죽을 경우 총을 바닥에 떨어 트림
