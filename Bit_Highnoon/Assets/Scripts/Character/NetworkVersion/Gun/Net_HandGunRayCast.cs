@@ -416,6 +416,7 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
             stream.SendNext(Bullet);
             stream.SendNext(FireState);
             stream.SendNext(ReloadState);
+            stream.SendNext(isHeadShot);
         }
         else
         {
@@ -423,6 +424,7 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
             this.Bullet = (int)stream.ReceiveNext();
             this.FireState = (bool)stream.ReceiveNext();
             this.ReloadState = (bool)stream.ReceiveNext();
+            this.isHeadShot = (bool)stream.ReceiveNext();
         }
     }
 }
