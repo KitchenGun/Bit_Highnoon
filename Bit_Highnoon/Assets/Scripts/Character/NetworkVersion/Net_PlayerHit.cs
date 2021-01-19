@@ -6,6 +6,7 @@ using Photon.Pun;
 
 public class Net_PlayerHit : MonoBehaviourPunCallbacks
 {
+    private GameManager GM;
     private PhotonView PV;
     [SerializeField]
     private  Image Panel;
@@ -14,9 +15,15 @@ public class Net_PlayerHit : MonoBehaviourPunCallbacks
     //맞은 횟수
     private int hitCount;
 
+    #region Audio
+    private AudioSource HitAudio;
+    #endregion
+
 
     void Start()
     {
+        HitAudio = this.gameObject.GetComponent<AudioSource>();
+        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         PV = this.gameObject.GetPhotonView();//this.gameObject.transform.parent.gameObject.GetPhotonView();
         Panel.color = new Vector4(0, 0, 0, 0);
         hitCount = 0;
@@ -47,9 +54,13 @@ public class Net_PlayerHit : MonoBehaviourPunCallbacks
     {
         hitCount++;
         PanelSetRed();
-        if(hitCount>=2)//맞은 횟수가 상수보다 클경우 사망처리
+        if (hitCount>=2)//맞은 횟수가 상수보다 클경우 사망처리
         {
             Die();
+        }
+        else
+        {
+            HitSFX("net_hit");
         }
     }
     #endregion
@@ -58,9 +69,11 @@ public class Net_PlayerHit : MonoBehaviourPunCallbacks
     private void Die()
     {
         PanelSetRed();
+        HitSFX("net_death");
         PV.RPC("SendDropGun", RpcTarget.All);
     }
     
+    //죽을 경우 총을 바닥에 떨어 트림
     [PunRPC]
     private void SendDropGun()
     {
@@ -71,4 +84,12 @@ public class Net_PlayerHit : MonoBehaviourPunCallbacks
     }
     #endregion
 
+
+    #region FX
+    private void HitSFX(string name)
+    {
+        HitAudio.clip = GM.GetComponent<GameManager>().LoadAudioClip(name);
+        HitAudio.Play();
+    }
+    #endregion
 }
