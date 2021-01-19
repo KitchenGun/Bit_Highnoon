@@ -12,6 +12,8 @@ public class MenuManager : MonoBehaviour
     {
         Instance = this;
     }
+
+    #region 버튼 클릭됬을때
     public void Hit(GameObject button)
     {
         Button btn = button.gameObject.GetComponent<Button>();
@@ -45,7 +47,9 @@ public class MenuManager : MonoBehaviour
             btn.onClick.Invoke();
         }
     }
+    #endregion
 
+    #region 메뉴 열기
     public void OpenMenu(string menuName)
     {
         for(int i=0; i<menus.Length; i++)
@@ -71,8 +75,12 @@ public class MenuManager : MonoBehaviour
         }
         menu.Open();
     }
+    #endregion
+
+    #region 메뉴 닫기
     public void CloseMenu(Menu menu)
     {
         menu.Close();
     }
+    #endregion 
 }

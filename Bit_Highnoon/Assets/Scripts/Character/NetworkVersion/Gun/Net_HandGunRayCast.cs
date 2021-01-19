@@ -386,7 +386,7 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
     #region 버튼 식별
     private void ButtonHit(GameObject button)
     {
-        button.GetComponent<ButtonClick>().SendMessage("Hit", button);
+        GameObject.Find("Canvas").GetComponent<MenuManager>().SendMessage("Hit", button);
     }
     #endregion
 
