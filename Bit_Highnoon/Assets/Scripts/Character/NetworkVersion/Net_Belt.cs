@@ -53,6 +53,7 @@ public class Net_Belt : MonoBehaviourPunCallbacks
                             if (Gun.tag == "Right")
                             {
                                 Gun.GetComponent<MeshRenderer>().enabled = true;
+                                Gun.GetComponent<Net_Revolver>().setbullet(6,true);
                                 RightGunSet = true;
                             }
                         }
@@ -64,6 +65,7 @@ public class Net_Belt : MonoBehaviourPunCallbacks
                             if (Gun.tag == "Left")
                             {
                                 Gun.GetComponent<MeshRenderer>().enabled = true;
+                                Gun.GetComponent<Net_Revolver>().setbullet(6, true);
                                 LeftGunSet = true;
                             }
                         }

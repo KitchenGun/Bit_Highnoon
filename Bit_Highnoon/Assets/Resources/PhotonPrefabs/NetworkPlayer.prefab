@@ -4744,7 +4744,7 @@ GameObject:
   - component: {fileID: 5939125032190566594}
   - component: {fileID: 6032773488193549195}
   - component: {fileID: 2868843767421676463}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BeltGunPos
   m_TagString: Right
   m_Icon: {fileID: 0}
@@ -15055,7 +15055,7 @@ GameObject:
   - component: {fileID: 669957676631657805}
   - component: {fileID: 4633711975090974538}
   - component: {fileID: 4562073600051653152}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BeltGunPos
   m_TagString: Left
   m_Icon: {fileID: 0}
