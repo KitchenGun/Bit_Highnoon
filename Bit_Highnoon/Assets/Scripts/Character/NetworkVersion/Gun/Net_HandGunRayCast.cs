@@ -102,43 +102,9 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
                             if (Physics.Raycast(FirePos.transform.position, FirePos.transform.forward, out HitObj, 2000))
                             {
                                 //오브젝트 태그로 식별
-                                if (HitObj.transform.gameObject.tag == "Bottle")
-                                {
-                                    BottleHit(HitObj.transform.gameObject);
-                                }
-                                else if (HitObj.transform.gameObject.tag == "Enemy")
-                                {
-                                    EnemyHit(HitObj.transform.gameObject);
-                                }
-                                else if (HitObj.transform.gameObject.tag == "Button")
-                                {
-                                    ButtonHit(HitObj.transform.gameObject);
-                                }
+                                ScanTag(HitObj.transform.gameObject.tag);
                                 //오브젝트 레이어로 식별
-                                if (HitObj.transform.gameObject.layer == 8)
-                                {
-                                    PV.RPC("BulletHole_Ground_FX", RpcTarget.All, HitObj.point);
-                                }
-                                else if (HitObj.transform.gameObject.layer == 9)
-                                {
-                                    PV.RPC("BulletHole_Metal_FX", RpcTarget.All, HitObj.point);
-
-                                }
-                                else if (HitObj.transform.gameObject.layer == 10)
-                                {
-                                    PV.RPC("BulletHole_Wood_FX", RpcTarget.All, HitObj.point);
-                                }
-                                else if (HitObj.transform.gameObject.layer == 20)
-                                {
-
-                                    if (HitObj.transform.gameObject.name == "Head")
-                                    {
-                                        isHeadShot = true;
-                                    }
-                                    isHeadShot = false;
-                                    PV.RPC("PlayerHit", RpcTarget.All, HitObj.transform.gameObject.GetPhotonView().ViewID);
-                                    PV.RPC("BloodSpray_FX", RpcTarget.All, HitObj.point);
-                                }
+                                ScanLayer(HitObj.transform.gameObject.layer);
                             }
                         }
                     }
@@ -151,43 +117,9 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
                             if (Physics.Raycast(FirePos.transform.position, FirePos.transform.forward, out HitObj, 2000))
                             {
                                 //오브젝트 태그로 식별
-                                if (HitObj.transform.gameObject.tag == "Bottle")
-                                {
-                                    BottleHit(HitObj.transform.gameObject);
-                                }
-                                else if (HitObj.transform.gameObject.tag == "Enemy")
-                                {
-                                    EnemyHit(HitObj.transform.gameObject);
-                                }
-                                else if (HitObj.transform.gameObject.tag == "Button")
-                                {
-                                    ButtonHit(HitObj.transform.gameObject);
-                                }
+                                ScanTag(HitObj.transform.gameObject.tag);
                                 //오브젝트 레이어로 식별
-                                if (HitObj.transform.gameObject.layer == 8)
-                                {
-                                    PV.RPC("BulletHole_Ground_FX", RpcTarget.All, HitObj.point);
-                                }
-                                else if (HitObj.transform.gameObject.layer == 9)
-                                {
-                                    PV.RPC("BulletHole_Metal_FX", RpcTarget.All, HitObj.point);
-
-                                }
-                                else if (HitObj.transform.gameObject.layer == 10)
-                                {
-                                    PV.RPC("BulletHole_Wood_FX", RpcTarget.All, HitObj.point);
-                                }
-                                else if (HitObj.transform.gameObject.layer == 20)
-                                {
-
-                                    if (HitObj.transform.gameObject.name == "Head")
-                                    {
-                                        isHeadShot = true;
-                                    }
-                                    isHeadShot = false;
-                                    PV.RPC("PlayerHit", RpcTarget.All,HitObj.transform.gameObject.GetPhotonView().ViewID);
-                                    PV.RPC("BloodSpray_FX", RpcTarget.All, HitObj.point);
-                                }
+                                ScanLayer(HitObj.transform.gameObject.layer);
                             }
                         }
                     }
@@ -236,6 +168,7 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
                         }
                         break;
                 }
+
             }
             #endregion
         }
@@ -246,6 +179,59 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
             #endregion
         }
     }
+    #region ScanTag
+    private void ScanTag(string tag)
+    {
+        //오브젝트 태그로 식별
+        if (tag == "Bottle")
+        {
+            BottleHit(HitObj.transform.gameObject);
+        }
+        else if (HitObj.transform.gameObject.tag == "Enemy")
+        {
+            EnemyHit(HitObj.transform.gameObject);
+        }
+        else if (HitObj.transform.gameObject.tag == "Button")
+        {
+            ButtonHit(HitObj.transform.gameObject);
+        }
+    }
+    #endregion
+
+    #region ScanLayer
+    private void ScanLayer(int layer)
+    {
+        //오브젝트 레이어로 식별
+        if (layer == 8)
+        {
+            PV.RPC("BulletHole_Ground_FX", RpcTarget.All, HitObj.point);
+        }
+        else if (layer == 9)
+        {
+            PV.RPC("BulletHole_Metal_FX", RpcTarget.All, HitObj.point);
+
+        }
+        else if (layer == 10)
+        {
+            PV.RPC("BulletHole_Wood_FX", RpcTarget.All, HitObj.point);
+        }
+        else if (layer == 20)
+        {
+
+            if (HitObj.transform.gameObject.name == "Head")
+            {
+                isHeadShot = true;
+            }
+            else
+            {
+                isHeadShot = false;
+            }
+            Debug.Log("isHeadShot" + isHeadShot);
+            PV.RPC("PlayerHit", RpcTarget.All, HitObj.transform.gameObject.GetPhotonView().ViewID);
+            PV.RPC("BloodSpray_FX", RpcTarget.All, HitObj.point);
+        }
+    }
+    #endregion
 
     #region FX
 
