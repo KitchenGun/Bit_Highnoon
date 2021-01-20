@@ -16637,6 +16637,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6285385827589272257}
   - component: {fileID: 6285385827584091107}
+  - component: {fileID: 6198990548021386608}
   m_Layer: 0
   m_Name: Hat
   m_TagString: Untagged
@@ -16744,6 +16745,28 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.2829251, y: 0.004690379, z: 0.022723854}
     m_Extent: {x: 0.1380279, y: 0.18941152, z: 0.27753025}
   m_DirtyAABB: 0
+--- !u!114 &6198990548021386608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6285385827589304033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51124a067c72a794dbb9362629a4b149, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 2100000, guid: a7a6e6f629aa30b45b724195a483a1d0, type: 2}
+  - {fileID: 2100000, guid: 45ddcfef40b744547ab28c94ad1e4223, type: 2}
+  - {fileID: 2100000, guid: 579f8425771f03f489bce2ad5ac3a0b3, type: 2}
+  - {fileID: 2100000, guid: b6cbfa95400f1e546ae6868f639828ce, type: 2}
+  - {fileID: 2100000, guid: 24519aca9109925458a5c9905562c5cc, type: 2}
+  - {fileID: 2100000, guid: 931c989541e28594da190cb9e6723907, type: 2}
+  - {fileID: 2100000, guid: 052dc1182903602418070091f573a405, type: 2}
+  - {fileID: 2100000, guid: 3d22233b4c0b7944db68dd6f158fd897, type: 2}
+  - {fileID: 2100000, guid: dc81d6291ef32994daceb1b1ee0d8845, type: 2}
 --- !u!1 &6285385827589304035
 GameObject:
   m_ObjectHideFlags: 0
