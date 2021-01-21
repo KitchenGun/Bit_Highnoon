@@ -79,6 +79,13 @@ public class Net_PlayerHit : MonoBehaviourPunCallbacks
             PanelSetRed();
             HitSFX("net_death");
             PV.RPC("SendDropGun", RpcTarget.All);
+
+            if(PV.IsMine)
+            {
+                GameObject gameui = GameObject.Find("GameUI").gameObject;
+                gameui.transform.position = gameObject.transform.parent.transform.position + new Vector3(0, 0, 2f);
+                gameui.transform.GetChild(2).gameObject.SetActive(true);
+            }
         }
     }
     
