@@ -81,7 +81,8 @@ public class Net_PlayerHit : MonoBehaviourPunCallbacks
             PV.RPC("SendDropGun", RpcTarget.All);
 
             PhotonView PVN = PhotonView.Find(ViewID);
-            if (PVN.IsMine == false)
+
+            if (PVN.IsMine != PV.IsMine)
             {
                 Lose();
                 GM.SendMessage("GameEnd", "netplay");
