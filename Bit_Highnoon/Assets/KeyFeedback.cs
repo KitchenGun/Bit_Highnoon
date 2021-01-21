@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class KeyFeedback : MonoBehaviour
 {
+    private SoundHandler soundHandler;
     public bool keyHit = false;
     public bool keyCanBeHitAgain = false;
 
@@ -11,6 +12,7 @@ public class KeyFeedback : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        soundHandler = GameObject.FindGameObjectWithTag("SoundHandler").GetComponent<SoundHandler>();
         originalYPosition = transform.position.y;
     }
 
@@ -19,13 +21,14 @@ public class KeyFeedback : MonoBehaviour
     {
         if (keyHit)
         {
+            soundHandler.PlayKeyClick();
             keyCanBeHitAgain = false;
             keyHit = false;
-            transform.position += new Vector3(0, 0.03f, 0);
+            transform.position += new Vector3(0, -0.03f, 0);
         }
         if(transform.position.y < originalYPosition)
         {
-            transform.position += new Vector3(0,0.05f,0);
+            transform.position += new Vector3(0,0.005f,0);
         }
         else
         {
