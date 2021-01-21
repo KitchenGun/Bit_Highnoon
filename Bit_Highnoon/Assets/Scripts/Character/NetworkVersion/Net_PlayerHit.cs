@@ -84,8 +84,13 @@ public class Net_PlayerHit : MonoBehaviourPunCallbacks
             {
                 this.gameObject.transform.parent.GetChild(5).GetChild(1).gameObject.SetActive(true);
             }
-
-            GameObject.Find("NetworkPlayer").transform.GetChild(2).GetComponent<PlayerHit>().SendMessage("Win");
+            else
+            {
+                if(GameObject.Find("NetworkPlayer")!=null)
+                {
+                    GameObject.Find("NetworkPlayer").transform.GetChild(2).GetComponent<PlayerHit>().SendMessage("Win");
+                }
+            }
         }
     }
     
