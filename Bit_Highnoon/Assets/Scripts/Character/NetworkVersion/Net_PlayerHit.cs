@@ -82,9 +82,14 @@ public class Net_PlayerHit : MonoBehaviourPunCallbacks
 
             if(PV.IsMine)
             {
-                GameObject gameui = GameObject.Find("GameUI").gameObject;
-                gameui.transform.position = gameObject.transform.parent.transform.position + new Vector3(0, 0, 2f);
-                gameui.transform.GetChild(2).gameObject.SetActive(true);
+                this.gameObject.transform.parent.GetChild(5).GetChild(1).gameObject.SetActive(true);
+            }
+            else
+            {
+                if(GameObject.Find("NetworkPlayer")!=null)
+                {
+                    GameObject.Find("NetworkPlayer").transform.GetChild(2).GetComponent<PlayerHit>().SendMessage("Win");
+                }
             }
         }
     }
@@ -96,6 +101,19 @@ public class Net_PlayerHit : MonoBehaviourPunCallbacks
         foreach (GameObject controller in Controllers)
         {
             controller.GetComponent<OVRTouchSample.Net_TouchController>().SendMessage("Drop_Die");
+        }
+    }
+    #endregion
+
+    #region Win
+    private void Win()
+    {
+        if (PV.IsMine)
+        {
+            if (!isDeath)
+            {
+                this.gameObject.transform.parent.GetChild(5).GetChild(2).gameObject.SetActive(true);
+            }
         }
     }
     #endregion
