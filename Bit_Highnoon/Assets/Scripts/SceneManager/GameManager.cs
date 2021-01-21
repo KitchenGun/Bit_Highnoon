@@ -107,10 +107,7 @@ public class GameManager : MonoBehaviour
             switch (bottle.name)
             {
                 case "Single":
-                    {
-                        ChangeToScene(2);
-                        break;
-                    }
+                    ChangeToScene(2); break;
                 case "Multi":
                     ChangeToScene(6); break;
                 case "Option":
@@ -141,16 +138,13 @@ public class GameManager : MonoBehaviour
 
     public void GameStart()
     {
-        AudioSource Audio = GetComponent<AudioSource>();
+        AudioPlay("BattleStart");
 
-        Audio.clip = LoadAudioClip("BattleStart");
-        Audio.loop = false;
-
-        Audio.Play();
-
-        //yield return new WaitForSeconds(1.5f);  //노래 시작후 플레이어가 공격할 수 있는 시간
-        if(GetSceneIndex() != 0)
+        int scene = GetSceneIndex();
+        if (scene == 3 || scene == 4 || scene == 5) //싱글 결투 scene
             PlayerStart();
+        else if (scene == 1)                        //네트워크 결투 scene
+            Net_PlayerStart();
     }
 
     private void PlayerStart()
@@ -158,17 +152,21 @@ public class GameManager : MonoBehaviour
         GameObject player = GameObject.Find("PlayerCtrl");
 
         player.transform.Find("Body").GetComponent<HoldFire>().SendMessage("OpenFire");
-    }    
+    }
+
+    private void Net_PlayerStart()
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        for (int i = 0; i < players.Length; i++)
+            players[i].transform.Find("Body").GetComponent<Net_HoldFire>().SendMessage("OpenFire");
+    }
 
     public IEnumerator GameEnd(string winner)
     {
-        AudioSource Audio = GetComponent<AudioSource>();
+        AudioPlay("BattleEnd");
 
-        Audio.clip = LoadAudioClip("BattleEnd");
-        Audio.loop = false;
-
-        Audio.Play();
-
+        #region 싱글 전적 관리
         if (winner.Equals("AI"))
         {
             //AI가 이겼을 때
@@ -209,15 +207,31 @@ public class GameManager : MonoBehaviour
                 leveldb.HardWinCount();
             }
         }
+        #endregion
 
-        if (GetSceneIndex() != 0)
+        int scene = GetSceneIndex();
+        if (scene == 3 || scene == 4 || scene == 5) //싱글 결투 scene
         {
             yield return new WaitForSeconds(7.5f);
 
             ChangeToScene(1);
         }
+        else if (scene == 1)                        //네트워크 결투 scene
+        {
+            //아직 뭐 없음
+        }
 
         yield return null;
+    }
+
+    private void AudioPlay(string filename)
+    {
+        AudioSource Audio = GetComponent<AudioSource>();
+
+        Audio.clip = LoadAudioClip(filename);
+        Audio.loop = false;
+
+        Audio.Play();
     }
     #endregion
 

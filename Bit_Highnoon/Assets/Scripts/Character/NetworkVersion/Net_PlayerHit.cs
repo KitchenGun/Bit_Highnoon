@@ -82,7 +82,10 @@ public class Net_PlayerHit : MonoBehaviourPunCallbacks
 
             PhotonView PVN = PhotonView.Find(ViewID);
             if (PVN.IsMine == false)
+            {
                 Lose();
+                GM.SendMessage("GameEnd", "netplay");
+            }
         }
     }
     
