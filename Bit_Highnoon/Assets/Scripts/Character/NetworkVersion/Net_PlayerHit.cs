@@ -52,12 +52,12 @@ public class Net_PlayerHit : MonoBehaviourPunCallbacks
     #endregion
 
     #region 피격
-    private void Hit()
+    private void Hit(int ViewID)
     {
         hitCount++;
         if (hitCount>=2)//맞은 횟수가 상수보다 클경우 사망처리
         {
-            Die();
+            Die(ViewID);
         }
         else
         {
@@ -71,7 +71,7 @@ public class Net_PlayerHit : MonoBehaviourPunCallbacks
     #endregion
 
     #region 사망
-    private void Die()
+    private void Die(int ViewID)
     {
         if (!isDeath)
         {
@@ -80,17 +80,9 @@ public class Net_PlayerHit : MonoBehaviourPunCallbacks
             HitSFX("net_death");
             PV.RPC("SendDropGun", RpcTarget.All);
 
-            if(PV.IsMine)
-            {
-                this.gameObject.transform.parent.GetChild(5).GetChild(1).gameObject.SetActive(true);
-            }
-            else
-            {
-                if(GameObject.Find("NetworkPlayer")!=null)
-                {
-                    GameObject.Find("NetworkPlayer").transform.GetChild(2).GetComponent<PlayerHit>().SendMessage("Win");
-                }
-            }
+            PhotonView PVN = PhotonView.Find(ViewID);
+            if (PVN.IsMine == false)
+                Lose();
         }
     }
     
@@ -105,7 +97,15 @@ public class Net_PlayerHit : MonoBehaviourPunCallbacks
     }
     #endregion
 
-    #region Win
+    #region Lose & Win
+    private void Lose()
+    {
+        if (PV.IsMine)
+        {
+            this.gameObject.transform.parent.GetChild(5).GetChild(1).gameObject.SetActive(true);
+        }
+    }
+
     private void Win()
     {
         if (PV.IsMine)
