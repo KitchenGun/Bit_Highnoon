@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     private GameObject normal;
     private GameObject hard;
 
+    private bool is_netgame_end;    //네트워크 게임이 끝났는지 체크
+
 
     #region Singleton 싱글톤
     private static GameManager instance;
@@ -138,12 +140,14 @@ public class GameManager : MonoBehaviour
 
     public void GameStart()
     {
+        is_netgame_end = false;
+
         AudioPlay("BattleStart");
 
         int scene = GetSceneIndex();
-        if (scene == 3 || scene == 4 || scene == 5) //싱글 결투 scene
+        if (scene == 3 || scene == 4 || scene == 5) //싱글 결투가 시작할 때
             PlayerStart();
-        else if (scene == 1)                        //네트워크 결투 scene
+        else if (scene == 1)                        //네트워크 결투가 시작할 때
             Net_PlayerStart();
     }
 
@@ -164,7 +168,8 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator GameEnd(string winner)
     {
-        AudioPlay("BattleEnd");
+        if(is_netgame_end == false)
+            AudioPlay("BattleEnd");
 
         #region 싱글 전적 관리
         if (winner.Equals("AI"))
@@ -210,14 +215,15 @@ public class GameManager : MonoBehaviour
         #endregion
 
         int scene = GetSceneIndex();
-        if (scene == 3 || scene == 4 || scene == 5) //싱글 결투 scene
+        if (scene == 3 || scene == 4 || scene == 5) //싱글 결투가 끝난후
         {
             yield return new WaitForSeconds(7.5f);
 
             ChangeToScene(1);
         }
-        else if (scene == 1)                        //네트워크 결투 scene
+        else if (scene == 1)                        //네트워크 결투가 끝난후
         {
+            is_netgame_end = true;
             //아직 뭐 없음
         }
 
