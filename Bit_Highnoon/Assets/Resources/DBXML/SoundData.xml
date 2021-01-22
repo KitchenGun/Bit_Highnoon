@@ -25,6 +25,7 @@
   </Gun>
   <Lobby>
     <casino>casino1,casino2</casino>
+    <piano>piano1,piano2,piano3,piano4,piano5,piano6,piano7,piano8</piano>
     <sleeze>sleeze1,sleeze2,sleeze3,sleeze4,sleeze5,sleeze6,sleeze7,sleeze8,sleeze9</sleeze>
   </Lobby>
   <NetWork>
