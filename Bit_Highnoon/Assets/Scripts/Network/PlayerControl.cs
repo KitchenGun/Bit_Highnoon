@@ -29,12 +29,6 @@ public class PlayerControl : MonoBehaviourPunCallbacks
     }
     void Update()
     {
-        if (!PV.IsMine)
-        {
-            Destroy(ovrCamRig);
-        }
-        else
-        {
             if(leftEye.tag != "MainCamera")
             {
                 leftEye.tag = "MainCamera";
@@ -45,11 +39,11 @@ public class PlayerControl : MonoBehaviourPunCallbacks
                 rightEye.tag = "MainCamera";
                 rightEye.enabled = true;
             }
-            //leftHand.localRotation = InputTracking.GetLocalRotation(Node.LeftHand);
-            //rightHand.localRotation = InputTracking.GetLocalRotation(Node.RightHand);
-            //
-            //leftHand.localPosition = InputTracking.GetLocalPosition(Node.LeftHand);
-            //rightHand.localPosition = InputTracking.GetLocalPosition(Node.RightHand);
+            leftHand.localRotation = InputTracking.GetLocalRotation(Node.LeftHand);
+            rightHand.localRotation = InputTracking.GetLocalRotation(Node.RightHand);
+            
+            leftHand.localPosition = InputTracking.GetLocalPosition(Node.LeftHand);
+            rightHand.localPosition = InputTracking.GetLocalPosition(Node.RightHand);
 
             Vector2 primaryAxis = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
 
@@ -78,7 +72,6 @@ public class PlayerControl : MonoBehaviourPunCallbacks
             euler.y += secondaryAxis.x;
             transform.rotation = Quaternion.Euler(euler);
             transform.localRotation = Quaternion.Euler(euler);
-        }
     }
     void MapPosition(Transform target,XRNode node)
     {

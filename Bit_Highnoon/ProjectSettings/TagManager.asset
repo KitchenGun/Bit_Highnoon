@@ -11,6 +11,8 @@ TagManager:
   - Enemy
   - Bullet
   - Button
+  - SoundHandler
+  - PlayerTextOutput
   layers:
   - Default
   - TransparentFX
