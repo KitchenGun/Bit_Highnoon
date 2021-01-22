@@ -9,6 +9,10 @@ public class Belt : MonoBehaviour
     private bool GunRefill;
     private GameManager GM;
 
+    [SerializeField]
+    private GameObject KeyBoard;
+    private bool isUseKeyboard;
+
     #region 밸트에 총있는지 확인용 변수
     public bool RightGunSet { get;  set; }
     public bool LeftGunSet{ get;  set; }
@@ -22,6 +26,7 @@ public class Belt : MonoBehaviour
         LeftGunSet = true;
 
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
+        #region 총을 다시 소환 할 수 있는 씬 인지 확인용
         if (GM.GetSceneIndex() == 1 || GM.GetSceneIndex() == 2 || GM.GetSceneIndex() == 6)
         {
             GunRefill = true;
@@ -30,6 +35,19 @@ public class Belt : MonoBehaviour
         {
             GunRefill = false;
         }
+        #endregion
+
+        #region 키보드 사용가능 확인용
+        if (GM.GetSceneIndex() == 8)
+        {
+            isUseKeyboard = true;
+        }
+        else
+        {
+            isUseKeyboard = false;
+            SetActiveKeyboard(false);//키보드 비활성화
+        }
+        #endregion
     }
 
     private void Update()
@@ -133,6 +151,15 @@ public class Belt : MonoBehaviour
         return false;
     }
     #endregion
+
+    #region 키보드 비&활성화
+    public void SetActiveKeyboard(bool set)
+     {
+        KeyBoard.SetActive(set);
+     }
+    #endregion
 }
+
+
 
 
