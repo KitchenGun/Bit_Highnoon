@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour
                 case "Single":
                     ChangeToScene(2); break;
                 case "Multi":
-                    ChangeToScene(6); break;
+                    ChangeToScene(8); break;
                 case "Option":
                     ChangeToScene(10); break;
                 case "Exit":
@@ -414,6 +414,38 @@ public class GameManager : MonoBehaviour
         }
 
         return -1;
+    }
+    #endregion
+
+    #region 회원가입 & 로그인 병 처리
+    public void IdBottleHit(GameObject bottle)
+    {
+        switch (bottle.name)
+        {
+            case "Login":
+                {
+                    if (GameObject.Find("Picket").transform.GetChild(1).gameObject.activeSelf == true)
+                    {
+                        GameObject.Find("Picket").transform.GetChild(1).gameObject.SetActive(false);
+                    }
+                    GameObject.Find("Picket").transform.GetChild(0).gameObject.SetActive(true);
+                    bottle.SetActive(true);
+                    break;
+                }
+            case "Account":
+                {
+                    if (GameObject.Find("Picket").transform.GetChild(0).gameObject.activeSelf == true)
+                    {
+                        GameObject.Find("Picket").transform.GetChild(0).gameObject.SetActive(false);
+                    }
+                    GameObject.Find("Picket").transform.GetChild(1).gameObject.SetActive(true);
+                    bottle.SetActive(true);
+                    break;
+                }
+            case "Back":
+                ChangeToScene(1); break;
+
+        }
     }
     #endregion
 }
