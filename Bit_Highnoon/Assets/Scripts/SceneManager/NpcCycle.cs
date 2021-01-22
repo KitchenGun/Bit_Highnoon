@@ -83,4 +83,16 @@ public class NpcCycle : MonoBehaviour
             }
         }
     }
+
+    #region 이벤트 오류 방지
+    private void IdleAudio()
+    {
+
+    }
+
+    private void GameStart()
+    {
+
+    }
+    #endregion
 }
