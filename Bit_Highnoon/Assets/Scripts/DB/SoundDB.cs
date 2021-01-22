@@ -113,7 +113,10 @@ public class SoundDB : MonoBehaviour
                 folder1.AddRange(("AI,Gun,Bgm").Split(','));
                 folder2.AddRange(("Hard,EnemyFire,Battle").Split(','));
                 break;
-            case 6: break;
+            case 6:
+                folder1.AddRange(("Lobby,Lobby").Split(','));
+                folder2.AddRange(("casino,sleeze").Split(','));
+                break;
             case 7:
                 folder1.AddRange(("Bgm").Split(','));
                 folder2.AddRange(("Battle").Split(',')); 
