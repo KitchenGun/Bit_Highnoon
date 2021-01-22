@@ -11,8 +11,11 @@ public class GameManager : MonoBehaviour
     private GameObject normal;
     private GameObject hard;
 
+    #region 네트워크 GameEnd 체크
     private bool is_netgame_end;    //네트워크 게임이 끝났는지 체크
 
+    public bool Is_netgame_end { get { return is_netgame_end; } }
+    #endregion
 
     #region Singleton 싱글톤
     private static GameManager instance;
