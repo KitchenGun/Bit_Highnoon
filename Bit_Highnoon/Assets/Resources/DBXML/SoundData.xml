@@ -23,6 +23,10 @@
     <GunFire>fire1,fire2,fire3</GunFire>
     <Reload>empty,reload</Reload>
   </Gun>
+  <Lobby>
+    <casino>casino1,casino2</casino>
+    <sleeze>sleeze1,sleeze2,sleeze3,sleeze4,sleeze5,sleeze6,sleeze7,sleeze8,sleeze9</sleeze>
+  </Lobby>
   <NetWork>
     <Dead>net_death1,net_death2,net_death3,net_death4,net_death5,net_death6,net_death7,net_death8,net_death9</Dead>
     <Hit>net_hit1,net_hit2,net_hit3,net_hit4,net_hit5,net_hit6,net_hit7,net_hit8,net_hit9,net_hit10,net_hit11,net_hit12,net_hit13,net_hit14</Hit>
