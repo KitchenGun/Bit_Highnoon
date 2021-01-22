@@ -18,13 +18,18 @@ public class BottleScript : MonoBehaviour
         for(int i = 0; i < t_rigids.Length; i++)
         {
             t_rigids[i].AddExplosionForce(m_force, transform.position + m_offset, 10f);
-            gameObject.SetActive(false);
-            Invoke("ChangeScene", 1);
         }
+        gameObject.SetActive(false);
+        Invoke("ChangeScene", 1);
     }
 
     public void ChangeScene()
     {
-        GameManager.Instance.MoveScene(this.gameObject);
+        if (SceneManager.GetActiveScene().buildIndex == 8)
+            GameManager.Instance.IdBottleHit(this.gameObject);
+        else 
+            GameManager.Instance.MoveScene(this.gameObject);
+
+
     }
 }
