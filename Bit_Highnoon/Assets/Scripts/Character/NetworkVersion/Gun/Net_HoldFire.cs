@@ -30,7 +30,7 @@ public class Net_HoldFire : MonoBehaviourPunCallbacks
     #region 씬에 따른 충돌체 상태 초기화
     private void SceneCheck()
     {
-        if(SceneNum==1)
+        if(SceneNum==7)
         {
             HoldGunFire();
         }
@@ -44,7 +44,6 @@ public class Net_HoldFire : MonoBehaviourPunCallbacks
     #region 사격 불&가능하게 하는 함수
     private void OpenFire()
     {
-        Debug.Log("OpenFire");
         foreach (GameObject holsterGun in Holster)
         {
             holsterGun.GetComponent<SphereCollider>().enabled = true;
