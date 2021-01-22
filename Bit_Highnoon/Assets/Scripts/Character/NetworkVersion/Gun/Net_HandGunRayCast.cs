@@ -18,7 +18,6 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
     private int Bullet; 
     private bool ReloadState;
     private float ReloadStick;
-    //private bool isFirstBody;   // Body가 처음 맞았는지 판정
     //총알 무한을 위한 씬넘버 획득용
     private GameObject GM;
     private int SceneIdx;
@@ -377,25 +376,11 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
         {
             Debug.Log("머리");
             Player.transform.parent.GetChild(2).transform.gameObject.GetComponent<Net_PlayerHit>().SendMessage("Die", PV.ViewID);
-            //Win(PVN);
         }
         else
         {
             Debug.Log("몸통");
             Player.transform.parent.GetChild(2).transform.gameObject.GetComponent<Net_PlayerHit>().SendMessage("Hit", PV.ViewID);
-
-            //if (isFirstBody == false)            
-            //    Win(PVN);
-            //
-            //isFirstBody = false;
-        }
-    }
-
-    private void Win(PhotonView PVN)
-    {
-        if (PVN.IsMine == false)
-        {
-            this.gameObject.transform.parent.parent.GetChild(2).GetComponent<Net_PlayerHit>().SendMessage("Win");
         }
     }
     #endregion
