@@ -94,8 +94,8 @@ public class SoundDB : MonoBehaviour
                 folder2.AddRange(("Battle").Split(','));
                 break;
             case 1:
-                folder1.AddRange(("Bgm,Bgm").Split(','));
-                folder2.AddRange(("WindSound,Battle").Split(','));
+                folder1.AddRange(("Bgm").Split(','));
+                folder2.AddRange(("WindSound").Split(','));
                 break;
             case 2:
                 folder1.AddRange(("Bgm").Split(','));
@@ -114,6 +114,10 @@ public class SoundDB : MonoBehaviour
                 folder2.AddRange(("Hard,EnemyFire,Battle").Split(','));
                 break;
             case 6: break;
+            case 7:
+                folder1.AddRange(("Bgm").Split(','));
+                folder2.AddRange(("Battle").Split(',')); 
+                break;
         }
 
         if(folder1 != null && folder1.Count == folder2.Count)
