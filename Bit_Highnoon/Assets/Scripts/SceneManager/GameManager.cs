@@ -226,8 +226,15 @@ public class GameManager : MonoBehaviour
         }
         else if (scene == 7)                        //네트워크 결투가 끝난후
         {
+            if (is_netgame_end == false)
+            {
+                GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+                for (int i = 0; i < players.Length; i++)
+                    players[i].transform.Find("Body").GetComponent<Net_PlayerHit>().SendMessage("GameEnd");
+            }
+
             is_netgame_end = true;
-            //아직 뭐 없음
         }
 
         yield return null;

@@ -111,15 +111,20 @@ public class Net_PlayerHit : MonoBehaviourPunCallbacks
         }
     }
 
-    private void Win()
+    private void GameEnd()
     {
         if (PV.IsMine)
         {
             if (!isDeath)
             {
-                this.gameObject.transform.parent.GetChild(5).GetChild(2).gameObject.SetActive(true);
+                Win();
             }
         }
+    }
+
+    private void Win()
+    {
+       this.gameObject.transform.parent.GetChild(5).GetChild(2).gameObject.SetActive(true);            
     }
     #endregion
 
