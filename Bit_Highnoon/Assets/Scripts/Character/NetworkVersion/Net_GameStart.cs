@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class Net_GameStart : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private bool istart = false;
+
+    private void Update()
     {
-        while(true)
+        if (istart == false)
         {
             GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
             if (players.Length >= 2)
-                break;
+            {
+                StartCoroutine(GameStart());
+                istart = true;
+            }
         }
-
-        StartCoroutine(GameStart());
     }
 
     private IEnumerator GameStart()
