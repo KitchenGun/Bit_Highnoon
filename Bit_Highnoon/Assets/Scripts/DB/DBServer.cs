@@ -1,49 +1,190 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using UnityEngine;
 
 public class DBServer : MonoBehaviour
 {
-    TcpListener Server;
-    TcpClient Client;
-
-    string serverIP = "127.0.0.1";
-    int port = 9000;
-    byte[] recevBuffer;
+    private Socket client = null;
 
     // Start is called before the first frame update
     void Start()
     {
-        DBSend();
+        
     }
 
-    public void DBReceive()
+    public bool StartClient(string ip, int port)
     {
-        Client = new TcpClient(serverIP, port);
-        NetworkStream stream;
-        stream = Client.GetStream();
+        try
+        {
+            CreateSocket(ip, port);
 
-        recevBuffer = new byte[14]; // "Do you hear me" 길이 = 14
-        stream.Read(recevBuffer, 0, recevBuffer.Length); // stream에 있던 바이트배열 내려서 새로 선언한 바이트배열에 넣기
-        string msg = Encoding.UTF8.GetString(recevBuffer, 0, recevBuffer.Length); // byte[] to string
-        Debug.Log(msg);
+            //수신 스레드 생성
+            Thread thread = new Thread(new ParameterizedThreadStart(RecvThread));
+            thread.Start(client);
+
+            return true;
+        }
+        catch (Exception)
+        {
+            return false;
+        }
     }
 
-    public void DBSend()
+    #region 스레드 관련
+
+    private void CreateSocket(string ip, int port)
     {
-        Client = new TcpClient(serverIP, port);
-        NetworkStream stream;
-        stream = Client.GetStream();
+        client = new Socket(AddressFamily.InterNetwork,
+                                      SocketType.Stream, ProtocolType.Tcp);
 
-        string msg = "1"; // test Text
-        int byteCount = Encoding.UTF8.GetByteCount(msg); // msg 바이트크기
-
-        byte[] sendBuffer = new byte[byteCount];
-        sendBuffer = Encoding.UTF8.GetBytes(msg); // 바이트배열에 msg담기
-        stream.Write(sendBuffer, 0, sendBuffer.Length); // stream에 바이트배열 실어보내기
+        IPEndPoint ipep = new IPEndPoint(IPAddress.Parse(ip), port);
+        client.Connect(ipep);
     }
 
-    
+    private void RecvThread(object obj)
+    {
+        Socket clientSocket = (Socket)obj;
+        while (true)
+        {
+            byte[] recvbyte = null;
+            if (ReceiveData(clientSocket, ref recvbyte) == false)
+                break;
+
+            RecvData(recvbyte);
+        }
+    }
+
+    #endregion
+
+    #region 송수신
+
+    //수신
+    private bool ReceiveData(Socket client, ref byte[] data)
+    {
+        try
+        {
+            int total = 0;
+            int size = 0;
+            int left_data = 0;
+            int recv_data = 0;
+
+            // 수신할 데이터 크기 알아내기 
+            byte[] data_size = new byte[4];
+            recv_data = client.Receive(data_size, 0, 4, SocketFlags.None);
+            size = BitConverter.ToInt32(data_size, 0);
+            left_data = size;
+
+            data = new byte[size];
+
+            // 실제 데이터 수신
+            while (total < size)
+            {
+                recv_data = client.Receive(data, total, left_data, 0);
+                if (recv_data == 0) break;
+                total += recv_data;
+                left_data -= recv_data;
+            }
+            return true;
+        }
+        catch (Exception)
+        {
+            return false;
+        }
+    }
+  
+
+    //전송
+    private bool SendData(Socket client, byte[] data)
+    {
+        try
+        {
+            int total = 0;
+            int size = data.Length;
+            int left_data = size;
+            int send_data = 0;
+
+            // 전송할 데이터의 크기 전달
+            byte[] data_size = new byte[4];
+            data_size = BitConverter.GetBytes(size);
+            send_data = client.Send(data_size);
+
+            // 실제 데이터 전송
+            while (total < size)
+            {
+                send_data = client.Send(data, total, left_data, SocketFlags.None);
+                total += send_data;
+                left_data -= send_data;
+            }
+            return true;
+        }
+        catch (Exception)
+        {
+            return false;
+        }
+    }
+
+    #endregion
+
+    #region 송신정보
+
+    //송신
+    public bool SendData(string buf)
+    {
+        byte[] data = new byte[1024];
+        data = Encoding.Default.GetBytes(buf);
+        if (SendData(client, data) == false)
+            return false;
+        return true;
+    }
+
+    //회원가입
+    public void SendInsertMember(string id, string pw)
+    {
+        //전송
+        string packet = InsertMember(id, pw);
+        SendData(packet);
+    }
+    public static string InsertMember(string id, string pw)
+    {
+        string msg = null;
+        msg += "C_InsertUser\a";    // 회원 가입 요청 메시지
+        msg += id.Trim() + "#";
+        msg += pw.Trim();
+        return msg;
+    }
+
+    #endregion
+
+    #region 수신정보
+
+    public void RecvData(byte[] data)
+    {
+        string msg = Encoding.Default.GetString(data);
+
+        string[] filter = msg.Split('\a');
+        if (filter[0].Equals("S_InsertUser") == true)
+        {
+            //Ack_InsertMember(filter[1]);
+        }
+        else if (filter[0].Equals("ACK_LOGINMEMBER") == true)
+        {
+            //Ack_LoginMember(filter[1]);
+        }
+        else if (filter[0].Equals("ACK_LOGOUTMEMBER") == true)
+        {
+            //Ack_LogOutMember(filter[1]);
+        }
+        else if (filter[0].Equals("PACK_SHORTMESSAGE") == true)
+        {
+            //Ack_ShortMessage(filter[1]);
+        }
+    }
+
+    #endregion
+
 }
