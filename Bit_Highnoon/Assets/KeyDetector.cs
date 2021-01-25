@@ -10,7 +10,7 @@ public class KeyDetector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerTextOutput = GameObject.FindGameObjectWithTag("PlayerTextOutput").GetComponentInChildren<TextMeshPro>();
+        //playerTextOutput = GameObject.FindGameObjectWithTag("PlayerTextOutput").GetComponentInChildren<TextMeshPro>();
     }
 
     private void OnTriggerEnter(Collider other)

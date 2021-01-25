@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Bit_Highnoon/Assets/Main Camera Profile.asset.meta
 guid: a2c5621595413ca4a81d437f1d534aff
+=======
+guid: a02583943ca9a3d479c316e1aed0dd13
+>>>>>>> NetworkCharacter:Bit_Highnoon/Assets/Resources/OculusPlatformSettings.asset.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 0
