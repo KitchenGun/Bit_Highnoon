@@ -13904,6 +13904,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameUI
       objectReference: {fileID: 0}
+    - target: {fileID: 8860775115293085267, guid: 16481e47d15460544968972513954df6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8860775115293085292, guid: 16481e47d15460544968972513954df6, type: 3}
       propertyPath: m_RootOrder
       value: 3

@@ -25,7 +25,7 @@ public class BottleScript : MonoBehaviour
 
     public void ChangeScene()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 8)
+        if (SceneManager.GetActiveScene().buildIndex == 6)
             GameManager.Instance.IdBottleHit(this.gameObject);
         else 
             GameManager.Instance.MoveScene(this.gameObject);
