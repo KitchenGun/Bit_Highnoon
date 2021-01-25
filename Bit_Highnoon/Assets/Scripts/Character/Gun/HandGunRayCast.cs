@@ -49,7 +49,7 @@ public class HandGunRayCast : MonoBehaviour
     private GameObject BloodDecal;
     #endregion
     #region 키보드
-    private TextMeshPro selectTextBox;
+    private TMP_InputField selectTextBox;
     #endregion
 
     void Start()
@@ -186,7 +186,7 @@ public class HandGunRayCast : MonoBehaviour
         }
         else if (HitObj.transform.gameObject.tag == "TextBox")
         {
-            HitObj.transform.gameObject.GetComponent<TextMeshPro>().text = selectTextBox.text;
+            selectTextBox = HitObj.transform.gameObject.GetComponent<TMP_InputField>();
             this.gameObject.transform.parent.parent.parent.parent.parent.GetChild(3).gameObject.GetComponent<Belt>().SetActiveKeyboard(true);
         }
         else if (HitObj.transform.gameObject.tag == "Button")
