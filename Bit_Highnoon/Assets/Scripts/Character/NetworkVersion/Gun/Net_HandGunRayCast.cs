@@ -294,7 +294,7 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
         {
             photonView.RPC("Gun_Fire_FX", RpcTarget.All);
             //총알 감소 격발 상태 
-            if (SceneIdx == 0 || SceneIdx == 2|| SceneIdx ==6 )//메뉴 씬이 아닐 경우
+            if (SceneIdx == 7)//메뉴 씬이 아닐 경우
             {
 
             }
