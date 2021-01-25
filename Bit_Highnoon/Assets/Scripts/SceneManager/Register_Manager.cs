@@ -36,12 +36,18 @@ public class Register_Manager : MonoBehaviour
     public void Login()
     {
         //DB에서 ID & PW 확인 후 가능한지 확인
+        bool login = GameManager.Instance.Login(Login_ID_InputField.text);
 
-        //가능한 경우 로비로 이동
-        GameManager.Instance.ChangeToScene(6);
-
-        //로그인 실패한 경우
-        GameObject.Find("Picket").transform.GetChild(1).GetChild(0).GetChild(2).gameObject.GetComponent<Text>().text = "Invalid information entered";
+        if (login == true)
+        {
+            //가능한 경우 로비로 이동
+            GameManager.Instance.ChangeToScene(7);
+        }
+        else if (login == false)
+        {
+            //로그인 실패한 경우
+            GameObject.Find("Picket").transform.GetChild(1).GetChild(0).GetChild(2).gameObject.GetComponent<Text>().text = "Invalid information entered";
+        }
     }
     
 }
