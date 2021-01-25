@@ -5,7 +5,9 @@ using Photon.Pun;
 
 public class Net_Ready : MonoBehaviour
 {
-    private bool isready;
+    private bool isready;   //준비되었는지 확인
+
+    private bool isload;    //준비하고 기다리는지 확인
 
     private PhotonView PV;
 
@@ -13,7 +15,7 @@ public class Net_Ready : MonoBehaviour
 
     void Start()
     {
-        isready = false;
+        isready = isload = false;
 
         PV = this.gameObject.GetPhotonView();
 
@@ -32,6 +34,8 @@ public class Net_Ready : MonoBehaviour
                 this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
 
                 PV.RPC("ReadyOk", RpcTarget.AllBuffered);
+
+                //this.gameObject.transform.parent.GetChild(5).gameObject.SetActive(true);
             }
         }
     }
@@ -46,9 +50,24 @@ public class Net_Ready : MonoBehaviour
     {
         if (PV.IsMine)
         {
+            if (isload == true)
+                this.gameObject.transform.parent.GetChild(5).gameObject.SetActive(false);
+
             this.gameObject.transform.parent.GetChild(4).gameObject.SetActive(true);
 
             Destroy(this.gameObject.transform.parent.GetChild(4).gameObject, 3f);
+        }
+    }
+
+    private void LoadWait()
+    {
+        if (PV.IsMine)
+        {
+            if (isready == true)
+            {
+                this.gameObject.transform.parent.GetChild(5).gameObject.SetActive(true);
+                isload = true;
+            }
         }
     }
 }
