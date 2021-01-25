@@ -4,7 +4,7 @@
     <PID>1</PID>
     <Mode>normal</Mode>
     <EasyWin>1</EasyWin>
-    <EasyLose>5</EasyLose>
+    <EasyLose>8</EasyLose>
     <NormalWin>0</NormalWin>
     <NormalLose>0</NormalLose>
     <HardWin>0</HardWin>

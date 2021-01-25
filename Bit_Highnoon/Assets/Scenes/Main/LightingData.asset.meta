@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Bit_Highnoon/Assets/Scenes/Main/LightingData.asset.meta
 guid: 5ad991571b598ea40b9f6ad91d4d9077
+=======
+guid: a02583943ca9a3d479c316e1aed0dd13
+>>>>>>> NetworkCharacter:Bit_Highnoon/Assets/Resources/OculusPlatformSettings.asset.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 0

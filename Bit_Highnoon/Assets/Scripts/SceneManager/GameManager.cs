@@ -166,10 +166,7 @@ public class GameManager : MonoBehaviour
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
         foreach (GameObject player in players)
-        {
             player.transform.Find("Body").GetComponent<Net_HoldFire>().SendMessage("OpenFire");
-            player.transform.GetChild(5).GetChild(4).gameObject.SetActive(false);
-        }
     }
 
     public IEnumerator GameEnd(string winner)

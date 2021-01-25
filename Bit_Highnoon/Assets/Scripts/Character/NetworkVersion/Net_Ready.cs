@@ -23,5 +23,7 @@ public class Net_Ready : MonoBehaviour
     private void Guide()
     {
         this.gameObject.transform.parent.GetChild(4).gameObject.SetActive(true);
+
+        Destroy(this.gameObject.transform.parent.GetChild(4).gameObject, 3f);
     }
 }
