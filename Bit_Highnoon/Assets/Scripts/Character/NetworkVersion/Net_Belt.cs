@@ -26,7 +26,7 @@ public class Net_Belt : MonoBehaviourPunCallbacks
         LeftGunSet = true;
 
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
-        if (GM.GetSceneIndex() == 1 || GM.GetSceneIndex() == 2 || GM.GetSceneIndex() == 6)
+        if (GM.GetSceneIndex() == 7)
         {
             GunRefill = true;
         }
