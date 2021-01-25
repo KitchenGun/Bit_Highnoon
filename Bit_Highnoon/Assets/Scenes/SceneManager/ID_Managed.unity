@@ -16746,7 +16746,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3366610077945360096, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3366610077945360110, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
       propertyPath: m_Name
@@ -28097,6 +28097,7 @@ GameObject:
   - component: {fileID: 1196398213}
   - component: {fileID: 1196398212}
   - component: {fileID: 1196398211}
+  - component: {fileID: 1196398214}
   m_Layer: 5
   m_Name: Login_PW_InputField (TMP)
   m_TagString: TextBox
@@ -28259,6 +28260,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1196398209}
   m_CullTransparentMesh: 0
+--- !u!65 &1196398214
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196398209}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 600, y: 80, z: 0.05}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1201276192 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 4f7e7e4c72989e94da4e7c2c762d8b66, type: 3}
@@ -30075,6 +30089,7 @@ GameObject:
   - component: {fileID: 1276880797}
   - component: {fileID: 1276880796}
   - component: {fileID: 1276880795}
+  - component: {fileID: 1276880798}
   m_Layer: 5
   m_Name: Account_ID_InputField (TMP)
   m_TagString: TextBox
@@ -30237,6 +30252,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1276880793}
   m_CullTransparentMesh: 0
+--- !u!65 &1276880798
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276880793}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 600, y: 80, z: 0.05}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1277274104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40566,6 +40594,7 @@ GameObject:
   - component: {fileID: 1810534746}
   - component: {fileID: 1810534745}
   - component: {fileID: 1810534744}
+  - component: {fileID: 1810534747}
   m_Layer: 5
   m_Name: Account_PW_InputField (TMP)
   m_TagString: TextBox
@@ -40728,6 +40757,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1810534742}
   m_CullTransparentMesh: 0
+--- !u!65 &1810534747
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810534742}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 600, y: 80, z: 0.05}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1811741133 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 6aa7250de2ed4ff4d8328e5def8c4950, type: 3}
@@ -43495,6 +43537,7 @@ GameObject:
   - component: {fileID: 1951464178}
   - component: {fileID: 1951464177}
   - component: {fileID: 1951464176}
+  - component: {fileID: 1951464179}
   m_Layer: 5
   m_Name: Login_ID_InputField (TMP)
   m_TagString: TextBox
@@ -43657,6 +43700,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1951464174}
   m_CullTransparentMesh: 0
+--- !u!65 &1951464179
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951464174}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 600, y: 80, z: 0.05}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1960737976
 PrefabInstance:
   m_ObjectHideFlags: 0

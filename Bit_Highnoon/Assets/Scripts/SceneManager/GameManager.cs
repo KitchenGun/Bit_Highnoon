@@ -449,10 +449,4 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    #region 텍스트박스 선택 시 키보드 시각화
-    public void OpenKeyboard()
-    {
-        GameObject.Find("PlayerCtrl").transform.GetChild(0).gameObject.SetActive(true);
-    }
-    #endregion
 }
