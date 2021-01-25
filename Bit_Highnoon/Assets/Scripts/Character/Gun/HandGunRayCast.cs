@@ -367,8 +367,10 @@ public class HandGunRayCast : MonoBehaviour
     #region 버튼 식별
     private void ButtonHit(GameObject button)
     {
-            GameObject.Find("Picket").transform.GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("Hit", button);
-            GameObject.Find("Picket").transform.GetChild(1).gameObject.GetComponent<Register_Manager>().SendMessage("Hit", button);
+        if(button.name == "Login")
+            GameObject.Find("Picket").transform.GetChild(0).GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("Hit", button);
+        else if(button.name == "Account")
+            GameObject.Find("Picket").transform.GetChild(1).GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("Hit", button);
     }
     #endregion
 }

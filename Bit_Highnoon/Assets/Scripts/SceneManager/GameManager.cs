@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     private GameObject normal;
     private GameObject hard;
     private bool login = false;
-    private string id = "sex";
+    private string id = "SEX";
 
     #region 네트워크 GameEnd 체크
     private bool is_netgame_end;    //네트워크 게임이 끝났는지 체크
