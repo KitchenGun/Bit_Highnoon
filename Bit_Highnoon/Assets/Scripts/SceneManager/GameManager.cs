@@ -150,7 +150,7 @@ public class GameManager : MonoBehaviour
         int scene = GetSceneIndex();
         if (scene == 3 || scene == 4 || scene == 5) //싱글 결투가 시작할 때
             PlayerStart();
-        else if (scene == 7)                        //네트워크 결투가 시작할 때
+        else if (scene == 8)                        //네트워크 결투가 시작할 때
             Net_PlayerStart();
     }
 
@@ -224,7 +224,7 @@ public class GameManager : MonoBehaviour
 
             ChangeToScene(1);
         }
-        else if (scene == 7)                        //네트워크 결투가 끝난후
+        else if (scene == 8)                        //네트워크 결투가 끝난후
         {
             if (is_netgame_end == false)
             {

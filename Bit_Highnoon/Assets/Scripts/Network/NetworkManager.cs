@@ -82,7 +82,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public void StartGame()
     {
-        PhotonNetwork.LoadLevel(7);
+        PhotonNetwork.LoadLevel(8);
     }
     public void LeaveRoom()
     {

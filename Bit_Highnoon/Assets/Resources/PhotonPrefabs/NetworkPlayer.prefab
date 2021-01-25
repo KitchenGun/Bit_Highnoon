@@ -3208,6 +3208,7 @@ GameObject:
   - component: {fileID: 9219973993423301883}
   - component: {fileID: 3930288402259874247}
   - component: {fileID: 1292835030903555693}
+  - component: {fileID: 5985216857873006353}
   - component: {fileID: 2257264007791481271}
   m_Layer: 20
   m_Name: Ready
@@ -3296,6 +3297,28 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5985216857873006353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472686200452678641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!114 &2257264007791481271
 MonoBehaviour:
   m_ObjectHideFlags: 0
