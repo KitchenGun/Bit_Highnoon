@@ -29,8 +29,8 @@ public class Net_HoldFire : MonoBehaviourPunCallbacks
 
     #region 씬에 따른 충돌체 상태 초기화
     private void SceneCheck()
-    {
-        if(SceneNum==7)
+    {        
+        if(SceneNum==8)
         {
             HoldGunFire();
         }
