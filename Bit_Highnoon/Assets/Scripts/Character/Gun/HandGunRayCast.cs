@@ -112,6 +112,10 @@ public class HandGunRayCast : MonoBehaviour
                             {
                                 ButtonHit(HitObj.transform.gameObject);
                             }
+                            else if (HitObj.transform.gameObject.tag == "TextBox")
+                            {
+                                TextBoxHit(HitObj.transform.gameObject);
+                            }
                             //오브젝트 레이어로 식별
                             if (HitObj.transform.gameObject.layer == 8)
                             {
@@ -169,7 +173,10 @@ public class HandGunRayCast : MonoBehaviour
                             {
                                 ButtonHit(HitObj.transform.gameObject);
                             }
-
+                            else if (HitObj.transform.gameObject.tag == "TextBox")
+                            {
+                                TextBoxHit(HitObj.transform.gameObject);
+                            }
                             //오브젝트 레이어로 식별
                             if (HitObj.transform.gameObject.layer == 8)
                             {
@@ -351,13 +358,15 @@ public class HandGunRayCast : MonoBehaviour
     #region 버튼 식별
     private void ButtonHit(GameObject button)
     {
-        if (SceneManager.GetActiveScene().buildIndex == 8)
-        {
             GameObject.Find("Picket").transform.GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("Hit", button);
             GameObject.Find("Picket").transform.GetChild(1).gameObject.GetComponent<Register_Manager>().SendMessage("Hit", button);
-        }
-        else
-            GameObject.Find("Canvas").GetComponent<MenuManager>().SendMessage("Hit", button);
+    }
+    #endregion
+
+    #region 텍스트박스 식별
+    private void TextBoxHit(GameObject textbox)
+    {
+        GameManager.Instance.OpenKeyboard();
     }
     #endregion
 }
