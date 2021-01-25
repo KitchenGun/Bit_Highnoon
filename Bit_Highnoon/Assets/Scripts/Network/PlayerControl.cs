@@ -39,11 +39,11 @@ public class PlayerControl : MonoBehaviourPunCallbacks
                 rightEye.tag = "MainCamera";
                 rightEye.enabled = true;
             }
-            leftHand.localRotation = InputTracking.GetLocalRotation(Node.LeftHand);
-            rightHand.localRotation = InputTracking.GetLocalRotation(Node.RightHand);
-            
-            leftHand.localPosition = InputTracking.GetLocalPosition(Node.LeftHand);
-            rightHand.localPosition = InputTracking.GetLocalPosition(Node.RightHand);
+           //leftHand.localRotation = InputTracking.GetLocalRotation(Node.LeftHand);
+           //rightHand.localRotation = InputTracking.GetLocalRotation(Node.RightHand);
+           //
+           //leftHand.localPosition = InputTracking.GetLocalPosition(Node.LeftHand);
+           //rightHand.localPosition = InputTracking.GetLocalPosition(Node.RightHand);
 
             Vector2 primaryAxis = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using OVRTouchSample;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 
@@ -46,6 +47,9 @@ public class HandGunRayCast : MonoBehaviour
     private GameObject WoodDecal;
     [SerializeField]
     private GameObject BloodDecal;
+    #endregion
+    #region 키보드
+    private TextMeshPro selectTextBox;
     #endregion
 
     void Start()
@@ -96,58 +100,12 @@ public class HandGunRayCast : MonoBehaviour
                 {
                     if (Fire())//총알 발사
                     {
-                        Debug.DrawRay(FirePos.transform.position, FirePos.transform.forward * 2000, Color.red, 0.3f);//개발 확인용 레이 
                         if (Physics.Raycast(FirePos.transform.position, FirePos.transform.forward, out HitObj, 2000))
                         {
                             //오브젝트 태그로 식별
-                            if (HitObj.transform.gameObject.tag == "Bottle")
-                            {
-                                BottleHit(HitObj.transform.gameObject);
-                            }
-                            else if (HitObj.transform.gameObject.tag == "Enemy")
-                            {
-                                EnemyHit(HitObj.transform.gameObject);
-                            }
-                            else if (HitObj.transform.gameObject.tag == "Button")
-                            {
-                                ButtonHit(HitObj.transform.gameObject);
-                            }
-                            else if (HitObj.transform.gameObject.tag == "TextBox")
-                            {
-                                TextBoxHit(HitObj.transform.gameObject);
-                            }
+                            ScanTag();
                             //오브젝트 레이어로 식별
-                            if (HitObj.transform.gameObject.layer == 8)
-                            {
-                                GameObject BulletHole = Instantiate<GameObject>(SandDecal, HitObj.point, Quaternion.identity) as GameObject;
-                                BulletHole.transform.LookAt(this.gameObject.transform.position);
-                                BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("etc");
-                                BulletHole.GetComponent<AudioSource>().Play();
-                                Destroy(BulletHole, 3f);
-                            }
-                            else if (HitObj.transform.gameObject.layer == 9)
-                            {
-                                GameObject BulletHole = Instantiate<GameObject>(MetalDecal, HitObj.point, Quaternion.identity) as GameObject;
-                                BulletHole.transform.LookAt(this.gameObject.transform.position);
-                                BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("metal");
-                                BulletHole.GetComponent<AudioSource>().Play();
-                                Destroy(BulletHole, 3f);
-
-                            }
-                            else if (HitObj.transform.gameObject.layer == 10)
-                            {
-                                GameObject BulletHole = Instantiate<GameObject>(WoodDecal, HitObj.point, Quaternion.identity) as GameObject;
-                                BulletHole.transform.LookAt(this.gameObject.transform.position);
-                                BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("wood");
-                                BulletHole.GetComponent<AudioSource>().Play();
-                                Destroy(BulletHole, 3f);
-                            }
-                            else if (HitObj.transform.gameObject.layer == 20)
-                            {
-                                GameObject BloodParticle = Instantiate<GameObject>(BloodDecal, HitObj.point, Quaternion.identity) as GameObject;
-                                Destroy(BloodParticle, 3f);
-                            }
-
+                            ScanLayer();
                         }
                     }
                 }
@@ -157,59 +115,13 @@ public class HandGunRayCast : MonoBehaviour
                 {
                     if (Fire())//총알 발사
                     {
-                        Debug.DrawRay(FirePos.transform.position, FirePos.transform.forward * 2000, Color.red, 0.3f);//개발 확인용 레이 
                         if (Physics.Raycast(FirePos.transform.position, FirePos.transform.forward, out HitObj, 2000))
                         {
                             //오브젝트 태그로 식별
-                            if (HitObj.transform.gameObject.tag == "Bottle")
-                            {
-                                BottleHit(HitObj.transform.gameObject);
-                            }
-                            else if (HitObj.transform.gameObject.tag == "Enemy")
-                            {
-                                EnemyHit(HitObj.transform.gameObject);
-                            }
-                            else if (HitObj.transform.gameObject.tag == "Button")
-                            {
-                                ButtonHit(HitObj.transform.gameObject);
-                            }
-                            else if (HitObj.transform.gameObject.tag == "TextBox")
-                            {
-                                TextBoxHit(HitObj.transform.gameObject);
-                            }
+                            ScanTag();
                             //오브젝트 레이어로 식별
-                            if (HitObj.transform.gameObject.layer == 8)
-                            {
-                                GameObject BulletHole = Instantiate<GameObject>(SandDecal, HitObj.point, Quaternion.identity) as GameObject;
-                                BulletHole.transform.LookAt(this.gameObject.transform.position);
-                                BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("etc");
-                                BulletHole.GetComponent<AudioSource>().Play();
-                                Destroy(BulletHole, 3f);
-                            }
-                            else if (HitObj.transform.gameObject.layer == 9)
-                            {
-                                GameObject BulletHole = Instantiate<GameObject>(MetalDecal, HitObj.point, Quaternion.identity) as GameObject;
-                                BulletHole.transform.LookAt(this.gameObject.transform.position);
-                                BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("metal");
-                                BulletHole.GetComponent<AudioSource>().Play();
-                                Destroy(BulletHole, 3f);
-
-                            }
-                            else if (HitObj.transform.gameObject.layer == 10)
-                            {
-                                GameObject BulletHole = Instantiate<GameObject>(WoodDecal, HitObj.point, Quaternion.identity) as GameObject;
-                                BulletHole.transform.LookAt(this.gameObject.transform.position);
-                                BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("wood");
-                                BulletHole.GetComponent<AudioSource>().Play();
-                                Destroy(BulletHole, 3f);
-                            }
-                            else if (HitObj.transform.gameObject.layer == 20)
-                            {
-                                GameObject BloodParticle = Instantiate<GameObject>(BloodDecal, HitObj.point, Quaternion.identity) as GameObject;
-                                Destroy(BloodParticle, 3f);
-                            }
-
-                        }
+                            ScanLayer();
+                         }
                     }
                 }
                 break;
@@ -261,6 +173,103 @@ public class HandGunRayCast : MonoBehaviour
         #endregion
     }
 
+    #region ScanTag
+    private void ScanTag()
+    {
+        if (HitObj.transform.gameObject.tag == "Bottle")
+        {
+            BottleHit(HitObj.transform.gameObject);
+        }
+        else if (HitObj.transform.gameObject.tag == "Enemy")
+        {
+            EnemyHit(HitObj.transform.gameObject);
+        }
+        else if (HitObj.transform.gameObject.tag == "TextBox")
+        {
+            HitObj.transform.gameObject.GetComponent<TextMeshPro>().text = selectTextBox.text;
+            this.gameObject.transform.parent.parent.parent.parent.parent.GetChild(3).gameObject.GetComponent<Belt>().SetActiveKeyboard(true);
+        }
+        else if (HitObj.transform.gameObject.tag == "Button")
+        {
+            ButtonHit(HitObj.transform.gameObject);
+        }
+    }
+    #endregion
+
+    #region ScanLayer
+    private void ScanLayer()
+    {
+        if (HitObj.transform.gameObject.layer == 8)
+        {
+            GameObject BulletHole = Instantiate<GameObject>(SandDecal, HitObj.point, Quaternion.identity) as GameObject;
+            BulletHole.transform.LookAt(this.gameObject.transform.position);
+            BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("etc");
+            BulletHole.GetComponent<AudioSource>().Play();
+            Destroy(BulletHole, 3f);
+        }
+        else if (HitObj.transform.gameObject.layer == 9)
+        {
+            GameObject BulletHole = Instantiate<GameObject>(MetalDecal, HitObj.point, Quaternion.identity) as GameObject;
+            BulletHole.transform.LookAt(this.gameObject.transform.position);
+            BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("metal");
+            BulletHole.GetComponent<AudioSource>().Play();
+            Destroy(BulletHole, 3f);
+
+        }
+        else if (HitObj.transform.gameObject.layer == 10)
+        {
+            GameObject BulletHole = Instantiate<GameObject>(WoodDecal, HitObj.point, Quaternion.identity) as GameObject;
+            BulletHole.transform.LookAt(this.gameObject.transform.position);
+            BulletHole.GetComponent<AudioSource>().clip = GM.GetComponent<GameManager>().LoadAudioClip("wood");
+            BulletHole.GetComponent<AudioSource>().Play();
+            Destroy(BulletHole, 3f);
+        }
+        else if (HitObj.transform.gameObject.layer == 15)//키보드
+        {
+            string inputText=HitObj.transform.gameObject.name;
+            switch(inputText)
+            {
+                
+                 case "Backspace":
+                    if (selectTextBox.text == "")
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        string strcopy = selectTextBox.text;
+                        selectTextBox.text = "";
+                        for (int i = 0; i < strcopy.Length - 1; i++)
+                        {
+                            selectTextBox.text += strcopy[i];
+                        }
+                        break;
+                    }
+                case "Clear":
+                    selectTextBox.text = "";
+                    break;
+                case "Close":
+                    this.gameObject.transform.parent.parent.parent.parent.parent.GetChild(3).gameObject.GetComponent<Belt>().SetActiveKeyboard(false);
+                    break;
+                case "Enter":
+                    this.gameObject.transform.parent.parent.parent.parent.parent.GetChild(3).gameObject.GetComponent<Belt>().SetActiveKeyboard(false);
+                    break;
+                case "Space":
+                    selectTextBox.text += " ";
+                    break;
+                default:
+                    selectTextBox.text += HitObj.transform.gameObject.name;
+                    break;
+            }
+        }
+        else if (HitObj.transform.gameObject.layer == 20)
+        {
+            GameObject BloodParticle = Instantiate<GameObject>(BloodDecal, HitObj.point, Quaternion.identity) as GameObject;
+            Destroy(BloodParticle, 3f);
+        }
+    }
+    #endregion
+    
     #region SFX
     private void Gun_Fire_SFX()
     {
@@ -358,15 +367,13 @@ public class HandGunRayCast : MonoBehaviour
     #region 버튼 식별
     private void ButtonHit(GameObject button)
     {
+        if (SceneManager.GetActiveScene().buildIndex == 8)
+        {
             GameObject.Find("Picket").transform.GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("Hit", button);
             GameObject.Find("Picket").transform.GetChild(1).gameObject.GetComponent<Register_Manager>().SendMessage("Hit", button);
-    }
-    #endregion
-
-    #region 텍스트박스 식별
-    private void TextBoxHit(GameObject textbox)
-    {
-        GameManager.Instance.OpenKeyboard();
+        }
+        else
+            GameObject.Find("Canvas").GetComponent<MenuManager>().SendMessage("Hit", button);
     }
     #endregion
 }

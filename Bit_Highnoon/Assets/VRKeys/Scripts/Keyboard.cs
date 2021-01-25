@@ -129,7 +129,7 @@ namespace VRKeys {
 		/// Initialization.
 		/// </summary>
 		private IEnumerator Start () {
-			XRDevice.SetTrackingSpaceType (TrackingSpaceType.RoomScale);
+			//XRDevice.SetTrackingSpaceType (TrackingSpaceType.RoomScale);
 
 			playerSpace = new GameObject ("Play Space");
 			//playerSpace.transform.localPosition = InputTracking.GetLocalPosition (XRNode.TrackingReference);
@@ -154,11 +154,11 @@ namespace VRKeys {
 			//playerSpace.transform.localPosition = InputTracking.GetLocalPosition (XRNode.TrackingReference);
 			//playerSpace.transform.localRotation = InputTracking.GetLocalRotation (XRNode.TrackingReference);
 
-			leftHand.transform.localPosition = InputTracking.GetLocalPosition (XRNode.LeftHand);
-			leftHand.transform.localRotation = InputTracking.GetLocalRotation (XRNode.LeftHand);
-
-			rightHand.transform.localPosition = InputTracking.GetLocalPosition (XRNode.RightHand);
-			rightHand.transform.localRotation = InputTracking.GetLocalRotation (XRNode.RightHand);
+			//leftHand.transform.localPosition = InputTracking.GetLocalPosition (XRNode.LeftHand);
+			//leftHand.transform.localRotation = InputTracking.GetLocalRotation (XRNode.LeftHand);
+			//
+			//rightHand.transform.localPosition = InputTracking.GetLocalPosition (XRNode.RightHand);
+			//rightHand.transform.localRotation = InputTracking.GetLocalRotation (XRNode.RightHand);
 		}
 
 		private void PositionAndAttachMallets () {
