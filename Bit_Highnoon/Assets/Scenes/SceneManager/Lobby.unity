@@ -7101,6 +7101,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628ba424d2040ad4dbb0237b32a5a0df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Login_ID_InputField: {fileID: 0}
+  Login_PW_InputField: {fileID: 0}
+  Account_ID_InputField: {fileID: 0}
+  Account_PW_InputField: {fileID: 0}
 --- !u!65 &218776787
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17906,6 +17910,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628ba424d2040ad4dbb0237b32a5a0df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Login_ID_InputField: {fileID: 0}
+  Login_PW_InputField: {fileID: 0}
+  Account_ID_InputField: {fileID: 0}
+  Account_PW_InputField: {fileID: 0}
 --- !u!65 &607359696
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35584,6 +35592,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628ba424d2040ad4dbb0237b32a5a0df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Login_ID_InputField: {fileID: 0}
+  Login_PW_InputField: {fileID: 0}
+  Account_ID_InputField: {fileID: 0}
+  Account_PW_InputField: {fileID: 0}
 --- !u!65 &1208205314
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -45807,6 +45819,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628ba424d2040ad4dbb0237b32a5a0df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Login_ID_InputField: {fileID: 0}
+  Login_PW_InputField: {fileID: 0}
+  Account_ID_InputField: {fileID: 0}
+  Account_PW_InputField: {fileID: 0}
 --- !u!65 &1497417182
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -52744,6 +52760,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628ba424d2040ad4dbb0237b32a5a0df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Login_ID_InputField: {fileID: 0}
+  Login_PW_InputField: {fileID: 0}
+  Account_ID_InputField: {fileID: 0}
+  Account_PW_InputField: {fileID: 0}
 --- !u!65 &1688833896
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -53145,6 +53165,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628ba424d2040ad4dbb0237b32a5a0df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Login_ID_InputField: {fileID: 0}
+  Login_PW_InputField: {fileID: 0}
+  Account_ID_InputField: {fileID: 0}
+  Account_PW_InputField: {fileID: 0}
 --- !u!65 &1703513876
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -65123,6 +65147,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628ba424d2040ad4dbb0237b32a5a0df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Login_ID_InputField: {fileID: 0}
+  Login_PW_InputField: {fileID: 0}
+  Account_ID_InputField: {fileID: 0}
+  Account_PW_InputField: {fileID: 0}
 --- !u!65 &1918778297
 BoxCollider:
   m_ObjectHideFlags: 0
