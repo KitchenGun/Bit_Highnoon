@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     private LogicalDB leveldb;
     private GameObject normal;
     private GameObject hard;
+    private bool login = false;
+    private string id = "sex";
 
     #region 네트워크 GameEnd 체크
     private bool is_netgame_end;    //네트워크 게임이 끝났는지 체크
@@ -449,4 +451,16 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    #region
+    public bool Login(string u_id)
+    {
+        if(id == u_id)
+        {
+            login = true;
+            return login;
+        }
+        else
+            return false;
+    }
+    #endregion
 }
