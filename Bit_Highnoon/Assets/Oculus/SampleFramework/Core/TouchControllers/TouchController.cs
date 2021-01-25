@@ -144,33 +144,6 @@ namespace OVRTouchSample
                     }
 
                 }
-               //else if (!GameObject.Find("Belt").GetComponent<Belt>().isSet(collision.gameObject.tag))
-               //{
-               //    //총을 들고있을 경우
-               //    if (this.gameObject.transform.Find("OculusTouchForQuest2").GetComponentInChildren<SkinnedMeshRenderer>().enabled == false)
-               //    {
-               //         if (side == "Left")
-               //         {
-               //             if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch) <= 0.1)
-               //             {//드랍 할 경우
-               //                 Belt.GetComponent<Belt>().DropGun(collision.gameObject.tag);
-               //                 setGunInfo(collision.transform.gameObject);
-               //                 //컨트롤러로 교체
-               //                 GuntoHand();
-               //             }
-               //         }
-               //         else if (side == "Right")
-               //         {
-               //             if (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch) <= 0.1)
-               //             {//드랍 할 경우
-               //                 Belt.GetComponent<Belt>().DropGun(collision.gameObject.tag);
-               //                 setGunInfo(collision.transform.gameObject);
-               //                 //총 컨트롤러로 교체
-               //                 GuntoHand();
-               //             }
-               //         }
-               //    }
-               //}
             }
         }
 

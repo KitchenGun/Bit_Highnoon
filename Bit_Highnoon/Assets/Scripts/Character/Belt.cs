@@ -41,6 +41,7 @@ public class Belt : MonoBehaviour
         if (GM.GetSceneIndex() == 8)
         {
             isUseKeyboard = true;
+            SetActiveKeyboard(false);//키보드 비활성화
         }
         else
         {
