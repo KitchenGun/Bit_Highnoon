@@ -36,6 +36,11 @@ public class Net_GameStart : MonoBehaviour
                     StartCoroutine(GameStart());
                     istart = true;
                 }
+                else
+                {
+                    foreach (GameObject player in players)
+                        player.transform.GetChild(5).GetChild(3).GetComponent<Net_Ready>().SendMessage("LoadWait");
+                }
             }
         }
     }
