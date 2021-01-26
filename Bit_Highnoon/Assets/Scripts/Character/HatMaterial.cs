@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class HatMaterial : MonoBehaviour
 {
-    [SerializeField]
-    private Material[] materials;
+    private Object[] materials;
     // Start is called before the first frame update
     void Start()
     {
-        this.GetComponent<SkinnedMeshRenderer>().sharedMaterial = materials[Random.Range(0, materials.Length)];
+        materials = Resources.LoadAll("HatMaterials");
+        this.GetComponent<SkinnedMeshRenderer>().sharedMaterial = (Material)materials[Random.Range(0, materials.Length)];
     }
 }
