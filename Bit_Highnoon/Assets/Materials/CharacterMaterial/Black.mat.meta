@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Bit_Highnoon/Assets/Scenes/SceneManager/LodingScene.unity.meta
-guid: 3ea46e2cf28c1d64092eb128c57f3f52
-DefaultImporter:
-=======
+<<<<<<< HEAD:Bit_Highnoon/Assets/Materials/CharacterMaterial/Black.mat.meta
 guid: ed3df911034387849a375551a724a581
 NativeFormatImporter:
->>>>>>> main:Bit_Highnoon/Assets/Materials/CharacterMaterial/Black.mat.meta
+=======
+guid: 3ea46e2cf28c1d64092eb128c57f3f52
+DefaultImporter:
+>>>>>>> SceneManager:Bit_Highnoon/Assets/Scenes/SceneManager/LodingScene.unity.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
