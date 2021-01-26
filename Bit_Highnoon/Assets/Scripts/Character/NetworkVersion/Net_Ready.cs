@@ -7,7 +7,9 @@ public class Net_Ready : MonoBehaviour
 {
     private bool isready;   //준비되었는지 확인
 
-    private bool isload;    //준비하고 기다리는지 확인
+    private bool is_wait_ready;    //준비하고 기다리는지 확인
+
+    private bool is_wait_comein;    //상대가 접속할때 까지 기다리는지 확인
 
     private PhotonView PV;
 
@@ -15,7 +17,7 @@ public class Net_Ready : MonoBehaviour
 
     void Start()
     {
-        isready = isload = false;
+        isready = is_wait_ready = is_wait_comein = false;
 
         PV = this.gameObject.GetPhotonView();
 
@@ -34,8 +36,6 @@ public class Net_Ready : MonoBehaviour
                 this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
 
                 PV.RPC("ReadyOk", RpcTarget.AllBuffered);
-
-                //this.gameObject.transform.parent.GetChild(5).gameObject.SetActive(true);
             }
         }
     }
@@ -50,7 +50,10 @@ public class Net_Ready : MonoBehaviour
     {
         if (PV.IsMine)
         {
-            if (isload == true)
+            if (is_wait_comein == true)
+                this.gameObject.transform.parent.GetChild(6).gameObject.SetActive(false);
+
+            if (is_wait_ready == true)
                 this.gameObject.transform.parent.GetChild(5).gameObject.SetActive(false);
 
             this.gameObject.transform.parent.GetChild(4).gameObject.SetActive(true);
@@ -59,14 +62,32 @@ public class Net_Ready : MonoBehaviour
         }
     }
 
-    private void LoadWait()
+    private void Wait_Ready()
     {
         if (PV.IsMine)
         {
             if (isready == true)
             {
+                if (is_wait_comein == true)
+                {
+                    this.gameObject.transform.parent.GetChild(6).gameObject.SetActive(false);
+                    is_wait_comein = false;
+                }
+
                 this.gameObject.transform.parent.GetChild(5).gameObject.SetActive(true);
-                isload = true;
+                is_wait_ready = true;
+            }
+        }
+    }
+
+    private void Wait_Comein()
+    {
+        if (PV.IsMine)
+        {
+            if (isready == true)
+            {
+                this.gameObject.transform.parent.GetChild(6).gameObject.SetActive(true);
+                is_wait_comein = true;
             }
         }
     }

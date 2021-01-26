@@ -32,10 +32,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NetworkScene/Network.unity
     guid: 8e213cf86ae2e4046b2741cd9564d640
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NetworkScene/Multi_Mode2.unity
     guid: 3cd990110c965e64080fa18e9b82e0f5
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/SceneManager/Multi_Mode.unity
     guid: a94e13bb48a616e41afb00418788d71f
   - enabled: 0

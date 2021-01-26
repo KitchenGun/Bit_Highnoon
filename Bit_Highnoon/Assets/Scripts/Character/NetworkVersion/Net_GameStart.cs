@@ -39,8 +39,13 @@ public class Net_GameStart : MonoBehaviour
                 else
                 {
                     foreach (GameObject player in players)
-                        player.transform.GetChild(5).GetChild(3).GetComponent<Net_Ready>().SendMessage("LoadWait");
+                        player.transform.GetChild(5).GetChild(3).GetComponent<Net_Ready>().SendMessage("Wait_Ready");
                 }
+            }
+            else
+            {
+                foreach (GameObject player in players)
+                    player.transform.GetChild(5).GetChild(3).GetComponent<Net_Ready>().SendMessage("Wait_Comein");
             }
         }
     }

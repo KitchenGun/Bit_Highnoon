@@ -114,6 +114,8 @@ public class SoundDB : MonoBehaviour
                 folder2.AddRange(("Hard,EnemyFire,Battle").Split(','));
                 break;
             case 6:
+                folder1.AddRange(("Bgm").Split(','));
+                folder2.AddRange(("WindSound").Split(','));
                 break;
             case 7:
                 folder1.AddRange(("Lobby,Lobby,Lobby").Split(','));
