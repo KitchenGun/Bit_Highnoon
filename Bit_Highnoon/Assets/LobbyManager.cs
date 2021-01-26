@@ -30,25 +30,25 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public void JoinorCreateRoom() => PhotonNetwork.JoinOrCreateRoom(RoomNameInput.text, new RoomOptions { MaxPlayers = 2 }, null);
     public override void OnCreatedRoom()
     {
-        Debug.Log("방만들기완료");
+        print("방만들기완료");
     }
     public override void OnJoinedRoom()
     {
-        Debug.Log("방참가완료");
+        print("방참가완료");
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
-        Debug.Log("방만들기실패");
+        print("방만들기실패");
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
-        Debug.Log("방참가실패");
+        print("방참가실패");
     }
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
-        Debug.Log("방랜덤참가실패");
+        print("방랜덤참가실패");
     }
     #endregion
 

@@ -20,7 +20,7 @@ public class Register_Manager : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         PhotonNetwork.LocalPlayer.NickName = NickNameInput.text;
-        Debug.Log(NickNameInput + "서버접속완료");
+        print(NickNameInput + "서버접속완료");
         JoinLobby();
     }
     #endregion
@@ -30,7 +30,8 @@ public class Register_Manager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedLobby()
     {
-        Debug.Log("로비접속 완료");
+       print("로비접속 완료");
+        GameManager.Instance.ChangeToScene(7);
     }
     #endregion
     public void Hit(GameObject button)
@@ -64,7 +65,6 @@ public class Register_Manager : MonoBehaviourPunCallbacks
         {
             //가능한 경우 로비로 이동
             Connect();
-            GameManager.Instance.ChangeToScene(7);
         }
         else if (login == false)
         {
