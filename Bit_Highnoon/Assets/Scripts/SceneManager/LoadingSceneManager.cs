@@ -25,9 +25,9 @@ public class LoadingSceneManager : MonoBehaviour
         while (!operation.isDone)
         {
             time = +Time.time;
-            slider.value = time / 10f;
+            slider.value = time / 5f;
 
-            if(time > 10)
+            if(time > 5)
             {
                 operation.allowSceneActivation = true;
             }

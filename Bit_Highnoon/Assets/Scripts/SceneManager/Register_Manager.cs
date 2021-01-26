@@ -33,6 +33,7 @@ public class Register_Manager : MonoBehaviourPunCallbacks
         Debug.Log("로비접속 완료");
     }
     #endregion
+
     public void Hit(GameObject button)
     {
         Button btn = button.gameObject.GetComponent<Button>();
@@ -64,7 +65,8 @@ public class Register_Manager : MonoBehaviourPunCallbacks
         {
             //가능한 경우 로비로 이동
             Connect();
-            GameManager.Instance.ChangeToScene(7);
+            GameManager.Instance.PreSceneIndex();
+            GameManager.Instance.ChangeToScene(9);
         }
         else if (login == false)
         {
