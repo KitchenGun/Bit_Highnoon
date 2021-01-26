@@ -4,23 +4,29 @@ using UnityEngine;
 
 public class ColorChangeTest : MonoBehaviour
 {
-    [SerializeField]
-    private Material[] CharacterMaterial;
+    private object[] CharacterMaterial;
+
     public string Colorstr;
     // Start is called before the first frame update
     void Start()
     {
+        CharacterMaterial = Resources.LoadAll("CharacterMaterial");
         this.gameObject.GetComponent<Material>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        foreach(Material mat in CharacterMaterial)
+        ChangeColor(Colorstr);
+    }
+
+    private void ChangeColor(string Colorstr)
+    {
+        foreach (Material mat in CharacterMaterial)
         {
-            if(Colorstr==mat.name)
+            if (Colorstr == mat.name)
             {
-                this.gameObject.GetComponent<Renderer>().material =mat;
+                this.gameObject.GetComponent<Renderer>().material = mat;
             }
         }
     }
