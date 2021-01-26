@@ -26,7 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SceneManager/ID_Managed.unity
     guid: ec8e63e65d85bd941b933a03bfa60164
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/SceneManager/Lobby.unity
     guid: f07c31710788a7245b4f8b00c2e84002
   - enabled: 0
