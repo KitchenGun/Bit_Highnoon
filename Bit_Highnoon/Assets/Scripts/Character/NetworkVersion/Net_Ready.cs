@@ -5,7 +5,7 @@ using Photon.Pun;
 
 public class Net_Ready : MonoBehaviour
 {
-    private bool isready;   //준비되었는지 확인
+    private bool isready;           //준비되었는지 확인
 
     private bool is_wait_ready;    //준비하고 기다리는지 확인
 
@@ -17,11 +17,11 @@ public class Net_Ready : MonoBehaviour
 
     void Start()
     {
-        isready = is_wait_ready = is_wait_comein = false;
-
         PV = this.gameObject.GetPhotonView();
 
-        if (PV.IsMine == false)
+        if (PV.IsMine == true)
+            isready = is_wait_ready = is_wait_comein = false;
+        else if (PV.IsMine == false)
             this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
     }
 
