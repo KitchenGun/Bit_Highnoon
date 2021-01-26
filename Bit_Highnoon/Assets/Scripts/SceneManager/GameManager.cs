@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private GameObject hard;
     private bool login = false;
     private string id = "SEX";
+    private int pre_idx;
 
     #region 네트워크 GameEnd 체크
     private bool is_netgame_end;    //네트워크 게임이 끝났는지 체크
@@ -451,7 +452,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    #region
+    #region 로그인 여부 반환
     public bool Login(string u_id)
     {
         if(id == u_id)
@@ -461,6 +462,18 @@ public class GameManager : MonoBehaviour
         }
         else
             return false;
+    }
+    #endregion
+
+    #region 전 씬 인덱스 get & set
+    public void PreSceneIndex()
+    {
+        pre_idx = SceneManager.GetActiveScene().buildIndex;
+    }
+
+    public int PreSceneIndexCall()
+    {
+        return pre_idx;
     }
     #endregion
 }

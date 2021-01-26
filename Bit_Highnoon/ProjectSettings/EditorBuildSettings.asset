@@ -32,7 +32,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Character/TestScene.unity
     guid: 7f12a7dedbc76c6489e2148e00791b2f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NetworkScene/Network.unity
     guid: 8e213cf86ae2e4046b2741cd9564d640
   - enabled: 0
@@ -50,6 +50,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SceneManager/Test_Menu.unity
     guid: 34e7523a8cb8f4f4690a9f0b5c57bdf2
+  - enabled: 1
+    path: Assets/Scenes/SceneManager/LodingScene.unity
+    guid: 3ea46e2cf28c1d64092eb128c57f3f52
   - enabled: 0
     path: Assets/VRKeys/Scenes/Example Scene.unity
     guid: a34a374857facec4b8beb240f59fbe4f

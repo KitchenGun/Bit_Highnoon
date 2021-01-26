@@ -41,6 +41,7 @@ public class Register_Manager : MonoBehaviour
         if (login == true)
         {
             //가능한 경우 로비로 이동
+            GameManager.Instance.PreSceneIndex();
             GameManager.Instance.ChangeToScene(7);
         }
         else if (login == false)
