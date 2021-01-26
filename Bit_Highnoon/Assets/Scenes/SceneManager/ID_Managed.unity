@@ -2186,6 +2186,7 @@ GameObject:
   - component: {fileID: 104502138}
   - component: {fileID: 104502137}
   - component: {fileID: 104502141}
+  - component: {fileID: 104502142}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2292,6 +2293,19 @@ MonoBehaviour:
   Login_PW_InputField: {fileID: 1196398211}
   Account_ID_InputField: {fileID: 0}
   Account_PW_InputField: {fileID: 0}
+--- !u!114 &104502142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104502136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3de5b667348988345a9dad0d50a39c1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NickNmaeInput: {fileID: 1951464176}
 --- !u!1 &107481681 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: c09b739b47d004f8c933f8eec4087263, type: 3}
@@ -40448,6 +40462,18 @@ MonoBehaviour:
       - m_Target: {fileID: 104502141}
         m_TargetAssemblyTypeName: ButtonClick, Assembly-CSharp
         m_MethodName: Login
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 104502142}
+        m_TargetAssemblyTypeName: LobbyNetwork, Assembly-CSharp
+        m_MethodName: Connect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
