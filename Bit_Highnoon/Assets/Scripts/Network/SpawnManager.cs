@@ -8,14 +8,22 @@ public class SpawnManager : MonoBehaviour
 
     Spawnpoint[] spawnpoints;
 
+    List<Spawnpoint> spawnpointlist;
+
     void Awake()
     {
         instance = this;
         spawnpoints = GetComponentsInChildren<Spawnpoint>();
+
+        spawnpointlist.AddRange(spawnpoints);
     }
 
     public Transform GetSpawnpoint()
     {
-        return spawnpoints[Random.Range(0, spawnpoints.Length)].transform;
+        Transform spawnpoint = spawnpointlist[0].transform;
+
+        spawnpointlist.Remove(spawnpointlist[0]);
+
+        return spawnpoint;
     }
 }
