@@ -2,42 +2,30 @@
 using System.Collections.Generic;
 using Photon.Pun;
 using Photon.Realtime;
+using TMPro;
 using UnityEngine;
 
 public class LobbyNetwork : MonoBehaviourPunCallbacks
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        ConnectedToServer();
-    }
+    [SerializeField] TMP_InputField NickNameInput; //아이디 입력 텍스트
 
-    private void ConnectedToServer()
-    {
-        PhotonNetwork.ConnectUsingSettings();
-        Debug.Log("Try Connect To Server...");
-    }
+    #region 서버접속 & 연결
+    public void Connect() => PhotonNetwork.ConnectUsingSettings();
 
     public override void OnConnectedToMaster()
     {
-        Debug.Log("Connected To Server");
-        base.OnConnectedToMaster();
-        RoomOptions roomOptions = new RoomOptions();
-        roomOptions.MaxPlayers = 20;
-        roomOptions.IsVisible = true;
-        roomOptions.IsOpen = true;
-        PhotonNetwork.JoinOrCreateRoom("Room 1", roomOptions,TypedLobby.Default);
+        PhotonNetwork.LocalPlayer.NickName = NickNameInput.text;
+        Debug.Log(NickNameInput + "서버접속완료");
+        JoinLobby();
     }
+    #endregion
 
-    public override void OnJoinedRoom()
-    {
-        Debug.Log("Joined a Room");
-        base.OnJoinedRoom();
-    }
+    #region 로비접속
+    public void JoinLobby() => PhotonNetwork.JoinLobby();
 
-    public override void OnPlayerEnteredRoom(Player newPlayer)
+    public override void OnJoinedLobby()
     {
-        Debug.Log("A new player joinded the room");
-        base.OnPlayerEnteredRoom(newPlayer);
+        Debug.Log("로비접속 완료");
     }
+    #endregion
 }
