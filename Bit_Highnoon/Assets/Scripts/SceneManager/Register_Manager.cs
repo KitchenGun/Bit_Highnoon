@@ -27,10 +27,10 @@ public class Register_Manager : MonoBehaviour
         //가능한 경우 Id와 PW db에 저장
 
         //회원가입 성공시 텍스트
-        GameObject.Find("Picket").transform.GetChild(0).GetChild(0).GetChild(2).gameObject.GetComponent<Text>().text = "Your account has been registered.";
+        GameObject.Find("Picket").transform.GetChild(1).GetChild(0).GetChild(2).gameObject.GetComponent<Text>().text = "Your account has been registered.";
 
         //사용 불가능일 경우
-        GameObject.Find("Picket").transform.GetChild(0).GetChild(0).GetChild(2).gameObject.GetComponent<Text>().text = "This ID is already in use.";
+        GameObject.Find("Picket").transform.GetChild(1).GetChild(0).GetChild(2).gameObject.GetComponent<Text>().text = "This ID is already in use.";
     }
 
     public void Login()
@@ -46,7 +46,7 @@ public class Register_Manager : MonoBehaviour
         else if (login == false)
         {
             //로그인 실패한 경우
-            GameObject.Find("Picket").transform.GetChild(1).GetChild(0).GetChild(2).gameObject.GetComponent<Text>().text = "Invalid information entered";
+            GameObject.Find("Picket").transform.GetChild(0).GetChild(0).GetChild(2).gameObject.GetComponent<Text>().text = "Invalid information entered";
         }
     }
     
