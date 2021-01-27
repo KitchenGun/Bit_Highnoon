@@ -10,6 +10,7 @@ using UnityEngine;
 public class DBServer : MonoBehaviour
 {
     private Socket client = null;
+    private bool register = false;
 
     // Start is called before the first frame update
     private void Awake()
@@ -227,14 +228,20 @@ public class DBServer : MonoBehaviour
             if (msg == "true")
             {
                 Debug.Log("유저추가 성공");
+                register = true;
+                GameObject.Find("Picket").transform.GetChild(1).GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("AccountResult", register);
             }
             else if(msg =="same")
             {
                 Debug.Log("유저추가 실패 : 동일한 id");
+                register = false;
+                GameObject.Find("Picket").transform.GetChild(1).GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("AccountResult", register);
             }
             else
             {
                 Debug.Log("유저추가 실패 : db오류");
+                register = false;
+                GameObject.Find("Picket").transform.GetChild(1).GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("AccountResult", register);
             }
         }
         catch(Exception)
@@ -251,14 +258,20 @@ public class DBServer : MonoBehaviour
             if (msg == "S")
             {
                 Debug.Log("로그인 성공");
+                register = true;
+                GameObject.Find("Picket").transform.GetChild(0).GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("LoginResult", register);
             }
             else if (msg == "N")
             {
                 Debug.Log("로그인 실패 :유저 없음");
+                register = false;
+                GameObject.Find("Picket").transform.GetChild(0).GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("LoginResult", register);
             }
             else
             {
                 Debug.Log("로그인 실패");
+                register = false;
+                GameObject.Find("Picket").transform.GetChild(0).GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("LoginResult", register);
             }
         }
         catch (Exception)
@@ -268,5 +281,4 @@ public class DBServer : MonoBehaviour
     }
 
     #endregion
-
 }
