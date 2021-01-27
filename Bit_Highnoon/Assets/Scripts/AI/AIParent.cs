@@ -40,6 +40,10 @@ public class AIParent : MonoBehaviour
 
     private GameObject canvas;                  //게임 안내 캠버스
 
+    #region 게임 승패 출력 오디오 관련 변수
+    private AudioSource winloseAudio;
+    #endregion
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -62,7 +66,7 @@ public class AIParent : MonoBehaviour
         collider = GetComponent<CapsuleCollider>();
 
         canvas = GameObject.Find("GameUI");
-
+        winloseAudio = canvas.GetComponent<AudioSource>();
         //Debug.Log("idle");
     }
 
@@ -276,6 +280,8 @@ public class AIParent : MonoBehaviour
         isPlayerDead = true;
 
         canvas.transform.GetChild(2).gameObject.SetActive(true);
+        winloseAudio.clip = GameManager.Instance.LoadAudioClip("lose");
+        winloseAudio.Play();
     }
     #endregion
 
@@ -285,6 +291,8 @@ public class AIParent : MonoBehaviour
         bloodEffect.SetActive(true);
 
         canvas.transform.GetChild(1).gameObject.SetActive(true);
+        winloseAudio.clip = GameManager.Instance.LoadAudioClip("win");
+        winloseAudio.Play();
     }
     #endregion
 
