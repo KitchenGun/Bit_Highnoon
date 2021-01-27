@@ -20,9 +20,11 @@ public class SampleChange : MonoBehaviour
     {
         CharacterMaterial = Resources.LoadAll("CharacterMaterial");
         HatMaterials = Resources.LoadAll("HatMaterials");
+        selected_character = this.gameObject.transform.GetChild(0).GetComponent<Renderer>().material;
+        selected_hat = this.gameObject.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Renderer>().material;
     }
 
-    private void ChangeBodyColor(string Colorstr)
+    public void ChangeBodyColor(string Colorstr)
     {
         foreach (Material mat in CharacterMaterial)
         {
@@ -33,7 +35,12 @@ public class SampleChange : MonoBehaviour
         }
     }
 
-    private void ChangeHatColor(string hatmaterial)
+    public void ChangeBodyColor(Material original)
+    {
+        this.gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>().material = original;
+    }
+
+    public void ChangeHatColor(string hatmaterial)
     {
         foreach (Material mat in HatMaterials)
         {
@@ -42,5 +49,10 @@ public class SampleChange : MonoBehaviour
                 this.gameObject.transform.GetChild(1).GetChild(0).GetChild(0).gameObject.GetComponent<Renderer>().material = selected_hat = mat;
             }
         }
+    }
+
+    public void ChangeHatColor(Material original)
+    {
+        this.gameObject.transform.GetChild(1).GetChild(0).GetChild(0).gameObject.GetComponent<Renderer>().material = original;
     }
 }
