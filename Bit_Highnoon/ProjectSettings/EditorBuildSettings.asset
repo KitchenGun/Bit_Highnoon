@@ -41,6 +41,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SceneManager/Multi_Mode.unity
     guid: a94e13bb48a616e41afb00418788d71f
+  - enabled: 1
+    path: Assets/Scenes/SceneManager/LoadingScene.unity
+    guid: eb7b8926d84e04645816b77e5d231e66
   - enabled: 0
     path: Assets/Scenes/SceneManager/Pause.unity
     guid: 946c51e50cb81dc46b93dbc0c565da92
