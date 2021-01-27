@@ -7,11 +7,14 @@ public class NpcCycle : MonoBehaviour
     private Animator animator;
     private float Timer;
     private bool tr;
-
+    private GameManager GM;
+    private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
+       GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         animator = GetComponent<Animator>();
+        audioSource = this.gameObject.GetComponent<AudioSource>();
         tr = true;
     }
 
@@ -83,6 +86,16 @@ public class NpcCycle : MonoBehaviour
             }
         }
     }
+
+    #region 승리시 출력 이벤트 
+    private void Win()
+    {
+        //승리 사운드재생
+        Debug.Log("승리사운드재생");
+        audioSource.clip = GM.GetComponent<GameManager>().LoadAudioClip("sleeze");
+        audioSource.Play();
+    }
+    #endregion
 
     #region 이벤트 오류 방지
     private void IdleAudio()
