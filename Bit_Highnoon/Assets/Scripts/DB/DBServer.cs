@@ -10,7 +10,6 @@ using UnityEngine;
 public class DBServer : MonoBehaviour
 {
     private Socket client = null;
-    private bool register = false;
 
     // Start is called before the first frame update
     private void Awake()
