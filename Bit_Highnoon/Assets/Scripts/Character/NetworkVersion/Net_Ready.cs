@@ -19,23 +19,35 @@ public class Net_Ready : MonoBehaviour
     {
         PV = this.gameObject.GetPhotonView();
 
-        if (PV.IsMine == true)
-            isready = is_wait_ready = is_wait_comein = false;
-        else if (PV.IsMine == false)
+        if (GameManager.Instance.GetSceneIndex() == 8)
+        {
+            this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+
+            if (PV.IsMine == true)
+                isready = is_wait_ready = is_wait_comein = false;
+            else if (PV.IsMine == false)
+                this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        }
+        else
+        {
             this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (PV.IsMine)
+        if (GameManager.Instance.GetSceneIndex() == 8)
         {
-            if (isready == false && (OVRInput.GetDown(OVRInput.Button.One) || Input.GetKeyDown(KeyCode.A)))
+            if (PV.IsMine)
             {
-                //Ready UI 종료
-                this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                if (isready == false && (OVRInput.GetDown(OVRInput.Button.One) || Input.GetKeyDown(KeyCode.A)))
+                {
+                    //Ready UI 종료
+                    this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
 
-                PV.RPC("ReadyOk", RpcTarget.AllBuffered);
+                    PV.RPC("ReadyOk", RpcTarget.AllBuffered);
+                }
             }
         }
     }

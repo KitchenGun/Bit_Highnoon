@@ -78,8 +78,8 @@ public class SoundDB : MonoBehaviour
         List<string> folder2 = new List<string>();
 
         #region 모든 씬에 들어가는 소리
-        folder1.AddRange(("Gun,Gun,Gun,Gun,User,Effect,Effect,Effect,Effect,NetWork,NetWork").Split(','));
-        folder2.AddRange(("DropGun,GripGun,GunFire,Reload,Walk,glass,etc,metal,wood,Dead,Hit").Split(','));
+        folder1.AddRange(("Gun,Gun,Gun,Gun,User,Effect,Effect,Effect,Effect,NetWork,NetWork,User").Split(','));
+        folder2.AddRange(("DropGun,GripGun,GunFire,Reload,Walk,glass,etc,metal,wood,Dead,Hit,popup").Split(','));
         #endregion
 
         #region AI 테스트 용
@@ -102,28 +102,28 @@ public class SoundDB : MonoBehaviour
                 folder2.AddRange(("WindSound").Split(','));
                 break;
             case 3:
-                folder1.AddRange(("AI,Gun,Bgm").Split(','));
-                folder2.AddRange(("Easy,EnemyFire,Battle").Split(','));
+                folder1.AddRange(("AI,Gun,Bgm,User").Split(','));
+                folder2.AddRange(("Easy,EnemyFire,Battle,gameend").Split(','));
                 break;
             case 4:
-                folder1.AddRange(("AI,Gun,Bgm").Split(','));
-                folder2.AddRange(("Normal,EnemyFire,Battle").Split(','));
+                folder1.AddRange(("AI,Gun,Bgm,User").Split(','));
+                folder2.AddRange(("Normal,EnemyFire,Battle,gameend").Split(','));
                 break;
             case 5:
-                folder1.AddRange(("AI,Gun,Bgm").Split(','));
-                folder2.AddRange(("Hard,EnemyFire,Battle").Split(','));
+                folder1.AddRange(("AI,Gun,Bgm,User").Split(','));
+                folder2.AddRange(("Hard,EnemyFire,Battle,gameend").Split(','));
                 break;
             case 6:
-                folder1.AddRange(("Bgm").Split(','));
-                folder2.AddRange(("WindSound").Split(','));
+                folder1.AddRange(("Bgm,User").Split(','));
+                folder2.AddRange(("WindSound,keyboard").Split(','));
                 break;
             case 7:
                 folder1.AddRange(("Lobby,Lobby,Lobby").Split(','));
                 folder2.AddRange(("casino,piano,sleeze").Split(','));
                 break;
             case 8:
-                folder1.AddRange(("Bgm").Split(','));
-                folder2.AddRange(("Battle").Split(',')); 
+                folder1.AddRange(("Bgm,User").Split(','));
+                folder2.AddRange(("Battle,gameend").Split(',')); 
                 break;
         }
 

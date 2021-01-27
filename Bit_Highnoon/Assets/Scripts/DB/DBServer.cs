@@ -10,13 +10,24 @@ using UnityEngine;
 public class DBServer : MonoBehaviour
 {
     private Socket client = null;
+    private bool register = false;
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        StartClient("61.81.98.236", 9000);
     }
 
+    void Start()
+    {
+        //회원가입테스트
+        //SendInsertUser("ksw", "9436");
+
+        //로그인테스트
+        SendLoginUser("ksw", "9436");
+    }
+
+    //ip수정할것!!
     public bool StartClient(string ip, int port)
     {
         try
@@ -27,10 +38,13 @@ public class DBServer : MonoBehaviour
             Thread thread = new Thread(new ParameterizedThreadStart(RecvThread));
             thread.Start(client);
 
+            Debug.Log("접속성공");
+           
             return true;
         }
         catch (Exception)
         {
+            Debug.Log("접속실패");
             return false;
         }
     }
@@ -74,8 +88,8 @@ public class DBServer : MonoBehaviour
             int recv_data = 0;
 
             // 수신할 데이터 크기 알아내기 
-            byte[] data_size = new byte[4];
-            recv_data = client.Receive(data_size, 0, 4, SocketFlags.None);
+            byte[] data_size = new byte[1024];
+            recv_data = client.Receive(data_size, 0, 1024, SocketFlags.None);
             size = BitConverter.ToInt32(data_size, 0);
             left_data = size;
 
@@ -109,7 +123,7 @@ public class DBServer : MonoBehaviour
             int send_data = 0;
 
             // 전송할 데이터의 크기 전달
-            byte[] data_size = new byte[4];
+            byte[] data_size = new byte[1024];
             data_size = BitConverter.GetBytes(size);
             send_data = client.Send(data_size);
 
@@ -143,16 +157,32 @@ public class DBServer : MonoBehaviour
     }
 
     //회원가입
-    public void SendInsertMember(string id, string pw)
+    public void SendInsertUser(string id, string pw)
     {
         //전송
-        string packet = InsertMember(id, pw);
+        string packet = InsertUser(id, pw);
         SendData(packet);
     }
-    public static string InsertMember(string id, string pw)
+    public static string InsertUser(string id, string pw)
     {
         string msg = null;
-        msg += "C_InsertUser\a";    // 회원 가입 요청 메시지
+        msg += "C_InsertUser"+"\a";    // 회원 가입 요청 메시지
+        msg += id.Trim() + "#";
+        msg += pw.Trim();
+        return msg;
+    }
+
+    //로그인
+    public void SendLoginUser(string id, string pw)
+    {
+        //전송
+        string packet = LoginUser(id, pw);
+        SendData(packet);
+    }
+    public static string LoginUser(string id, string pw)
+    {
+        string msg = null;
+        msg += "C_UserLogin" + "\a";    // 회원 가입 요청 메시지
         msg += id.Trim() + "#";
         msg += pw.Trim();
         return msg;
@@ -167,13 +197,14 @@ public class DBServer : MonoBehaviour
         string msg = Encoding.Default.GetString(data);
 
         string[] filter = msg.Split('\a');
+
         if (filter[0].Equals("S_InsertUser") == true)
         {
-            //Ack_InsertMember(filter[1]);
+            UserInsert(filter[1]);
         }
-        else if (filter[0].Equals("ACK_LOGINMEMBER") == true)
+        else if (filter[0].Equals("S_UserLogin") == true)
         {
-            //Ack_LoginMember(filter[1]);
+           UserLogin(filter[1]);
         }
         else if (filter[0].Equals("ACK_LOGOUTMEMBER") == true)
         {
@@ -187,4 +218,67 @@ public class DBServer : MonoBehaviour
 
     #endregion
 
+    #region 수신정보 처리
+
+    //유저 추가
+    private void UserInsert(string msg)
+    {
+        try
+        {
+            if (msg == "true")
+            {
+                Debug.Log("유저추가 성공");
+                register = true;
+                GameObject.Find("Picket").transform.GetChild(1).GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("AccountResult", register);
+            }
+            else if(msg =="same")
+            {
+                Debug.Log("유저추가 실패 : 동일한 id");
+                register = false;
+                GameObject.Find("Picket").transform.GetChild(1).GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("AccountResult", register);
+            }
+            else
+            {
+                Debug.Log("유저추가 실패 : db오류");
+                register = false;
+                GameObject.Find("Picket").transform.GetChild(1).GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("AccountResult", register);
+            }
+        }
+        catch(Exception)
+        {
+            Debug.Log("유저추가 실패 : 서버오류");
+        }
+    }
+
+    //유저 로그인
+    private void UserLogin(string msg)
+    {
+        try
+        {
+            if (msg == "S")
+            {
+                Debug.Log("로그인 성공");
+                register = true;
+                GameObject.Find("Picket").transform.GetChild(0).GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("LoginResult", register);
+            }
+            else if (msg == "N")
+            {
+                Debug.Log("로그인 실패 :유저 없음");
+                register = false;
+                GameObject.Find("Picket").transform.GetChild(0).GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("LoginResult", register);
+            }
+            else
+            {
+                Debug.Log("로그인 실패");
+                register = false;
+                GameObject.Find("Picket").transform.GetChild(0).GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("LoginResult", register);
+            }
+        }
+        catch (Exception)
+        {
+            Debug.Log("로그인 실패 : 서버오류");
+        }
+    }
+
+    #endregion
 }

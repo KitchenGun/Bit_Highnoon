@@ -194,6 +194,14 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
         {
             ButtonHit(HitObj.transform.gameObject);
         }
+        else if (tag == "HatSample")
+        {
+            HitObj.transform.parent.parent.GetChild(2).SendMessage("ChangeHatColor", HitObj.transform.gameObject.name);
+        }
+        else if (tag == "BodySample")
+        {
+            HitObj.transform.parent.parent.GetChild(2).SendMessage("ChangeBodyColor", HitObj.transform.gameObject.name);
+        }
     }
     #endregion
 
