@@ -12,6 +12,8 @@ TagManager:
   - Bullet
   - Button
   - TextBox
+  - HatSample
+  - BodySample
   layers:
   - Default
   - TransparentFX
