@@ -19,7 +19,7 @@ public class Net_Ready : MonoBehaviour
     {
         PV = this.gameObject.GetPhotonView();
 
-        if (GameManager.Instance.GetSceneIndex() == 8)
+        if (GameManager.Instance.GetSceneIndex() == 1)
         {
             this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
 
@@ -37,7 +37,7 @@ public class Net_Ready : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.Instance.GetSceneIndex() == 8)
+        if (GameManager.Instance.GetSceneIndex() == 1)
         {
             if (PV.IsMine)
             {

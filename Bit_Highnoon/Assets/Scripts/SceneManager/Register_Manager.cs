@@ -66,7 +66,15 @@ public class Register_Manager : MonoBehaviourPunCallbacks
 
     public void Login()
     {
-        GameObject.Find("DB").gameObject.GetComponent<DBServer>().SendLoginUser(Login_ID_InputField.text, Login_PW_InputField.text);
+        if(GameManager.Instance.Login(Login_ID_InputField.text) == true)
+        {
+            //가능한 경우 로비로 이동
+            Connect();
+            GameManager.Instance.PreSceneIndex();
+            GameManager.Instance.ChangeToScene(9);
+        }
+        else
+            GameObject.Find("DB").gameObject.GetComponent<DBServer>().SendLoginUser(Login_ID_InputField.text, Login_PW_InputField.text);
     }
     public void LoginResult(bool register)
     {
@@ -74,7 +82,7 @@ public class Register_Manager : MonoBehaviourPunCallbacks
         {
             //가능한 경우 로비로 이동
             Connect();
-            //GameManager.Instance.PreSceneIndex();
+            GameManager.Instance.PreSceneIndex();
             GameManager.Instance.ChangeToScene(9);
         }
         else if (register == false)
