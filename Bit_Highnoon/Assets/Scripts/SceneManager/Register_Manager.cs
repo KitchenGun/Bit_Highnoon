@@ -74,7 +74,7 @@ public class Register_Manager : MonoBehaviourPunCallbacks
         {
             //가능한 경우 로비로 이동
             Connect();
-            GameManager.Instance.PreSceneIndex();
+            //GameManager.Instance.PreSceneIndex();
             GameManager.Instance.ChangeToScene(9);
         }
         else if (register == false)

@@ -33,6 +33,9 @@
     <Hit>net_hit1,net_hit2,net_hit3,net_hit4,net_hit5,net_hit6,net_hit7,net_hit8,net_hit9,net_hit10,net_hit11,net_hit12,net_hit13,net_hit14</Hit>
   </NetWork>
   <User>
+    <gameend>lose,win</gameend>
+    <keyboard>keyboard1,keyboard2</keyboard>
+    <popup>popup</popup>
     <Walk>walk1,walk2,walk3</Walk>
   </User>
 </DocumentElement>

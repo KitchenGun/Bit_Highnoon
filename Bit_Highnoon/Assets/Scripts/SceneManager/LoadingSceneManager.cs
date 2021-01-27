@@ -13,7 +13,7 @@ public class LoadingSceneManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SceneIndex = GameManager.Instance.PreSceneIndexCall() + 1;
+        //SceneIndex = GameManager.Instance.PreSceneIndexCall() + 1;
         StartCoroutine(LoadAsynSceneCoroutine());
     }
 
