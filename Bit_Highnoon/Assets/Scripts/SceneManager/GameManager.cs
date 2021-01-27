@@ -464,7 +464,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    #region
+    #region 관리자 아이디
     public bool Login(string u_id)
     {
         if (id == u_id)
@@ -475,5 +475,5 @@ public class GameManager : MonoBehaviour
         else
             return false;
     }
-    #endregion
+    #endregion 
 }
