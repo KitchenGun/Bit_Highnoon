@@ -91,6 +91,20 @@ public class Register_Manager : MonoBehaviourPunCallbacks
             GameObject.Find("Picket").transform.GetChild(0).GetChild(0).GetChild(2).gameObject.GetComponent<Text>().text = "Invalid information entered";
         }
     }
-    
-    
+
+    #region 방 관리 보드
+    public void HideOutRoom()
+    {
+        if (GameManager.Instance.Login(Login_ID_InputField.text) == true)
+        {
+            if (GameObject.Find("Picket").transform.GetChild(0).gameObject.activeSelf == true)
+            {
+                GameObject.Find("Picket").transform.GetChild(0).gameObject.SetActive(false);
+            }
+            GameObject.Find("Picket").transform.GetChild(2).gameObject.SetActive(true);
+        }
+        Connect();
+    }
+    #endregion
+
 }
