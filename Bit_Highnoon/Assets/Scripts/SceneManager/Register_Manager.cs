@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
@@ -13,26 +14,46 @@ public class Register_Manager : MonoBehaviourPunCallbacks
     [SerializeField] TMP_InputField Account_ID_InputField;
     [SerializeField] TMP_InputField Account_PW_InputField;
     [SerializeField] TMP_InputField NickNameInput; //아이디 입력 텍스트
-
     #region 서버접속 & 연결
     public void Connect() => PhotonNetwork.ConnectUsingSettings();
 
     public override void OnConnectedToMaster()
     {
         PhotonNetwork.LocalPlayer.NickName = NickNameInput.text;
-        print(NickNameInput + "서버접속완료");
+        print(NickNameInput.text + "서버접속완료");
         JoinLobby();
     }
     #endregion
-
     #region 로비접속
     public void JoinLobby() => PhotonNetwork.JoinLobby();
 
     public override void OnJoinedLobby()
     {
-       print("로비접속 완료");
-        GameManager.Instance.ChangeToScene(7);
+        print("로비접속 완료");
     }
+    #endregion
+    #region 방생성
+    public void JoinRoom() => PhotonNetwork.JoinRoom(NickNameInput.text);
+    public void CreateRoom() => PhotonNetwork.CreateRoom(NickNameInput.text, new RoomOptions { MaxPlayers = 10 });
+
+    public override void OnCreatedRoom()
+    {
+        print("방만들기완료");
+    }
+    public override void OnJoinedRoom()
+    {
+        print("방참가완료");
+    }
+    public override void OnJoinRoomFailed(short returnCode, string message)
+    {
+        print("방참가실패");
+    }
+    public override void OnCreateRoomFailed(short returnCode, string message)
+    {
+        print("방만들기실패");
+    }
+
+    public void JoinorCreateRoom() => PhotonNetwork.JoinOrCreateRoom(NickNameInput.text, new RoomOptions { MaxPlayers = 10 }, null);
     #endregion
     public void Hit(GameObject button)
     {
@@ -63,8 +84,8 @@ public class Register_Manager : MonoBehaviourPunCallbacks
 
         if (login == true)
         {
-            //가능한 경우 로비로 이동
             Connect();
+            //가능한 경우 로비로 이동
         }
         else if (login == false)
         {

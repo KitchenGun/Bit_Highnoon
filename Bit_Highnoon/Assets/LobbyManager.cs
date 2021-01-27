@@ -10,12 +10,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [SerializeField] TMP_InputField RoomNameInput; //방이름 입력 텍스트
 
     #region Room 생성
-    public void CreateRoom() => PhotonNetwork.CreateRoom(RoomNameInput.text, new RoomOptions { MaxPlayers = 2 });
-
-    public void JoinRoom() => PhotonNetwork.JoinRoom(RoomNameInput.text);
-
-    public void JoinRandomRoom() => PhotonNetwork.JoinRandomRoom();
-
     public void LeaveRoom()
     {
         PhotonNetwork.LeaveRoom();
@@ -25,30 +19,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public void StartGame()
     {
         PhotonNetwork.LoadLevel(8);
-    }
-
-    public void JoinorCreateRoom() => PhotonNetwork.JoinOrCreateRoom(RoomNameInput.text, new RoomOptions { MaxPlayers = 2 }, null);
-    public override void OnCreatedRoom()
-    {
-        print("방만들기완료");
-    }
-    public override void OnJoinedRoom()
-    {
-        print("방참가완료");
-    }
-
-    public override void OnCreateRoomFailed(short returnCode, string message)
-    {
-        print("방만들기실패");
-    }
-
-    public override void OnJoinRoomFailed(short returnCode, string message)
-    {
-        print("방참가실패");
-    }
-    public override void OnJoinRandomFailed(short returnCode, string message)
-    {
-        print("방랜덤참가실패");
     }
     #endregion
 
