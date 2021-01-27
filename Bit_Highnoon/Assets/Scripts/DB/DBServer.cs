@@ -17,16 +17,6 @@ public class DBServer : MonoBehaviour
     {
         StartClient("61.81.98.236", 9000);
     }
-
-    void Start()
-    {
-        //회원가입테스트
-        //SendInsertUser("ksw", "9436");
-
-        //로그인테스트
-        SendLoginUser("ksw", "9436");
-    }
-
     //ip수정할것!!
     public bool StartClient(string ip, int port)
     {
@@ -195,90 +185,7 @@ public class DBServer : MonoBehaviour
     public void RecvData(byte[] data)
     {
         string msg = Encoding.Default.GetString(data);
-
-        string[] filter = msg.Split('\a');
-
-        if (filter[0].Equals("S_InsertUser") == true)
-        {
-            UserInsert(filter[1]);
-        }
-        else if (filter[0].Equals("S_UserLogin") == true)
-        {
-           UserLogin(filter[1]);
-        }
-        else if (filter[0].Equals("ACK_LOGOUTMEMBER") == true)
-        {
-            //Ack_LogOutMember(filter[1]);
-        }
-        else if (filter[0].Equals("PACK_SHORTMESSAGE") == true)
-        {
-            //Ack_ShortMessage(filter[1]);
-        }
+        GameManager.Instance.PushData(msg);
     }
-
-    #endregion
-
-    #region 수신정보 처리
-
-    //유저 추가
-    private void UserInsert(string msg)
-    {
-        try
-        {
-            if (msg == "true")
-            {
-                Debug.Log("유저추가 성공");
-                register = true;
-                GameObject.Find("Picket").transform.GetChild(1).GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("AccountResult", register);
-            }
-            else if(msg =="same")
-            {
-                Debug.Log("유저추가 실패 : 동일한 id");
-                register = false;
-                GameObject.Find("Picket").transform.GetChild(1).GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("AccountResult", register);
-            }
-            else
-            {
-                Debug.Log("유저추가 실패 : db오류");
-                register = false;
-                GameObject.Find("Picket").transform.GetChild(1).GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("AccountResult", register);
-            }
-        }
-        catch(Exception)
-        {
-            Debug.Log("유저추가 실패 : 서버오류");
-        }
-    }
-
-    //유저 로그인
-    private void UserLogin(string msg)
-    {
-        try
-        {
-            if (msg == "S")
-            {
-                Debug.Log("로그인 성공");
-                register = true;
-                GameObject.Find("Picket").transform.GetChild(0).GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("LoginResult", register);
-            }
-            else if (msg == "N")
-            {
-                Debug.Log("로그인 실패 :유저 없음");
-                register = false;
-                GameObject.Find("Picket").transform.GetChild(0).GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("LoginResult", register);
-            }
-            else
-            {
-                Debug.Log("로그인 실패");
-                register = false;
-                GameObject.Find("Picket").transform.GetChild(0).GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("LoginResult", register);
-            }
-        }
-        catch (Exception)
-        {
-            Debug.Log("로그인 실패 : 서버오류");
-        }
-    }
-
     #endregion
 }
