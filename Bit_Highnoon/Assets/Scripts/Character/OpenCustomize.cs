@@ -43,9 +43,9 @@ public class OpenCustomize : MonoBehaviour
                         OpenCus(true);
 
                         #region 위치 조정
-                        float y = this.gameObject.transform.parent.GetChild(1).transform.position.y;
+                        float y = this.gameObject.transform.parent.GetChild(3).transform.position.y;
 
-                        this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x, y - 1.5f, this.gameObject.transform.position.z);
+                        this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x, y + 1f, this.gameObject.transform.position.z);
                         #endregion
 
                         #region UI
@@ -97,7 +97,7 @@ public class OpenCustomize : MonoBehaviour
         this.gameObject.transform.parent.GetChild(2).GetChild(0).GetComponent<Renderer>().material =
             this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Character;
 
-        this.gameObject.transform.parent.GetChild(5).GetChild(0).GetChild(0).GetComponent<Renderer>().material =
+        this.gameObject.transform.parent.GetChild(5).GetChild(0).GetChild(0).GetComponent<SkinnedMeshRenderer>().material =
             this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Hat;
     }
 

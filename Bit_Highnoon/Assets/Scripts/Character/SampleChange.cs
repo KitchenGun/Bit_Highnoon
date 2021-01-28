@@ -65,7 +65,7 @@ public class SampleChange : MonoBehaviour
         {
             if (hatmaterial == mat.name)
             {
-                this.gameObject.transform.GetChild(1).GetChild(0).GetChild(0).gameObject.GetComponent<Renderer>().material = mat;
+                this.gameObject.transform.GetChild(1).GetChild(0).GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material = mat;
 
                 PV.RPC("SaveHatMaterial", RpcTarget.AllBuffered, hatmaterial);
             }
@@ -86,6 +86,6 @@ public class SampleChange : MonoBehaviour
 
     public void ChangeHatColor(Material original)
     {
-        this.gameObject.transform.GetChild(1).GetChild(0).GetChild(0).gameObject.GetComponent<Renderer>().material = original;
+        this.gameObject.transform.GetChild(1).GetChild(0).GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material = original;
     }
 }
