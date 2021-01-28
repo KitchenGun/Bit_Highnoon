@@ -8,12 +8,19 @@ using UnityEngine.UI;
 
 public class Register_Manager : MonoBehaviourPunCallbacks
 {
+
+    public static Register_Manager Instance;
     [SerializeField] TMP_InputField Login_ID_InputField;
     [SerializeField] TMP_InputField Login_PW_InputField;
     [SerializeField] TMP_InputField Account_ID_InputField;
     [SerializeField] TMP_InputField Account_PW_InputField;
     [SerializeField] TMP_InputField NickNameInput; //아이디 입력 텍스트
 
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     #region 서버접속 & 연결
     public void Connect() => PhotonNetwork.ConnectUsingSettings();
