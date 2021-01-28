@@ -27,11 +27,18 @@ public class HatMaterial : MonoBehaviour
     {
         if (hat_material.Equals(string.Empty) == false)
         {
-            foreach (Material mat in materials)
+            if (hat_material.Equals("NoHat"))
             {
-                if (hat_material.Equals(mat.name))
+                this.gameObject.transform.parent.gameObject.SetActive(false);
+            }
+            else
+            {
+                foreach (Material mat in materials)
                 {
-                    this.GetComponent<SkinnedMeshRenderer>().material = mat;
+                    if (hat_material.Equals(mat.name))
+                    {
+                        this.GetComponent<SkinnedMeshRenderer>().material = mat;
+                    }
                 }
             }
         }

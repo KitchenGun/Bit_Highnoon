@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 {
     private SoundDB sounddb;
     private LogicalDB leveldb;
+    private DBServer db_server;
+    private SpawnManager spawnmanager;
     private GameObject normal;
     private GameObject hard;
     private string id = "SEX";
@@ -291,26 +293,28 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-
         sounddb = this.gameObject.AddComponent<SoundDB>();
         leveldb = this.gameObject.AddComponent<LogicalDB>();
 
-        this.gameObject.AddComponent<DBServer>().enabled = false;
-        this.gameObject.AddComponent<SpawnManager>().enabled = false;
+        db_server = this.gameObject.AddComponent<DBServer>();            
+        spawnmanager = this.gameObject.AddComponent<SpawnManager>();
+
+        db_server.enabled = false;
+        spawnmanager.enabled = false;
         if (SceneManager.GetActiveScene().buildIndex == 6)
         {
-            this.gameObject.GetComponent<DBServer>().enabled = true;
-            this.gameObject.GetComponent<SpawnManager>().enabled = false;
+            db_server.enabled = true;
+            spawnmanager.enabled = false;
         }
         else if(SceneManager.GetActiveScene().buildIndex == 7 || SceneManager.GetActiveScene().buildIndex == 8)
         {
-            this.gameObject.GetComponent<DBServer>().enabled = true;
-            this.gameObject.GetComponent<SpawnManager>().enabled = true;
+            db_server.enabled = true;
+            spawnmanager.enabled = true;
         }
         else
         {
-            this.gameObject.GetComponent<DBServer>().enabled = false;
-            this.gameObject.GetComponent<SpawnManager>().enabled = false;
+            db_server.enabled = false;
+            spawnmanager.enabled = false;
         }
 
         
