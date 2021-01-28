@@ -77,14 +77,20 @@ public class Register_Manager : MonoBehaviourPunCallbacks
     {
         //if(GameManager.Instance.Login(Login_ID_InputField.text) == true)
         //{
-            //가능한 경우 로비로 이동
+        //가능한 경우 로비로 이동
         //    Connect();
         //   GameManager.Instance.PreSceneIndex();
         //    GameManager.Instance.ChangeToScene(9);
         //}
         //else
         //입력한 ID PW를 DB로 보내 로그인 처리
-        GameObject.Find("DB").gameObject.GetComponent<DBServer>().SendLoginUser(Login_ID_InputField.text, Login_PW_InputField.text);
+        if (Login_ID_InputField.text == "" || Login_PW_InputField.text == "")
+        {
+            this.gameObject.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = "Please enter your ID and PW correctly.";
+            return;
+        }
+        else
+            GameObject.Find("DB").gameObject.GetComponent<DBServer>().SendLoginUser(Login_ID_InputField.text, Login_PW_InputField.text);
     }
     
     //로그인 성공, 실패 여부에 따른 행동
