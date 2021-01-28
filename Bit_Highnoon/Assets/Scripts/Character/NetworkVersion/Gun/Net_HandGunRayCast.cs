@@ -196,10 +196,12 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
         }
         else if (tag == "HatSample")
         {
+            Debug.Log("모자 " + HitObj.transform.gameObject.transform.parent.name);
             HitObj.transform.parent.parent.GetChild(2).GetComponent<SampleChange>().ChangeHatColor(HitObj.transform.gameObject.transform.parent.name);
         }
         else if (tag == "BodySample")
         {
+            Debug.Log("몸 " + HitObj.transform.gameObject.name);
             HitObj.transform.parent.parent.GetChild(2).GetComponent<SampleChange>().ChangeBodyColor(HitObj.transform.gameObject.name);
         }
     }
