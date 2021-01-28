@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     private bool login = false;    
     private int p_index;
 
-    #region Queue
+    #region DB정보
     private bool register = false;
 
     private Queue<string> messageQueue = new Queue<string>();
@@ -69,17 +69,20 @@ public class GameManager : MonoBehaviour
         {
             UserLogin(filter[1]);
         }
-        else if (filter[0].Equals("ACK_LOGOUTMEMBER") == true)
+        else if (filter[0].Equals("S_UserColorHat") == true)
         {
-            //Ack_LogOutMember(filter[1]);
-        }
-        else if (filter[0].Equals("PACK_SHORTMESSAGE") == true)
-        {
-            //Ack_ShortMessage(filter[1]);
+            if (filter[1] == "E")
+                Debug.Log("DB서버 에러");
+            else
+            {
+                string[] info = filter[1].Split('#');
+                UserColor(info[0]);
+                UserHat(info[1]);
+            }
         }
     }
 
-    #region 수신정보 처리
+    #region DB수신정보 처리
 
     //유저 추가
     private void UserInsert(string msg)
@@ -138,6 +141,115 @@ public class GameManager : MonoBehaviour
         catch (Exception)
         {
             Debug.Log("로그인 실패 : 서버오류");
+        }
+    }
+
+    //유저 모자, 색상정보
+    private void UserHat(string msg)
+    {
+        try
+        {
+            if (msg == "Camohat")
+            {
+                Debug.Log("모자 : Camohat");
+            }
+            else if (msg == "Cowboyhat")
+            {
+                Debug.Log("모자 : Cowboyhat");
+            }
+            else if (msg == "Crocohat")
+            {
+                Debug.Log("모자 : Crocohat");
+            }
+            else if (msg == "Detectivehat")
+            {
+                Debug.Log("모자 : Detectivehat");
+            }
+            else if (msg == "Firefighter2hat")
+            {
+                Debug.Log("모자 : Firefighter2hat");
+            }
+            else if (msg == "Firefighterhat")
+            {
+                Debug.Log("모자 : Firefighterhat");
+            }
+            else if (msg == "Ghat")
+            {
+                Debug.Log("모자 : Ghat");
+            }
+            else if (msg == "Poor")
+            {
+                Debug.Log("모자 : Poor");
+            }
+            else if (msg == "Wovenhat")
+            {
+                Debug.Log("모자 : Wovenhat");
+            }
+            else
+            {
+                Debug.Log("모자변경 실패 : DB에러");
+            }
+        }
+        catch (Exception)
+        {
+            Debug.Log("모자변경 실패");
+        }
+    }
+
+    //유저 색상
+    private void UserColor(string msg)
+    {
+        try
+        {
+            if (msg == "White")
+            {
+                Debug.Log("색상 : White");
+            }
+            else if (msg == "Black")
+            {
+                Debug.Log("색상 : Black");
+            }
+            else if (msg == "Brown")
+            {
+                Debug.Log("색상 : Brown");
+            }
+            else if (msg == "Green")
+            {
+                Debug.Log("색상 : Green");
+            }
+            else if (msg == "LightGreen")
+            {
+                Debug.Log("색상 : LightGreen");
+            }
+            else if (msg == "Mint")
+            {
+                Debug.Log("색상 : Mint");
+            }
+            else if (msg == "Orange")
+            {
+                Debug.Log("색상 : Orange");
+            }
+            else if (msg == "Pink")
+            {
+                Debug.Log("색상 : Pink");
+            }
+            else if (msg == "Purple")
+            {
+                Debug.Log("색상 : Purple");
+            }
+            else if (msg == "Red")
+            {
+                Debug.Log("색상 : Red");
+            }  
+            else
+            {
+                Debug.Log("색상변경 실패 : DB에러");
+            }
+            
+        }
+        catch (Exception)
+        {
+            Debug.Log("색상변경 실패");
         }
     }
 
