@@ -45,7 +45,7 @@ public class SampleChange : MonoBehaviour
     [PunRPC]
     private void SaveBodyMaterial(string Colorstr)
     {
-        foreach (Material mat in HatMaterials)
+        foreach (Material mat in CharacterMaterial)
         {
             if (Colorstr == mat.name)
             {

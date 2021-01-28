@@ -197,7 +197,7 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
         else if (tag == "HatSample")
         {
             Debug.Log("모자 " + HitObj.transform.gameObject.transform.parent.name);
-            HitObj.transform.parent.parent.GetChild(2).GetComponent<SampleChange>().ChangeHatColor(HitObj.transform.gameObject.transform.parent.name);
+            HitObj.transform.parent.parent.parent.GetChild(2).GetComponent<SampleChange>().ChangeHatColor(HitObj.transform.gameObject.transform.parent.name);
         }
         else if (tag == "BodySample")
         {
