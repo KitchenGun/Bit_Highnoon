@@ -23,10 +23,26 @@ public class SampleChange : MonoBehaviour
     {
         CharacterMaterial = Resources.LoadAll("CharacterMaterial");
         HatMaterials = Resources.LoadAll("HatMaterials");
-        selected_character = this.gameObject.transform.parent.parent.parent.GetChild(2).GetChild(0).GetComponent<Renderer>().material;
-        selected_hat = this.gameObject.transform.parent.parent.parent.GetChild(5).GetChild(0).GetChild(0).GetComponent<Renderer>().material;
 
         PV = this.gameObject.GetPhotonView();
+
+        StartCoroutine(LoadOriginal());
+    }
+
+    private IEnumerator LoadOriginal()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        selected_character = this.gameObject.transform.parent.parent.parent.GetChild(2).GetChild(0).GetComponent<Renderer>().material;
+
+        if (this.gameObject.transform.parent.parent.parent.GetChild(5).GetChild(0).gameObject.activeSelf == true)
+        {
+            selected_hat = this.gameObject.transform.parent.parent.parent.GetChild(5).GetChild(0).GetChild(0).GetComponent<Renderer>().material;
+        }
+        else
+        {
+            selected_hat = null;
+        }
     }
 
     public void ChangeBodyColor(string Colorstr)
@@ -61,31 +77,57 @@ public class SampleChange : MonoBehaviour
 
     public void ChangeHatColor(string hatmaterial)
     {
-        foreach (Material mat in HatMaterials)
+        if (hatmaterial.Equals("NoHat"))
         {
-            if (hatmaterial == mat.name)
-            {
-                this.gameObject.transform.GetChild(1).GetChild(0).GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material = mat;
+            this.gameObject.transform.GetChild(1).GetChild(0).gameObject.SetActive(false);
 
-                PV.RPC("SaveHatMaterial", RpcTarget.AllBuffered, hatmaterial);
+            PV.RPC("SaveHatMaterial", RpcTarget.AllBuffered, hatmaterial);
+        }
+        else
+        {
+            this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+
+            foreach (Material mat in HatMaterials)
+            {
+                if (hatmaterial == mat.name)
+                {
+                    this.gameObject.transform.GetChild(1).GetChild(0).GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material = mat;
+
+                    PV.RPC("SaveHatMaterial", RpcTarget.AllBuffered, hatmaterial);
+                }
             }
         }
+        
     }
 
     [PunRPC]
     private void SaveHatMaterial(string hatmaterial)
     {
-        foreach (Material mat in HatMaterials)
+        if (hatmaterial.Equals("NoHat"))
         {
-            if (hatmaterial == mat.name)
+            selected_hat = null;
+        }
+        else
+        {
+            foreach (Material mat in HatMaterials)
             {
-                selected_hat = mat;
+                if (hatmaterial == mat.name)
+                {
+                    selected_hat = mat;
+                }
             }
         }
     }
 
     public void ChangeHatColor(Material original)
     {
-        this.gameObject.transform.GetChild(1).GetChild(0).GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material = original;
+        if (original == null)
+        {
+            this.gameObject.transform.GetChild(1).GetChild(0).gameObject.SetActive(false);
+        }
+        else
+        {
+            this.gameObject.transform.GetChild(1).GetChild(0).GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material = original;
+        }
     }
 }

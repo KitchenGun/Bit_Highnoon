@@ -13,6 +13,13 @@ public class OpenCustomize : MonoBehaviour
 
     private DBServer DB;
 
+    private void Awake()
+    {
+        DB = GameObject.Find("GameManager").GetComponent<DBServer>();
+
+        //DB.SendUserColorHat(PV.Owner.ToString().Split('\'')[1]);
+    }
+
     private void Start()
     {
         isopen = false;
@@ -20,8 +27,6 @@ public class OpenCustomize : MonoBehaviour
         head = this.gameObject.transform.parent.GetChild(5).gameObject;
 
         PV = this.gameObject.GetPhotonView();
-
-        DB = GameObject.Find("GameManager").GetComponent<DBServer>();
 
         if (GameManager.Instance.GetSceneIndex() == 7)
         {
@@ -90,7 +95,15 @@ public class OpenCustomize : MonoBehaviour
                         #region 샘플을 원래대로
                         this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().ChangeBodyColor(this.gameObject.transform.parent.GetChild(2).GetChild(0).GetComponent<Renderer>().material);
 
-                        this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().ChangeHatColor(this.gameObject.transform.parent.GetChild(5).GetChild(0).GetChild(0).GetComponent<Renderer>().material);
+                        if (this.gameObject.transform.parent.GetChild(5).GetChild(0).gameObject.activeSelf == true)
+                        {
+                            this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().ChangeHatColor(this.gameObject.transform.parent.GetChild(5).GetChild(0).GetChild(0).GetComponent<SkinnedMeshRenderer>().material);
+                        }
+                        else
+                        {
+                            Material met = null;
+                            this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().ChangeHatColor(met);
+                        }
                         #endregion
 
                         OpenCus(false);
@@ -110,8 +123,17 @@ public class OpenCustomize : MonoBehaviour
         this.gameObject.transform.parent.GetChild(2).GetChild(0).GetComponent<Renderer>().material =
             this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Character;
 
-        this.gameObject.transform.parent.GetChild(5).GetChild(0).GetChild(0).GetComponent<SkinnedMeshRenderer>().material =
-            this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Hat;
+        if (this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Hat == null)
+        {
+            this.gameObject.transform.parent.GetChild(5).GetChild(0).gameObject.SetActive(false);
+        }
+        else
+        {
+            this.gameObject.transform.parent.GetChild(5).GetChild(0).gameObject.SetActive(true);
+
+            this.gameObject.transform.parent.GetChild(5).GetChild(0).GetChild(0).GetComponent<SkinnedMeshRenderer>().material =
+                this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Hat;
+        }
     }
 
     private void DeleteOpenCus()
