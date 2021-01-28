@@ -42,6 +42,12 @@ public class OpenCustomize : MonoBehaviour
 
                         OpenCus(true);
 
+                        #region 위치 조정
+                        float y = this.gameObject.transform.parent.GetChild(1).transform.position.y;
+
+                        this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x, y - 1.5f, this.gameObject.transform.position.z);
+                        #endregion
+
                         #region UI
                         head.transform.GetChild(8).gameObject.SetActive(true);
 
