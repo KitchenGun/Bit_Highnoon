@@ -23,8 +23,8 @@ public class SampleChange : MonoBehaviour
     {
         CharacterMaterial = Resources.LoadAll("CharacterMaterial");
         HatMaterials = Resources.LoadAll("HatMaterials");
-        selected_character = this.gameObject.transform.parent.GetChild(2).GetChild(0).GetComponent<Renderer>().material;
-        selected_hat = this.gameObject.transform.parent.GetChild(5).GetChild(0).GetChild(0).GetComponent<Renderer>().material;
+        selected_character = this.gameObject.transform.parent.parent.parent.GetChild(2).GetChild(0).GetComponent<Renderer>().material;
+        selected_hat = this.gameObject.transform.parent.parent.parent.GetChild(5).GetChild(0).GetChild(0).GetComponent<Renderer>().material;
 
         PV = this.gameObject.GetPhotonView();
     }
