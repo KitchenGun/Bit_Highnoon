@@ -33,7 +33,6 @@ public class RoomManagers : MonoBehaviourPunCallbacks
         print("방참가 완료"); // 방입장 콜백
         //GameManager.Instance.PreSceneIndex();
         GameManager.Instance.ChangeToScene(7);
-        print("로비이동생성해라");
         PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "LobbySpawn"), transform.position, transform.rotation);
     }
     public override void OnCreateRoomFailed(short returnCode, string message) => print("방만들기실패"); // 방만들기 실패 콜백
