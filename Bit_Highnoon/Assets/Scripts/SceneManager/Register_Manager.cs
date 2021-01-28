@@ -90,7 +90,7 @@ public class Register_Manager : MonoBehaviourPunCallbacks
             return;
         }
         else
-            GameObject.Find("DB").gameObject.GetComponent<DBServer>().SendLoginUser(Login_ID_InputField.text, Login_PW_InputField.text);
+            GameObject.Find("GameManager").gameObject.GetComponent<DBServer>().SendLoginUser(Login_ID_InputField.text, Login_PW_InputField.text);
     }
     
     //로그인 성공, 실패 여부에 따른 행동
