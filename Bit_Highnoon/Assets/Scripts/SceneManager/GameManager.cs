@@ -196,6 +196,10 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("모자 : Wovenhat");
             }
+            else if (msg == "NoHat")
+            {
+                Debug.Log("모자 : NoHat");
+            }
             else
             {
                 Debug.Log("모자변경 실패 : DB에러");

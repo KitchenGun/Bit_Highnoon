@@ -17,7 +17,7 @@ public class OpenCustomize : MonoBehaviour
     {
         DB = GameObject.Find("GameManager").GetComponent<DBServer>();
 
-        //DB.SendUserColorHat(PV.Owner.ToString().Split('\'')[1]);
+        DB.SendUserColorHat(PV.Owner.ToString().Split('\'')[1]);
     }
 
     private void Start()
@@ -74,12 +74,21 @@ public class OpenCustomize : MonoBehaviour
                         #endregion
 
                         #region 변경 정보를 DB로 전송
-                        Debug.Log(PV.Owner.ToString().Split('\'')[1]);
-                        Debug.Log(this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Character.name);
-                        Debug.Log(this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Hat.name);
-                        //DB.SendUserChange(PV.Owner.ToString(),
-                        //    this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Character.name,
-                        //    this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Hat.name);
+                        //Debug.Log(PV.Owner.ToString().Split('\'')[1]);
+                        //Debug.Log(this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Character.name);
+                        //Debug.Log(this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Hat.name);
+                        if (this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Hat != null)
+                        {
+                            DB.SendUserChange(PV.Owner.ToString(),
+                            this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Character.name,
+                            this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Hat.name);
+                        }
+                        else
+                        {
+                            DB.SendUserChange(PV.Owner.ToString(),
+                            this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Character.name,
+                            "NoHat");
+                        }
                         #endregion
 
                         CloseCus();
