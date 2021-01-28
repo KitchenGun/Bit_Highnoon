@@ -261,6 +261,7 @@ public class HandGunRayCast : MonoBehaviour
                     selectTextBox.text += HitObj.transform.gameObject.name;
                     break;
             }
+            
         }
         else if (HitObj.transform.gameObject.layer == 20)
         {
