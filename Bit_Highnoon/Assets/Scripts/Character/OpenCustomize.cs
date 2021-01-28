@@ -40,7 +40,7 @@ public class OpenCustomize : MonoBehaviour
                     {
                         DeleteOpenCus();
 
-                        this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                        OpenCus(true);
 
                         #region UI
                         head.transform.GetChild(8).gameObject.SetActive(true);
@@ -52,7 +52,7 @@ public class OpenCustomize : MonoBehaviour
                     }
                     else if (isopen == true)
                     {
-                        this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                        OpenCus(false);
 
                         #region 선택정보로 변경
                         PV.RPC("SaveMaterial", RpcTarget.AllBuffered);
@@ -68,13 +68,13 @@ public class OpenCustomize : MonoBehaviour
                 {
                     if (isopen == true)
                     {
-                        this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
-
                         #region 샘플을 원래대로
                         this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().ChangeBodyColor(this.gameObject.transform.parent.GetChild(2).GetChild(0).GetComponent<Renderer>().material);
 
                         this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().ChangeHatColor(this.gameObject.transform.parent.GetChild(5).GetChild(0).GetChild(0).GetComponent<Renderer>().material);
                         #endregion
+
+                        OpenCus(false);
 
                         CloseCus();
 
@@ -124,6 +124,14 @@ public class OpenCustomize : MonoBehaviour
     {
         head.transform.GetChild(8).gameObject.SetActive(false);
         head.transform.GetChild(9).gameObject.SetActive(false);
+    }
+
+    private void OpenCus(bool state)
+    {
+        this.gameObject.transform.GetChild(0).GetChild(0).gameObject.SetActive(state);
+        this.gameObject.transform.GetChild(0).GetChild(1).gameObject.SetActive(state);
+        this.gameObject.transform.GetChild(0).GetChild(2).GetChild(0).gameObject.SetActive(state);
+        this.gameObject.transform.GetChild(0).GetChild(2).GetChild(1).gameObject.SetActive(state);
     }
 
 }
