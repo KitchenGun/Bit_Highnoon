@@ -53,9 +53,9 @@ public class Register_Manager : MonoBehaviourPunCallbacks
             GameObject.Find("Picket").transform.GetChild(1).GetChild(0).GetChild(2).gameObject.GetComponent<Text>().text = "Please enter your ID and PW correctly.";
             return;
         }
-
+        else
         //ID PW를 DB로 보내 회원가입 처리
-        GameObject.Find("DB").gameObject.GetComponent<DBServer>().SendInsertUser(Account_ID_InputField.text, Account_PW_InputField.text);
+            GameObject.Find("DB").gameObject.GetComponent<DBServer>().SendInsertUser(Account_ID_InputField.text, Account_PW_InputField.text);
     }
 
     //회원가입 성공, 실패 여부에 따른 행동
