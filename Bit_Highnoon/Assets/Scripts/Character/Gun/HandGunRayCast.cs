@@ -50,6 +50,8 @@ public class HandGunRayCast : MonoBehaviour
     #endregion
     #region 키보드
     private TMP_InputField selectTextBox;
+    [SerializeField]
+    private AudioSource Keyboard;
     #endregion
 
     void Start()
@@ -261,7 +263,7 @@ public class HandGunRayCast : MonoBehaviour
                     selectTextBox.text += HitObj.transform.gameObject.name;
                     break;
             }
-            
+            Invoke("Keyboard_SFX", 0.5f);
         }
         else if (HitObj.transform.gameObject.layer == 20)
         {
@@ -287,6 +289,12 @@ public class HandGunRayCast : MonoBehaviour
     {
         HandGunReloadAudio.clip = GM.GetComponent<GameManager>().LoadAudioClip("reload");
         HandGunReloadAudio.Play();
+    }
+
+    private void Keyboard_SFX()
+    {
+        Keyboard.clip = GM.GetComponent<GameManager>().LoadAudioClip("keyboard");
+        Keyboard.Play();
     }
     #endregion
 
