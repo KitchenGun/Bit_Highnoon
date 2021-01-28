@@ -155,7 +155,7 @@ public class DBServer : MonoBehaviour
     public static string InsertUser(string id, string pw)
     {
         string msg = null;
-        msg += "C_InsertUser"+"\a";    // 회원 가입 요청 메시지
+        msg += "C_InsertUser"+"\a";
         msg += id.Trim() + "#";
         msg += pw.Trim();
         return msg;
@@ -171,9 +171,41 @@ public class DBServer : MonoBehaviour
     public static string LoginUser(string id, string pw)
     {
         string msg = null;
-        msg += "C_UserLogin" + "\a";    // 회원 가입 요청 메시지
+        msg += "C_UserLogin" + "\a"; 
         msg += id.Trim() + "#";
         msg += pw.Trim();
+        return msg;
+    }
+
+    //유저 색상, 모자 => 처음 기본값(white, Camohat)
+    public void SendUserColorHat(string id)
+    {
+        //전송
+        string packet = UserColorHat(id);
+        SendData(packet);
+    }
+    private static string UserColorHat(string id)
+    {
+        string msg = null;
+        msg += "C_UserColorHat" + "\a"; 
+        msg += id.Trim();
+        return msg;
+    }
+
+    //유저 색상, 모자 변경
+    public void SendUserChande(string id, string color, string hat)
+    {
+        //전송
+        string packet = UserChange(id, color, hat);
+        SendData(packet);
+    }
+    private static string UserChange(string id, string color, string hat)
+    {
+        string msg = null;
+        msg += "C_UserChange" + "\a";
+        msg += id.Trim() + "#";
+        msg += color.Trim() + "#";
+        msg += hat.Trim();
         return msg;
     }
 
