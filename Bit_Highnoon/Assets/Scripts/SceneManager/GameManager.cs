@@ -44,6 +44,18 @@ public class GameManager : MonoBehaviour
             return string.Empty;    //없으면 빈값을 반환
     }
 
+    private void Update()
+    {
+        //우편함에서 데이타 꺼내기
+        string data = GetData();
+
+        //우편함에 데이타가 있는 경우
+        if (!data.Equals(string.Empty))
+        {
+            //데이타로 UI 갱신
+            ResponseData(data);
+        }
+    }
     private IEnumerator CheckQueue()
     {
         //1초 주기로 탐색
@@ -133,24 +145,24 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("로그인 성공");
                 register = true;
-                GameObject.Find("Picket").transform.GetChild(0).GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("LoginResult", register);
+                GameObject.Find("Picket").GetComponent<Register_Manager>().SendMessage("LoginResult", register);
             }
             else if (msg == "N")
             {
                 Debug.Log("로그인 실패 :유저 없음");
                 register = false;
-                GameObject.Find("Picket").transform.GetChild(0).GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("LoginResult", register);
+                GameObject.Find("Picket").GetComponent<Register_Manager>().SendMessage("LoginResult", register);
             }
             else
             {
                 Debug.Log("로그인 실패");
                 register = false;
-                GameObject.Find("Picket").transform.GetChild(0).GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("LoginResult", register);
+                GameObject.Find("Picket").GetComponent<Register_Manager>().SendMessage("LoginResult", register);
             }
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-            Debug.Log("로그인 실패 : 서버오류");
+            Debug.Log("로그인 실패 : 서버오류"+ex.Message);
         }
     }
 
@@ -338,7 +350,7 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        StartCoroutine(CheckQueue());
+        //StartCoroutine(CheckQueue());
     }
     #endregion
 
