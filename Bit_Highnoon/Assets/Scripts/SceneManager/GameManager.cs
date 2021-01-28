@@ -282,28 +282,25 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+
         sounddb = this.gameObject.AddComponent<SoundDB>();
         leveldb = this.gameObject.AddComponent<LogicalDB>();
-        this.gameObject.AddComponent<DBServer>();
-        this.gameObject.AddComponent<OVRManager>();
-        this.gameObject.AddComponent<SpawnManager>();
 
+        this.gameObject.AddComponent<DBServer>().enabled = false;
+        this.gameObject.AddComponent<SpawnManager>().enabled = false;
         if (SceneManager.GetActiveScene().buildIndex == 6)
         {
             this.gameObject.GetComponent<DBServer>().enabled = true;
-            this.gameObject.GetComponent<OVRManager>().enabled = false;
             this.gameObject.GetComponent<SpawnManager>().enabled = false;
         }
         else if(SceneManager.GetActiveScene().buildIndex == 7 || SceneManager.GetActiveScene().buildIndex == 8)
         {
             this.gameObject.GetComponent<DBServer>().enabled = true;
-            this.gameObject.GetComponent<OVRManager>().enabled = true;
             this.gameObject.GetComponent<SpawnManager>().enabled = true;
         }
         else
         {
             this.gameObject.GetComponent<DBServer>().enabled = false;
-            this.gameObject.GetComponent<OVRManager>().enabled = false;
             this.gameObject.GetComponent<SpawnManager>().enabled = false;
         }
 
