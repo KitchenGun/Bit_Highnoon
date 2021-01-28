@@ -35,6 +35,7 @@ public class Register_Manager : MonoBehaviourPunCallbacks
     }
     #endregion
 
+    //버튼 클릭 함수
     public void Hit(GameObject button)
     {
         Button btn = button.gameObject.GetComponent<Button>();
@@ -47,9 +48,17 @@ public class Register_Manager : MonoBehaviourPunCallbacks
 
     public void MakeAccount()
     {
-        //DB에서 id값 비교 후 사용가능한지 확인
+        if(Account_ID_InputField.text == "" && Account_PW_InputField.text == "")
+        {
+            GameObject.Find("Picket").transform.GetChild(1).GetChild(0).GetChild(2).gameObject.GetComponent<Text>().text = "Please enter your ID and PW correctly.";
+            return;
+        }
+
+        //ID PW를 DB로 보내 회원가입 처리
         GameObject.Find("DB").gameObject.GetComponent<DBServer>().SendInsertUser(Account_ID_InputField.text, Account_PW_InputField.text);
     }
+
+    //회원가입 성공, 실패 여부에 따른 행동
     public void AccountResult(bool register)
     {
         if (register == true)
@@ -66,16 +75,19 @@ public class Register_Manager : MonoBehaviourPunCallbacks
 
     public void Login()
     {
-        if(GameManager.Instance.Login(Login_ID_InputField.text) == true)
-        {
+        //if(GameManager.Instance.Login(Login_ID_InputField.text) == true)
+        //{
             //가능한 경우 로비로 이동
-            Connect();
-            GameManager.Instance.PreSceneIndex();
-            GameManager.Instance.ChangeToScene(9);
-        }
-        else
-            GameObject.Find("DB").gameObject.GetComponent<DBServer>().SendLoginUser(Login_ID_InputField.text, Login_PW_InputField.text);
+        //    Connect();
+        //   GameManager.Instance.PreSceneIndex();
+        //    GameManager.Instance.ChangeToScene(9);
+        //}
+        //else
+        //입력한 ID PW를 DB로 보내 로그인 처리
+        GameObject.Find("DB").gameObject.GetComponent<DBServer>().SendLoginUser(Login_ID_InputField.text, Login_PW_InputField.text);
     }
+    
+    //로그인 성공, 실패 여부에 따른 행동
     public void LoginResult(bool register)
     {
         if (register == true)
