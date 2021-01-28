@@ -6170,7 +6170,6 @@ GameObject:
   m_Component:
   - component: {fileID: 245224733891406122}
   - component: {fileID: 6241827388079522438}
-  - component: {fileID: 7863827082333187174}
   m_Layer: 0
   m_Name: Hat
   m_TagString: Untagged
@@ -6278,18 +6277,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.2829251, y: 0.004690379, z: 0.022723854}
     m_Extent: {x: 0.1380279, y: 0.18941152, z: 0.27753025}
   m_DirtyAABB: 0
---- !u!114 &7863827082333187174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 684482721048713927}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51124a067c72a794dbb9362629a4b149, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &706433643010103987
 GameObject:
   m_ObjectHideFlags: 0
@@ -26815,6 +26802,8 @@ GameObject:
   - component: {fileID: 2677167125944578962}
   - component: {fileID: 2677167125944578974}
   - component: {fileID: 2677167125944578973}
+  - component: {fileID: 1477955432727796629}
+  - component: {fileID: 3569114945225155859}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -26863,7 +26852,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 860ff0a48afd94a49b739e8a129eec9b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -26885,6 +26874,40 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1477955432727796629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2677167125944578961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &3569114945225155859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2677167125944578961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43dee3cd62272a249b5eadcbf2290dff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2677167126756042620
 GameObject:
   m_ObjectHideFlags: 0
@@ -52082,6 +52105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6285385827589272257}
   - component: {fileID: 6285385827584091107}
+  - component: {fileID: 4132013996784336838}
   - component: {fileID: 6198990548021386608}
   m_Layer: 0
   m_Name: Hat
@@ -52190,6 +52214,28 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.2829251, y: 0.004690379, z: 0.022723854}
     m_Extent: {x: 0.1380279, y: 0.18941152, z: 0.27753025}
   m_DirtyAABB: 0
+--- !u!114 &4132013996784336838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6285385827589304033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!114 &6198990548021386608
 MonoBehaviour:
   m_ObjectHideFlags: 0
