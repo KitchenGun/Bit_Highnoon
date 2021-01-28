@@ -3964,7 +3964,7 @@ GameObject:
   - component: {fileID: 8146067444879461864}
   m_Layer: 0
   m_Name: Hat
-  m_TagString: Untagged
+  m_TagString: HatSample
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4094,7 +4094,7 @@ GameObject:
   - component: {fileID: 393296410464154736}
   m_Layer: 0
   m_Name: Camohat
-  m_TagString: HatSample
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6185,13 +6185,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 684482721048713927}
-  m_LocalRotation: {x: 0.19824584, y: -0, z: -0, w: 0.98015237}
-  m_LocalPosition: {x: 0, y: 0.21, z: 0.00006}
+  m_LocalRotation: {x: 0.19014429, y: -0.2773376, z: -0.056094386, w: 0.9400971}
+  m_LocalPosition: {x: 0.042170193, y: 0.20519467, z: 0.011453928}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 2416597483270316923}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 22.869, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 19.05, y: -35.046, z: -12.895}
 --- !u!137 &6241827388079522438
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -7249,6 +7249,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 837580839777518144}
+  - component: {fileID: 3100081822226729517}
   - component: {fileID: 7603721138328873757}
   m_Layer: 0
   m_Name: ForwardDirection
@@ -7265,13 +7266,35 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 837580839777427044}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5.08}
+  m_LocalPosition: {x: 0, y: 0.24, z: 5.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6581805491718597719}
   m_Father: {fileID: 837580839777518148}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3100081822226729517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837580839777427044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!114 &7603721138328873757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10025,7 +10048,7 @@ GameObject:
   - component: {fileID: 864683794807191343}
   m_Layer: 0
   m_Name: Firefighterhat
-  m_TagString: HatSample
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10078,7 +10101,7 @@ GameObject:
   - component: {fileID: 7866940900296981296}
   m_Layer: 0
   m_Name: Hat
-  m_TagString: Untagged
+  m_TagString: HatSample
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17963,7 +17986,7 @@ GameObject:
   - component: {fileID: 1198373073109280975}
   m_Layer: 0
   m_Name: Crocohat
-  m_TagString: HatSample
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18016,7 +18039,7 @@ GameObject:
   - component: {fileID: 853829462010472444}
   m_Layer: 0
   m_Name: Hat
-  m_TagString: Untagged
+  m_TagString: HatSample
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20242,7 +20265,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6581805491718597719
 Transform:
   m_ObjectHideFlags: 0
@@ -20251,8 +20274,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1867930417754862713}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03, y: 0.52, z: -2.45}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.03, y: 1.04, z: -3.69}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 9080400937255067886}
   - {fileID: 3231280795978764314}
@@ -21963,7 +21986,7 @@ GameObject:
   - component: {fileID: 2253335547067940260}
   m_Layer: 0
   m_Name: Detectivehat
-  m_TagString: HatSample
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22102,7 +22125,7 @@ GameObject:
   - component: {fileID: 8561357791263540133}
   m_Layer: 0
   m_Name: Hat
-  m_TagString: Untagged
+  m_TagString: HatSample
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26245,7 +26268,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3231280795978764314
 Transform:
   m_ObjectHideFlags: 0
@@ -27878,6 +27901,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7021688651912073015}
+  - component: {fileID: 1292534779165169730}
   - component: {fileID: 894704702168657018}
   m_Layer: 0
   m_Name: Sample
@@ -27894,7 +27918,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3313430739218291513}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.96, y: 0.51, z: 0}
+  m_LocalPosition: {x: -2.96, y: 0.79, z: -0.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7927117368236610851}
@@ -27902,6 +27926,28 @@ Transform:
   m_Father: {fileID: 6581805491718597719}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1292534779165169730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3313430739218291513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!114 &894704702168657018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27938,15 +27984,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3373219619981431656}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.005, y: -1.821, z: 0.18}
+  m_LocalRotation: {x: 0.122425266, y: -0.37902644, z: 0.026731433, w: 0.91686237}
+  m_LocalPosition: {x: 0.22708988, y: -1.7531445, z: -0.29112813}
   m_LocalScale: {x: 280, y: 280, z: 280}
   m_Children:
   - {fileID: 245224733891406122}
   - {fileID: 8621012777147751487}
   m_Father: {fileID: 5583336115642874112}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 14.168, y: -45.242, z: -2.588}
 --- !u!95 &6141427358735279672
 Animator:
   serializedVersion: 3
@@ -29732,7 +29778,7 @@ GameObject:
   - component: {fileID: 3520656030435772588}
   m_Layer: 0
   m_Name: Hat
-  m_TagString: Untagged
+  m_TagString: HatSample
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29862,7 +29908,7 @@ GameObject:
   - component: {fileID: 3801159495845973304}
   m_Layer: 0
   m_Name: Poor
-  m_TagString: HatSample
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44938,7 +44984,7 @@ GameObject:
   - component: {fileID: 8320916653099075952}
   m_Layer: 0
   m_Name: Hat
-  m_TagString: Untagged
+  m_TagString: HatSample
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45154,7 +45200,7 @@ GameObject:
   - component: {fileID: 5066419880065718139}
   m_Layer: 0
   m_Name: Cowboyhat
-  m_TagString: HatSample
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50415,7 +50461,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7927117368236610851
 Transform:
   m_ObjectHideFlags: 0
@@ -50424,8 +50470,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5684928175365484738}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 1, z: 0.5}
+  m_LocalPosition: {x: 0, y: -0.39, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.6, z: 0.5}
   m_Children: []
   m_Father: {fileID: 7021688651912073015}
   m_RootOrder: 0
@@ -58324,7 +58370,7 @@ GameObject:
   - component: {fileID: 6887077422565924766}
   m_Layer: 0
   m_Name: Ghat
-  m_TagString: HatSample
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58377,7 +58423,7 @@ GameObject:
   - component: {fileID: 700367048236468052}
   m_Layer: 0
   m_Name: Hat
-  m_TagString: Untagged
+  m_TagString: HatSample
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62627,7 +62673,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5583336115642874112
 Transform:
   m_ObjectHideFlags: 0
@@ -62636,7 +62682,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7264069379603385491}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 1.05, z: 0}
+  m_LocalPosition: {x: 0, y: 0.321, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 2416597483270316923}
@@ -73188,7 +73234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9080400937255067886
 Transform:
   m_ObjectHideFlags: 0
@@ -77211,7 +77257,7 @@ GameObject:
   - component: {fileID: 4116107884091332654}
   m_Layer: 0
   m_Name: Hat
-  m_TagString: Untagged
+  m_TagString: HatSample
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77427,7 +77473,7 @@ GameObject:
   - component: {fileID: 8067020626667127546}
   m_Layer: 0
   m_Name: Wovenhat
-  m_TagString: HatSample
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80456,7 +80502,7 @@ GameObject:
   - component: {fileID: 2913453555365347441}
   m_Layer: 0
   m_Name: Hat
-  m_TagString: Untagged
+  m_TagString: HatSample
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80586,7 +80632,7 @@ GameObject:
   - component: {fileID: 8705763571476693912}
   m_Layer: 0
   m_Name: Firefighter2hat
-  m_TagString: HatSample
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

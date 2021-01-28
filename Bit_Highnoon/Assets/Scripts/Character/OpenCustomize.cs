@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class OpenCustomize : MonoBehaviour
 {
@@ -8,11 +9,15 @@ public class OpenCustomize : MonoBehaviour
 
     private GameObject head;
 
+    private PhotonView PV;
+
     private void Start()
     {
         isopen = false;
 
         head = this.gameObject.transform.parent.GetChild(5).gameObject;
+
+        PV = this.gameObject.GetPhotonView();
 
         if (GameManager.Instance.GetSceneIndex() == 8)
         {
@@ -25,60 +30,75 @@ public class OpenCustomize : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.Instance.GetSceneIndex() == 8)
+        if (PV.IsMine)
         {
-            if (OVRInput.GetDown(OVRInput.Button.One) || Input.GetKeyDown(KeyCode.A))
+            if (GameManager.Instance.GetSceneIndex() == 8)
             {
-                if (isopen == false)
+                if (OVRInput.GetDown(OVRInput.Button.One) || Input.GetKeyDown(KeyCode.A))
                 {
-                    DeleteOpenCus();
+                    if (isopen == false)
+                    {
+                        DeleteOpenCus();
 
-                    this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                        OpenCus(true);
 
-                    #region UI
-                    head.transform.GetChild(8).gameObject.SetActive(true);
+                        #region 위치 조정
+                        float y = this.gameObject.transform.parent.GetChild(3).transform.position.y;
 
-                    Invoke("DeleteSelect", 3f);
-                    #endregion
+                        this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x, y + 1f, this.gameObject.transform.position.z);
+                        #endregion
 
-                    isopen = true;
+                        #region UI
+                        head.transform.GetChild(8).gameObject.SetActive(true);
+
+                        Invoke("DeleteSelect", 3f);
+                        #endregion
+
+                        isopen = true;
+                    }
+                    else if (isopen == true)
+                    {
+                        OpenCus(false);
+
+                        #region 선택정보로 변경
+                        PV.RPC("SaveMaterial", RpcTarget.AllBuffered);
+                        #endregion
+
+                        CloseCus();
+
+                        isopen = false;
+                    }
                 }
-                else if (isopen == true)
+
+                if (OVRInput.GetDown(OVRInput.Button.Two) || Input.GetKeyDown(KeyCode.B))
                 {
-                    this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                    if (isopen == true)
+                    {
+                        #region 샘플을 원래대로
+                        this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().ChangeBodyColor(this.gameObject.transform.parent.GetChild(2).GetChild(0).GetComponent<Renderer>().material);
 
-                    #region 선택정보로 변경
-                    this.gameObject.transform.parent.GetChild(2).GetChild(0).GetComponent<Renderer>().material =
-                        this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Character;
+                        this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().ChangeHatColor(this.gameObject.transform.parent.GetChild(5).GetChild(0).GetChild(0).GetComponent<Renderer>().material);
+                        #endregion
 
-                    this.gameObject.transform.parent.GetChild(5).GetChild(0).GetChild(0).GetComponent<Renderer>().material =
-                        this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Hat;
-                    #endregion
+                        OpenCus(false);
 
-                    CloseCus();
+                        CloseCus();
 
-                    isopen = false;
-                }
-            }
-
-            if (OVRInput.GetDown(OVRInput.Button.Two) || Input.GetKeyDown(KeyCode.B))
-            {
-                if (isopen == true)
-                {
-                    this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
-
-                    #region 샘플을 원래대로
-                    this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().ChangeBodyColor(this.gameObject.transform.parent.GetChild(2).GetChild(0).GetComponent<Renderer>().material);
-
-                    this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().ChangeHatColor(this.gameObject.transform.parent.GetChild(5).GetChild(0).GetChild(0).GetComponent<Renderer>().material);
-                    #endregion
-
-                    CloseCus();
-
-                    isopen = false;
+                        isopen = false;
+                    }
                 }
             }
         }
+    }
+
+    [PunRPC]
+    private void SaveMaterial()
+    {
+        this.gameObject.transform.parent.GetChild(2).GetChild(0).GetComponent<Renderer>().material =
+            this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Character;
+
+        this.gameObject.transform.parent.GetChild(5).GetChild(0).GetChild(0).GetComponent<SkinnedMeshRenderer>().material =
+            this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Hat;
     }
 
     private void DeleteOpenCus()
@@ -110,6 +130,14 @@ public class OpenCustomize : MonoBehaviour
     {
         head.transform.GetChild(8).gameObject.SetActive(false);
         head.transform.GetChild(9).gameObject.SetActive(false);
+    }
+
+    private void OpenCus(bool state)
+    {
+        this.gameObject.transform.GetChild(0).GetChild(0).gameObject.SetActive(state);
+        this.gameObject.transform.GetChild(0).GetChild(1).gameObject.SetActive(state);
+        this.gameObject.transform.GetChild(0).GetChild(2).GetChild(0).gameObject.SetActive(state);
+        this.gameObject.transform.GetChild(0).GetChild(2).GetChild(1).gameObject.SetActive(state);
     }
 
 }

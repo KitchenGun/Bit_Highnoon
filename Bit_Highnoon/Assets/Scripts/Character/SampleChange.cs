@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class SampleChange : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class SampleChange : MonoBehaviour
 
     private Material selected_hat;
 
+    private PhotonView PV;
+
     public Material Selected_Character { get { return selected_character; } }
     public Material Selected_Hat { get { return selected_hat; } }
 
@@ -20,8 +23,10 @@ public class SampleChange : MonoBehaviour
     {
         CharacterMaterial = Resources.LoadAll("CharacterMaterial");
         HatMaterials = Resources.LoadAll("HatMaterials");
-        selected_character = this.gameObject.transform.GetChild(0).GetComponent<Renderer>().material;
-        selected_hat = this.gameObject.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Renderer>().material;
+        selected_character = this.gameObject.transform.parent.parent.parent.GetChild(2).GetChild(0).GetComponent<Renderer>().material;
+        selected_hat = this.gameObject.transform.parent.parent.parent.GetChild(5).GetChild(0).GetChild(0).GetComponent<Renderer>().material;
+
+        PV = this.gameObject.GetPhotonView();
     }
 
     public void ChangeBodyColor(string Colorstr)
@@ -30,7 +35,21 @@ public class SampleChange : MonoBehaviour
         {
             if (Colorstr == mat.name)
             {
-                this.gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>().material= selected_character = mat;
+                this.gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>().material = mat;
+                
+                PV.RPC("SaveBodyMaterial", RpcTarget.AllBuffered, Colorstr);
+            }
+        }
+    }
+
+    [PunRPC]
+    private void SaveBodyMaterial(string Colorstr)
+    {
+        foreach (Material mat in HatMaterials)
+        {
+            if (Colorstr == mat.name)
+            {
+                selected_character = mat;
             }
         }
     }
@@ -46,13 +65,27 @@ public class SampleChange : MonoBehaviour
         {
             if (hatmaterial == mat.name)
             {
-                this.gameObject.transform.GetChild(1).GetChild(0).GetChild(0).gameObject.GetComponent<Renderer>().material = selected_hat = mat;
+                this.gameObject.transform.GetChild(1).GetChild(0).GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material = mat;
+
+                PV.RPC("SaveHatMaterial", RpcTarget.AllBuffered, hatmaterial);
+            }
+        }
+    }
+
+    [PunRPC]
+    private void SaveHatMaterial(string hatmaterial)
+    {
+        foreach (Material mat in HatMaterials)
+        {
+            if (hatmaterial == mat.name)
+            {
+                selected_hat = mat;
             }
         }
     }
 
     public void ChangeHatColor(Material original)
     {
-        this.gameObject.transform.GetChild(1).GetChild(0).GetChild(0).gameObject.GetComponent<Renderer>().material = original;
+        this.gameObject.transform.GetChild(1).GetChild(0).GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material = original;
     }
 }
