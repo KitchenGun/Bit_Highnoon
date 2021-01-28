@@ -323,7 +323,7 @@ public class GameManager : MonoBehaviour
             db_server.enabled = true;
             spawnmanager.enabled = false;
         }
-        else if(SceneManager.GetActiveScene().buildIndex == 7 || SceneManager.GetActiveScene().buildIndex == 8)
+        else if(SceneManager.GetActiveScene().buildIndex == 7 || SceneManager.GetActiveScene().buildIndex == 8 || SceneManager.GetActiveScene().buildIndex == 9)
         {
             db_server.enabled = true;
             spawnmanager.enabled = true;

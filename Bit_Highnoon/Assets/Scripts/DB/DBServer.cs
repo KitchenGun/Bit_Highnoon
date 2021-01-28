@@ -17,6 +17,11 @@ public class DBServer : MonoBehaviour
         StartClient("61.81.98.236", 9000);
     }
 
+    private void Start()
+    {
+        
+    }
+
     //ip수정할것!!
     public bool StartClient(string ip, int port)
     {
