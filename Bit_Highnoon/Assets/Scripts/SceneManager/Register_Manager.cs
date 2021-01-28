@@ -55,7 +55,7 @@ public class Register_Manager : MonoBehaviourPunCallbacks
         }
         else
         //ID PW를 DB로 보내 회원가입 처리
-            GameObject.Find("DB").gameObject.GetComponent<DBServer>().SendInsertUser(Account_ID_InputField.text, Account_PW_InputField.text);
+            GameObject.Find("GameManager").gameObject.GetComponent<DBServer>().SendInsertUser(Account_ID_InputField.text, Account_PW_InputField.text);
     }
 
     //회원가입 성공, 실패 여부에 따른 행동
@@ -90,7 +90,7 @@ public class Register_Manager : MonoBehaviourPunCallbacks
             return;
         }
         else
-            GameObject.Find("DB").gameObject.GetComponent<DBServer>().SendLoginUser(Login_ID_InputField.text, Login_PW_InputField.text);
+            GameObject.Find("GameManager").gameObject.GetComponent<DBServer>().SendLoginUser(Login_ID_InputField.text, Login_PW_InputField.text);
     }
     
     //로그인 성공, 실패 여부에 따른 행동
