@@ -63,6 +63,7 @@ public class Register_Manager : MonoBehaviourPunCallbacks
     {
         if (register == true)
         {
+            GameObject.Find("Picket").transform.GetChild(1).gameObject.SetActive(false);
             //회원가입 성공시 텍스트
             this.gameObject.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = "Your account has been registered.";
         }
