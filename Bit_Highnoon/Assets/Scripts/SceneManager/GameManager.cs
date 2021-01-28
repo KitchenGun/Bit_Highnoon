@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,6 +14,247 @@ public class GameManager : MonoBehaviour
     private string id = "SEX";
     private bool login = false;    
     private int p_index;
+
+    #region DB정보
+    private bool register = false;
+
+    private Queue<string> messageQueue = new Queue<string>();
+
+    //큐에 데이타 삽입
+    public void PushData(string data)
+    {
+        messageQueue.Enqueue(data);
+    }
+
+    public string GetData()
+    {
+        //데이타가 1개라도 있을 경우 꺼내서 반환
+        if (messageQueue.Count > 0)
+            return messageQueue.Dequeue();
+        else
+            return string.Empty;    //없으면 빈값을 반환
+    }
+
+    private IEnumerator CheckQueue()
+    {
+        //1초 주기로 탐색
+        WaitForSeconds waitSec = new WaitForSeconds(1);
+
+        while (true)
+        {
+            //우편함에서 데이타 꺼내기
+            string data = GetData();
+
+            //우편함에 데이타가 있는 경우
+            if (!data.Equals(string.Empty))
+            {
+                //데이타로 UI 갱신
+                ResponseData(data);
+                yield break;
+            }
+
+            yield return waitSec;
+        }
+    }
+
+    public void ResponseData(string data)
+    {
+        string[] filter = data.Split('\a');
+
+        if (filter[0].Equals("S_InsertUser") == true)
+        {
+            UserInsert(filter[1]);
+        }
+        else if (filter[0].Equals("S_UserLogin") == true)
+        {
+            UserLogin(filter[1]);
+        }
+        else if (filter[0].Equals("S_UserColorHat") == true)
+        {
+            if (filter[1] == "E")
+                Debug.Log("DB서버 에러");
+            else
+            {
+                string[] info = filter[1].Split('#');
+                UserColor(info[0]);
+                UserHat(info[1]);
+            }
+        }
+    }
+
+    #region DB수신정보 처리
+
+    //유저 추가
+    private void UserInsert(string msg)
+    {
+        try
+        {
+            if (msg == "true")
+            {
+                Debug.Log("유저추가 성공");
+                register = true;
+                GameObject.Find("Picket").transform.GetChild(1).GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("AccountResult", register);
+            }
+            else if (msg == "same")
+            {
+                Debug.Log("유저추가 실패 : 동일한 id");
+                register = false;
+                GameObject.Find("Picket").transform.GetChild(1).GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("AccountResult", register);
+            }
+            else
+            {
+                Debug.Log("유저추가 실패 : db오류");
+                register = false;
+                GameObject.Find("Picket").transform.GetChild(1).GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("AccountResult", register);
+            }
+        }
+        catch (Exception)
+        {
+            Debug.Log("유저추가 실패 : 서버오류");
+        }
+    }
+
+    //유저 로그인
+    private void UserLogin(string msg)
+    {
+        try
+        {
+            if (msg == "S")
+            {
+                Debug.Log("로그인 성공");
+                register = true;
+                GameObject.Find("Picket").transform.GetChild(0).GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("LoginResult", register);
+            }
+            else if (msg == "N")
+            {
+                Debug.Log("로그인 실패 :유저 없음");
+                register = false;
+                GameObject.Find("Picket").transform.GetChild(0).GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("LoginResult", register);
+            }
+            else
+            {
+                Debug.Log("로그인 실패");
+                register = false;
+                GameObject.Find("Picket").transform.GetChild(0).GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("LoginResult", register);
+            }
+        }
+        catch (Exception)
+        {
+            Debug.Log("로그인 실패 : 서버오류");
+        }
+    }
+
+    //유저 모자, 색상정보
+    private void UserHat(string msg)
+    {
+        try
+        {
+            if (msg == "Camohat")
+            {
+                Debug.Log("모자 : Camohat");
+            }
+            else if (msg == "Cowboyhat")
+            {
+                Debug.Log("모자 : Cowboyhat");
+            }
+            else if (msg == "Crocohat")
+            {
+                Debug.Log("모자 : Crocohat");
+            }
+            else if (msg == "Detectivehat")
+            {
+                Debug.Log("모자 : Detectivehat");
+            }
+            else if (msg == "Firefighter2hat")
+            {
+                Debug.Log("모자 : Firefighter2hat");
+            }
+            else if (msg == "Firefighterhat")
+            {
+                Debug.Log("모자 : Firefighterhat");
+            }
+            else if (msg == "Ghat")
+            {
+                Debug.Log("모자 : Ghat");
+            }
+            else if (msg == "Poor")
+            {
+                Debug.Log("모자 : Poor");
+            }
+            else if (msg == "Wovenhat")
+            {
+                Debug.Log("모자 : Wovenhat");
+            }
+            else
+            {
+                Debug.Log("모자변경 실패 : DB에러");
+            }
+        }
+        catch (Exception)
+        {
+            Debug.Log("모자변경 실패");
+        }
+    }
+
+    //유저 색상
+    private void UserColor(string msg)
+    {
+        try
+        {
+            if (msg == "White")
+            {
+                Debug.Log("색상 : White");
+            }
+            else if (msg == "Black")
+            {
+                Debug.Log("색상 : Black");
+            }
+            else if (msg == "Brown")
+            {
+                Debug.Log("색상 : Brown");
+            }
+            else if (msg == "Green")
+            {
+                Debug.Log("색상 : Green");
+            }
+            else if (msg == "LightGreen")
+            {
+                Debug.Log("색상 : LightGreen");
+            }
+            else if (msg == "Mint")
+            {
+                Debug.Log("색상 : Mint");
+            }
+            else if (msg == "Orange")
+            {
+                Debug.Log("색상 : Orange");
+            }
+            else if (msg == "Pink")
+            {
+                Debug.Log("색상 : Pink");
+            }
+            else if (msg == "Purple")
+            {
+                Debug.Log("색상 : Purple");
+            }
+            else if (msg == "Red")
+            {
+                Debug.Log("색상 : Red");
+            }  
+            else
+            {
+                Debug.Log("색상변경 실패 : DB에러");
+            }
+            
+        }
+        catch (Exception)
+        {
+            Debug.Log("색상변경 실패");
+        }
+    }
+
+    #endregion
+    #endregion
 
     #region 네트워크 GameEnd 체크
     private bool is_netgame_end;    //네트워크 게임이 끝났는지 체크
@@ -56,6 +298,8 @@ public class GameManager : MonoBehaviour
         sounddb.SoundUpdate(GetSceneIndex());
 
         DontDestroyOnLoad(gameObject);
+
+        StartCoroutine(CheckQueue());
     }
     #endregion
 

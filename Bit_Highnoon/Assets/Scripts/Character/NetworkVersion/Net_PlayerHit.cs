@@ -108,6 +108,8 @@ public class Net_PlayerHit : MonoBehaviourPunCallbacks
         if (PV.IsMine)
         {
             this.gameObject.transform.parent.GetChild(5).GetChild(1).gameObject.SetActive(true);
+            HitAudio.clip = GM.LoadAudioClip("lose");
+            HitAudio.Play();
         }
     }
 
@@ -118,13 +120,16 @@ public class Net_PlayerHit : MonoBehaviourPunCallbacks
             if (!isDeath)
             {
                 Win();
+                
             }
         }
     }
 
     private void Win()
     {
-       this.gameObject.transform.parent.GetChild(5).GetChild(2).gameObject.SetActive(true);            
+       this.gameObject.transform.parent.GetChild(5).GetChild(2).gameObject.SetActive(true);
+        HitAudio.clip = GM.LoadAudioClip("win");
+        HitAudio.Play();
     }
     #endregion
 
