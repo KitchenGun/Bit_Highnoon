@@ -193,7 +193,7 @@ public class DBServer : MonoBehaviour
     }
 
     //유저 색상, 모자 변경
-    public void SendUserChande(string id, string color, string hat)
+    public void SendUserChange(string id, string color, string hat)
     {
         //전송
         string packet = UserChange(id, color, hat);

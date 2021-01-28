@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class HatMaterial : MonoBehaviour
+public class BodyMaterial : MonoBehaviour
 {
     private object[] materials;
 
@@ -12,26 +12,26 @@ public class HatMaterial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        materials = Resources.LoadAll("HatMaterials");
+        materials = Resources.LoadAll("CharacterMaterial");
 
         PV = this.gameObject.GetPhotonView();
 
-        if (PV.IsMine == true)
+        if(PV.IsMine == true)
         {
-            PV.RPC("ChangeMaterial", RpcTarget.AllBuffered, GameManager.Instance.Hat_Material);
+            PV.RPC("ChangeMaterial", RpcTarget.AllBuffered, GameManager.Instance.Char_Material);
         }
     }
 
     [PunRPC]
-    private void ChangeMaterial(string hat_material)
+    private void ChangeMaterial(string char_material)
     {
-        if (hat_material.Equals(string.Empty) == false)
+        if (char_material.Equals(string.Empty) == false)
         {
             foreach (Material mat in materials)
             {
-                if (hat_material.Equals(mat.name))
+                if (char_material.Equals(mat.name))
                 {
-                    this.GetComponent<SkinnedMeshRenderer>().material = mat;
+                    this.GetComponent<Renderer>().material = mat;
                 }
             }
         }
