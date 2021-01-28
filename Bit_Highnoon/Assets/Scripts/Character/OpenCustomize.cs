@@ -11,6 +11,8 @@ public class OpenCustomize : MonoBehaviour
 
     private PhotonView PV;
 
+    private DBServer DB;
+
     private void Start()
     {
         isopen = false;
@@ -19,7 +21,9 @@ public class OpenCustomize : MonoBehaviour
 
         PV = this.gameObject.GetPhotonView();
 
-        if (GameManager.Instance.GetSceneIndex() == 8)
+        DB = GameObject.Find("GameManager").GetComponent<DBServer>();
+
+        if (GameManager.Instance.GetSceneIndex() == 7)
         {
             head.transform.GetChild(7).gameObject.SetActive(true);
 
@@ -32,7 +36,7 @@ public class OpenCustomize : MonoBehaviour
     {
         if (PV.IsMine)
         {
-            if (GameManager.Instance.GetSceneIndex() == 8)
+            if (GameManager.Instance.GetSceneIndex() == 7)
             {
                 if (OVRInput.GetDown(OVRInput.Button.One) || Input.GetKeyDown(KeyCode.A))
                 {
@@ -62,6 +66,15 @@ public class OpenCustomize : MonoBehaviour
 
                         #region 선택정보로 변경
                         PV.RPC("SaveMaterial", RpcTarget.AllBuffered);
+                        #endregion
+
+                        #region 변경 정보를 DB로 전송
+                        Debug.Log(PV.Owner.ToString().Split('\'')[1]);
+                        Debug.Log(this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Character.name);
+                        Debug.Log(this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Hat.name);
+                        //DB.SendUserChange(PV.Owner.ToString(),
+                        //    this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Character.name,
+                        //    this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Hat.name);
                         #endregion
 
                         CloseCus();

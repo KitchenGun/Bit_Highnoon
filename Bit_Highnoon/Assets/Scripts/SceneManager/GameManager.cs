@@ -20,6 +20,13 @@ public class GameManager : MonoBehaviour
 
     private Queue<string> messageQueue = new Queue<string>();
 
+    private string char_material = string.Empty;
+
+    private string hat_material = string.Empty;
+
+    public string Char_Material { get { return char_material; } }
+    public string Hat_Material { get { return hat_material; } }
+
     //큐에 데이타 삽입
     public void PushData(string data)
     {
@@ -149,8 +156,9 @@ public class GameManager : MonoBehaviour
     {
         try
         {
+            char_material = msg;
             if (msg == "Camohat")
-            {
+            {                
                 Debug.Log("모자 : Camohat");
             }
             else if (msg == "Cowboyhat")
@@ -201,6 +209,7 @@ public class GameManager : MonoBehaviour
     {
         try
         {
+            hat_material = msg;
             if (msg == "White")
             {
                 Debug.Log("색상 : White");
