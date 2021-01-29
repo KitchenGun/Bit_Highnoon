@@ -23,7 +23,7 @@ public class LobbySpawn : MonoBehaviourPunCallbacks
     {
         if (scene.buildIndex == 7) // We're in the game scene
         {
-            PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
+            PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), transform.position, transform.rotation);
         }
     }
 }
