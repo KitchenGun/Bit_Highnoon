@@ -17,7 +17,7 @@ public class OpenCustomize : MonoBehaviour
     {
         DB = GameObject.Find("GameManager").GetComponent<DBServer>();
 
-        DB.SendUserColorHat(PV.Owner.ToString().Split('\'')[1]);
+        DB.SendUserColorHat(PhotonNetwork.LocalPlayer.NickName);
     }
 
     private void Start()
@@ -79,13 +79,13 @@ public class OpenCustomize : MonoBehaviour
                         //Debug.Log(this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Hat.name);
                         if (this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Hat != null)
                         {
-                            DB.SendUserChange(PV.Owner.ToString(),
+                            DB.SendUserChange(PhotonNetwork.LocalPlayer.NickName,
                             this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Character.name,
                             this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Hat.name);
                         }
                         else
                         {
-                            DB.SendUserChange(PV.Owner.ToString(),
+                            DB.SendUserChange(PhotonNetwork.LocalPlayer.NickName,
                             this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Character.name,
                             "NoHat");
                         }

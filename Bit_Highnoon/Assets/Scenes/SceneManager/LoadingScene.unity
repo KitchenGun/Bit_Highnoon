@@ -705,6 +705,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
+--- !u!20 &808224263 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 3366610077945538646, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
+  m_PrefabInstance: {fileID: 808224262}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &843892016
 GameObject:
   m_ObjectHideFlags: 0
@@ -1411,7 +1416,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 808224263}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1455,4 +1460,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 812d6ac8923ccbd448f8257ccdd8baec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 0}
+  slider: {fileID: 528119179}
