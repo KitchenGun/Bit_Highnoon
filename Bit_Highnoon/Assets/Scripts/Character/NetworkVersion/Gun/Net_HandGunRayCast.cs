@@ -211,7 +211,14 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
     private void ScanLayer(int layer)
     {
         //오브젝트 레이어로 식별
-        if (layer == 8)
+        if (layer == 5) //Lobby에서 Ready버튼 쏠때
+        {
+            if (HitObj.transform.gameObject.name.Equals("Ready"))
+            {
+                HitObj.transform.gameObject.SendMessage("Ready");
+            }
+        }
+        else if(layer == 8)
         {
             PV.RPC("BulletHole_Ground_FX", RpcTarget.All, HitObj.point);
         }
