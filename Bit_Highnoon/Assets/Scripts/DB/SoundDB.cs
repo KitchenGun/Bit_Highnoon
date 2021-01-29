@@ -80,8 +80,10 @@ public class SoundDB : MonoBehaviour
         #region 모든 씬에 들어가는 소리
         folder1.AddRange(("Gun,Gun,Gun,Gun,User,Effect,Effect,Effect,Effect,NetWork,NetWork,User").Split(','));
         folder2.AddRange(("DropGun,GripGun,GunFire,Reload,Walk,glass,etc,metal,wood,Dead,Hit,popup").Split(','));
-        folder1.AddRange(("Lobby,Lobby,Lobby,Bgm,User").Split(','));
-        folder2.AddRange(("casino,piano,sleeze,Battle,gameend").Split(','));
+        
+        //7번씬에서 쓰는 소리
+        folder1.AddRange(("Lobby,Lobby,Lobby").Split(','));
+        folder2.AddRange(("casino,piano,sleeze").Split(','));
         #endregion
 
         #region AI 테스트 용
