@@ -15,9 +15,12 @@ public class OpenCustomize : MonoBehaviour
 
     private void Awake()
     {
+        PV = this.gameObject.GetPhotonView();
+
         DB = GameObject.Find("GameManager").GetComponent<DBServer>();
 
-        DB.SendUserColorHat(PhotonNetwork.LocalPlayer.NickName);
+        if(PV.IsMine)
+            DB.SendUserColorHat(PhotonNetwork.LocalPlayer.NickName);
     }
 
     private void Start()
@@ -25,8 +28,6 @@ public class OpenCustomize : MonoBehaviour
         isopen = false;
 
         head = this.gameObject.transform.parent.GetChild(5).gameObject;
-
-        PV = this.gameObject.GetPhotonView();
 
         if (GameManager.Instance.GetSceneIndex() == 7)
         {
