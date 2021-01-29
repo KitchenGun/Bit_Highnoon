@@ -11,6 +11,8 @@ public class Net_Ready : MonoBehaviour
 
     private bool is_wait_comein;    //상대가 접속할때 까지 기다리는지 확인
 
+    private bool isfrist;           //처음 전투씬에 들어왔는지 확인
+
     private PhotonView PV;
 
     public bool IsReady { get { return isready; } }
@@ -19,16 +21,12 @@ public class Net_Ready : MonoBehaviour
     {
         PV = this.gameObject.GetPhotonView();
 
-        if (GameManager.Instance.GetSceneIndex() == 8)
-        {
-            this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+        if (PV.IsMine == true)
+            isready = is_wait_ready = is_wait_comein = isfrist = false;
+        else if (PV.IsMine == false)
+            this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
 
-            if (PV.IsMine == true)
-                isready = is_wait_ready = is_wait_comein = false;
-            else if (PV.IsMine == false)
-                this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
-        }
-        else
+        if (GameManager.Instance.GetSceneIndex() != 8)
         {
             this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
         }
@@ -41,6 +39,12 @@ public class Net_Ready : MonoBehaviour
         {
             if (PV.IsMine)
             {
+                if (isfrist == false)
+                {
+                    this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                    isfrist = true;
+                }
+
                 if (isready == false && (OVRInput.GetDown(OVRInput.Button.One) || Input.GetKeyDown(KeyCode.A)))
                 {
                     //Ready UI 종료

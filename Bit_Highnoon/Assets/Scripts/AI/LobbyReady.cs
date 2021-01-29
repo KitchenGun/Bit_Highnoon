@@ -23,8 +23,8 @@ public class LobbyReady : MonoBehaviour
     {
         if (ready_count == 2)
         {
-            //로딩씬도 추가...
-            GameManager.Instance.ChangeToScene(8);
+            GameManager.Instance.PreSceneIndex();
+            GameManager.Instance.ChangeToScene(9);
         }
     }
 
