@@ -7,29 +7,23 @@ using UnityEngine.SceneManagement;
 
 public class LobbySpawn : MonoBehaviourPunCallbacks
 {
-    //[SerializeField] string player_prefab;
-    PhotonView PV;
+	public override void OnEnable()
+	{
+		base.OnEnable();
+		SceneManager.sceneLoaded += OnSceneLoaded;
+	}
 
-    GameObject controller;
-    // Start is called before the first frame update
-    void Awake()
-    {
-        PV = GetComponent<PhotonView>();
-    }
+	public override void OnDisable()
+	{
+		base.OnDisable();
+		SceneManager.sceneLoaded -= OnSceneLoaded;
+	}
 
-    // Update is called once per frame
-    void Start()
+	void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
-        if (PV.IsMine)
+        if (scene.buildIndex == 7) // We're in the game scene
         {
-            CreateController();
+            PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
         }
-    }
-    void CreateController()
-    {
-        /*Transform spawnpoint = SpawnManager.instance.GetSpawnpoint();
-        controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "NetworkPlayer"), spawnpoint.position, spawnpoint.rotation,0,new object[] { PV.ViewID });
-        */
-        controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "NetworkPlayer"), transform.position, transform.rotation);
     }
 }
