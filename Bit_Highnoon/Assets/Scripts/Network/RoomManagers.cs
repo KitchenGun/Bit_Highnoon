@@ -30,10 +30,8 @@ public class RoomManagers : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        print("방참가 완료"); // 방입장 콜백
-        //GameManager.Instance.PreSceneIndex();
-        GameManager.Instance.ChangeToScene(7);
-        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "LobbySpawn"), transform.position, transform.rotation);
+        GameManager.Instance.PreSceneIndex();
+        GameManager.Instance.ChangeToScene(9);
     }
     public override void OnCreateRoomFailed(short returnCode, string message) => print("방만들기실패"); // 방만들기 실패 콜백
 
