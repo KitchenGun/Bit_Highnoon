@@ -45,11 +45,14 @@ public class Register_Manager : MonoBehaviourPunCallbacks
     //버튼 클릭 함수
     public void Hit(GameObject button)
     {
-        Button btn = button.gameObject.GetComponent<Button>();
-
-        if (button.gameObject == this.gameObject.transform.GetChild(3).gameObject)
+        switch (button.name)
         {
-            btn.onClick.Invoke();
+            case "Login":
+                Login();
+                break;
+            case "Account":
+                MakeAccount();
+                break;
         }
     }
 
@@ -57,12 +60,12 @@ public class Register_Manager : MonoBehaviourPunCallbacks
     {
         if(Account_ID_InputField.text == "" || Account_PW_InputField.text == "")
         {
-            this.gameObject.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = "Please enter your ID and PW correctly.";
+            this.gameObject.transform.GetChild(1).GetChild(0).GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = "Please enter your ID and PW correctly.";
             return;
         }
         else
         //ID PW를 DB로 보내 회원가입 처리
-            GameObject.Find("GameManager").gameObject.GetComponent<DBServer>().SendInsertUser(Account_ID_InputField.text, Account_PW_InputField.text);
+            GameObject.Find("GameManager").GetComponent<DBServer>().SendInsertUser(Account_ID_InputField.text, Account_PW_InputField.text);
     }
 
     //회원가입 성공, 실패 여부에 따른 행동
@@ -70,35 +73,28 @@ public class Register_Manager : MonoBehaviourPunCallbacks
     {
         if (register == true)
         {
-            GameObject.Find("Picket").transform.GetChild(1).gameObject.SetActive(false);
             //회원가입 성공시 텍스트
-            this.gameObject.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = "Your account has been registered.";
+            this.gameObject.transform.GetChild(1).GetChild(0).GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = "Your account has been registered.";
+            GameObject.Find("Picket").transform.GetChild(1).gameObject.SetActive(false);
         }
         else if(register == false)
         {
             //사용 불가능일 경우
-            this.gameObject.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = "This ID is already in use.";
+            this.gameObject.transform.GetChild(1).GetChild(0).GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = "This ID is already in use.";
         }
     }
 
     public void Login()
     {
-        //if(GameManager.Instance.Login(Login_ID_InputField.text) == true)
-        //{
-        //가능한 경우 로비로 이동
-        //    Connect();
-        //   GameManager.Instance.PreSceneIndex();
-        //    GameManager.Instance.ChangeToScene(9);
-        //}
-        //else
-        //입력한 ID PW를 DB로 보내 로그인 처리
         if (Login_ID_InputField.text == "" || Login_PW_InputField.text == "")
         {
-            this.gameObject.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = "Please enter your ID and PW correctly.";
+            this.gameObject.transform.GetChild(0).GetChild(0).GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = "Please enter your ID and PW correctly.";
             return;
         }
         else
+        {
             GameObject.Find("GameManager").gameObject.GetComponent<DBServer>().SendLoginUser(Login_ID_InputField.text, Login_PW_InputField.text);
+        }
     }
     
     //로그인 성공, 실패 여부에 따른 행동
@@ -114,7 +110,7 @@ public class Register_Manager : MonoBehaviourPunCallbacks
         else if (register == false)
         {
             //로그인 실패한 경우
-            this.gameObject.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = "Invalid information entered";
+            this.gameObject.transform.GetChild(0).GetChild(0).GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = "Invalid information entered";
         }
     }
 
