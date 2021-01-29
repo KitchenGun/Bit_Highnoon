@@ -32,7 +32,7 @@ public class LobbyReady : MonoBehaviour
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
-        if (players.Length >= 2)
+        if (players.Length >= 2 && (this.gameObject.transform.GetChild(0).GetComponent<Text>().text.Equals("Ready")))
         {
             PV.RPC("CountUp", RpcTarget.AllBuffered);
 
