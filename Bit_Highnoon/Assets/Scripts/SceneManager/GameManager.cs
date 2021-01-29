@@ -115,19 +115,19 @@ public class GameManager : MonoBehaviour
                 Debug.Log("유저추가 성공");
                 register = true;
                 //GameObject.Find("Picket").transform.GetChild(1).GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("AccountResult", register);
-                Register_Manager.Instance.AccountResult(register);
+                //Register_Manager.Instance.AccountResult(register);
             }
             else if (msg == "same")
             {
                 Debug.Log("유저추가 실패 : 동일한 id");
                 register = false;
-                Register_Manager.Instance.AccountResult(register);
+                //Register_Manager.Instance.AccountResult(register);
             }
             else
             {
                 Debug.Log("유저추가 실패 : db오류");
                 register = false;
-                Register_Manager.Instance.AccountResult(register);
+                //Register_Manager.Instance.AccountResult(register);
             }
         }
         catch (Exception)
