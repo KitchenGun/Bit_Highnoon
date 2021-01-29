@@ -46,6 +46,22 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 6)
+        {
+            db_server.enabled = true;
+            spawnmanager.enabled = false;
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 7 || SceneManager.GetActiveScene().buildIndex == 8 || SceneManager.GetActiveScene().buildIndex == 9)
+        {
+            db_server.enabled = true;
+            spawnmanager.enabled = true;
+        }
+        else
+        {
+            db_server.enabled = false;
+            spawnmanager.enabled = false;
+        }
+
         //우편함에서 데이타 꺼내기
         string data = GetData();
 
@@ -318,22 +334,6 @@ public class GameManager : MonoBehaviour
 
         db_server.enabled = false;
         spawnmanager.enabled = false;
-        if (SceneManager.GetActiveScene().buildIndex == 6)
-        {
-            db_server.enabled = true;
-            spawnmanager.enabled = false;
-        }
-        else if(SceneManager.GetActiveScene().buildIndex == 7 || SceneManager.GetActiveScene().buildIndex == 8 || SceneManager.GetActiveScene().buildIndex == 9)
-        {
-            db_server.enabled = true;
-            spawnmanager.enabled = true;
-        }
-        else
-        {
-            db_server.enabled = false;
-            spawnmanager.enabled = false;
-        }
-
         
         if(instance == null)
         {
