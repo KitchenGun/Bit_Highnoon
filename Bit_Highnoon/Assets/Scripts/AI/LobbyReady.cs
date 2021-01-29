@@ -23,7 +23,7 @@ public class LobbyReady : MonoBehaviour
     {
         if (ready_count == 2)
         {
-            PhotonNetwork.LoadLevel(8);
+            GameManager.Instance.ChangeToScene(8);
         }
     }
 
