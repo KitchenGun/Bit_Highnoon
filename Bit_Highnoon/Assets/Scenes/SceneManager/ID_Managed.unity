@@ -4670,7 +4670,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 600, y: 80, z: 0.05}
+  m_Size: {x: 2.2, y: 0.3, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!222 &222335589
 CanvasRenderer:
@@ -7113,7 +7113,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 600, y: 80, z: 0.05}
+  m_Size: {x: 2.2, y: 0.3, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!222 &291392894
 CanvasRenderer:
@@ -23785,7 +23785,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 600, y: 80, z: 0.05}
+  m_Size: {x: 2.2, y: 0.3, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!222 &966457196
 CanvasRenderer:
@@ -25420,7 +25420,7 @@ GameObject:
   - component: {fileID: 1052240211}
   - component: {fileID: 1052240210}
   m_Layer: 5
-  m_Name: Room
+  m_Name: Room0
   m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25458,7 +25458,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 600, y: 80, z: 0.05}
+  m_Size: {x: 2.2, y: 0.3, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1052240211
 MonoBehaviour:

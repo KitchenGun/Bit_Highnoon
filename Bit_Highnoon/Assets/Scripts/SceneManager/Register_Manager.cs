@@ -59,7 +59,7 @@ public class Register_Manager : MonoBehaviourPunCallbacks
             case "CREATE ROOM":
                 roomManager.CreateRoom();
                 break;
-            case "Room":
+            case "Room0":
                 roomManager.MyListClick(0);
                 break;
             case "Room1":
