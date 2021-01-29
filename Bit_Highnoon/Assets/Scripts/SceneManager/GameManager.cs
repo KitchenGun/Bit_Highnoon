@@ -245,13 +245,13 @@ public class GameManager : MonoBehaviour
         try
         {
             hat_material = msg;
-            if (msg == "White")
-            {
-                Debug.Log("색상 : White");
-            }
-            else if (msg == "Black")
+            if (msg == "Black")
             {
                 Debug.Log("색상 : Black");
+            }
+            else if (msg == "Blue")
+            {
+                Debug.Log("색상 : Blue");
             }
             else if (msg == "Brown")
             {
@@ -284,7 +284,15 @@ public class GameManager : MonoBehaviour
             else if (msg == "Red")
             {
                 Debug.Log("색상 : Red");
-            }  
+            }
+            else if (msg == "White")
+            {
+                Debug.Log("색상 : White");
+            }
+            else if (msg == "Yellow")
+            {
+                Debug.Log("색상 : Yellow");
+            }
             else
             {
                 Debug.Log("색상변경 실패 : DB에러");
