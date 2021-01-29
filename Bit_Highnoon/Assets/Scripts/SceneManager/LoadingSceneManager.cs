@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 public class LoadingSceneManager : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class LoadingSceneManager : MonoBehaviour
 
             if(time > 5)
             {
+                PhotonNetwork.LoadLevel(SceneIndex);
                 operation.allowSceneActivation = true;
             }
             yield return null;
