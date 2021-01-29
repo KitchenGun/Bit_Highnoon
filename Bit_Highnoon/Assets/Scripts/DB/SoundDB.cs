@@ -125,6 +125,10 @@ public class SoundDB : MonoBehaviour
                 folder1.AddRange(("Bgm,User").Split(','));
                 folder2.AddRange(("Battle,gameend").Split(',')); 
                 break;
+            case 9:
+                folder1.AddRange(("Lobby,Lobby,Lobby,Bgm,User").Split(','));
+                folder2.AddRange(("casino,piano,sleeze,Battle,gameend").Split(','));
+                break;
         }
 
         if(folder1 != null && folder1.Count == folder2.Count)
