@@ -13,9 +13,7 @@ public class GameManager : MonoBehaviour
     private SpawnManager spawnmanager;
     private GameObject normal;
     private GameObject hard;
-    private string id = "SEX";
-    private bool login = false;    
-    private int p_index;
+    private int n_index;
 
     #region DB정보
     private bool register = false;
@@ -381,8 +379,6 @@ public class GameManager : MonoBehaviour
     //씬 이동
     public void ChangeToScene(int idx)
     {
-        sounddb.SoundUpdate(idx);        
-
         SceneManager.LoadScene(idx);
     }
 
@@ -410,10 +406,13 @@ public class GameManager : MonoBehaviour
             switch (bottle.name)
             {
                 case "Single":
-                    ChangeToScene(2); break;
+                    NextSceneIndex(2);
+                    ChangeToScene(9); break;
                 case "Multi":
-                    ChangeToScene(6); break;
+                    NextSceneIndex(6);
+                    ChangeToScene(9); break;
                 case "Option":
+                    NextSceneIndex(10);
                     ChangeToScene(9); break;
                 case "Exit":
                     ExitGame(); break;
@@ -425,13 +424,17 @@ public class GameManager : MonoBehaviour
             switch (bottle.name)
             {
                 case "Easy":
-                    ChangeToScene(3); break;
+                    NextSceneIndex(3);
+                    ChangeToScene(9); break;
                 case "Normal":
-                    ChangeToScene(4); break;
+                    NextSceneIndex(4);
+                    ChangeToScene(9); break;
                 case "Hard":
-                    ChangeToScene(5); break;
+                    NextSceneIndex(5);
+                    ChangeToScene(9); break;
                 case "Back":
-                    ChangeToScene(1); break;
+                    NextSceneIndex(1);
+                    ChangeToScene(9); break;
             }
         }
     }
@@ -748,27 +751,17 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region 지난 씬 인덱스 Get & Set
-    public void PreSceneIndex()
+    public void NextSceneIndex(int idx)
     {
-        p_index = SceneManager.GetActiveScene().buildIndex;
+        n_index = idx;
     }
 
-    public int PreSceneIndexCall()
+    public int NextSceneIndexCall()
     {
-        return p_index;
+        sounddb.SoundUpdate(n_index);
+
+        return n_index;
     }
     #endregion
 
-    #region 관리자 아이디
-    public bool Login(string u_id)
-    {
-        if (id == u_id)
-        {
-            login = true;
-            return login;
-        }
-        else
-            return false;
-    }
-    #endregion 
 }
