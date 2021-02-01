@@ -29,7 +29,7 @@ public class Net_PlayerTeleport : MonoBehaviourPunCallbacks
         PV = this.gameObject.GetPhotonView();//this.gameObject.transform.parent.parent.gameObject.GetComponent<PhotonView>();
         
         #region 씬 넘버를 통해서 텔레포드 조건 확인
-        if (SceneIdx == 0 || SceneIdx == 7)
+        if (SceneIdx == 0 || SceneIdx == 6)
         {
             TeleportEnable = true;
         }

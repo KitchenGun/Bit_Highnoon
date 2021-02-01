@@ -233,10 +233,7 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
         }
         else if (layer == 20)
         {
-            if (GameManager.Instance.GetSceneIndex() == 8)
-            {
-                PV.RPC("PlayerHit", RpcTarget.All, HitObj.transform.gameObject.GetPhotonView().ViewID);
-            }
+            PV.RPC("PlayerHit", RpcTarget.All, HitObj.transform.gameObject.GetPhotonView().ViewID);
             PV.RPC("BloodSpray_FX", RpcTarget.All, HitObj.point);
         }
     }

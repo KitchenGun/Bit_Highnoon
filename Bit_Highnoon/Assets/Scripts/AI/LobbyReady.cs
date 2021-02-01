@@ -23,12 +23,9 @@ public class LobbyReady : MonoBehaviour
     {
         if (ready_count == 2)
         {
+            PhotonNetwork.AutomaticallySyncScene = true;
             GameManager.Instance.SoundUpdate(8);
-            if (PhotonNetwork.IsMasterClient)
-            {
-                PhotonNetwork.AutomaticallySyncScene = true;
-                PhotonNetwork.LoadLevel(8);
-            }
+            PhotonNetwork.LoadLevel(8);
         }
     }
 
