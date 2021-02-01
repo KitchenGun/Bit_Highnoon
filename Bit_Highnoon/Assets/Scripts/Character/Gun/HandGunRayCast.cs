@@ -376,7 +376,7 @@ public class HandGunRayCast : MonoBehaviour
     #region 버튼 식별
     private void ButtonHit(GameObject button)
     {
-        if(button.name == "VolumeDownButton" || button.name == "VolumeUpButton")
+        if(button.name == "VolumeDownButton" || button.name == "VolumeUpButton" || button.name == "MusicDownButton" || button.name == "MusicUpButton")
         {
             Button btn = button.gameObject.GetComponent<Button>();
             btn.onClick.Invoke();

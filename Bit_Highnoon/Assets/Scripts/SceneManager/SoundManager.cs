@@ -7,28 +7,46 @@ using UnityEngine.UI;
 public class SoundManager : MonoBehaviour
 {
     public AudioMixer audioMixer;
-    public Slider audioSlider;
+    public Slider v_audioSlider;
+    public Slider m_audioSlider;
 
-    private void Start()
+    private void Awake()
     {
-        AudioListener.volume = 1;
+        //사운드 -20으로 초기화
+        v_AudioControl();
+        m_AudioControl();
     }
 
-    public void AudioControl()
+    #region 사운드 조정
+    //SFX 사운드 조정
+    public void v_AudioControl()
     {
-        float sound = audioSlider.value;
+        float sound = v_audioSlider.value;
 
         if (sound == -40f)
-            audioMixer.SetFloat("Master", -80);
+            audioMixer.SetFloat("SFX", -80);
         else
-            audioMixer.SetFloat("Master", sound);
+            audioMixer.SetFloat("SFX", sound);
     }
 
+    //BGM 사운드 조정
+    public void m_AudioControl()
+    {
+        float sound = m_audioSlider.value;
+
+        if (sound == -40f)
+            audioMixer.SetFloat("BGM", -80);
+        else
+            audioMixer.SetFloat("BGM", sound);
+    }
+    #endregion
+
+    #region SFX 슬라이더 바 조정
     public void VolumeDown()
     {
-        if (audioSlider.value <= 0 || audioSlider.value > -40)
+        if (v_audioSlider.value <= 0 && v_audioSlider.value > -40)
         {
-            audioSlider.value -= 4.0f;
+            v_audioSlider.value -= 4f;
         }
         else
             return;
@@ -36,11 +54,34 @@ public class SoundManager : MonoBehaviour
 
     public void VolumeUp()
     {
-        if (audioSlider.value >= -40 || audioSlider.value < 0)
+        if (v_audioSlider.value >= -40 && v_audioSlider.value < 0)
         {
-            audioSlider.value += 4.0f;
+            v_audioSlider.value += 4f;
         }
         else
             return;
     }
+    #endregion
+
+    #region BGM 슬라이더 바 조정
+    public void MusicDown()
+    {
+        if (m_audioSlider.value <= 0 && m_audioSlider.value > -40)
+        {
+            m_audioSlider.value -= 4f;
+        }
+        else
+            return;
+    }
+
+    public void MusicUp()
+    {
+        if (m_audioSlider.value >= -40 && m_audioSlider.value < 0)
+        {
+            m_audioSlider.value += 4f;
+        }
+        else
+            return;
+    }
+    #endregion
 }
