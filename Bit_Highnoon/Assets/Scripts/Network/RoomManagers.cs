@@ -30,9 +30,9 @@ public class RoomManagers : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
+        PhotonNetwork.AutomaticallySyncScene = true;
+        GameManager.Instance.SoundUpdate(7);
         PhotonNetwork.LoadLevel(7);
-        //GameManager.Instance.PreSceneIndex();
-        //GameManager.Instance.ChangeToScene(9);
     }
     public override void OnCreateRoomFailed(short returnCode, string message) => print("방만들기실패"); // 방만들기 실패 콜백
 

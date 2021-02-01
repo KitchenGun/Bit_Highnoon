@@ -373,6 +373,11 @@ public class GameManager : MonoBehaviour
 
         return sounddb.AudioList[filename];
     }
+
+    public void SoundUpdate(int idx)
+    {
+        sounddb.SoundUpdate(idx);
+    }
     #endregion
 
     #region 함수
@@ -758,7 +763,7 @@ public class GameManager : MonoBehaviour
 
     public int NextSceneIndexCall()
     {
-        sounddb.SoundUpdate(n_index);
+        SoundUpdate(n_index);
 
         return n_index;
     }

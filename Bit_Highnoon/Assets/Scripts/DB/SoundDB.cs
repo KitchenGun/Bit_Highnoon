@@ -84,6 +84,10 @@ public class SoundDB : MonoBehaviour
         //7번씬에서 쓰는 소리
         folder1.AddRange(("Lobby,Lobby,Lobby").Split(','));
         folder2.AddRange(("casino,piano,sleeze").Split(','));
+
+        //8번씬에서 쓰는 소리
+        folder1.AddRange(("Bgm,User").Split(','));
+        folder2.AddRange(("Battle,gameend").Split(','));
         #endregion
 
         #region AI 테스트 용
@@ -128,10 +132,6 @@ public class SoundDB : MonoBehaviour
             case 8:
                 folder1.AddRange(("Bgm,User").Split(','));
                 folder2.AddRange(("Battle,gameend").Split(',')); 
-                break;
-            case 9:
-                folder1.AddRange(("Lobby,Lobby,Lobby,Bgm,User").Split(','));
-                folder2.AddRange(("casino,piano,sleeze,Battle,gameend").Split(','));
                 break;
         }
 
