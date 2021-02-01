@@ -37,7 +37,7 @@ public class HatMaterial : MonoBehaviour
                 {
                     if (hat_material.Equals(mat.name))
                     {
-                        this.GetComponent<SkinnedMeshRenderer>().material = mat;
+                        this.gameObject.GetComponent<SkinnedMeshRenderer>().material = mat;
                     }
                 }
             }
