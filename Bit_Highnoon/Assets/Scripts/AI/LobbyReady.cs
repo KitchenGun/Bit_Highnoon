@@ -21,9 +21,9 @@ public class LobbyReady : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ready_count == 2)
+        if (PhotonNetwork.IsMasterClient)
         {
-            if (PhotonNetwork.IsMasterClient)
+            if (ready_count == 2)
             {
                 PhotonNetwork.AutomaticallySyncScene = true;
                 PhotonNetwork.LoadLevel(8);
