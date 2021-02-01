@@ -13,6 +13,7 @@ public class RoomManagers : MonoBehaviourPunCallbacks
 
     [SerializeField] TMP_InputField Login_ID_InputField;
     public Button[] RoomBtn;
+    public Button Random;
     public Button PrevBtn, NextBtn;
     List<RoomInfo> myList = new List<RoomInfo>();
     int currentPage = 1, maxPage, multiple;
@@ -59,7 +60,7 @@ public class RoomManagers : MonoBehaviourPunCallbacks
     {
         if (num == -2) --currentPage;
         else if (num == -1) ++currentPage;
-        else if (num == -3) LeaveRoom();
+        else if (num == -3) PhotonNetwork.JoinRandomRoom();
         else PhotonNetwork.JoinRoom(myList[multiple + num].Name);
         myListRenewal();
     }
@@ -77,6 +78,7 @@ public class RoomManagers : MonoBehaviourPunCallbacks
         for (int i = 0; i < RoomBtn.Length; i++)
         {
             RoomBtn[i].interactable = (multiple + i < myList.Count) ? true : false;
+            Random.interactable = (multiple + i < myList.Count) ? true : false;
             if (RoomBtn[i].GetComponent<Button>().interactable == true)
             {
                 RoomBtn[i].GetComponent<BoxCollider>().enabled = true;
