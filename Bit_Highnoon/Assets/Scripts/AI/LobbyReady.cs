@@ -18,19 +18,7 @@ public class LobbyReady : MonoBehaviour
         ready_count = 0;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (PhotonNetwork.IsMasterClient)
-        {
-            if (ready_count == 2)
-            {
-                PhotonNetwork.AutomaticallySyncScene = true;
-                PhotonNetwork.LoadLevel(8);
-            }
-        }
-    }
-
+    #region 준비
     private void Ready()
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
@@ -42,10 +30,21 @@ public class LobbyReady : MonoBehaviour
             this.gameObject.transform.GetChild(0).GetComponent<Text>().text = "OK";
         }
     }
+    #endregion
 
+    #region 모든 사용자 레디시 전투씬으로 이동
     [PunRPC]
     private void CountUp()
     {
         ready_count++;
+        if (PhotonNetwork.IsMasterClient)
+        {
+            if (ready_count == 2)
+            {
+                PhotonNetwork.AutomaticallySyncScene = true;
+                PhotonNetwork.LoadLevel(8);
+            }
+        }
     }
+    #endregion
 }
