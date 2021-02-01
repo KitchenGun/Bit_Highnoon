@@ -169,7 +169,7 @@ public class GameManager : MonoBehaviour
     {
         try
         {
-            char_material = msg;
+            hat_material = msg;
             if (msg == "Camohat")
             {                
                 Debug.Log("모자 : Camohat");
@@ -226,7 +226,7 @@ public class GameManager : MonoBehaviour
     {
         try
         {
-            hat_material = msg;
+            char_material = msg;
             if (msg == "White")
             {
                 Debug.Log("색상 : White");
