@@ -7,14 +7,14 @@ using UnityEngine.SceneManagement;
 
 public class MultiSpawner : MonoBehaviourPunCallbacks
 {
-	private Transform[] Spawners;
+	Spawnpoint[] spawnpoints;
 
 	// Start is called before the first frame update
 	public override void OnEnable()
 	{
 		base.OnEnable();
 		SceneManager.sceneLoaded += OnSceneLoaded;
-		Spawners = GetComponentsInChildren<Transform>();
+		spawnpoints = GetComponentsInChildren<Spawnpoint>();
 	}
 
 	public override void OnDisable()
@@ -27,7 +27,10 @@ public class MultiSpawner : MonoBehaviourPunCallbacks
 	{
 		if (scene.buildIndex == 8) // We're in the game scene
 		{
-			PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), transform.position, transform.rotation);
+			if (PhotonNetwork.IsMasterClient)
+				PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnpoints[0].transform.position, spawnpoints[0].transform.rotation);
+			else
+				PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnpoints[1].transform.position, spawnpoints[1].transform.rotation);
 		}
 	}
 }

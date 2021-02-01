@@ -26,13 +26,6 @@ public class SampleChange : MonoBehaviour
 
         PV = this.gameObject.GetPhotonView();
 
-        StartCoroutine(LoadOriginal());
-    }
-
-    private IEnumerator LoadOriginal()
-    {
-        yield return new WaitForSeconds(0.5f);
-
         selected_character = this.gameObject.transform.parent.parent.parent.GetChild(2).GetChild(0).GetComponent<Renderer>().material;
 
         if (this.gameObject.transform.parent.parent.parent.GetChild(5).GetChild(0).gameObject.activeSelf == true)
