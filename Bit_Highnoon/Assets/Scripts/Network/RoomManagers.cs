@@ -44,7 +44,6 @@ public class RoomManagers : MonoBehaviourPunCallbacks
     {
         Instances = this;
     }
-
     #region 방리스트 갱신
     public void MyListClick(int num)
     {
@@ -61,11 +60,20 @@ public class RoomManagers : MonoBehaviourPunCallbacks
         PrevBtn.interactable = (currentPage <= 1) ? false : true;
         NextBtn.interactable = (currentPage >= maxPage) ? false : true;
 
+
         //페이지에 맞는 리스트 대입
         multiple = (currentPage - 1) * RoomBtn.Length;
         for (int i = 0; i < RoomBtn.Length; i++)
         {
             RoomBtn[i].interactable = (multiple + i < myList.Count) ? true : false;
+            if (RoomBtn[i].GetComponent<Button>().interactable == true)
+            {
+                RoomBtn[i].GetComponent<BoxCollider>().enabled = true;
+            }
+            else
+            {
+                RoomBtn[i].GetComponent<BoxCollider>().enabled = false;
+            }
             RoomBtn[i].transform.GetChild(0).GetComponent<Text>().text = (multiple + i < myList.Count) ? myList[multiple + i].Name : "";
             RoomBtn[i].transform.GetChild(1).GetComponent<Text>().text = (multiple + i < myList.Count) ? myList[multiple + i].PlayerCount + "/" + myList[multiple + i].MaxPlayers : "";
         }
