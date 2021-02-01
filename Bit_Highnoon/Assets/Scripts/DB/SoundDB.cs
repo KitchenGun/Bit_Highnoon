@@ -82,12 +82,12 @@ public class SoundDB : MonoBehaviour
         folder2.AddRange(("DropGun,GripGun,GunFire,Reload,Walk,glass,etc,metal,wood,Dead,Hit,popup").Split(','));
         
         //7번씬에서 쓰는 소리
-        folder1.AddRange(("Lobby,Lobby,Lobby").Split(','));
-        folder2.AddRange(("casino,piano,sleeze").Split(','));
-
+        //folder1.AddRange(("Lobby,Lobby,Lobby").Split(','));
+        //folder2.AddRange(("casino,piano,sleeze").Split(','));
+        
         //8번씬에서 쓰는 소리
-        folder1.AddRange(("Bgm,User").Split(','));
-        folder2.AddRange(("Battle,gameend").Split(','));
+        //folder1.AddRange(("Bgm,User").Split(','));
+        //folder2.AddRange(("Battle,gameend").Split(','));
         #endregion
 
         #region AI 테스트 용
