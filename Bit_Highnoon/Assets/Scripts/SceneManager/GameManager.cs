@@ -128,20 +128,20 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("유저추가 성공");
                 register = true;
-                //GameObject.Find("Picket").transform.GetChild(1).GetChild(0).gameObject.GetComponent<Register_Manager>().SendMessage("AccountResult", register);
-                //Register_Manager.Instance.AccountResult(register);
+                GameObject.Find("Picket").GetComponent<Register_Manager>().SendMessage("AccountResult", register);
+             
             }
             else if (msg == "same")
             {
                 Debug.Log("유저추가 실패 : 동일한 id");
                 register = false;
-                //Register_Manager.Instance.AccountResult(register);
+                GameObject.Find("Picket").GetComponent<Register_Manager>().SendMessage("AccountResult", register);
             }
             else
             {
                 Debug.Log("유저추가 실패 : db오류");
                 register = false;
-                //Register_Manager.Instance.AccountResult(register);
+                GameObject.Find("Picket").GetComponent<Register_Manager>().SendMessage("AccountResult", register);
             }
         }
         catch (Exception)
@@ -153,8 +153,8 @@ public class GameManager : MonoBehaviour
     //유저 로그인
     private void UserLogin(string msg)
     {
-        try
-        {
+        //try
+        //{
             if (msg == "S")
             {
                 Debug.Log("로그인 성공");
@@ -173,12 +173,12 @@ public class GameManager : MonoBehaviour
                 register = false;
                 GameObject.Find("Picket").GetComponent<Register_Manager>().SendMessage("LoginResult", register);
             }
-        }
-        catch (Exception ex)
-        {
-            Debug.Log("로그인 실패 : 서버오류"+ex.Message);
-        }
-    }
+       //}
+       //catch (Exception ex)
+       //{
+       //    Debug.Log("로그인 실패 : 서버오류" + ex.Message);
+       //}
+    } 
 
     //유저 모자, 색상정보
     private void UserHat(string msg)
@@ -348,7 +348,6 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        //StartCoroutine(CheckQueue());
     }
     #endregion
 
