@@ -128,7 +128,6 @@ public class Register_Manager : MonoBehaviourPunCallbacks
         {
             //가능한 경우 로비로 이동
             Connect();
-            GameObject.Find("GameManager").gameObject.GetComponent<DBServer>().SendLoginUser(Login_ID_InputField.text, Login_PW_InputField.text);
         }
         else if (register == false)
         {
