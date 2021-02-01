@@ -91,7 +91,6 @@ public class NpcCycle : MonoBehaviour
     private void Win()
     {
         //승리 사운드재생
-        Debug.Log("승리사운드재생");
         audioSource.clip = GM.GetComponent<GameManager>().LoadAudioClip("sleeze");
         audioSource.Play();
     }

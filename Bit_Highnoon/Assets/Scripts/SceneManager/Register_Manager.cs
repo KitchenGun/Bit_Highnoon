@@ -84,7 +84,7 @@ public class Register_Manager : MonoBehaviourPunCallbacks
     {
         if(Account_ID_InputField.text == "" && Account_PW_InputField.text == "")
         {
-            GameObject.Find("Picket").transform.GetChild(1).GetChild(0).GetChild(2).gameObject.GetComponent<Text>().text = "Please enter your ID and PW correctly.";
+            GameObject.Find("Picket").transform.GetChild(1).GetChild(0).GetChild(2).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Please enter your ID and PW correctly.";
             return;
         }
         else
@@ -98,13 +98,13 @@ public class Register_Manager : MonoBehaviourPunCallbacks
         if (register == true)
         {
             //회원가입 성공시 텍스트
-            this.gameObject.transform.GetChild(1).GetChild(0).GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = "Your account has been registered.";
+            this.gameObject.transform.GetChild(1).GetChild(0).GetChild(2).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Your account has been registered.";
             GameObject.Find("Picket").transform.GetChild(1).gameObject.SetActive(false);
         }
         else if(register == false)
         {
             //사용 불가능일 경우
-            this.gameObject.transform.GetChild(1).GetChild(0).GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = "This ID is already in use.";
+            this.gameObject.transform.GetChild(1).GetChild(0).GetChild(2).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "This ID is already in use.";
         }
     }
 
@@ -133,7 +133,7 @@ public class Register_Manager : MonoBehaviourPunCallbacks
         else if (register == false)
         {
             //로그인 실패한 경우
-            GameObject.Find("Picket").transform.GetChild(0).GetChild(0).GetChild(2).gameObject.GetComponent<Text>().text = "Invalid information entered";
+            GameObject.Find("Picket").transform.GetChild(0).GetChild(0).GetChild(2).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Invalid information entered";
         }
     }
 
