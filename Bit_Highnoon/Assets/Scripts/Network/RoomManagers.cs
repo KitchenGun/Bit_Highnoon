@@ -44,7 +44,6 @@ public class RoomManagers : MonoBehaviourPunCallbacks
     {
         Instances = this;
     }
-
     #region 방리스트 갱신
     public void MyListClick(int num)
     {
@@ -61,11 +60,20 @@ public class RoomManagers : MonoBehaviourPunCallbacks
         PrevBtn.interactable = (currentPage <= 1) ? false : true;
         NextBtn.interactable = (currentPage >= maxPage) ? false : true;
 
+
         //페이지에 맞는 리스트 대입
         multiple = (currentPage - 1) * RoomBtn.Length;
         for (int i = 0; i < RoomBtn.Length; i++)
         {
             RoomBtn[i].interactable = (multiple + i < myList.Count) ? true : false;
+            if (RoomBtn[i].GetComponent<Button>().interactable == true)
+            {
+                RoomBtn[i].GetComponent<BoxCollider>().enabled = true;
+            }
+            else
+            {
+                RoomBtn[i].GetComponent<BoxCollider>().enabled = false;
+            }
             RoomBtn[i].transform.GetChild(0).GetComponent<Text>().text = (multiple + i < myList.Count) ? myList[multiple + i].Name : "";
             RoomBtn[i].transform.GetChild(1).GetComponent<Text>().text = (multiple + i < myList.Count) ? myList[multiple + i].PlayerCount + "/" + myList[multiple + i].MaxPlayers : "";
         }
@@ -85,6 +93,31 @@ public class RoomManagers : MonoBehaviourPunCallbacks
             else if (myList.IndexOf(roomList[i]) != -1) myList.RemoveAt(myList.IndexOf(roomList[i]));
         }
         myListRenewal();
+    }
+    #endregion
+
+    #region 로비정보보기
+    [ContextMenu("정보")]
+    void Info()
+    {
+        if (PhotonNetwork.InRoom)
+        {
+            print("현재 방 이름 : " + PhotonNetwork.CurrentRoom.Name);
+            print("현재 방 인원수 : " + PhotonNetwork.CurrentRoom.PlayerCount);
+            print("현재 방 최대인원수 : " + PhotonNetwork.CurrentRoom.MaxPlayers);
+
+            string playerStr = "방에 있는 플레이어 목록 : ";
+            for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++) playerStr += PhotonNetwork.PlayerList[i].NickName + ", ";
+            print(playerStr);
+        }
+        else
+        {
+            print("접속한 인원 수 : " + PhotonNetwork.CountOfPlayers);
+            print("방 개수 : " + PhotonNetwork.CountOfRooms);
+            print("모든 방에 있는 인원 수 : " + PhotonNetwork.CountOfPlayersInRooms);
+            print("로비에 있는지? : " + PhotonNetwork.InLobby);
+            print("연결됐는지? : " + PhotonNetwork.IsConnected);
+        }
     }
     #endregion
 }
