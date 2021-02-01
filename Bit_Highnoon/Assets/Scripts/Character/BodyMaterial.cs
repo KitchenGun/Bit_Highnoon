@@ -8,9 +8,9 @@ public class BodyMaterial : MonoBehaviour
     private object[] materials;
 
     private PhotonView PV;
-
+        
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         materials = Resources.LoadAll("CharacterMaterial");
 
