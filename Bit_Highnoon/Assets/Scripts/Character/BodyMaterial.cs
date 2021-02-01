@@ -31,7 +31,7 @@ public class BodyMaterial : MonoBehaviour
             {
                 if (char_material.Equals(mat.name))
                 {
-                    this.GetComponent<Renderer>().material = mat;
+                    this.gameObject.GetComponent<Renderer>().material = mat;
                 }
             }
         }
