@@ -376,7 +376,13 @@ public class HandGunRayCast : MonoBehaviour
     #region 버튼 식별
     private void ButtonHit(GameObject button)
     {
-        GameObject.Find("Picket").GetComponent<Register_Manager>().SendMessage("Hit", button);
+        if(button.name == "VolumeDownButton" || button.name == "VolumeUpButton")
+        {
+            Button btn = button.gameObject.GetComponent<Button>();
+            btn.onClick.Invoke();
+        }
+        else
+            GameObject.Find("Picket").GetComponent<Register_Manager>().SendMessage("Hit", button);
     }
     #endregion
 }
