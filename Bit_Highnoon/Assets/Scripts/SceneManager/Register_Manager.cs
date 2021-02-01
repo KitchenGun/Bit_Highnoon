@@ -79,6 +79,9 @@ public class Register_Manager : MonoBehaviourPunCallbacks
             case "Next":
                 roomManager.MyListClick(-1);
                 break;
+            case "Exit":
+                roomManager.MyListClick(-3);
+                break;
         }
     }
 

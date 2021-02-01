@@ -23,6 +23,12 @@ public class RoomManagers : MonoBehaviourPunCallbacks
     public void CreateRoom() => PhotonNetwork.CreateRoom(PhotonNetwork.LocalPlayer.NickName, new RoomOptions { MaxPlayers = 2 }); // 방생성
 
     public void JoinRandomRoom() => PhotonNetwork.JoinRandomRoom(); // 방 랜덤 입장
+
+    public void LeaveRoom()
+    {
+        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.LoadLevel(6);
+    }
     public override void OnCreatedRoom()
     {
         print(PhotonNetwork.LocalPlayer.NickName + "님 방만들기 완료"); // 방만들기 콜백
@@ -33,7 +39,10 @@ public class RoomManagers : MonoBehaviourPunCallbacks
         PhotonNetwork.AutomaticallySyncScene = true;
 
         if (PhotonNetwork.IsMasterClient)
+        {
             PhotonNetwork.LoadLevel(7);
+        }
+        myList.Clear();
     }
     public override void OnCreateRoomFailed(short returnCode, string message) => print("방만들기실패"); // 방만들기 실패 콜백
 
@@ -50,6 +59,7 @@ public class RoomManagers : MonoBehaviourPunCallbacks
     {
         if (num == -2) --currentPage;
         else if (num == -1) ++currentPage;
+        else if (num == -3) LeaveRoom();
         else PhotonNetwork.JoinRoom(myList[multiple + num].Name);
         myListRenewal();
     }
