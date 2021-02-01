@@ -8,6 +8,7 @@ public class Spawnpoint : MonoBehaviour
 
     void Awake()
     {
+        this.transform.SetParent(GameObject.Find("GameManager").transform);
         graphics.SetActive(false);
     }
 }

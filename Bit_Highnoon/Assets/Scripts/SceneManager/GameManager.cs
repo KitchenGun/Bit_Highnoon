@@ -42,24 +42,9 @@ public class GameManager : MonoBehaviour
             return string.Empty;    //없으면 빈값을 반환
     }
 
+
     private void Update()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 6)
-        {
-            db_server.enabled = true;
-            spawnmanager.enabled = false;
-        }
-        else if (SceneManager.GetActiveScene().buildIndex == 7 || SceneManager.GetActiveScene().buildIndex == 8 || SceneManager.GetActiveScene().buildIndex == 9)
-        {
-            db_server.enabled = true;
-            spawnmanager.enabled = true;
-        }
-        else
-        {
-            db_server.enabled = false;
-            spawnmanager.enabled = false;
-        }
-
         //우편함에서 데이타 꺼내기
         string data = GetData();
 
@@ -296,6 +281,28 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
+    #endregion
+
+    #region 씬이 로드될때 마다 호출하는 이벤트 함수
+    private void OnLevelWasLoaded(int level)
+    {
+        if (level == 6)
+        {
+            db_server.enabled = true;
+            spawnmanager.enabled = false;
+        }
+        else if (level == 7 || level == 8 || level == 9)
+        {
+            db_server.enabled = true;
+            spawnmanager.enabled = true;
+
+        }
+        else
+        {
+            db_server.enabled = false;
+            spawnmanager.enabled = false;
+        }
+    }
     #endregion
 
     #region 네트워크 GameEnd 체크

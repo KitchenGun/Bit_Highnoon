@@ -8066,7 +8066,6 @@ GameObject:
   - component: {fileID: 837580841086906911}
   - component: {fileID: 837580841079971283}
   - component: {fileID: 5227346636175615507}
-  - component: {fileID: 862593083357442554}
   m_Layer: 0
   m_Name: OculusTouchForQuest2
   m_TagString: Untagged
@@ -8126,18 +8125,6 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
---- !u!114 &862593083357442554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 837580841087397503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 885dc91133b1c1a41900660c8ca9a52e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &837580841422309664
 GameObject:
   m_ObjectHideFlags: 0
@@ -8459,7 +8446,6 @@ GameObject:
   - component: {fileID: 2121135257489176849}
   - component: {fileID: 461553287924853413}
   - component: {fileID: 8688820814210998021}
-  - component: {fileID: 6651161924767991346}
   m_Layer: 0
   m_Name: OculusTouchForQuest2
   m_TagString: Untagged
@@ -8755,18 +8741,6 @@ MonoBehaviour:
   head: {fileID: 2677167125809604142}
   cameraRig: {fileID: 837580839777518154}
   collisionLayer: 8
---- !u!114 &6651161924767991346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 837580841422309710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 885dc91133b1c1a41900660c8ca9a52e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &837580841422309722
 GameObject:
   m_ObjectHideFlags: 0
