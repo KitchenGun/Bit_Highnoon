@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     private SoundDB sounddb;
     private LogicalDB leveldb;
     private DBServer db_server;
-    private SpawnManager spawnmanager;
     private GameObject normal;
     private GameObject hard;
     private int n_index;
@@ -291,18 +290,15 @@ public class GameManager : MonoBehaviour
         if (level == 6)
         {
             db_server.enabled = true;
-            spawnmanager.enabled = false;
         }
         else if (level == 7 || level == 8 || level == 9)
         {
             db_server.enabled = true;
-            spawnmanager.enabled = true;
 
         }
         else
         {
             db_server.enabled = false;
-            spawnmanager.enabled = false;
         }
     }
     #endregion
@@ -337,10 +333,8 @@ public class GameManager : MonoBehaviour
         leveldb = this.gameObject.AddComponent<LogicalDB>();
 
         db_server = this.gameObject.AddComponent<DBServer>();            
-        spawnmanager = this.gameObject.AddComponent<SpawnManager>();
 
         db_server.enabled = false;
-        spawnmanager.enabled = false;
         
         if(instance == null)
         {
