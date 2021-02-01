@@ -42,24 +42,9 @@ public class GameManager : MonoBehaviour
             return string.Empty;    //없으면 빈값을 반환
     }
 
+
     private void Update()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 6)
-        {
-            db_server.enabled = true;
-            spawnmanager.enabled = false;
-        }
-        else if (SceneManager.GetActiveScene().buildIndex == 7 || SceneManager.GetActiveScene().buildIndex == 8 || SceneManager.GetActiveScene().buildIndex == 9)
-        {
-            db_server.enabled = true;
-            spawnmanager.enabled = true;
-        }
-        else
-        {
-            db_server.enabled = false;
-            spawnmanager.enabled = false;
-        }
-
         //우편함에서 데이타 꺼내기
         string data = GetData();
 
@@ -296,6 +281,28 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
+    #endregion
+
+    #region 씬이 로드될때 마다 호출하는 이벤트 함수
+    private void OnLevelWasLoaded(int level)
+    {
+        if (level == 6)
+        {
+            db_server.enabled = true;
+            spawnmanager.enabled = false;
+        }
+        else if (level == 7 || level == 8 || level == 9)
+        {
+            db_server.enabled = true;
+            spawnmanager.enabled = true;
+
+        }
+        else
+        {
+            db_server.enabled = false;
+            spawnmanager.enabled = false;
+        }
+    }
     #endregion
 
     #region 네트워크 GameEnd 체크
@@ -555,123 +562,6 @@ public class GameManager : MonoBehaviour
 
         Audio.Play();
     }
-    #endregion
-
-    #region Update함수
-    /*
-    void Update()
-    {
-        #region 메인 메뉴 씬 기능
-        if (SceneManager.GetActiveScene().buildIndex == 1)
-        {
-            if (Input.GetKeyDown(KeyCode.F1))    //유리병 깨지는 이벤트 발생시로 변경
-            {
-                //싱글 메뉴 이동
-                int idx = SceneManager.GetActiveScene().buildIndex + 1;
-                NextToScene(idx);
-            }
-
-            if (Input.GetKeyDown(KeyCode.F2))    //유리병 깨지는 이벤트 발생시로 변경
-            {
-                //로비 이동
-                int idx = SceneManager.GetActiveScene().buildIndex + 6;
-                GameManager.Instance.NextToScene(idx);
-            }
-
-            if (Input.GetKeyDown(KeyCode.F3))    //유리병 깨지는 이벤트 발생시로 변경
-            {
-                //옵션 이동
-                int idx = SceneManager.GetActiveScene().buildIndex + 9;
-                GameManager.Instance.NextToScene(idx);
-            }
-
-            if (Input.GetKeyDown(KeyCode.F4))    //유리병 깨지는 이벤트 발생시로 변경
-            {
-                //게임 종료
-                GameManager.Instance.ExitGame();
-            }
-        }
-        #endregion
-
-        #region 싱글 메뉴 씬 기능
-        else if (SceneManager.GetActiveScene().buildIndex == 2)
-        {
-            if (Input.GetKeyDown(KeyCode.F1))    //유리병 깨지는 이벤트 발생시로 변경
-            {
-                //레벨 메뉴 이동
-                int idx = SceneManager.GetActiveScene().buildIndex + 1;
-                GameManager.Instance.NextToScene(idx);
-            }
-
-            if (Input.GetKeyDown(KeyCode.F2))    //유리병 깨지는 이벤트 발생시로 변경
-            {
-                //튜토리얼 이동
-                int idx = SceneManager.GetActiveScene().buildIndex + 9;
-                GameManager.Instance.NextToScene(idx);
-            }
-
-            if (Input.GetKeyDown(KeyCode.F3))    //유리병 깨지는 이벤트 발생시로 변경
-            {
-                //뒤로가기(메인 메뉴 이동)
-                int idx = SceneManager.GetActiveScene().buildIndex;
-                GameManager.Instance.BackToScene(idx);
-            }
-        }
-        #endregion
-
-        #region 레벨 메뉴 씬 기능
-        else if (SceneManager.GetActiveScene().buildIndex == 3)
-        {
-            if (Input.GetKeyDown(KeyCode.F1))    //유리병 깨지는 이벤트 발생시로 변경
-            {
-                //쉬움 모드 실행
-                int idx = SceneManager.GetActiveScene().buildIndex + 1;
-                GameManager.Instance.NextToScene(idx);
-            }
-
-            if (Input.GetKeyDown(KeyCode.F2))    //유리병 깨지는 이벤트 발생시로 변경
-            {
-                //보통 모드 실행
-                int idx = SceneManager.GetActiveScene().buildIndex + 2;
-                GameManager.Instance.NextToScene(idx);
-            }
-
-            if (Input.GetKeyDown(KeyCode.F3))    //유리병 깨지는 이벤트 발생시로 변경
-            {
-                //어려움 모드 실행
-                int idx = SceneManager.GetActiveScene().buildIndex + 3;
-                GameManager.Instance.NextToScene(idx);
-            }
-
-            if (Input.GetKeyDown(KeyCode.F4))    //유리병 깨지는 이벤트 발생시로 변경
-            {
-                //뒤로가기(싱글 메뉴 이동)
-                int idx = SceneManager.GetActiveScene().buildIndex;
-                GameManager.Instance.BackToScene(idx);
-            }
-        }
-        #endregion
-
-        #region 로비 기능
-        else if (SceneManager.GetActiveScene().buildIndex == 7)
-        {
-            if (Input.GetKeyDown(KeyCode.F1))    //유리병 깨지는 이벤트 발생시로 변경 or 버튼
-            {
-                //게임 시작
-                int idx = SceneManager.GetActiveScene().buildIndex + 1;
-                GameManager.Instance.NextToScene(idx);
-            }
-
-            if (Input.GetKeyDown(KeyCode.F2))    //유리병 깨지는 이벤트 발생시로 변경 or 버튼
-            {
-                //뒤로가기
-                int idx = SceneManager.GetActiveScene().buildIndex;
-                GameManager.Instance.BackToScene(idx);
-            }
-        }
-        #endregion
-
-    }*/
     #endregion
 
     #region 난이도 잠김
