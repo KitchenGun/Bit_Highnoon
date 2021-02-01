@@ -13,18 +13,12 @@ public class OpenCustomize : MonoBehaviour
 
     private DBServer DB;
 
-    private void Awake()
+    private void Start()
     {
         PV = this.gameObject.GetPhotonView();
 
         DB = GameObject.Find("GameManager").GetComponent<DBServer>();
 
-        if(PV.IsMine)
-            DB.SendUserColorHat(PhotonNetwork.LocalPlayer.NickName);
-    }
-
-    private void Start()
-    {
         isopen = false;
 
         head = this.gameObject.transform.parent.GetChild(5).gameObject;

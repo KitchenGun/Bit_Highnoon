@@ -286,6 +286,8 @@ public class GameManager : MonoBehaviour
     #region 씬이 로드될때 마다 호출하는 이벤트 함수
     private void OnLevelWasLoaded(int level)
     {
+        SoundUpdate(level);
+
         if (level == 6)
         {
             db_server.enabled = true;
@@ -652,8 +654,6 @@ public class GameManager : MonoBehaviour
 
     public int NextSceneIndexCall()
     {
-        SoundUpdate(n_index);
-
         return n_index;
     }
     #endregion
