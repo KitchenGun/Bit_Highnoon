@@ -20,8 +20,8 @@ public class RoomManagers : MonoBehaviourPunCallbacks
 
 
     #region 방생성
-    public void CreateRoom() => PhotonNetwork.CreateRoom(PhotonNetwork.LocalPlayer.NickName, new RoomOptions { MaxPlayers = 2 }); // 방생성
-
+    public void CreateRoom() => PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = 2 }); // 방생성
+    //PhotonNetwork.LocalPlayer.NickName
     public void JoinRandomRoom() => PhotonNetwork.JoinRandomRoom(); // 방 랜덤 입장
     public override void OnCreatedRoom()
     {
