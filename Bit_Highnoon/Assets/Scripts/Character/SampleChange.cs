@@ -68,6 +68,8 @@ public class SampleChange : MonoBehaviour
     [PunRPC]
     private void SaveBodyMaterial(string Colorstr)
     {
+        CharacterMaterial = Resources.LoadAll("CharacterMaterial");
+
         foreach (Material mat in CharacterMaterial)
         {
             if (Colorstr == mat.name)
@@ -116,6 +118,8 @@ public class SampleChange : MonoBehaviour
         }
         else
         {
+            HatMaterials = Resources.LoadAll("HatMaterials");
+
             foreach (Material mat in HatMaterials)
             {
                 if (hatmaterial == mat.name)
