@@ -25,11 +25,10 @@ public class Register_Manager : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster()
     {
-        if (Login_ID_InputField.text != null)
+        if (Login_ID_InputField.text !=string.Empty)
         {
             PhotonNetwork.LocalPlayer.NickName = Login_ID_InputField.text;
         }
-        print(Login_ID_InputField.text + "서버접속완료");
         JoinLobby();
     }
     #endregion

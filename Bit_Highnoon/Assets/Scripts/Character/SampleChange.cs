@@ -31,27 +31,15 @@ public class SampleChange : MonoBehaviour
 
     public void OriginallySample()
     {
-        PV.RPC("SaveMaterial", RpcTarget.AllBuffered);
+        PV.RPC("SaveBodyMaterial", RpcTarget.AllBuffered, GameManager.Instance.Char_Material);
+        PV.RPC("SaveHatMaterial", RpcTarget.AllBuffered, GameManager.Instance.Hat_Material);
 
         ChangeBodyColor(selected_character);
         ChangeHatColor(selected_hat);
     }
 
-    [PunRPC]
-    private void SaveMaterial()
-    {
-        selected_character = this.gameObject.transform.parent.parent.parent.GetChild(2).GetChild(0).GetComponent<Renderer>().material;
 
-        if (this.gameObject.transform.parent.parent.parent.GetChild(5).GetChild(0).gameObject.activeSelf == true)
-        {
-            selected_hat = this.gameObject.transform.parent.parent.parent.GetChild(5).GetChild(0).GetChild(0).GetComponent<Renderer>().material;
-        }
-        else
-        {
-            selected_hat = null;
-        }
-    }
-
+    #region Body
     public void ChangeBodyColor(string Colorstr)
     {
         foreach (Material mat in CharacterMaterial)
@@ -83,7 +71,9 @@ public class SampleChange : MonoBehaviour
     {
         this.gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>().material = original;
     }
+    #endregion
 
+    #region Hat
     public void ChangeHatColor(string hatmaterial)
     {
         if (hatmaterial.Equals("NoHat"))
@@ -141,4 +131,5 @@ public class SampleChange : MonoBehaviour
             this.gameObject.transform.GetChild(1).GetChild(0).GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material = original;
         }
     }
+    #endregion
 }

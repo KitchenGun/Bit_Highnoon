@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     private GameObject hard;
     private int n_index;
 
+
     #region DB정보
     private bool register = false;
 

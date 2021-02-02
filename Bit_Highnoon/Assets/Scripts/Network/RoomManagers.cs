@@ -29,6 +29,7 @@ public class RoomManagers : MonoBehaviourPunCallbacks
     }
     public override void OnCreatedRoom()
     {
+    
         print(PhotonNetwork.LocalPlayer.NickName + "님 방만들기 완료"); // 방만들기 콜백
     }
 
