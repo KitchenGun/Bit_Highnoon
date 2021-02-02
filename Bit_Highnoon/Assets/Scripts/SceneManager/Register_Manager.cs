@@ -43,7 +43,7 @@ public class Register_Manager : MonoBehaviourPunCallbacks
         }
         GameObject.Find("Picket").transform.GetChild(2).gameObject.SetActive(true);
 
-        GameObject.Find("GameManager").gameObject.GetComponent<DBServer>().SendUserColorHat(PhotonNetwork.LocalPlayer.NickName);
+        //GameObject.Find("GameManager").gameObject.GetComponent<DBServer>().SendUserColorHat(PhotonNetwork.LocalPlayer.NickName);
     }
     #endregion
 
