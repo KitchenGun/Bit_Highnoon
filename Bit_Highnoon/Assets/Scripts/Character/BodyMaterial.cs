@@ -10,7 +10,7 @@ public class BodyMaterial : MonoBehaviour
     private PhotonView PV;
         
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         materials = Resources.LoadAll("CharacterMaterial");
 
@@ -31,7 +31,7 @@ public class BodyMaterial : MonoBehaviour
             {
                 if (char_material.Equals(mat.name))
                 {
-                    this.GetComponent<Renderer>().material = mat;
+                    this.gameObject.GetComponent<Renderer>().material = mat;
                 }
             }
         }

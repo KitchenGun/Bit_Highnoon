@@ -10,7 +10,7 @@ public class HatMaterial : MonoBehaviour
     private PhotonView PV;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         materials = Resources.LoadAll("HatMaterials");
 
@@ -37,7 +37,7 @@ public class HatMaterial : MonoBehaviour
                 {
                     if (hat_material.Equals(mat.name))
                     {
-                        this.GetComponent<SkinnedMeshRenderer>().material = mat;
+                        this.gameObject.GetComponent<SkinnedMeshRenderer>().material = mat;
                     }
                 }
             }

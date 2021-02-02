@@ -169,7 +169,7 @@ public class GameManager : MonoBehaviour
     {
         try
         {
-            char_material = msg;
+            hat_material = msg;
             if (msg == "Camohat")
             {                
                 Debug.Log("모자 : Camohat");
@@ -226,7 +226,7 @@ public class GameManager : MonoBehaviour
     {
         try
         {
-            hat_material = msg;
+            char_material = msg;
             if (msg == "White")
             {
                 Debug.Log("색상 : White");
@@ -283,15 +283,25 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region 씬이 로드될때 마다 호출하는 이벤트 함수
-    private void OnLevelWasLoaded(int level)
+    void OnEnable()
     {
-        SoundUpdate(level);
+        SceneManager.sceneLoaded += OnLevelFinishedLoading;
+    }
 
-        if (level == 6)
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnLevelFinishedLoading;
+    }
+
+    void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
+    {
+        SoundUpdate(GetSceneIndex());
+
+        if (GetSceneIndex() == 6)
         {
             db_server.enabled = true;
         }
-        else if (level == 7 || level == 8 || level == 9)
+        else if (GetSceneIndex() == 7 || GetSceneIndex() == 8 || GetSceneIndex() == 9)
         {
             db_server.enabled = true;
 
