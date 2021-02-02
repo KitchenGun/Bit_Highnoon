@@ -8,18 +8,15 @@ public class BodyMaterial : MonoBehaviour
     private object[] materials;
 
     private PhotonView PV;
-    private GameManager GM;    
 
     // Start is called before the first frame update
     void Start()
     {
-        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         PV = this.gameObject.GetPhotonView();
 
         if(PV.IsMine == true)
         {
-            GM.SendMessage("SetUserName", PV.Owner.NickName);
-            PV.RPC("ChangeMaterial", RpcTarget.AllBuffered, GM.Char_Material);
+            PV.RPC("ChangeMaterial", RpcTarget.AllBuffered, GameObject.Find("GameManager").GetComponent<GameManager>().Char_Material);
         }
     }
 
@@ -28,8 +25,6 @@ public class BodyMaterial : MonoBehaviour
     {
         materials = Resources.LoadAll("CharacterMaterial");
 
-        if (PV.Owner.NickName == GM.GetUserName())
-        {
             if (char_material.Equals(string.Empty) == false)
             {
                 foreach (Material mat in materials)
@@ -40,6 +35,5 @@ public class BodyMaterial : MonoBehaviour
                     }
                 }
             }
-        }
     }
 }

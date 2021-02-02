@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
     private GameObject hard;
     private int n_index;
 
-    private string NickName;
 
     #region DB정보
     private bool register = false;
@@ -287,15 +286,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //유저 닉네임 저장
-    private void SetUserName(string msg)
-    {
-        NickName = msg;
-    }
-    public string GetUserName()
-    {
-        return NickName;
-    }
 
 
     #endregion
