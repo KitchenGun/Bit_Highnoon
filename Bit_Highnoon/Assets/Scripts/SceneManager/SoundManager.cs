@@ -84,4 +84,11 @@ public class SoundManager : MonoBehaviour
             return;
     }
     #endregion
+
+    #region 옵션창 숨기기
+    public void HideOption()
+    {
+        GameObject.Find("OptionPicket").transform.GetChild(0).gameObject.SetActive(false);
+    }
+    #endregion
 }
