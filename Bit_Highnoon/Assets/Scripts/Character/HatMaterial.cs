@@ -10,7 +10,7 @@ public class HatMaterial : MonoBehaviour
     private PhotonView PV;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         materials = Resources.LoadAll("HatMaterials");
 

@@ -119,10 +119,17 @@ public class Net_PlayerHit : MonoBehaviourPunCallbacks
         {
             if (!isDeath)
             {
-                Win();
-                
+                Win();                
             }
+
+            if (PhotonNetwork.IsMasterClient)
+                Invoke("GoToLobby", 5f);
         }
+    }
+
+    private void GoToLobby()
+    {
+        PhotonNetwork.LoadLevel(7);
     }
 
     private void Win()
