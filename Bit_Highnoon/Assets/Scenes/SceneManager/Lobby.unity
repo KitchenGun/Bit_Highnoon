@@ -50258,7 +50258,7 @@ GameObject:
   - component: {fileID: 1688428510}
   m_Layer: 5
   m_Name: Exit
-  m_TagString: Button
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51349,7 +51349,6 @@ GameObject:
   - component: {fileID: 1727687129}
   - component: {fileID: 1727687128}
   - component: {fileID: 1727687127}
-  - component: {fileID: 1727687131}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -51438,22 +51437,6 @@ RectTransform:
   m_AnchoredPosition: {x: -14.86, y: 2.4299998}
   m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1727687131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1727687126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 628ba424d2040ad4dbb0237b32a5a0df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Login_ID_InputField: {fileID: 0}
-  Login_PW_InputField: {fileID: 0}
-  Account_ID_InputField: {fileID: 0}
-  Account_PW_InputField: {fileID: 0}
 --- !u!1 &1736453210
 GameObject:
   m_ObjectHideFlags: 0

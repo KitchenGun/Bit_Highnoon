@@ -34,7 +34,10 @@ public class RoomManagers : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        PhotonNetwork.LoadLevel(7);
+        PhotonNetwork.AutomaticallySyncScene = true;
+
+        if (PhotonNetwork.IsMasterClient)        
+            PhotonNetwork.LoadLevel(7);
     }
     public override void OnCreateRoomFailed(short returnCode, string message) => print("방만들기실패"); // 방만들기 실패 콜백
 
