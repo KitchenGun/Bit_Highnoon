@@ -28,9 +28,9 @@ public class MultiSpawner : MonoBehaviourPunCallbacks
 		if (scene.buildIndex == 8) // We're in the game scene
 		{
 			if (PhotonNetwork.IsMasterClient)
-				PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnpoints[0].transform.position, spawnpoints[0].transform.rotation);
+				PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnpoints[0].transform.position, spawnpoints[0].transform.localRotation);
 			else
-				PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnpoints[1].transform.position, spawnpoints[1].transform.rotation);
+				PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnpoints[1].transform.position, spawnpoints[1].transform.localRotation);
 		}
 	}
 }

@@ -21,7 +21,12 @@ public class RoomManagers : MonoBehaviourPunCallbacks
 
     #region 방생성
     public void CreateRoom() => PhotonNetwork.CreateRoom(PhotonNetwork.LocalPlayer.NickName, new RoomOptions { MaxPlayers = 2 }); // 방생성
-    public void JoinRandomRoom() => PhotonNetwork.JoinRandomRoom(); // 방 랜덤 입장
+
+    public void LeaveRoom()
+    {
+        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.LoadLevel(6);
+    }
     public override void OnCreatedRoom()
     {
         print(PhotonNetwork.LocalPlayer.NickName + "님 방만들기 완료"); // 방만들기 콜백
@@ -29,10 +34,7 @@ public class RoomManagers : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        PhotonNetwork.AutomaticallySyncScene = true;
-
-        if (PhotonNetwork.IsMasterClient)
-            PhotonNetwork.LoadLevel(7);
+        PhotonNetwork.LoadLevel(7);
     }
     public override void OnCreateRoomFailed(short returnCode, string message) => print("방만들기실패"); // 방만들기 실패 콜백
 
