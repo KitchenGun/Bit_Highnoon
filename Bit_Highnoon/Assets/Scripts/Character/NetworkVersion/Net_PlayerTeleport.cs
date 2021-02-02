@@ -28,16 +28,6 @@ public class Net_PlayerTeleport : MonoBehaviourPunCallbacks
     {
         PV = this.gameObject.GetPhotonView();//this.gameObject.transform.parent.parent.gameObject.GetComponent<PhotonView>();
         
-        #region 씬 넘버를 통해서 텔레포드 조건 확인
-        if (SceneIdx == 0 || SceneIdx == 7)
-        {
-            TeleportEnable = true;
-        }
-        else
-        {
-            TeleportEnable = false;
-        }
-        #endregion
         laser = this.gameObject.GetComponent<LineRenderer>();
         laser.startWidth = laser.endWidth = 0.5f;
         laser.positionCount = laserSteps;//레이저가 보여질 거리
@@ -66,6 +56,16 @@ public class Net_PlayerTeleport : MonoBehaviourPunCallbacks
             {
                 SetTeleportEnable(false);
             }
+        }
+        #endregion
+        #region 씬 넘버를 통해서 텔레포드 조건 확인
+        if (SceneIdx == 7)
+        {
+            TeleportEnable = true;
+        }
+        else
+        {
+            TeleportEnable = false;
         }
         #endregion
     }
