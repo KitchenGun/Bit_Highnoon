@@ -14,11 +14,6 @@ public class GameManager : MonoBehaviour
     private GameObject hard;
     private int n_index;
 
-    #region ID
-    private string id;
-
-    public string ID { get { return id; } set { id = value; } }
-    #endregion
 
     #region DB정보
     private bool register = false;
