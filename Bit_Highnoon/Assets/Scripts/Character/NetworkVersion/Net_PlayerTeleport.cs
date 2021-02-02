@@ -48,7 +48,7 @@ public class Net_PlayerTeleport : MonoBehaviourPunCallbacks
         else
         {
             SceneIdx = GM.GetComponent<GameManager>().GetSceneIndex();
-            if (SceneIdx == 1)
+            if (SceneIdx == 7)
             {
                 SetTeleportEnable(true);
             }
