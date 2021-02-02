@@ -18,7 +18,7 @@ public class HatMaterial : MonoBehaviour
 
         if (PV.IsMine == true)
         {
-            GM.SendMessage("UserName", PV.Owner.NickName);
+            GM.SendMessage("SetUserName", PV.Owner.NickName);
             PV.RPC("ChangeMaterial", RpcTarget.AllBuffered, GameManager.Instance.Hat_Material);
         }
     }
