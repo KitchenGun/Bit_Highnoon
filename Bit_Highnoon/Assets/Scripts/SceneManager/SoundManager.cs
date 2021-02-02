@@ -10,44 +10,41 @@ public class SoundManager : MonoBehaviour
     public Slider v_audioSlider;
     public Slider m_audioSlider;
 
-    private void Awake()
-    {
-        //사운드 -20으로 초기화
-        v_AudioControl();
-        m_AudioControl();
-    }
+    private float v_sound = 0;
+    private float m_sound = 0;
 
     #region 사운드 조정
     //SFX 사운드 조정
     public void v_AudioControl()
     {
-        float sound = v_audioSlider.value;
+        v_sound = v_audioSlider.value;
 
-        if (sound == -20f)
+        if (v_sound == -20f)
             audioMixer.SetFloat("SFX", -80);
         else
-            audioMixer.SetFloat("SFX", sound);
+            audioMixer.SetFloat("SFX", v_sound);
     }
 
     //BGM 사운드 조정
     public void m_AudioControl()
     {
-        float sound = m_audioSlider.value;
+        float m_sound = m_audioSlider.value;
 
-        if (sound == -20f)
+        if (m_sound == -20f)
             audioMixer.SetFloat("BGM", -80);
         else
-            audioMixer.SetFloat("BGM", sound);
+            audioMixer.SetFloat("BGM", m_sound);
     }
     #endregion
 
     #region SFX 슬라이더 바 조정
     public void VolumeDown()
     {
-        if (v_audioSlider.value <= 0 && v_audioSlider.value > -20)
+        if (v_sound <= 0 && v_sound > -20)
         {
-            v_audioSlider.value -= 2f;
-            v_audioSlider.onValueChanged.Invoke(v_audioSlider.value);
+            v_sound -= 2f;
+            v_audioSlider.value = v_sound;
+            v_AudioControl();
         }
         else
             return;
@@ -55,10 +52,11 @@ public class SoundManager : MonoBehaviour
 
     public void VolumeUp()
     {
-        if (v_audioSlider.value >= -20 && v_audioSlider.value < 0)
+        if (v_sound >= -20 && v_sound < 0)
         {
-            v_audioSlider.value += 2f;
-            v_audioSlider.onValueChanged.Invoke(v_audioSlider.value);
+            v_sound += 2f;
+            v_audioSlider.value = v_sound;
+            v_AudioControl();
         }
         else
             return;
@@ -68,10 +66,11 @@ public class SoundManager : MonoBehaviour
     #region BGM 슬라이더 바 조정
     public void MusicDown()
     {
-        if (m_audioSlider.value <= 0 && m_audioSlider.value > -20)
+        if (m_sound <= 0 && m_sound > -20)
         {
-            m_audioSlider.value -= 2f;
-            m_audioSlider.onValueChanged.Invoke(m_audioSlider.value);
+            m_sound -= 2f;
+            m_audioSlider.value = m_sound;
+            m_AudioControl();
         }
         else
             return;
@@ -79,10 +78,11 @@ public class SoundManager : MonoBehaviour
 
     public void MusicUp()
     {
-        if (m_audioSlider.value >= -20 && m_audioSlider.value < 0)
+        if (m_sound >= -20 && m_sound < 0)
         {
-            m_audioSlider.value += 2f;
-            m_audioSlider.onValueChanged.Invoke(m_audioSlider.value);
+            m_sound += 2f;
+            m_audioSlider.value = m_sound;
+            m_AudioControl();
         }
         else
             return;
