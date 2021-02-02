@@ -23,7 +23,7 @@ public class Net_Ready : MonoBehaviour
     void Start()
     {
         PV = this.gameObject.GetPhotonView();
-
+        HitAudio = this.gameObject.GetComponent<AudioSource>();
         if (PV.IsMine == true)
             isready = is_wait_ready = is_wait_comein = isfrist = false;
         else if (PV.IsMine == false)
