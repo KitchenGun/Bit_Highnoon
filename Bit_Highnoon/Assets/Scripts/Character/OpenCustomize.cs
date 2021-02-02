@@ -68,10 +68,7 @@ public class OpenCustomize : MonoBehaviour
                         PV.RPC("SaveMaterial", RpcTarget.AllBuffered);
                         #endregion
 
-                        #region 변경 정보를 DB로 전송
-                        //Debug.Log(PV.Owner.ToString().Split('\'')[1]);
-                        //Debug.Log(this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Character.name);
-                        //Debug.Log(this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Hat.name);
+                        #region 변경 정보를 DB로 전송                       
                         if (this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Hat != null)
                         {
                             DB.SendUserChange(PhotonNetwork.LocalPlayer.NickName,
@@ -96,6 +93,20 @@ public class OpenCustomize : MonoBehaviour
                 {
                     if (isopen == true)
                     {
+                        #region 샘플을 원래대로
+                        this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().ChangeBodyColor(this.gameObject.transform.parent.GetChild(2).GetChild(0).GetComponent<Renderer>().material);
+
+                        if (this.gameObject.transform.parent.GetChild(5).GetChild(0).gameObject.activeSelf == true)
+                        {
+                            this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().ChangeHatColor(this.gameObject.transform.parent.GetChild(5).GetChild(0).GetChild(0).GetComponent<SkinnedMeshRenderer>().material);
+                        }
+                        else
+                        {
+                            Material met = null;
+                            this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().ChangeHatColor(met);
+                        }
+                        #endregion
+
                         OpenCus(false);
 
                         CloseCus();
@@ -163,23 +174,6 @@ public class OpenCustomize : MonoBehaviour
         this.gameObject.transform.GetChild(0).GetChild(1).gameObject.SetActive(state);
         this.gameObject.transform.GetChild(0).GetChild(2).GetChild(0).gameObject.SetActive(state);
         this.gameObject.transform.GetChild(0).GetChild(2).GetChild(1).gameObject.SetActive(state);
-
-        #region 샘플을 원래대로
-        if (state == true)
-        {
-            this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().ChangeBodyColor(this.gameObject.transform.parent.GetChild(2).GetChild(0).GetComponent<Renderer>().material);
-
-            if (this.gameObject.transform.parent.GetChild(5).GetChild(0).gameObject.activeSelf == true)
-            {
-                this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().ChangeHatColor(this.gameObject.transform.parent.GetChild(5).GetChild(0).GetChild(0).GetComponent<SkinnedMeshRenderer>().material);
-            }
-            else
-            {
-                Material met = null;
-                this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().ChangeHatColor(met);
-            }
-        }
-        #endregion
     }
 
 }
