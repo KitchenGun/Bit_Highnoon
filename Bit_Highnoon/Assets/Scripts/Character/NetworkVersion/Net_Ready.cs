@@ -45,8 +45,6 @@ public class Net_Ready : MonoBehaviour
                 if (isfrist == false)
                 {
                     this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                    HitAudio.clip = GM.LoadAudioClip("popup");
-                    HitAudio.Play();
                     isfrist = true;
                 }
 
