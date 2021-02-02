@@ -23,6 +23,14 @@ public class Register_Manager : MonoBehaviourPunCallbacks
     #region 서버접속 & 연결
     public void Connect() => PhotonNetwork.ConnectUsingSettings();
 
+    #region 연결이 되어있을 경우
+    public override void OnConnected()
+    {
+        base.OnConnected();
+        OnJoinedLobby();
+    }
+    #endregion
+
     public override void OnConnectedToMaster()
     {
         PhotonNetwork.LocalPlayer.NickName = Login_ID_InputField.text;

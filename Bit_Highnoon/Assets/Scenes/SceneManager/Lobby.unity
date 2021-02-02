@@ -50256,6 +50256,7 @@ GameObject:
   - component: {fileID: 1688428512}
   - component: {fileID: 1688428511}
   - component: {fileID: 1688428510}
+  - component: {fileID: 1688428509}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -50283,6 +50284,18 @@ RectTransform:
   m_AnchoredPosition: {x: 11.27, y: -9.89}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1688428509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688428507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32e99c71269870949b3007b360fdbfba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1688428510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50360,19 +50373,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1688428513}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2066002540426167968, guid: 7e59d661ba533e748b6c1055a77f208b, type: 3}
-        m_TargetAssemblyTypeName: RoomManagers, Assembly-CSharp
-        m_MethodName: MyListClick
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: -3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1688428513
 MonoBehaviour:
   m_ObjectHideFlags: 0
