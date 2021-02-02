@@ -15,6 +15,9 @@ public class Net_Ready : MonoBehaviour
 
     private PhotonView PV;
 
+    private GameManager GM;
+    private AudioSource HitAudio;
+
     public bool IsReady { get { return isready; } }
 
     void Start()
@@ -42,6 +45,8 @@ public class Net_Ready : MonoBehaviour
                 if (isfrist == false)
                 {
                     this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                    HitAudio.clip = GM.LoadAudioClip("popup");
+                    HitAudio.Play();
                     isfrist = true;
                 }
 
@@ -73,6 +78,8 @@ public class Net_Ready : MonoBehaviour
                 this.gameObject.transform.parent.GetChild(5).gameObject.SetActive(false);
 
             this.gameObject.transform.parent.GetChild(4).gameObject.SetActive(true);
+            HitAudio.clip = GM.LoadAudioClip("popup");
+            HitAudio.Play();
 
             Destroy(this.gameObject.transform.parent.GetChild(4).gameObject, 3f);
         }
@@ -91,6 +98,8 @@ public class Net_Ready : MonoBehaviour
                 }
 
                 this.gameObject.transform.parent.GetChild(5).gameObject.SetActive(true);
+                HitAudio.clip = GM.LoadAudioClip("popup");
+                HitAudio.Play();
                 is_wait_ready = true;
             }
         }
@@ -103,6 +112,8 @@ public class Net_Ready : MonoBehaviour
             if (isready == true)
             {
                 this.gameObject.transform.parent.GetChild(6).gameObject.SetActive(true);
+                HitAudio.clip = GM.LoadAudioClip("popup");
+                HitAudio.Play();
                 is_wait_comein = true;
             }
         }

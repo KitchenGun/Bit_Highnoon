@@ -280,6 +280,8 @@ public class AIParent : MonoBehaviour
         isPlayerDead = true;
 
         canvas.transform.GetChild(2).gameObject.SetActive(true);
+        winloseAudio.clip = GameManager.Instance.LoadAudioClip("popup");
+        winloseAudio.Play();
         winloseAudio.clip = GameManager.Instance.LoadAudioClip("lose");
         winloseAudio.Play();
     }
@@ -291,6 +293,8 @@ public class AIParent : MonoBehaviour
         bloodEffect.SetActive(true);
 
         canvas.transform.GetChild(1).gameObject.SetActive(true);
+        winloseAudio.clip = GameManager.Instance.LoadAudioClip("popup");
+        winloseAudio.Play();
         winloseAudio.clip = GameManager.Instance.LoadAudioClip("win");
         winloseAudio.Play();
     }

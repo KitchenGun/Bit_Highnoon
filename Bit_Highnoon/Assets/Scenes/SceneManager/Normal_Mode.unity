@@ -14519,6 +14519,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8366031573578832338, guid: 16481e47d15460544968972513954df6, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 3390624557272380142, guid: f9092d90cc43bf14bb60fcf710de5c5a, type: 2}
     - target: {fileID: 8860775114110696635, guid: 16481e47d15460544968972513954df6, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -43175,6 +43179,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4119270754513651115, guid: b5a54c9ce571eb6479cb07f88fd721f9, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 3390624557272380142, guid: f9092d90cc43bf14bb60fcf710de5c5a, type: 2}
     - target: {fileID: 4119270754675784938, guid: b5a54c9ce571eb6479cb07f88fd721f9, type: 3}
       propertyPath: m_Name
       value: NormalAI

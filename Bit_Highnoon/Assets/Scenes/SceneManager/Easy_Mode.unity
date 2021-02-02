@@ -37799,6 +37799,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EasyAI
       objectReference: {fileID: 0}
+    - target: {fileID: 1306821976657715988, guid: 5e77e5aa2e3ec1745bd47eb1c7b651a6, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 3390624557272380142, guid: f9092d90cc43bf14bb60fcf710de5c5a, type: 2}
     - target: {fileID: 1306821976657852433, guid: 5e77e5aa2e3ec1745bd47eb1c7b651a6, type: 3}
       propertyPath: m_RootOrder
       value: 0

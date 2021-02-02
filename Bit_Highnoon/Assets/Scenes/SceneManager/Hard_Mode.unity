@@ -1425,6 +1425,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8366031573578832338, guid: 16481e47d15460544968972513954df6, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 3390624557272380142, guid: f9092d90cc43bf14bb60fcf710de5c5a, type: 2}
     - target: {fileID: 8860775115293085267, guid: 16481e47d15460544968972513954df6, type: 3}
       propertyPath: m_Name
       value: GameUI
@@ -43087,6 +43091,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HardAI
       objectReference: {fileID: 0}
+    - target: {fileID: 5454408750329469701, guid: 31275f0093d885b4bbccaaacfd0998c1, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 3390624557272380142, guid: f9092d90cc43bf14bb60fcf710de5c5a, type: 2}
     - target: {fileID: 5454408750329593864, guid: 31275f0093d885b4bbccaaacfd0998c1, type: 3}
       propertyPath: m_RootOrder
       value: 0
