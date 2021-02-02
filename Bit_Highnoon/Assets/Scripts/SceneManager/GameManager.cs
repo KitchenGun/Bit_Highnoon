@@ -429,8 +429,9 @@ public class GameManager : MonoBehaviour
                     NextSceneIndex(6);
                     ChangeToScene(9); break;
                 case "Option":
-                    NextSceneIndex(10);
-                    ChangeToScene(9); break;
+                    GameObject.Find("OptionPicket").transform.GetChild(0).gameObject.SetActive(true);
+                    bottle.SetActive(true);
+                    break;
                 case "Exit":
                     ExitGame(); break;
             }
@@ -661,5 +662,4 @@ public class GameManager : MonoBehaviour
         return n_index;
     }
     #endregion
-
 }
