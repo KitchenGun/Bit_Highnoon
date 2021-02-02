@@ -27,9 +27,13 @@ public class Register_Manager : MonoBehaviourPunCallbacks
     {
         if (Login_ID_InputField.text != null)
         {
-            PhotonNetwork.LocalPlayer.NickName = Login_ID_InputField.text;
+            PhotonNetwork.LocalPlayer.NickName = GameManager.Instance.ID = Login_ID_InputField.text;
         }
-        print(Login_ID_InputField.text + "서버접속완료");
+        else
+        {
+            PhotonNetwork.LocalPlayer.NickName = GameManager.Instance.ID;
+        }
+        print(GameManager.Instance.ID + "서버접속완료");
         JoinLobby();
     }
     #endregion
