@@ -7052,6 +7052,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 373141637}
   m_Mesh: {fileID: 4300000, guid: 24fabdc37f852ac47840250fde455089, type: 3}
+--- !u!114 &381059737 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7787596330654921647, guid: 34f81a7d9f3e20443ac7139fc73d5c34, type: 3}
+  m_PrefabInstance: {fileID: 1163060601}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &387224234
 GameObject:
   m_ObjectHideFlags: 0
@@ -24282,6 +24293,10 @@ PrefabInstance:
       propertyPath: m_MinValue
       value: -20
       objectReference: {fileID: 0}
+    - target: {fileID: 7787596330654921647, guid: 34f81a7d9f3e20443ac7139fc73d5c34, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7787596330967074455, guid: 34f81a7d9f3e20443ac7139fc73d5c34, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -32.000015
@@ -24330,6 +24345,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7787596331579961196, guid: 34f81a7d9f3e20443ac7139fc73d5c34, type: 3}
+      propertyPath: musicSlider
+      value: 
+      objectReference: {fileID: 381059737}
+    - target: {fileID: 7787596331579961196, guid: 34f81a7d9f3e20443ac7139fc73d5c34, type: 3}
+      propertyPath: volumeSlider
+      value: 
+      objectReference: {fileID: 1981432297}
     - target: {fileID: 7787596331579961199, guid: 34f81a7d9f3e20443ac7139fc73d5c34, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -24433,6 +24456,10 @@ PrefabInstance:
     - target: {fileID: 7787596331640451810, guid: 34f81a7d9f3e20443ac7139fc73d5c34, type: 3}
       propertyPath: m_MinValue
       value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787596331640451810, guid: 34f81a7d9f3e20443ac7139fc73d5c34, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7787596331640451811, guid: 34f81a7d9f3e20443ac7139fc73d5c34, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -43193,6 +43220,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1978956334}
   m_Mesh: {fileID: 4300000, guid: 24fabdc37f852ac47840250fde455089, type: 3}
+--- !u!114 &1981432297 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7787596331640451810, guid: 34f81a7d9f3e20443ac7139fc73d5c34, type: 3}
+  m_PrefabInstance: {fileID: 1163060601}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1983995167
 GameObject:
   m_ObjectHideFlags: 0
