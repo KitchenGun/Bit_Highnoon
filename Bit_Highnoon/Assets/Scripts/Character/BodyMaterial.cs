@@ -12,8 +12,6 @@ public class BodyMaterial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        materials = Resources.LoadAll("CharacterMaterial");
-
         PV = this.gameObject.GetPhotonView();
 
         if(PV.IsMine == true)
@@ -25,6 +23,8 @@ public class BodyMaterial : MonoBehaviour
     [PunRPC]
     private void ChangeMaterial(string char_material)
     {
+        materials = Resources.LoadAll("CharacterMaterial");
+
         if (char_material.Equals(string.Empty) == false)
         {
             foreach (Material mat in materials)

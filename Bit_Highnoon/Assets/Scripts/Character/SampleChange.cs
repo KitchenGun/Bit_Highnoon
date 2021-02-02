@@ -26,6 +26,20 @@ public class SampleChange : MonoBehaviour
 
         PV = this.gameObject.GetPhotonView();
 
+        OriginallySample();
+    }
+
+    public void OriginallySample()
+    {
+        PV.RPC("SaveMaterial", RpcTarget.AllBuffered);
+
+        ChangeBodyColor(selected_character);
+        ChangeHatColor(selected_hat);
+    }
+
+    [PunRPC]
+    private void SaveMaterial()
+    {
         selected_character = this.gameObject.transform.parent.parent.parent.GetChild(2).GetChild(0).GetComponent<Renderer>().material;
 
         if (this.gameObject.transform.parent.parent.parent.GetChild(5).GetChild(0).gameObject.activeSelf == true)

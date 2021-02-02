@@ -94,17 +94,7 @@ public class OpenCustomize : MonoBehaviour
                     if (isopen == true)
                     {
                         #region 샘플을 원래대로
-                        this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().ChangeBodyColor(this.gameObject.transform.parent.GetChild(2).GetChild(0).GetComponent<Renderer>().material);
-
-                        if (this.gameObject.transform.parent.GetChild(5).GetChild(0).gameObject.activeSelf == true)
-                        {
-                            this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().ChangeHatColor(this.gameObject.transform.parent.GetChild(5).GetChild(0).GetChild(0).GetComponent<SkinnedMeshRenderer>().material);
-                        }
-                        else
-                        {
-                            Material met = null;
-                            this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().ChangeHatColor(met);
-                        }
+                        this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().OriginallySample();
                         #endregion
 
                         OpenCus(false);
