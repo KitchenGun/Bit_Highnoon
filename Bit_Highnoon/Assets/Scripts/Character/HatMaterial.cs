@@ -7,15 +7,18 @@ public class HatMaterial : MonoBehaviour
 {
     private object[] materials;
 
+    private GameManager GM;
     private PhotonView PV;
 
     // Start is called before the first frame update
     void Start()
     {
+        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         PV = this.gameObject.GetPhotonView();
 
         if (PV.IsMine == true)
         {
+            GM.SendMessage("UserName", PV.Owner.NickName);
             PV.RPC("ChangeMaterial", RpcTarget.AllBuffered, GameManager.Instance.Hat_Material);
         }
     }
@@ -24,20 +27,22 @@ public class HatMaterial : MonoBehaviour
     private void ChangeMaterial(string hat_material)
     {
         materials = Resources.LoadAll("HatMaterials");
-
-        if (hat_material.Equals(string.Empty) == false)
+        if (PV.Owner.NickName == GM.GetUserName())
         {
-            if (hat_material.Equals("NoHat"))
+            if (hat_material.Equals(string.Empty) == false)
             {
-                this.gameObject.transform.parent.gameObject.SetActive(false);
-            }
-            else
-            {
-                foreach (Material mat in materials)
+                if (hat_material.Equals("NoHat"))
                 {
-                    if (hat_material.Equals(mat.name))
+                    this.gameObject.transform.parent.gameObject.SetActive(false);
+                }
+                else
+                {
+                    foreach (Material mat in materials)
                     {
-                        this.gameObject.GetComponent<SkinnedMeshRenderer>().material = mat;
+                        if (hat_material.Equals(mat.name))
+                        {
+                            this.gameObject.GetComponent<SkinnedMeshRenderer>().material = mat;
+                        }
                     }
                 }
             }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Photon.Pun;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviour
     private GameObject hard;
     private int n_index;
 
+    private string NickName;
 
     #region DB정보
     private bool register = false;
@@ -285,6 +287,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //유저 닉네임 저장
+    private void SetUserName(string msg)
+    {
+        NickName = msg;
+    }
+    public string GetUserName()
+    {
+        return NickName;
+    }
+
+
     #endregion
 
     #endregion
@@ -308,10 +321,9 @@ public class GameManager : MonoBehaviour
         {
             db_server.enabled = true;
         }
-        else if (GetSceneIndex() == 7 || GetSceneIndex() == 8 || GetSceneIndex() == 9)
+        else if (GetSceneIndex() == 7 || GetSceneIndex() == 8 )
         {
             db_server.enabled = true;
-
         }
         else
         {

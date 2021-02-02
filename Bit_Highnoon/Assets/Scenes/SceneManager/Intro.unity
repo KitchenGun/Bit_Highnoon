@@ -760,6 +760,10 @@ PrefabInstance:
       propertyPath: _trackingOriginType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1057656532610099536, guid: 73bbe5d052c0cb046b10357ede42865c, type: 3}
+      propertyPath: viewIdField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7449710622404818039, guid: 73bbe5d052c0cb046b10357ede42865c, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -808,7 +812,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1057656532610099536, guid: 73bbe5d052c0cb046b10357ede42865c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 73bbe5d052c0cb046b10357ede42865c, type: 3}
 --- !u!1 &978112412
 GameObject:
