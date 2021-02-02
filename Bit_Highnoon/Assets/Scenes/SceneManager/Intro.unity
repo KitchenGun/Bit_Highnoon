@@ -748,6 +748,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5837351816455571719, guid: 73bbe5d052c0cb046b10357ede42865c, type: 3}
+      propertyPath: BypassListenerEffects
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5837351816455571719, guid: 73bbe5d052c0cb046b10357ede42865c, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: f9092d90cc43bf14bb60fcf710de5c5a, type: 2}
     - target: {fileID: 1861852016, guid: 73bbe5d052c0cb046b10357ede42865c, type: 3}
       propertyPath: _trackingOriginType
       value: 1

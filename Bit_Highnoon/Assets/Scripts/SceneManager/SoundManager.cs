@@ -23,7 +23,7 @@ public class SoundManager : MonoBehaviour
     {
         float sound = v_audioSlider.value;
 
-        if (sound == -40f)
+        if (sound == -20f)
             audioMixer.SetFloat("SFX", -80);
         else
             audioMixer.SetFloat("SFX", sound);
@@ -34,7 +34,7 @@ public class SoundManager : MonoBehaviour
     {
         float sound = m_audioSlider.value;
 
-        if (sound == -40f)
+        if (sound == -20f)
             audioMixer.SetFloat("BGM", -80);
         else
             audioMixer.SetFloat("BGM", sound);
@@ -44,9 +44,10 @@ public class SoundManager : MonoBehaviour
     #region SFX 슬라이더 바 조정
     public void VolumeDown()
     {
-        if (v_audioSlider.value <= 0 && v_audioSlider.value > -40)
+        if (v_audioSlider.value <= 0 && v_audioSlider.value > -20)
         {
-            v_audioSlider.value -= 4f;
+            v_audioSlider.value -= 2f;
+            v_audioSlider.onValueChanged.Invoke(v_audioSlider.value);
         }
         else
             return;
@@ -54,9 +55,10 @@ public class SoundManager : MonoBehaviour
 
     public void VolumeUp()
     {
-        if (v_audioSlider.value >= -40 && v_audioSlider.value < 0)
+        if (v_audioSlider.value >= -20 && v_audioSlider.value < 0)
         {
-            v_audioSlider.value += 4f;
+            v_audioSlider.value += 2f;
+            v_audioSlider.onValueChanged.Invoke(v_audioSlider.value);
         }
         else
             return;
@@ -66,9 +68,10 @@ public class SoundManager : MonoBehaviour
     #region BGM 슬라이더 바 조정
     public void MusicDown()
     {
-        if (m_audioSlider.value <= 0 && m_audioSlider.value > -40)
+        if (m_audioSlider.value <= 0 && m_audioSlider.value > -20)
         {
-            m_audioSlider.value -= 4f;
+            m_audioSlider.value -= 2f;
+            m_audioSlider.onValueChanged.Invoke(m_audioSlider.value);
         }
         else
             return;
@@ -76,9 +79,10 @@ public class SoundManager : MonoBehaviour
 
     public void MusicUp()
     {
-        if (m_audioSlider.value >= -40 && m_audioSlider.value < 0)
+        if (m_audioSlider.value >= -20 && m_audioSlider.value < 0)
         {
-            m_audioSlider.value += 4f;
+            m_audioSlider.value += 2f;
+            m_audioSlider.onValueChanged.Invoke(m_audioSlider.value);
         }
         else
             return;
