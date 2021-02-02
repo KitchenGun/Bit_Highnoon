@@ -84,7 +84,7 @@ public class SampleChange : MonoBehaviour
         }
         else
         {
-            this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+            this.gameObject.transform.GetChild(1).GetChild(0).gameObject.SetActive(true);
 
             foreach (Material mat in HatMaterials)
             {
