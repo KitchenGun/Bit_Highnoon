@@ -23,17 +23,12 @@ public class Register_Manager : MonoBehaviourPunCallbacks
     #region 서버접속 & 연결
     public void Connect() => PhotonNetwork.ConnectUsingSettings();
 
-    #region 연결이 되어있을 경우
-    public override void OnConnected()
-    {
-        base.OnConnected();
-        OnJoinedLobby();
-    }
-    #endregion
-
     public override void OnConnectedToMaster()
     {
-        PhotonNetwork.LocalPlayer.NickName = Login_ID_InputField.text;
+        if (Login_ID_InputField.text != null)
+        {
+            PhotonNetwork.LocalPlayer.NickName = Login_ID_InputField.text;
+        }
         print(Login_ID_InputField.text + "서버접속완료");
         JoinLobby();
     }
