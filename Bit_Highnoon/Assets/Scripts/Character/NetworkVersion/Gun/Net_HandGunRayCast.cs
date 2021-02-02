@@ -78,7 +78,6 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
         GunAni.SetBool("FireState", FireState);
         GunFireEffect = FirePos.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>();
         #endregion
-        //isFirstBody = true;
     }
 
     private void Update()
@@ -216,6 +215,10 @@ public class Net_HandGunRayCast : MonoBehaviourPunCallbacks,IPunObservable
             if (HitObj.transform.gameObject.name.Equals("Ready"))
             {
                 HitObj.transform.gameObject.SendMessage("Ready");
+            }
+            else if (HitObj.transform.gameObject.name.Equals("Exit"))
+            {
+                HitObj.transform.gameObject.SendMessage("Exit");
             }
         }
         else if(layer == 8)
