@@ -12,8 +12,6 @@ public class HatMaterial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        materials = Resources.LoadAll("HatMaterials");
-
         PV = this.gameObject.GetPhotonView();
 
         if (PV.IsMine == true)
@@ -25,6 +23,8 @@ public class HatMaterial : MonoBehaviour
     [PunRPC]
     private void ChangeMaterial(string hat_material)
     {
+        materials = Resources.LoadAll("HatMaterials");
+
         if (hat_material.Equals(string.Empty) == false)
         {
             if (hat_material.Equals("NoHat"))

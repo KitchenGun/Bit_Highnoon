@@ -280,6 +280,7 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
+
     #endregion
 
     #region 씬이 로드될때 마다 호출하는 이벤트 함수
