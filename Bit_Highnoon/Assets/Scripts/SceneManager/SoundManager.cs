@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class SoundManager : MonoBehaviour
 {
     public AudioMixer audioMixer;
-    public Slider v_audioSlider;
-    public Slider m_audioSlider;
+    public Slider volumeSlider;
+    public Slider musicSlider;
 
     private float v_sound = 0;
     private float m_sound = 0;
@@ -17,7 +17,7 @@ public class SoundManager : MonoBehaviour
     //SFX 사운드 조정
     public void v_AudioControl()
     {
-        v_sound = v_audioSlider.value;
+        v_sound = volumeSlider.value;
 
         if (v_sound == -20f)
             audioMixer.SetFloat("SFX", -80);
@@ -28,7 +28,7 @@ public class SoundManager : MonoBehaviour
     //BGM 사운드 조정
     public void m_AudioControl()
     {
-        float m_sound = m_audioSlider.value;
+        m_sound = musicSlider.value;
 
         if (m_sound == -20f)
             audioMixer.SetFloat("BGM", -80);
@@ -43,7 +43,7 @@ public class SoundManager : MonoBehaviour
         if (v_sound <= 0 && v_sound > -20)
         {
             v_sound -= 2f;
-            v_audioSlider.value = v_sound;
+            volumeSlider.value = v_sound;
             v_AudioControl();
         }
         else
@@ -55,7 +55,7 @@ public class SoundManager : MonoBehaviour
         if (v_sound >= -20 && v_sound < 0)
         {
             v_sound += 2f;
-            v_audioSlider.value = v_sound;
+            volumeSlider.value = v_sound;
             v_AudioControl();
         }
         else
@@ -69,7 +69,7 @@ public class SoundManager : MonoBehaviour
         if (m_sound <= 0 && m_sound > -20)
         {
             m_sound -= 2f;
-            m_audioSlider.value = m_sound;
+            musicSlider.value = m_sound;
             m_AudioControl();
         }
         else
@@ -81,7 +81,7 @@ public class SoundManager : MonoBehaviour
         if (m_sound >= -20 && m_sound < 0)
         {
             m_sound += 2f;
-            m_audioSlider.value = m_sound;
+            musicSlider.value = m_sound;
             m_AudioControl();
         }
         else
