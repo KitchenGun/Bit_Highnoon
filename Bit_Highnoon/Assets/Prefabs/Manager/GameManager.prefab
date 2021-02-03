@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 7449710622404818039}
   - component: {fileID: 7449710622404818038}
   - component: {fileID: 7449710622404818037}
-  - component: {fileID: 1057656532610099536}
   - component: {fileID: 7449710622404818059}
   - component: {fileID: -5837351816455571719}
   - component: {fileID: 1861852016}
+  - component: {fileID: 878520238}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -85,28 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1057656532610099536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7449710622404818058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  observableSearch: 2
-  Synchronization: 3
-  OwnershipTransfer: 0
-  ObservedComponents: []
-  viewIdField: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!114 &7449710622404818059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,7 +106,7 @@ AudioSource:
   m_GameObject: {fileID: 7449710622404818058}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: f9092d90cc43bf14bb60fcf710de5c5a, type: 2}
+  OutputAudioMixerGroup: {fileID: -8838619848145800654, guid: f9092d90cc43bf14bb60fcf710de5c5a, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.5
@@ -272,3 +250,18 @@ MonoBehaviour:
   resetTrackerOnLoad: 0
   AllowRecenter: 1
   LateControllerUpdate: 1
+--- !u!114 &878520238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7449710622404818058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1282c25b5a565646b50935d5738875a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: f9092d90cc43bf14bb60fcf710de5c5a, type: 2}
+  volumeSlider: {fileID: 0}
+  musicSlider: {fileID: 0}

@@ -15,8 +15,8 @@ public class GameManager : MonoBehaviour
     private GameObject hard;
     private SoundManager SM;
     private int n_index;
-    private float v_volume;
-    private float m_volume;
+    private float v_volume=0f;
+    private float m_volume=0f;
 
 
     #region DB정보
@@ -316,6 +316,15 @@ public class GameManager : MonoBehaviour
             SM.v_AudioControl(v_volume);
             SM.m_AudioControl(m_volume);
         }
+        else if(GetSceneIndex()==0)
+        {
+            return;
+        }
+        else if(GetSceneIndex()==1)
+        {
+            this.gameObject.GetComponent<SoundManager>().volumeSlider=GameObject.Find("OptionPicket").transform.GetChild(0).GetChild(0).GetChild(0).GetChild(4).GetComponent<Slider>();
+            this.gameObject.GetComponent<SoundManager>().volumeSlider = GameObject.Find("OptionPicket").transform.GetChild(0).GetChild(0).GetChild(0).GetChild(8).GetComponent<Slider>();
+        }
         else if (GetSceneIndex() == 7 || GetSceneIndex() == 8 )
         {
             db_server.enabled = true;
@@ -375,7 +384,7 @@ public class GameManager : MonoBehaviour
 
         leveldb.StartXml();
         sounddb.SoundUpdate(GetSceneIndex());
-
+        SM = this.gameObject.transform.GetComponent<SoundManager>();
         DontDestroyOnLoad(gameObject);
 
     }
@@ -689,11 +698,25 @@ public class GameManager : MonoBehaviour
 
     public float getVSound()
     {
-        return v_volume;
+        if(GetSceneIndex()==0)
+        {
+            return 0;
+        }
+        else
+        {
+            return v_volume;
+        }
     }
     public float getMSound()
     {
-        return m_volume;
+        if (GetSceneIndex() == 0)
+        {
+            return 0;
+        }
+        else
+        {
+            return m_volume;
+        }
     }
     #endregion
 }

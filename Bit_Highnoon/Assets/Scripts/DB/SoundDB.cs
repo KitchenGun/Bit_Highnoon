@@ -126,12 +126,12 @@ public class SoundDB : MonoBehaviour
                 folder2.AddRange(("WindSound,keyboard").Split(','));
                 break;
             case 7:
-                folder1.AddRange(("Lobby,Lobby,Lobby").Split(','));
-                folder2.AddRange(("casino,piano,sleeze").Split(','));
+                folder1.AddRange(("Lobby,Lobby,Lobby,Bgm").Split(','));
+                folder2.AddRange(("casino,piano,sleeze,WindSound").Split(','));
                 break;
             case 8:
-                folder1.AddRange(("Bgm,User").Split(','));
-                folder2.AddRange(("Battle,gameend").Split(',')); 
+                folder1.AddRange(("Bgm,User,Bgm").Split(','));
+                folder2.AddRange(("Battle,gameend,WindSound").Split(',')); 
                 break;
             case 9:
                 break;

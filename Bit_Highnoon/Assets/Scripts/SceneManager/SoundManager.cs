@@ -17,9 +17,15 @@ public class SoundManager : MonoBehaviour
     {
         v_sound = GameManager.Instance.getVSound();
         m_sound = GameManager.Instance.getMSound();
-
-        volumeSlider.value = v_sound;
-        musicSlider.value = m_sound;
+        if (GameManager.Instance.GetSceneIndex() == 0)
+        {
+            return;
+        }
+        else
+        {
+            volumeSlider.value = v_sound;
+            musicSlider.value = m_sound;
+        }
     }
 
     #region 사운드 조정
