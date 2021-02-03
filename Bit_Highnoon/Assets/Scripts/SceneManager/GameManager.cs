@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 using Photon.Pun;
 
 public class GameManager : MonoBehaviour
@@ -13,10 +14,13 @@ public class GameManager : MonoBehaviour
     private DBServer db_server;
     private GameObject normal;
     private GameObject hard;
-    private SoundManager SM;
+    private Slider volumeSlider;
+    private Slider musicSlider;
     private int n_index;
-    private float v_volume=0f;
-    private float m_volume=0f;
+    private float v_sound=0f;
+    private float m_sound=0f;
+
+    public AudioMixer audioMixer;
 
 
     #region DB정보
@@ -309,33 +313,24 @@ public class GameManager : MonoBehaviour
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
         SoundUpdate(GetSceneIndex());
+        v_AudioControl(v_sound);
+        m_AudioControl(m_sound);
 
         if (GetSceneIndex() == 6)
         {
             db_server.enabled = true;
-            SM.v_AudioControl(v_volume);
-            SM.m_AudioControl(m_volume);
         }
         else if(GetSceneIndex()==0)
         {
             return;
         }
-        else if(GetSceneIndex()==1)
-        {
-            this.gameObject.GetComponent<SoundManager>().volumeSlider=GameObject.Find("OptionPicket").transform.GetChild(0).GetChild(0).GetChild(0).GetChild(4).GetComponent<Slider>();
-            this.gameObject.GetComponent<SoundManager>().volumeSlider = GameObject.Find("OptionPicket").transform.GetChild(0).GetChild(0).GetChild(0).GetChild(8).GetComponent<Slider>();
-        }
         else if (GetSceneIndex() == 7 || GetSceneIndex() == 8 )
         {
             db_server.enabled = true;
-            SM.v_AudioControl(v_volume);
-            SM.m_AudioControl(m_volume);
         }
         else
         {
             db_server.enabled = false;
-            SM.v_AudioControl(v_volume);
-            SM.m_AudioControl(m_volume);
         }
     }
     #endregion
@@ -384,7 +379,6 @@ public class GameManager : MonoBehaviour
 
         leveldb.StartXml();
         sounddb.SoundUpdate(GetSceneIndex());
-        SM = this.gameObject.transform.GetComponent<SoundManager>();
         DontDestroyOnLoad(gameObject);
 
     }
@@ -689,34 +683,47 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    #region 사운드 값 저장
-    public void setSound(float v_sound, float m_sound)
+    #region 사운드 값 Get & Set
+    public void setSound(float v_volume, float m_volume)
     {
-        v_volume = v_sound;
-        m_volume = m_sound;
+        v_sound = v_volume;
+        m_sound = m_volume;
     }
 
     public float getVSound()
     {
-        if(GetSceneIndex()==0)
-        {
-            return 0;
-        }
-        else
-        {
-            return v_volume;
-        }
+            return v_sound;
     }
     public float getMSound()
     {
-        if (GetSceneIndex() == 0)
-        {
-            return 0;
-        }
-        else
-        {
-            return m_volume;
-        }
+            return m_sound;
     }
     #endregion
+
+    #region 사운드 조정
+    //SFX 사운드 조정
+    public void v_AudioControl(float slidervalue)
+    {
+        v_sound = slidervalue;
+        setSound(v_sound, m_sound);
+
+        if (v_sound == -20f)
+            audioMixer.SetFloat("SFX", -80);
+        else
+            audioMixer.SetFloat("SFX", v_sound);
+    }
+
+    //BGM 사운드 조정
+    public void m_AudioControl(float slidervalue)
+    {
+        m_sound = slidervalue;
+        setSound(v_sound, m_sound);
+
+        if (m_sound == -20f)
+            audioMixer.SetFloat("BGM", -80);
+        else
+            audioMixer.SetFloat("BGM", m_sound);
+    }
+    #endregion
+
 }

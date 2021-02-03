@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
-    public AudioMixer audioMixer;
     public Slider volumeSlider;
     public Slider musicSlider;
 
@@ -17,51 +16,20 @@ public class SoundManager : MonoBehaviour
     {
         v_sound = GameManager.Instance.getVSound();
         m_sound = GameManager.Instance.getMSound();
-        if (GameManager.Instance.GetSceneIndex() == 0)
-        {
-            return;
-        }
-        else
-        {
-            volumeSlider.value = v_sound;
-            musicSlider.value = m_sound;
-        }
+        
+        volumeSlider.value = v_sound;
+        musicSlider.value = m_sound;
     }
-
-    #region 사운드 조정
-    //SFX 사운드 조정
-    public void v_AudioControl(float slidervalue)
-    {
-        v_sound = slidervalue;
-        GameManager.Instance.setSound(v_sound, m_sound);
-
-        if (v_sound == -20f)
-            audioMixer.SetFloat("SFX", -80);
-        else
-            audioMixer.SetFloat("SFX", v_sound);
-    }
-
-    //BGM 사운드 조정
-    public void m_AudioControl(float slidervalue)
-    {
-        m_sound = slidervalue;
-        GameManager.Instance.setSound(v_sound, m_sound);
-
-        if (m_sound == -20f)
-            audioMixer.SetFloat("BGM", -80);
-        else
-            audioMixer.SetFloat("BGM", m_sound);
-    }
-    #endregion
 
     #region SFX 슬라이더 바 조정
     public void VolumeDown()
     {
+        v_sound = GameManager.Instance.getVSound();
         if (v_sound <= 0 && v_sound > -20)
         {
             v_sound -= 2f;
             volumeSlider.value = v_sound;
-            v_AudioControl(volumeSlider.value);
+            GameManager.Instance.v_AudioControl(v_sound);
         }
         else
             return;
@@ -69,11 +37,12 @@ public class SoundManager : MonoBehaviour
 
     public void VolumeUp()
     {
+        v_sound = GameManager.Instance.getVSound();
         if (v_sound >= -20 && v_sound < 0)
         {
             v_sound += 2f;
             volumeSlider.value = v_sound;
-            v_AudioControl(volumeSlider.value);
+            GameManager.Instance.v_AudioControl(v_sound);
         }
         else
             return;
@@ -83,11 +52,12 @@ public class SoundManager : MonoBehaviour
     #region BGM 슬라이더 바 조정
     public void MusicDown()
     {
+        m_sound = GameManager.Instance.getMSound();
         if (m_sound <= 0 && m_sound > -20)
         {
             m_sound -= 2f;
             musicSlider.value = m_sound;
-            m_AudioControl(musicSlider.value);
+            GameManager.Instance.m_AudioControl(m_sound);
         }
         else
             return;
@@ -95,11 +65,12 @@ public class SoundManager : MonoBehaviour
 
     public void MusicUp()
     {
+        m_sound = GameManager.Instance.getMSound();
         if (m_sound >= -20 && m_sound < 0)
         {
             m_sound += 2f;
             musicSlider.value = m_sound;
-            m_AudioControl(musicSlider.value);
+            GameManager.Instance.m_AudioControl(m_sound);
         }
         else
             return;

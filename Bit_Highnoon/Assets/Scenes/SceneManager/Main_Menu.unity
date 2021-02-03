@@ -24261,6 +24261,10 @@ PrefabInstance:
       propertyPath: volumeSlider
       value: 
       objectReference: {fileID: 1981432297}
+    - target: {fileID: 7787596331579961198, guid: 34f81a7d9f3e20443ac7139fc73d5c34, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1703607096}
     - target: {fileID: 7787596331579961199, guid: 34f81a7d9f3e20443ac7139fc73d5c34, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -37133,6 +37137,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
+--- !u!20 &1703607096 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 3366610077945538646, guid: 939197e0ea9422540a39677fe6ec8ff7, type: 3}
+  m_PrefabInstance: {fileID: 1703607095}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1707218052
 GameObject:
   m_ObjectHideFlags: 0
