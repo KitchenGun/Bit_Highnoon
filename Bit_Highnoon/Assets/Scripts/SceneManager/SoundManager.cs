@@ -13,11 +13,21 @@ public class SoundManager : MonoBehaviour
     private float v_sound = 0;
     private float m_sound = 0;
 
+    public void Awake()
+    {
+        v_sound = GameManager.Instance.getVSound();
+        m_sound = GameManager.Instance.getMSound();
+
+        volumeSlider.value = v_sound;
+        musicSlider.value = m_sound;
+    }
+
     #region 사운드 조정
     //SFX 사운드 조정
-    public void v_AudioControl()
+    public void v_AudioControl(float slidervalue)
     {
-        v_sound = volumeSlider.value;
+        v_sound = slidervalue;
+        GameManager.Instance.setSound(v_sound, m_sound);
 
         if (v_sound == -20f)
             audioMixer.SetFloat("SFX", -80);
@@ -26,9 +36,10 @@ public class SoundManager : MonoBehaviour
     }
 
     //BGM 사운드 조정
-    public void m_AudioControl()
+    public void m_AudioControl(float slidervalue)
     {
-        m_sound = musicSlider.value;
+        m_sound = slidervalue;
+        GameManager.Instance.setSound(v_sound, m_sound);
 
         if (m_sound == -20f)
             audioMixer.SetFloat("BGM", -80);
@@ -44,7 +55,7 @@ public class SoundManager : MonoBehaviour
         {
             v_sound -= 2f;
             volumeSlider.value = v_sound;
-            v_AudioControl();
+            v_AudioControl(volumeSlider.value);
         }
         else
             return;
@@ -56,7 +67,7 @@ public class SoundManager : MonoBehaviour
         {
             v_sound += 2f;
             volumeSlider.value = v_sound;
-            v_AudioControl();
+            v_AudioControl(volumeSlider.value);
         }
         else
             return;
@@ -70,7 +81,7 @@ public class SoundManager : MonoBehaviour
         {
             m_sound -= 2f;
             musicSlider.value = m_sound;
-            m_AudioControl();
+            m_AudioControl(musicSlider.value);
         }
         else
             return;
@@ -82,7 +93,7 @@ public class SoundManager : MonoBehaviour
         {
             m_sound += 2f;
             musicSlider.value = m_sound;
-            m_AudioControl();
+            m_AudioControl(musicSlider.value);
         }
         else
             return;

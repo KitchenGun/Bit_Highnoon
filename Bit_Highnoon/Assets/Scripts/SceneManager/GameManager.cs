@@ -13,7 +13,10 @@ public class GameManager : MonoBehaviour
     private DBServer db_server;
     private GameObject normal;
     private GameObject hard;
+    private SoundManager SM;
     private int n_index;
+    private float v_volume;
+    private float m_volume;
 
 
     #region DB정보
@@ -310,14 +313,20 @@ public class GameManager : MonoBehaviour
         if (GetSceneIndex() == 6)
         {
             db_server.enabled = true;
+            SM.v_AudioControl(v_volume);
+            SM.m_AudioControl(m_volume);
         }
         else if (GetSceneIndex() == 7 || GetSceneIndex() == 8 )
         {
             db_server.enabled = true;
+            SM.v_AudioControl(v_volume);
+            SM.m_AudioControl(m_volume);
         }
         else
         {
             db_server.enabled = false;
+            SM.v_AudioControl(v_volume);
+            SM.m_AudioControl(m_volume);
         }
     }
     #endregion
@@ -668,6 +677,23 @@ public class GameManager : MonoBehaviour
     public int NextSceneIndexCall()
     {
         return n_index;
+    }
+    #endregion
+
+    #region 사운드 값 저장
+    public void setSound(float v_sound, float m_sound)
+    {
+        v_volume = v_sound;
+        m_volume = m_sound;
+    }
+
+    public float getVSound()
+    {
+        return v_volume;
+    }
+    public float getMSound()
+    {
+        return m_volume;
     }
     #endregion
 }
