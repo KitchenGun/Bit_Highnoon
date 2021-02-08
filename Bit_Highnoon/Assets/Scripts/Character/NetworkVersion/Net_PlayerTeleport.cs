@@ -19,6 +19,8 @@ public class Net_PlayerTeleport : MonoBehaviourPunCallbacks
     #endregion
     private Vector3 targetPos; //위치
     bool targetAcquired = false; //목표를 획득했는가
+    [SerializeField]
+    private Material[] Lasercolor;
 
     #region Audio
     private AudioSource WalkAudio;
@@ -133,16 +135,14 @@ public class Net_PlayerTeleport : MonoBehaviourPunCallbacks
 
                 if (hit.transform.gameObject.layer == collisionLayer) //레이어가 맞는 이동가능한 곳일 경우
                 {
-                    //LaserColorSet(Color.green); //녹레이저
-                    laser.startColor = laser.endColor = Color.green;
+                    LaserColorSet(Color.green); //녹레이저
                     targetPos = hit.point;
                     targetAcquired = true;
                     return;
                 }
                 else
                 {
-                    //LaserColorSet(Color.red);
-                    laser.startColor = laser.endColor = Color.red;
+                    LaserColorSet(Color.red);
                     return;
                 }
             }
@@ -152,8 +152,7 @@ public class Net_PlayerTeleport : MonoBehaviourPunCallbacks
                 origin += offset;
             }
         }
-        //LaserColorSet(Color.red);
-        laser.startColor = laser.endColor = Color.red;
+        LaserColorSet(Color.red);
     }
     #endregion
 
@@ -193,13 +192,26 @@ public class Net_PlayerTeleport : MonoBehaviourPunCallbacks
 
     public void LaserColorSet(Color color)
     {
-        laser.material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply"));
-        Gradient gradient = new Gradient();//그라데이션 색을 인자값으로 전달
-        gradient.SetKeys(
-            new GradientColorKey[] { new GradientColorKey(color, 0.0f), new GradientColorKey(color, 1.0f) },
-            new GradientAlphaKey[] { new GradientAlphaKey(1f, 0.0f), new GradientAlphaKey(1f, 1.0f) }
-        );
+        Gradient gradient = new Gradient();
+
+        if (color == Color.red)
+        {
+            laser.material = Lasercolor[0];
+            gradient.SetKeys(
+                new GradientColorKey[] { new GradientColorKey(Color.red, 1) },
+                new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 1.0f) }
+                );
+        }
+        else
+        {
+            laser.material = Lasercolor[1];
+            gradient.SetKeys(
+                new GradientColorKey[] { new GradientColorKey(Color.green, 1 )},
+                new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 1.0f) }
+                  );
+        }
         laser.colorGradient = gradient;
+
     }
 
     #endregion

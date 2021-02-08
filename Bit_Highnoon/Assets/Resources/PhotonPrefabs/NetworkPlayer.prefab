@@ -8507,8 +8507,7 @@ LineRenderer:
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 0}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8552,7 +8551,7 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0, b: 0, a: 1}
+      key0: {r: 1, g: 1, b: 1, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -8560,7 +8559,7 @@ LineRenderer:
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 65535
+      ctime0: 0
       ctime1: 65535
       ctime2: 0
       ctime3: 0
@@ -8725,6 +8724,9 @@ MonoBehaviour:
   head: {fileID: 2677167125809604142}
   cameraRig: {fileID: 837580839777518154}
   collisionLayer: 8
+  Lasercolor:
+  - {fileID: 2100000, guid: dd8ee6debe6e64e40a5730b0cbd5dec3, type: 2}
+  - {fileID: 2100000, guid: 5792158812873a84da5cab4531c08854, type: 2}
 --- !u!114 &461553287924853413
 MonoBehaviour:
   m_ObjectHideFlags: 0

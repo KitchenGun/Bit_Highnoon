@@ -14,14 +14,8 @@ public class DBServer : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        StartClient("61.81.98.236", 9000);
+        StartClient("210.93.86.73", 9000);
     }
-
-    private void Start()
-    {
-        
-    }
-
     //ip수정할것!!
     public bool StartClient(string ip, int port)
     {
