@@ -133,14 +133,16 @@ public class Net_PlayerTeleport : MonoBehaviourPunCallbacks
 
                 if (hit.transform.gameObject.layer == collisionLayer) //레이어가 맞는 이동가능한 곳일 경우
                 {
-                    LaserColorSet(Color.green); //녹레이저
+                    //LaserColorSet(Color.green); //녹레이저
+                    laser.startColor = laser.endColor = Color.green;
                     targetPos = hit.point;
                     targetAcquired = true;
                     return;
                 }
                 else
                 {
-                    LaserColorSet(Color.red);
+                    //LaserColorSet(Color.red);
+                    laser.startColor = laser.endColor = Color.red;
                     return;
                 }
             }
@@ -150,7 +152,8 @@ public class Net_PlayerTeleport : MonoBehaviourPunCallbacks
                 origin += offset;
             }
         }
-        LaserColorSet(Color.red);
+        //LaserColorSet(Color.red);
+        laser.startColor = laser.endColor = Color.red;
     }
     #endregion
 
