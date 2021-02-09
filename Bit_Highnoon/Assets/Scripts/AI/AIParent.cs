@@ -18,6 +18,8 @@ public class AIParent : MonoBehaviour
     protected bool isPlayerDeadAudio;   //PlayerDead오디오가 실행됬는지 판단
 
     private bool isIdleAudio;           //대기상태의 대사를 했는지 판단
+
+    private bool isGameStart;           //게임이 시작 했는지 판단
     #endregion
 
     #region 게임타임 관련 변수
@@ -56,7 +58,7 @@ public class AIParent : MonoBehaviour
         walkTime = 5;
 
         //초기 설정
-        isDead = isPlayerDead = isHit = isPlayerDeadAudio = isIdleAudio = false;  
+        isDead = isPlayerDead = isHit = isPlayerDeadAudio = isIdleAudio = isGameStart = false;  
 
         player = GameObject.Find("PlayerCtrl");       //플레이어 찾기
 
@@ -258,7 +260,11 @@ public class AIParent : MonoBehaviour
     #region Animation 이벤트 호출
     private void GameStart()
     {
-        GameManager.Instance.GameStart();
+        if (isGameStart == false)
+        {
+            GameManager.Instance.GameStart();
+            isGameStart = true;
+        }
     }
 
     protected void SendMessageDead()
