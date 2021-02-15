@@ -11,13 +11,13 @@ public class OpenCustomize : MonoBehaviour
 
     private PhotonView PV;
 
-    private DBServer DB;
+    private MultiDB DB;
 
     private void Start()
     {
         PV = this.gameObject.GetPhotonView();
 
-        DB = GameObject.Find("GameManager").GetComponent<DBServer>();
+        DB = GameObject.Find("GameManager").GetComponent<MultiDB>();
 
         isopen = false;
 
@@ -71,16 +71,15 @@ public class OpenCustomize : MonoBehaviour
                         #region 변경 정보를 DB로 전송                       
                         if (this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Hat != null)
                         {
-                            DB.SendUserChange(PhotonNetwork.LocalPlayer.NickName,
-                            this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Character.name,
-                            this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Hat.name);
+                            DB.SaveHat(this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Hat.name);
+                            DB.SaveBody(this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Character.name);
                         }
                         else
                         {
-                            DB.SendUserChange(PhotonNetwork.LocalPlayer.NickName,
-                            this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Character.name,
-                            "NoHat");
+                            DB.SaveHat(this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<SampleChange>().Selected_Hat.name);
+                            DB.SaveBody("NoHat");
                         }
+                        GameManager.Instance.LoadMultiInfo();
                         #endregion
 
                         CloseCus();

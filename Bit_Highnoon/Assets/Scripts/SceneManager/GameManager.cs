@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 {
     private SoundDB sounddb;
     private LogicalDB leveldb;
+    private MultiDB multidb;
     private DBServer db_server;
     private GameObject normal;
     private GameObject hard;
@@ -22,15 +23,16 @@ public class GameManager : MonoBehaviour
 
     public AudioMixer audioMixer;
 
+    private string char_material = string.Empty;
+
+    private string hat_material = string.Empty;
 
     #region DB정보
     private bool register = false;
 
     private Queue<string> messageQueue = new Queue<string>();
 
-    private string char_material = string.Empty;
-
-    private string hat_material = string.Empty;
+    
 
     public string Char_Material { get { return char_material; } }
     public string Hat_Material { get { return hat_material; } }
@@ -178,7 +180,7 @@ public class GameManager : MonoBehaviour
     {
         try
         {
-            hat_material = msg;
+            //hat_material = msg;
             if (msg == "Camohat")
             {                
                 Debug.Log("모자 : Camohat");
@@ -235,7 +237,7 @@ public class GameManager : MonoBehaviour
     {
         try
         {
-            char_material = msg;
+            //char_material = msg;
             
             if (msg == "Black")
             {
@@ -297,6 +299,15 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    #endregion
+
+    #region 멀티 정보
+    public void LoadMultiInfo()
+    {
+        hat_material = multidb.LoadHat();
+
+        char_material = multidb.LoadBody();
+    }
     #endregion
 
     #region 씬이 로드될때 마다 호출하는 이벤트 함수
@@ -363,6 +374,7 @@ public class GameManager : MonoBehaviour
     {
         sounddb = this.gameObject.AddComponent<SoundDB>();
         leveldb = this.gameObject.AddComponent<LogicalDB>();
+        multidb = this.gameObject.AddComponent<MultiDB>();
 
         db_server = this.gameObject.AddComponent<DBServer>();            
 
@@ -378,6 +390,8 @@ public class GameManager : MonoBehaviour
         }
 
         leveldb.StartXml();
+        multidb.StartXml();
+        LoadMultiInfo();
         sounddb.SoundUpdate(GetSceneIndex());
         DontDestroyOnLoad(gameObject);
 

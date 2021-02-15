@@ -18,7 +18,7 @@ public class LogicalDB : MonoBehaviour
     //논리적 db생성
     public void CreateTable()
     {
-        UserInfo = new DataTable("UserInfo");
+        UserInfo = new DataTable("Multidb");
 
         //키값
         DataColumn dc_pid = new DataColumn();
@@ -83,7 +83,7 @@ public class LogicalDB : MonoBehaviour
     {
         if (File.Exists(schema_fname))
         {
-            UserInfo = new DataTable("UserInfo");
+            UserInfo = new DataTable("Multidb");
             UserInfo.ReadXmlSchema(schema_fname);
 
             if (File.Exists(xmlname))
@@ -98,7 +98,7 @@ public class LogicalDB : MonoBehaviour
     {
         if (File.Exists(schema_fname))
         {
-            UserInfo = new DataTable("UserInfo");
+            UserInfo = new DataTable("Multidb");
             UserInfo.ReadXmlSchema(schema_fname);
 
             if (File.Exists(xmlname))
